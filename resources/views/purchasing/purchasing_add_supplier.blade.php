@@ -3,7 +3,7 @@
 @section('purchasing-body')
 
 
-<h2 class="font-bold text-xl">TEXT TEXT</h2>
+<h2 class="font-bold text-xl">Add Supplier</h2>
 
 <div class="font-bold text-red-500 font-2xl">
     @if (session('success'))
