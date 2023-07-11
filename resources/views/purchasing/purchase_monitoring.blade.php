@@ -5,7 +5,7 @@
 <h2 class="font-bold text-xl">Purchase Monitoring</h2>
 
 <div class="flex justify-end mr-1">
-    <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
+    <button class="bg-green-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
 </div>
 
 <div class="mt-4">
