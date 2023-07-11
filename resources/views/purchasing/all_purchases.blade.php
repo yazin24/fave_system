@@ -8,6 +8,7 @@
     <div>
         <form method="POST" action="{{ route('showpurchases') }}">
             @csrf
+            
             <label for="date">Select Date:</label>
             <input type="date" name="date" class="shadow-lg text-sm">
             <button type="submit" class="ml-4 bg-green-400 hover:bg-green-600 p-1 rounded-md shadow-lg text-gray-200">Submit</button>
@@ -15,6 +16,7 @@
     </div>
     <div class="mt-0.5">
     <form method="GET" action="{{route('allpurchaseorder')}}">
+        
         <button class="ml-4 bg-green-400 hover:bg-green-600 p-1 rounded-md shadow-lg text-gray-200">See All</button>
     </form>
     </div>

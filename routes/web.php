@@ -7,8 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseMonitoringController;
-use App\Http\Controllers\PurchaseOrderCreateController;
+use App\Http\Controllers\PurchasingFunctionsControlle;
 use App\Http\Controllers\PurchasingController;
+use App\Http\Controllers\PurchasingFunctionsController;
 use App\Http\Controllers\ShowPurchasesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
@@ -74,25 +75,25 @@ Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasin
 //Purchasing Routes (Functionalities)
 
 
-Route::post('/purchasing/purchase-form', [PurchaseOrderCreateController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems');
+Route::post('/purchasing/purchase-form', [PurchasingFunctionsController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems');
 
-Route::post('/make-purchase', [PurchaseOrderCreateController::class, 'purchase_order_store']) -> name('purchaseorderstore');
+Route::post('/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore');
 
-Route::get('/view-purchase/{purchase}/view', [ViewPurchaseOrderController::class, 'view_purchase_order']) -> name('viewpurchase');
+Route::get('/view-purchase/{purchase}/view', [PurchasingFunctionsController::class, 'view_purchase_order']) -> name('viewpurchase');
 
-Route::get('/generate-receipt/{purchase}', [ViewPurchaseOrderController::class, 'generate_po_receipt']) -> name('generatereceipt');
+Route::get('/generate-receipt/{purchase}', [PurchasingFunctionsController::class, 'generate_po_receipt']) -> name('generatereceipt');
 
-Route::post('/all-purchases/show-purchases', [ShowPurchasesController::class, 'show_purchases'])-> name('showpurchases');
+Route::post('/all-purchases/show-purchases', [PurchasingFunctionsController::class, 'show_purchases'])-> name('showpurchases');
 
-Route::get('/all-purchases/all-purchase-order', [ShowPurchasesController::class, 'all_purchases']) -> name('allpurchaseorder');
+Route::get('/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder');
 
-Route::get('/purchasing/add-supplier', [SupplierListController::class, 'add_supplier']) -> name('addsupplier');
+Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier');
 
-Route::post('/purchasing/add-supplier/store', [SupplierListController::class, 'add_supplier_store']) -> name('addsupplierstore');
+Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
-Route::get('/purchasing/supplier-list', [SupplierListController::class, 'supplier_list']) -> name('supplierlist');
+Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist');
 
-Route::post('purchasing/supplier-list/items', [SupplierListController::class, 'show_supplier_items']) -> name('showsupplieritems');
+Route::post('purchasing/supplier-list/items', [PurchasingFunctionsController::class, 'show_supplier_items']) -> name('showsupplieritems');
 
 
 //Staff Routes (Sidebar)
@@ -123,7 +124,7 @@ Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list'
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
 
-Route::delete('/admin/purchasing-monitroring/delete/{id}', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete');
+Route::delete('/admin/purchasing-monitroring/delete/{id}', [AdminFunctionsController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete');
 
 Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems');
 
