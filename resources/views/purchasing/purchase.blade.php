@@ -19,8 +19,8 @@
                 </select>
         </div>
 
-        <div class="">
-            <button type="submit" id="show-item-button" class="bg-blue-400 text-gray-100 p-1 rounded-md hover:bg-blue-600 my-2 text-sm shadow-md">Enter</button>
+        <div>
+            <button type="submit" id="show-item-button" class="bg-green-400 text-gray-100 p-2 rounded-md hover:bg-blue-600 my-2 text-sm shadow-md">Enter</button>
         </div>
 
         </form>
