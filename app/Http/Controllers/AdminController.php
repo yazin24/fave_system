@@ -27,6 +27,11 @@ class AdminController extends Controller
         return view('admin.admin_purchase_approval', ['queuePurchases' => $queuePurchases]);
     }
 
+    public function admin_add_supplier()
+    {
+        return view('admin.admin_add_supplier');
+    }
+
     public function admin_supplier_list()
     {
         $suppliers = Suppliers::all();
