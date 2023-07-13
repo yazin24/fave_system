@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminFunctionsController extends Controller
@@ -32,7 +33,7 @@ class AdminFunctionsController extends Controller
 
         $allPurchaseOrders = PurchaseOrder::query()
                             -> where('po_number', 'LIKE', '%' . $search . '%')
-                            ->paginate(20);
+                            ->get();
 
                             return view('admin.admin_purchasing_monitoring', ['allpurchaseOrders' => $allPurchaseOrders]);
             // ->where('po_number', 'LIKE', "%$search%")
@@ -72,23 +73,53 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-        $purchaseOrder-> status = 1;
-        
-        $purchaseOrder -> save();
+        $currentTime = Carbon::now();
 
-        return view('admin.admin_home') -> with('success', 'Purchase Order has been Approved!');
+        $expirationTime = $purchaseOrder -> created_at -> addMinutes(5);
+
+        if($currentTime >= $expirationTime){
+
+            $purchaseOrder-> status = 1;
+        
+            $purchaseOrder -> save();
+
+            return view('admin.admin_home') -> with('success', 'Purchase Order has been Approved!');
+
+        }else {
+            return view('admin.admin_home') -> with('error', 'Purchase Order cannot be Approved because it exceed the time limit of 12 hours!');
+        }
+
+        
     }
 
     public function admin_disapprove_purchase($id)
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-        $purchaseOrder -> status = 2;
+        $currentTime = Carbon::now();
 
-        $purchaseOrder -> save();
+        $expirationTime = $purchaseOrder -> created_at -> addMinutes(5);
 
-        return view('admin.admin_home') -> with('success', 'Purchase Order has been Disapproved!');
+        if($currentTime >= $expirationTime){
 
+            $purchaseOrder -> status = 2;
 
+            $purchaseOrder -> save();
+
+            return view('admin.admin_home') -> with('success', 'Purchase Order has been Disapproved!');
+        }else{
+
+            return view('admin.admin_home') -> with('error', 'Purchase Order has been Disapproved because it exceed the time limit of 12 hours!');
+        }
+
+    }
+
+    public function admin_delete_unpurchase($id)
+    {
+        $unPurchaseOrder = PurchaseOrder::findOrFail($id);
+
+        $unPurchaseOrder -> delete();
+
+        return view('admin.admin_home') -> with('success', 'Unpurchase Order has been deleted!');
     }
 }

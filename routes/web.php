@@ -119,6 +119,8 @@ Route::get('admin/add-supplier', [AdminController::class, 'admin_add_supplier'])
 
 Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list']) -> name('adminsupplierlist');
 
+Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase']) -> name('adminunpurchase');
+
 
 //Admin Routes (Functionalities)
 
@@ -137,6 +139,8 @@ Route::get('/admin/purchase-approval/view-details/{queuePurchase}', [AdminFuncti
 Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase');
 
 Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFunctionsController::class, 'admin_disapprove_purchase']) -> name('admindisapprovepurchase');
+
+Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');
 
 
 
