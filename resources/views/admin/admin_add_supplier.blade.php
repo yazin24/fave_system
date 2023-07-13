@@ -2,43 +2,44 @@
 
 @section('admin-body')
 
-<h2 class="font-bold text-xl">Add Supplier</h2>
+<div class="w-full mx-auto">
+     <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="font-bold text-xl mb-4">Add Supplier</h2>
+
+                <div class="font-bold text-red-500 font-2xl">
+                    @if (session('success'))
+                    {{ session('success') }}
+                    @endif
+                </div>
+
+                                                        {{-- <div class="bg-gray-900 w-2/4 mt-8 p-2 mr-10"> --}}
 
 
-<div class="font-bold text-red-500 font-2xl">
-    @if (session('success'))
-        {{ session('success') }}
-    @endif
-</div>
+             <div class="">
 
-<div class="bg-gray-900 w-2/4 mt-8 p-2 mr-10">
-
-    <div class="">
-
-        <form  method="POST" action="{{route('addsupplierstore')}}" >
-         @csrf
-         @method('POST')
+                    <form  method="POST" action="{{route('addsupplierstore')}}" >
+                         @csrf
+                         @method('POST')
      
-         <div class="">
-         <input type="text" name="supplier_name" placeholder="Supplier Name" class="w-full" required>
-         </div>
+                       <div class="">
+                            <input type="text" name="supplier_name" placeholder="Supplier Name" class="" required>
+                       </div>
      
-         <div>
-             <input type="text" name="item_name[]" placeholder="Item Name" class="w-full text-xs mt-2" required>
-         </div>
+                       <div>
+                            <input type="text" name="item_name[]" placeholder="Item Name" class="mt-2" required>
+                       </div>
      
-         <div id="item-container"></div>
+                       <div class="mt-2 flex gap-4">
+                           <div>
+                              <button type="button" id="add-item-button" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
+                           </div>
+                       <div>
+                              <button type="submit" id="add-supplier" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
+                       </div>
+                    </form>
+           </div>
      
-         <div class="mt-4 flex flex-col gap-4">
-            <div>
-             <button type="button" id="add-item-button" class="bg-blue-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
-            </div>
-            <div>
-             <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
-            </div>
-         </div>
-     
-        </form>
+        
      
      
      
@@ -63,8 +64,8 @@
          });
         </script>
      
-     </div>
-
+    
+     </form>
 </div>
 
 @endsection

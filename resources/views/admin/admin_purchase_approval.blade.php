@@ -2,7 +2,7 @@
 
 @section('admin-body')
 
-<h2 class="font-bold text-xl">For Approval</h2>
+<h2 class="font-bold text-xl mt-1">For Approval</h2>
 
 <div class="mt-4">
 

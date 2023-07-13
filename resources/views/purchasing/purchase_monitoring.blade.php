@@ -33,10 +33,10 @@
 
     </div>
 
-    <div class="bg-white-900 text-gray-900 mt-4">
+    <div class="bg-white-900 text-gray-900 mt-1">
         <table class="bg-gray-300 shadow-lg w-full">
             <thead class="">
-                <tr class="bg-gray-900 border-b-1 text-gray-300 w-96">
+                <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 h-12">
                     <th class="text-center">PO_NUMBER</th>
                     <th class="text-center">SUPPLIER</th>
                     <th class="text-center">REQUESTED_BY</th>
