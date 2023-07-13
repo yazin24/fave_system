@@ -19,6 +19,7 @@
     </form>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="flex justify-end mr-1">
     <button class="bg-green-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1 mb-2" onclick="window.location.reload()">Refresh</button>
 </div>
@@ -28,6 +29,11 @@
     </div>
     </div>
 >>>>>>> 2c28b742c44f72b435aeae1c4bfc55ff8165fdc8
+=======
+<div class="flex justify-end mr-1">
+    <button class="bg-green-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1 mb-2" onclick="window.location.reload()">Refresh</button>
+</div>
+>>>>>>> 5e09718576708d848ef6fe86ca3a67d0d8b625b1
 
 <div>
     @if(session() -> has('success'))
