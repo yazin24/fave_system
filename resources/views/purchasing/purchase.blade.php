@@ -2,29 +2,27 @@
 
 @section('purchasing-body')
 
+<div class="w-full mx-auto">
+    <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+         <h2 class="font-bold text-xl mb-4 ml-1">Choose a supplier</h2>
+             <form method="POST" action="{{route('purchaseshowsupplieritems')}}">
+                    @csrf
+                    @method('POST')
+                        <div class="mr-4">
+                            <select id="supplier_id" name="supplier_id" class="text-sm" required>
+                                <option value="" disabled selected>Supplier Name</option>
+                                @foreach($suppliers as $supplier)
+                                <option value="{{$supplier -> id}}">{{$supplier -> supplier_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-    <h2 class="font-bold text-xl mb-4 ml-1">Choose a supplier</h2>
-
-    <div class="flex flex-row">
-
-        <form method="POST" action="{{route('purchaseshowsupplieritems')}}">
-            @csrf
-            @method('POST')
-        <div class="mr-4">
-                <select id="supplier_id" name="supplier_id" class="" required>
-                <option value="" disabled selected>Supplier Name</option>
-                @foreach($suppliers as $supplier)
-                <option value="{{$supplier -> id}}">{{$supplier -> supplier_name}}</option>
-                @endforeach
-                </select>
-        </div>
-
-        <div class="">
-            <button type="submit" id="show-item-button" class="bg-blue-400 text-gray-100 p-1 rounded-md hover:bg-blue-600 my-2 text-sm shadow-md">Enter</button>
-        </div>
-
-        </form>
-    </div>
+                        <div>
+                            <button type="submit" id="show-item-button" class="bg-green-400 text-gray-100 p-1.5 rounded-md hover:bg-blue-600 my-2 text-sm shadow-md">Enter</button>
+                        </div>
+             </form>
+    </form>
+</div>
 
     @if(isset($supplierItems))
     <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2">

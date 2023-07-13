@@ -13,6 +13,7 @@ class AdminController extends Controller
     {
 
         $allPurchaseOrders = PurchaseOrder::orderBy('created_at', 'desc')
+                            ->whereIn('status', [1, 3])
                             ->paginate(10);
 
         return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
@@ -27,6 +28,11 @@ class AdminController extends Controller
         return view('admin.admin_purchase_approval', ['queuePurchases' => $queuePurchases]);
     }
 
+    public function admin_add_supplier()
+    {
+        return view('admin.admin_add_supplier');
+    }
+
     public function admin_supplier_list()
     {
         $suppliers = Suppliers::all();
@@ -34,4 +40,12 @@ class AdminController extends Controller
         return view('admin.admin_supplier_list', ['suppliers' => $suppliers]);
     }
 
+    public function admin_unpurchase()
+    {
+        $unPurchaseOrders = PurchaseOrder::orderBy('created_at', 'desc')
+                        ->whereIn('status', [2, 4])
+                        ->paginate(10);
+
+        return view('admin.admin_unpurchase', ['unPurchaseOrders' => $unPurchaseOrders]);
+    }
 }

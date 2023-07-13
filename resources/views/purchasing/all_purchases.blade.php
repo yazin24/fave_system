@@ -2,30 +2,35 @@
 
 @section('purchasing-body')
 
-<h2 class="font-bold text-xl">All Purchases</h2>
+<div class="w-full mx-auto">
+    <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="font-bold  text-xl mt-2">All Purchases</h2>
 
-<div class="flex flex-row my-4">
-    <div>
-        <form method="POST" action="{{ route('showpurchases') }}">
-            @csrf
-            
-            <label for="date">Select Date:</label>
-            <input type="date" name="date" class="shadow-lg text-sm">
-            <button type="submit" class="ml-4 bg-green-400 hover:bg-green-600 p-1 rounded-md shadow-lg text-gray-200">Submit</button>
-        </form>
-    </div>
-    <div class="mt-0.5">
-    <form method="GET" action="{{route('allpurchaseorder')}}">
+            <div class="my-4">
+                <div class="mb-2">
         
-        <button class="ml-4 bg-green-400 hover:bg-green-600 p-1 rounded-md shadow-lg text-gray-200">See All</button>
+                    <form method="POST" action="{{ route('showpurchases') }}">
+                        @csrf 
+                            <label class="" for="date">Select Date:</label>
+                            <input type="date" name="date" class="shadow-lg text-sm">
+                            <div class="mt-2">
+                                <button type="submit" class="bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 text-sm">Submit</button>
+
+                                <form method="GET" action="{{route('allpurchaseorder')}}"> 
+                            
+                                <button class="ml-4 bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 ml-1 text-sm">See All</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
     </form>
-    </div>
 </div>
+
 
 @if(isset($purchaseOrders))
 <div class="bg-white-900 text-gray-900 mt-2">
 
-    <div class="flex justify-end mr-1 mb-4">
+    <div class="flex justify-end mr-1 mb-1">
         <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
     </div>
 
