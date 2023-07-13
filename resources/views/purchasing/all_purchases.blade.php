@@ -2,10 +2,12 @@
 
 @section('purchasing-body')
 
+
 <h2 class="font-bold text-xl mt-2">All Purchases</h2>
 
 <div class="my-4">
     <div class="mb-2">
+        
         <form method="POST" action="{{ route('showpurchases') }}">
             @csrf 
                 <label for="date">Select Date:</label>
@@ -18,6 +20,7 @@
                     <button class="ml-4 bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 ml-1">See All</button>
                     </div>
         </form>
+       
     </div>
 </div>
 

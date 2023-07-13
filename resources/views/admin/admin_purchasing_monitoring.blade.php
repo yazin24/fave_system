@@ -4,6 +4,17 @@
 
 <h2 class="font-bold text-xl">Purchasing Monitoring</h2>
 
+    <form method="GET" action="{{route('adminsearch')}}">
+        <div class="flex flex-row mt-4">
+            <div>
+                <input type="text" name="search" placeholder="Search here">
+            </div>
+            <div>
+                <button type="submit" class="mt-2 bg-green-500 rounded-md p-1 text-gray-200 shadow-md ml-4">Search</button>
+            </div>
+        </div>
+    </form>
+
 <div class="flex justify-end mr-1">
     <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
 </div>
@@ -13,8 +24,8 @@
     {{session('success')}}
     @endif
 </div>
-
-<div class="mt-4">
+@if(isset($allPurchaseOrders))
+<div class="">
     <div>
         <table class="bg-gray-300 shadow-lg w-full">
             <thead>
@@ -64,6 +75,8 @@
     <div class="mt-4 font-bold">
         {{$allPurchaseOrders -> links()}}
     </div>
+    @endif
 </div>
+
 
 @endsection

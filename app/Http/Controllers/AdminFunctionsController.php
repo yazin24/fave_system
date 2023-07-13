@@ -26,6 +26,27 @@ class AdminFunctionsController extends Controller
         return redirect(route('adminpurchasingmonitoring')) -> with('success', 'Purchase Order has been deleted successfully!');
     }
 
+    public function admin_search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $allPurchaseOrders = PurchaseOrder::query()
+                            -> where('po_number', 'LIKE', '%' . $search . '%')
+                            ->paginate(20);
+
+                            return view('admin.admin_purchasing_monitoring', ['allpurchaseOrders' => $allPurchaseOrders]);
+            // ->where('po_number', 'LIKE', "%$search%")
+            // ->orWhereHas('purchaseOrderCredentials', function ($query) use ($search) {
+            //     $query->where('requested_by', 'LIKE', "%$search%");
+            // })  
+            // ->orWhereHas('created_at', function ($query) use ($search) {
+            //     $query->where('created_at', 'LIKE', "%$search%");
+            // })
+            // ->paginate(20);
+
+            // return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
+    }
+
     public function admin_show_suppliers_items(Request $request)
     {
         $supplierName = $request -> input('selected_id');
