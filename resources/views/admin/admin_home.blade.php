@@ -39,9 +39,9 @@
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href=''>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminunpurchase')}}'>
             <div class='flex items-center'>
-              <div>Settings</div>
+              <div>Unpurchase Order</div>
             </div>
             </a>
           </li>
@@ -52,6 +52,7 @@
     
     <div class="ml-6 mt-6 mr-6 w-full">
       @yield('admin-body')
+
     </div>
   </div>
 
