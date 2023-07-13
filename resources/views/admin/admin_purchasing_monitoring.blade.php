@@ -2,7 +2,7 @@
 
 @section('admin-body')
 
-<h2 class="font-bold text-xl">Purchasing Monitoring</h2>
+<h2 class="font-bold text-xl mt-2">Purchasing Monitoring</h2>
 
 
     <div class="flex flex-row mb-2">
@@ -13,15 +13,14 @@
                 <input type="text" name="search" placeholder="Search here">
             </div>
             <div>
-                <button type="submit" class="mt-2 bg-green-500 rounded-md p-1 text-gray-200 shadow-md ml-4">Search</button>
+                <button type="submit" class="mt-1 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-2">Search</button>
             </div>
         </div>
     </form>
 
-    <div class="flex mt-7">
-        <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
-    </div>
-    </div>
+<div class="flex justify-end mr-1">
+    <button class="bg-green-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1 mb-2" onclick="window.location.reload()">Refresh</button>
+</div>
 
 <div>
     @if(session() -> has('success'))
@@ -34,7 +33,7 @@
     <div>
         <table class="bg-gray-300 shadow-lg w-full">
             <thead>
-                <tr class="bg-gray-900 border-b-2 text-gray-300">
+                <tr class="bg-gray-900 border-b-1 text-gray-300 h-10">
                     <th class="text-center">PO_NUMBER</th>
                     <th class="text-center">SUPPLIER</th>
                     <th class="text-center">REQUESTED_BY</th>
