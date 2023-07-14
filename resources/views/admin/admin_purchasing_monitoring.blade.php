@@ -61,7 +61,7 @@
                                 '{{$allPurchaseOrder -> status}}',
                                 [
                                     @foreach($allPurchaseOrder -> purchaseOrderItems as $item)
-                                    '{{$item -> item_name}}'
+                                    '{{$item -> item_name}}',
                                     @endforeach
                                 ]
                             )"><i class="fa-solid fa-eye"></i></button>
