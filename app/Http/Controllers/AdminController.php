@@ -16,6 +16,10 @@ class AdminController extends Controller
                             ->whereIn('status', [1, 3])
                             ->paginate(10);
 
+        // $allPurchaseOrders = PurchaseOrder::query()
+        //                     ->where('po_number', 'LIKE', '%' . $search . '%')
+        //                     ->get()
+
         return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
     }
 

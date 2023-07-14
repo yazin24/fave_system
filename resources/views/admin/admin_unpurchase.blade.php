@@ -73,7 +73,7 @@
 
     <div id="modal_details" class="hidden fixed top-0 left-0 w-full h-full flex items-start justify-center pt-40 bg-gray-900 bg-opacity-80">
         <div class="bg-white rounded-lg p-8">
-            <h2 class="font-bold text-xl">Unpurchase Order Details</h2>
+            <h2 class="font-bold text-xl">UnPurchase Order Details</h2>
             <p>PO Number:<span id="po_number"></span></p>
             <p>Supplier:<span id="supplier"></span></p>
             <p>Requested By:<span id="requested_by"></span></p>
