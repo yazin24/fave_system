@@ -3,7 +3,7 @@
 @section('purchasing-body')
 
 <div class="w-full mx-auto">
-    <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    
          <h2 class="font-bold text-xl mb-4 ml-1">Choose a supplier</h2>
              <form method="POST" action="{{route('purchaseshowsupplieritems')}}">
                     @csrf
@@ -21,7 +21,7 @@
                             <button type="submit" id="show-item-button" class="bg-green-400 text-gray-100 p-1.5 rounded-md hover:bg-blue-600 my-2 text-sm shadow-md">Enter</button>
                         </div>
              </form>
-    </form>
+    
 </div>
 
     @if(isset($supplierItems))

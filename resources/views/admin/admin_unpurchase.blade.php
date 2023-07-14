@@ -10,7 +10,7 @@
         <div>
             <table class="bg-gray-300 shadow-lg w-full">
                 <thead>
-                    <tr class="bg-gray-900 border-b-2 text-gray-300 h-10">
+                    <tr class="bg-gray-900 border-b-1 text-gray-300 h-10">
                         <th class="text-center">PO_NUMBER</th>
                         <th class="text-center">SUPPLIER</th>
                         <th class="text-center">REQUESTED_BY</th>

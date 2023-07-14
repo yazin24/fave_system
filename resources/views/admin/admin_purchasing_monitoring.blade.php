@@ -10,11 +10,9 @@
         <form method="GET" action="{{route('adminsearch')}}">
         
         <div class="flex flex-row mt-4">
-            <div>
                 <input type="text" name="search" placeholder="Search here">
-            </div>
             <div>
-                <button type="submit" class="mt-2 bg-green-500 rounded-md p-1 text-gray-200 shadow-md ml-4">Search</button>
+                <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs">Search</button>
             </div>
         </div>
         </form>
@@ -105,7 +103,7 @@
         {{$allPurchaseOrders -> links()}}
     </div>
     @else
-    <p>No Results Found</p>
+    {{-- <p>No Results Found</p> --}}
     @endif
     @endif
 </div>
