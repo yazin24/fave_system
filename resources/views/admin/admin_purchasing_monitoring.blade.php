@@ -7,27 +7,11 @@
 
  <div class="flex flex-row mb-2 justify-between">
         <form method="GET" action="{{route('adminsearch')}}">
-<<<<<<< HEAD
         
         <div class="flex flex-row mt-4">
                 <input type="text" name="search" placeholder="Search here">
             <div>
                 <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-sm">Search</button>
-=======
-            <div class="flex flex-row mt-4">
-                    <input type="text" name="search" placeholder="Search here">
-                <div>
-                    <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs">Search</button>
-                </div>
-            </div>
-        </form>
- </div>
-
-    <div class="mt-2">
-        <div class="flex items-center mt-1">
-            <div class="ml-auto">
-            <button class="bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs mb-4" onclick="window.location.reload()">Refresh</button>
->>>>>>> b0454e026b0ef2443cfbfc78e09ef8673b4d9b61
             </div>
         </div>
     </div>
