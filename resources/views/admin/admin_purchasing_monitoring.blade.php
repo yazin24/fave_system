@@ -5,23 +5,23 @@
 <h2 class="font-bold text-xl">Purchasing Monitoring</h2>
 
 
-    <div class="flex flex-row mb-2">
+ <div class="flex flex-row mb-2 justify-between">
     <form method="GET" action="{{route('adminsearch')}}">
         
         <div class="flex flex-row mt-4">
-            <div>
                 <input type="text" name="search" placeholder="Search here">
-            </div>
             <div>
-                <button type="submit" class="mt-2 bg-green-500 rounded-md p-1 text-gray-200 shadow-md ml-4">Search</button>
+                <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs">Search</button>
             </div>
         </div>
     </form>
 
-<div class="flex justify-end mr-1">
-    <button class="bg-green-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1 mb-2" onclick="window.location.reload()">Refresh</button>
-</div>
 
+<div class="ml-auto">
+<div class="flex items-center mt-1">
+    <button class="mt-3 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs" onclick="window.location.reload()">Refresh</button>
+</div>
+</div>
 <div>
     @if(session() -> has('success'))
     {{session('success')}}
@@ -93,7 +93,7 @@
         {{$allPurchaseOrders -> links()}}
     </div>
     @else
-    <p>No Results Found</p>
+    {{-- <p>No Results Found</p> --}}
     @endif
     @endif
 </div>

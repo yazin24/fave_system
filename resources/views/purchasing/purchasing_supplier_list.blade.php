@@ -2,7 +2,7 @@
 @section('purchasing-body')
 
 <div class="w-full mx-auto">
-    <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {{-- <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4"> --}}
 
         <h2 class="font-bold text-xl mb-4 ml-1">Supplier List</h2>
             <div class="mt-8">
@@ -47,7 +47,7 @@
                 </table>
                 @endif
             </div>
-    </form>
+    {{-- </form> --}}
 </div>
 
 @endsection
