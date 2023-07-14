@@ -5,7 +5,7 @@
 <h2 class="font-bold text-xl">Purchasing Monitoring</h2>
 
 
- <div class="flex flex-row mb-2 justify-between">
+    <div class="flex flex-row mb-2 justify-between">
         <form method="GET" action="{{route('adminsearch')}}">
         
         <div class="flex flex-row mt-4">
@@ -14,6 +14,7 @@
                 <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-sm">Search</button>
             </div>
         </div>
+        </form>
     </div>
 
     <div>
@@ -52,6 +53,7 @@
                     <td class="border-b-2 text-sm text-center">
 
                         <div class="flex flex-row justify-center items-center">
+
                             <div class="bg-yellow-500 p-1 mr-2 rounded-md shadow-md"><button onclick="openModalDetails(
                                 '{{$allPurchaseOrder -> po_number}}',
                                 '{{$allPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}',
@@ -64,7 +66,7 @@
                                     '{{$item -> item_name}}',
                                     @endforeach
                                 ]
-                            )"><i class="fa-solid fa-eye"></i></button>
+                                    )"><i class="fa-solid fa-eye"></i></button>
                             
                             </div>
 
@@ -72,11 +74,11 @@
                                 <form method="POST" action="{{route('adminpurchaseorderdelete', ['allPurchaseOrder' => $allPurchaseOrder, 'id' => $allPurchaseOrder -> id])}}">
                                     @csrf
                                     @method('DELETE')
-                            <button type="submit" onclick="return confirm('Are you sure you want to delete this record?')">
-                                <i class="fa-solid fa-trash"></i>
-                            </form>
-                            </button>
-                        </div>
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this record?')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                </form>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -96,7 +98,7 @@
 
     <div id="modal_details" class="hidden fixed top-0 left-0 w-full h-full flex items-start justify-center pt-40 bg-gray-900 bg-opacity-80">
         <div class="bg-white rounded-lg p-8">
-            <h2 class="font-bold text-xl">Unpurchase Order Details</h2>
+            <h2 class="font-bold text-xl">Purchase Order Details</h2>
             <p>PO Number:<span id="po_number"></span></p>
             <p>Supplier:<span id="supplier"></span></p>
             <p>Requested By:<span id="requested_by"></span></p>

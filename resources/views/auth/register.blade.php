@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <div class="flex justify-center h-20">
+        <img src="{{ asset('images/logofave.png') }}" alt="Example Image">
+        </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

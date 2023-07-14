@@ -73,22 +73,11 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-        $currentTime = Carbon::now();
-
-        $expirationTime = $purchaseOrder -> created_at -> addMinutes(5);
-
-        if($currentTime >= $expirationTime){
-
             $purchaseOrder-> status = 1;
         
             $purchaseOrder -> save();
 
             return view('admin.admin_home') -> with('success', 'Purchase Order has been Approved!');
-
-        }else {
-            return view('admin.admin_home') -> with('error', 'Purchase Order cannot be Approved because it exceed the time limit of 12 hours!');
-        }
-
         
     }
 
@@ -96,21 +85,11 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-        $currentTime = Carbon::now();
-
-        $expirationTime = $purchaseOrder -> created_at -> addMinutes(5);
-
-        if($currentTime >= $expirationTime){
-
             $purchaseOrder -> status = 2;
 
             $purchaseOrder -> save();
 
             return view('admin.admin_home') -> with('success', 'Purchase Order has been Disapproved!');
-        }else{
-
-            return view('admin.admin_home') -> with('error', 'Purchase Order has been Disapproved because it exceed the time limit of 12 hours!');
-        }
 
     }
 
