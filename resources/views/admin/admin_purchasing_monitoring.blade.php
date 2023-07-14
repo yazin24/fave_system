@@ -12,7 +12,7 @@
         <div class="flex flex-row mt-4">
                 <input type="text" name="search" placeholder="Search here">
             <div>
-                <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-xs">Search</button>
+                <button type="submit" class="mt-2 bg-green-400 hover:bg-blue-600 rounded-md p-1 text-gray-200 shadow-md ml-4 text-sm">Search</button>
             </div>
         </div>
         </form>
