@@ -15,12 +15,13 @@
                             <input type="date" name="date" class="shadow-lg text-sm">
                             <div class="mt-2">
                                 <button type="submit" class="bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 text-sm">Submit</button>
-
+                    </form>
                                 <form method="GET" action="{{route('allpurchaseorder')}}"> 
                             
                                 <button class="ml-4 bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 ml-1 text-sm">See All</button>
+                                </form>
                             </div>
-                    </form>
+                    
                 </div>
             </div>
     {{-- </form> --}}

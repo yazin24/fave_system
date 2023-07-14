@@ -3,7 +3,7 @@
 @section('admin-body')
 
 <div class="w-full mx-auto">
-     <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4">
+     {{-- <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4"> --}}
         <h2 class="font-bold text-xl mb-4">Add Supplier</h2>
 
                 <div class="font-bold text-red-500 font-2xl">
@@ -65,7 +65,7 @@
         </script>
      
     
-     </form>
+     {{-- </form> --}}
 </div>
 
 @endsection
