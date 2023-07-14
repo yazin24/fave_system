@@ -21,7 +21,7 @@
                             <input type="text" name="item_name[]" placeholder="Item Name" class="mt-2" required>
                          </div>
             
-                                    <div id="item-container"></div>
+                                    <div id="item-container">
                                          <div class="mt-2 flex gap-4">
                                                 <div>
                                                     <button type="button" id="add-item-button" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
