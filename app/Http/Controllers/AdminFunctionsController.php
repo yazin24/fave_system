@@ -33,9 +33,9 @@ class AdminFunctionsController extends Controller
 
         $allPurchaseOrders = PurchaseOrder::query()
                             -> where('po_number', 'LIKE', '%' . $search . '%')
-                            ->get();
+                            ->paginate(10);
 
-                            return view('admin.admin_purchasing_monitoring', ['allpurchaseOrders' => $allPurchaseOrders]);
+                            return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
             // ->where('po_number', 'LIKE', "%$search%")
             // ->orWhereHas('purchaseOrderCredentials', function ($query) use ($search) {
             //     $query->where('requested_by', 'LIKE', "%$search%");
