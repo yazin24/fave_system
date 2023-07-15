@@ -17,7 +17,7 @@
                     @endforeach
                 </select>
                 <div class="mt-1">
-                <button type="submit" class="bg-green-400 hover:bg-blue-600 rounded-md p-1 w-12  text-xs text-gray-200">Enter</button>
+                <button type="submit" class="bg-teal-400 hover:bg-teal-600 rounded-md p-1 w-12  text-xs text-gray-200">Enter</button>
                 </div>
             </form>
             </div>

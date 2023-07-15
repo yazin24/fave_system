@@ -71,22 +71,31 @@
         </div>
 </div>
 
-    <div id="modal_details" class="hidden fixed top-0 left-0 w-full h-full flex items-start justify-center pt-40 bg-gray-900 bg-opacity-80">
-        <div class="bg-white rounded-lg p-8">
-            <h2 class="font-bold text-xl">UnPurchase Order Details</h2>
-            <p>PO Number:<span id="po_number"></span></p>
-            <p>Supplier:<span id="supplier"></span></p>
-            <p>Requested By:<span id="requested_by"></span></p>
-            <p>Prepared By:<span id="prepared_by"></span></p>
-            <p>Approved By:<span id="approved_by"></span></p>
-            <p>Status:<span id="status"></span></p>
-            <p>Item:</p>
-            <ul id="item_list"></ul>
-
-            <button id="close_modal" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md">Close</button>
+<div id="modal_details" class="hidden fixed top-0 left-0 w-full h-full flex items-start justify-center pt-40 bg-gray-900 bg-opacity-80">
+    <div class="bg-white rounded-lg p-8">
+        
+        <h2 class="font-bold text-xl mb-2 text-center bg-gray-900 text-gray-200">Purchase Order Details</h2>
+        <br>
+        <div class="flex flex-row gap-12">
+        <div>
+        <p class="font-bold">Supplier: <span id="supplier" class="text-green-600"></span></p>
+        <p class="font-bold">Requested By: <span id="requested_by" class="text-green-600"></span></p>
+        <p class="font-bold">Approved By: <span id="approved_by" class="text-green-600"></span></p>
         </div>
+        <div>
+        <p class="font-bold">PO Number: <span id="po_number" class="text-green-600"></span></p>
+        <p class="font-bold">Prepared By:<span id="prepared_by" class="text-green-600"></span></p>
+        <p class="font-bold">Status: <span id="status" class="capitalize text-yellow-600"></span></p>
+        </div>
+        </div>
+        <br><hr><br>
+        <p class="font-bold">List of Items:</p>
+        <ul id="item_list" class="font-bold text-blue-600"></ul>
 
+        <button id="close_modal" class="bg-red-400 hover:bg-red-600 text-white font-bold p-1 px-1 rounded-md text-sm ml-96">Close</button>
     </div>
+
+</div>
 
         <script>
             function openModalDetails(poNumber, supplier, requestedBy, preparedBy, approvedBy, status, items){

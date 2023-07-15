@@ -28,13 +28,14 @@
                        <div>
                             <input type="text" name="item_name[]" placeholder="Item Name" class="mt-2" required>
                        </div>
-     
+                       <div id="item-container" class="mb-4">
                        <div class="mt-2 flex gap-4">
                            <div>
-                              <button type="button" id="add-item-button" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
+                              <button type="button" id="add-item-button" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
                            </div>
                        <div>
-                              <button type="submit" id="add-supplier" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
+                        </div>
+                              <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
                        </div>
                     </form>
            </div>

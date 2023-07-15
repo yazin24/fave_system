@@ -6,9 +6,6 @@
     {{-- <form class="bg-indigo shadow-md rounded px-8 pt-2 pb-6 mb-4"> --}}
         <h2 class="font-bold text-xl mb-4">Add Supplier</h2>
              <div class="font-bold font-2xl">
-                @if (session('success'))
-                 {{ session('success') }}
-                @endif
                     <form  method="POST" action="{{route('addsupplierstore')}}" >
                          @csrf
                          @method('POST')
@@ -23,13 +20,13 @@
             
                                     <div id="item-container">
                                          <div class="mt-2 flex gap-4">
-                                                <div>
-                                                    <button type="button" id="add-item-button" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
-                                                </div>
                                                 
                                                 <div>
-                                                    <button type="submit" id="add-supplier" class="bg-green-400 hover:bg-blue-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
+                                                    <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md">Submit</button>
                                                 </div>  
+                                                <div>
+                                                    <button type="button" id="add-item-button" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md">Add Item</button>
+                                                </div>
                                          </div>
                                     </div>
 

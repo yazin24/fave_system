@@ -83,7 +83,7 @@ Route::get('/all-purchases/all-purchase-order', [PurchasingFunctionsController::
 
 Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier') -> middleware('purchasing');
 
-Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore') -> middleware('purchasing');
+Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
 Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist') -> middleware('purchasing');
 

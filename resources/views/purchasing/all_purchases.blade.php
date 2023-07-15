@@ -2,33 +2,30 @@
 
 @section('purchasing-body')
 
-<div class="w-full mx-auto">
+<div class="w-full">
    <h2 class="font-bold  text-xl mt-2">All Purchases</h2>
-     <div class="my-4">      
+
+     <div class=" flex flex-row mt-4 gap-4">   
+
+        <div class="flex justify-center items-center mt-2">  
             <form method="POST" action="{{ route('showpurchases') }}">
               @csrf 
-                <label class="" for="date">Select Date:</label>
-                <input type="date" name="date" class="shadow-lg text-sm">
-                        
-                        <div class="item-container">
-                            <div class="flex gap-4">   
-                                <div class="mt-2">
-                                   <button type="submit" class="bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 text-sm">Submit</button>
-                                </div>   
-            </form>              
-                                    <div class="mt-2 mr-4">        
-                                        <form method="GET" action="{{route('allpurchaseorder')}}">                           
-                                           <button class="bg-green-400 hover:bg-blue-600 p-1 rounded-md shadow-lg text-gray-200 ml-1 text-sm">See All</button>
-                                        </form>
-                                    </div>    
-                            </div>        
-                        </div>           
-    </div>
-</div>
+                    <label class="" for="date">Select Date:</label>
+                    <input type="date" name="date" class="shadow-lg text-sm">
+                    <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 rounded-md shadow-lg text-gray-200 text-sm ml-4">Submit</button>
+                </form>
+            </div>
+                     <div class="flex justify-center items-center mt-2">  
+                         <form method="GET" action="{{route('allpurchaseorder')}}">                           
+                            <button class="bg-teal-400 hover:bg-teal-600 p-1 rounded-md shadow-lg text-gray-200 ml-1 text-sm">See All</button>
+                         </form>
+                        </div>       
+         </div>           
 
 
-@if(isset($purchaseOrders))
-<div class="bg-white-900 text-gray-900 mt-2">
+
+    @if(isset($purchaseOrders))
+    <div class="bg-white-900 text-gray-900 mt-2">
 
     <div class="flex justify-end mr-1 mb-1">
         <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>

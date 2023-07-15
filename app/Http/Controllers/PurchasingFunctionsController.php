@@ -32,11 +32,9 @@ class PurchasingFunctionsController extends Controller
 
         return view('purchasing.purchase', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers, 'supplierNameForPurchase' => $supplierNameForPurchase,]);
     }
+
     public function purchase_order_store(Request $request)
     {
-
-        
-
         // $request->validate([
         //     'supplier_name' => 'required',
         //     'po_number' => 'required|unique:purchase_orders',
@@ -53,6 +51,7 @@ class PurchasingFunctionsController extends Controller
 
         $itemNames = $request -> input('item_name', []);
         $quantity = $request -> input('quantity', []);
+        $quantityUnit = $request -> input('quantity_unit', []);
         $unitPrice = $request -> input('unit_price', []);
 
         $characters = '1234567890';
@@ -86,14 +85,16 @@ class PurchasingFunctionsController extends Controller
         foreach ($itemNames as $itemId => $itemName) {
             if (in_array($itemId, $selectedItems)) {
                 $quantityValue = $quantity[$itemId] ?? null;
+                $quantityUnitValue = $quantityUnit[$itemId] ?? null; 
                 $unitPriceValue = $unitPrice[$itemId] ?? null;
         
-                if ($itemName && $quantityValue && $unitPriceValue) {
+                if ($itemName && $quantityValue && $quantityUnitValue && $unitPriceValue) {
                     $amount = $quantityValue * $unitPriceValue;
         
                     $newPurchaseOrder->purchaseOrderItems()->create([
                         'item_name' => $itemName,
                         'quantity' => $quantityValue,
+                        'quantityUnit' => $quantityUnitValue,
                         'unit_price' => $unitPriceValue,
                         'amount' => $amount,
                     ]);
