@@ -48,6 +48,11 @@ class AdminFunctionsController extends Controller
             // return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
     }
 
+    public function admin_view_purchase() 
+    {
+        return view('admin.admin_view_purchase');
+    }
+
     public function admin_show_suppliers_items(Request $request)
     {
         $supplierName = $request -> input('selected_id');

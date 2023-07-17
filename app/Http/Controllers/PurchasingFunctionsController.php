@@ -94,7 +94,7 @@ class PurchasingFunctionsController extends Controller
                     $newPurchaseOrder->purchaseOrderItems()->create([
                         'item_name' => $itemName,
                         'quantity' => $quantityValue,
-                        'quantityUnit' => $quantityUnitValue,
+                        'quantity_unit' => $quantityUnitValue,
                         'unit_price' => $unitPriceValue,
                         'amount' => $amount,
                     ]);
@@ -161,6 +161,8 @@ class PurchasingFunctionsController extends Controller
 
             $templateReceipt -> setValue("ITEM_QUANTITY{$itemIndex}", $item -> quantity);
 
+            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> quantity_unit);
+
             $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> item_name);
 
             $templateReceipt ->  setValue("UNIT_PRICE{$itemIndex}", $item -> unit_price);
@@ -174,6 +176,7 @@ class PurchasingFunctionsController extends Controller
          //     //this remove the placeholder for the remaining rows in the table thats empty
          for ($i = $itemIndex; $i <= $itemRows; $i++) {
             $templateReceipt->setValue("ITEM_QUANTITY{$i}", '');
+            $templateReceipt->setValue("UNIT{$i}", '');
             $templateReceipt->setValue("ITEM_NAME{$i}", '');
             $templateReceipt->setValue("UNIT_PRICE{$i}", '');
             $templateReceipt->setValue("AMOUNT{$i}", '');

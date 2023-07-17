@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{{asset('icons/css/all.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         {{-- <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet"> --}}
+       
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">

@@ -71,15 +71,15 @@ Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasin
 
 Route::post('/purchasing/purchase-form', [PurchasingFunctionsController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems') -> middleware('purchasing');
 
-Route::post('/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore') -> middleware('purchasing');
+Route::post('/purchasing/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore') -> middleware('purchasing');
 
-Route::get('/view-purchase/{purchase}/view', [PurchasingFunctionsController::class, 'view_purchase_order']) -> name('viewpurchase') -> middleware('purchasing');
+Route::get('/purchasing/view-purchase/{purchase}/view', [PurchasingFunctionsController::class, 'view_purchase_order']) -> name('viewpurchase');
 
-Route::get('/generate-receipt/{purchase}', [PurchasingFunctionsController::class, 'generate_po_receipt']) -> name('generatereceipt') -> middleware('purchasing');
+Route::get('/purchasing/generate-receipt/{purchase}', [PurchasingFunctionsController::class, 'generate_po_receipt']) -> name('generatereceipt') -> middleware('purchasing');
 
-Route::post('/all-purchases/show-purchases', [PurchasingFunctionsController::class, 'show_purchases'])-> name('showpurchases') -> middleware('purchasing');
+Route::post('/purchasing/all-purchases/show-purchases', [PurchasingFunctionsController::class, 'show_purchases'])-> name('showpurchases') -> middleware('purchasing');
 
-Route::get('/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder') -> middleware('purchasing');
+Route::get('/purchasing/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder') -> middleware('purchasing');
 
 Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier') -> middleware('purchasing');
 
@@ -125,6 +125,8 @@ Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase'
 Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch') -> middleware('admin');
 
 Route::delete('/admin/purchasing-monitoring/delete/{id}', [AdminFunctionsController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete') -> middleware('admin');
+
+Route::get('/admin/purchase-monitoring/view-purchase', [AdminFunctionsController::class, 'admin_view_purchase']) -> name('adminviewpurchase');
 
 Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems') -> middleware('admin');
 
