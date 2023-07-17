@@ -14,7 +14,7 @@ class AdminFunctionsController extends Controller
 
     public function admin_purchase_order_edit(PurchaseOrder $allPurchaseOrder)
     {
-        return view('admin.admin_purchase_order_edit', ['allPurchaseOrder' => $allPurchaseOrder]);
+        return view('admin.admin_view_purchase', ['allPurchaseOrder' => $allPurchaseOrder]);
     }
 
 
@@ -48,9 +48,9 @@ class AdminFunctionsController extends Controller
             // return view('admin.admin_purchasing_monitoring', ['allPurchaseOrders' => $allPurchaseOrders]);
     }
 
-    public function admin_view_purchase() 
+    public function admin_view_purchase(PurchaseOrder $allPurchaseOrder) 
     {
-        return view('admin.admin_view_purchase');
+        return view('admin.admin_view_purchase', ['allPurchaseOrder' => $allPurchaseOrder]);
     }
 
     public function admin_show_suppliers_items(Request $request)

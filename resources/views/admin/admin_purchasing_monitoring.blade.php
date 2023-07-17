@@ -51,9 +51,9 @@
                                 <td class="border-b-2 text-sm text-center">
                                     <div class="flex flex-row justify-center items-center">
                                         <div class="bg-yellow-500 p-1 mr-2 rounded-md shadow-md">
-                                            <form method="POST" action="{{route('adminviewpurchase')}}">
-                                            <button><i class="fa-solid fa-eye"></i></button>
-                                            </form>
+                                           
+                                            <button><a href="{{route('adminviewpurchase', ['allPurchaseOrder' => $allPurchaseOrder])}}"><i class="fa-solid fa-eye"></i></a></button>
+                                            
                                         </div>
                                         <div class="bg-red-500 p-1 rounded-md shadow-md">
                                             <form method="POST" action="{{route('adminpurchaseorderdelete', ['allPurchaseOrder' => $allPurchaseOrder, 'id' => $allPurchaseOrder->id])}}">
