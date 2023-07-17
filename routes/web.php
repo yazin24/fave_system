@@ -57,6 +57,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
 
 //Purchasing Routes Sidebar
+
 Route::get('/purchasing/purchase-monitoring', [PurchasingController::class, 'purchase_monitoring'])->name('purchasemonitoring') -> middleware('purchasing');
 
 Route::get('/purchasing/purchase', [PurchasingController::class, 'purchase'])->name('purchase') -> middleware('purchasing');
@@ -126,7 +127,7 @@ Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::clas
 
 Route::delete('/admin/purchasing-monitoring/delete/{id}', [AdminFunctionsController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete') -> middleware('admin');
 
-Route::get('/admin/purchase-monitoring/view-purchase', [AdminFunctionsController::class, 'admin_view_purchase']) -> name('adminviewpurchase');
+Route::get('/admin/purchase-monitoring/view-purchase/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_view_purchase']) -> name('adminviewpurchase');
 
 Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems') -> middleware('admin');
 
@@ -135,6 +136,8 @@ Route::get('/admin/purchase-approval/view-details/{queuePurchase}', [AdminFuncti
 Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase') -> middleware('admin');
 
 Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFunctionsController::class, 'admin_disapprove_purchase']) -> name('admindisapprovepurchase') -> middleware('admin');
+
+Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt') -> middleware('admin');
 
 Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase') -> middleware('admin');
 

@@ -8,15 +8,10 @@ use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class AdminFunctionsController extends Controller
 {
-
-    public function admin_purchase_order_edit(PurchaseOrder $allPurchaseOrder)
-    {
-        return view('admin.admin_view_purchase', ['allPurchaseOrder' => $allPurchaseOrder]);
-    }
-
 
     public function admin_purchase_order_delete(Request $request, $id)
     {
@@ -50,7 +45,9 @@ class AdminFunctionsController extends Controller
 
     public function admin_view_purchase(PurchaseOrder $allPurchaseOrder) 
     {
-        return view('admin.admin_view_purchase', ['allPurchaseOrder' => $allPurchaseOrder]);
+        $totalAmount = $allPurchaseOrder -> purchaseOrderItems -> sum('amount');
+
+        return view('admin.admin_view_purchase', ['allPurchaseOrder' => $allPurchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
     public function admin_show_suppliers_items(Request $request)
@@ -95,6 +92,73 @@ class AdminFunctionsController extends Controller
             $purchaseOrder -> save();
 
             return view('admin.admin_home') -> with('success', 'Purchase Order has been Disapproved!');
+
+    }
+
+    
+    public function admin_generate_po_receipt(PurchaseOrder $allPurchaseOrder)
+    {
+        $templateReceiptPath = ('receipts/po_template.docx');
+
+        $templateReceipt = new TemplateProcessor($templateReceiptPath);
+
+        $templateReceipt -> setValue('PO', $allPurchaseOrder -> po_number);
+
+        $templateReceipt -> setValue('PO_DATE', $allPurchaseOrder -> created_at);
+
+        $templateReceipt -> setvalue('SUPPLIER', $allPurchaseOrder -> purchaseOrderSupplier -> supplier_name);
+
+        $templateReceipt -> setValue('REQUESTED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> requested_by);
+
+        $templateReceipt -> setValue('PREPARED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> prepared_by);
+
+        $templateReceipt -> setValue('APPROVED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> approved_by);
+
+        // $currentDate = Carbon::now() -> toDateString();
+
+        // $totalAmount = DB::table('purchase_order_items')
+        //             -> whereDate('created_at', '=', $currentDate)
+        //             ->sum('amount');
+
+
+        $templateReceipt -> setValue('TOTAL', $allPurchaseOrder -> purchaseOrderItems -> sum('amount'));
+
+        $items = $allPurchaseOrder -> purchaseOrderItems;
+        $itemRows = 16;
+
+        $itemIndex = 1;
+
+        foreach($items as $item)
+        {
+
+            $templateReceipt -> setValue("ITEM_QUANTITY{$itemIndex}", $item -> quantity);
+
+            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> quantity_unit);
+
+            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> item_name);
+
+            $templateReceipt ->  setValue("UNIT_PRICE{$itemIndex}", $item -> unit_price);
+
+            $templateReceipt -> setValue("AMOUNT{$itemIndex}", $item -> amount);
+
+            $itemIndex++;
+
+        }
+
+         //     //this remove the placeholder for the remaining rows in the table thats empty
+         for ($i = $itemIndex; $i <= $itemRows; $i++) {
+            $templateReceipt->setValue("ITEM_QUANTITY{$i}", '');
+            $templateReceipt->setValue("UNIT{$i}", '');
+            $templateReceipt->setValue("ITEM_NAME{$i}", '');
+            $templateReceipt->setValue("UNIT_PRICE{$i}", '');
+            $templateReceipt->setValue("AMOUNT{$i}", '');
+        }
+
+        $savePath = public_path('P.O_' . $allPurchaseOrder -> po_number . '_receipt.docx');
+        $templateReceipt -> saveAs($savePath);
+
+        return response() -> download($savePath) -> deleteFileAfterSend(true);
+
 
     }
 
