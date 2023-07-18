@@ -86,9 +86,9 @@ Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'a
 
 Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
-Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist') -> middleware('purchasing');
+// Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist') -> middleware('purchasing');
 
-Route::post('purchasing/supplier-list/items', [PurchasingFunctionsController::class, 'show_supplier_items']) -> name('showsupplieritems') -> middleware('purchasing');
+Route::get('purchasing/supplier-list/supplier-details/{supplier}', [PurchasingFunctionsController::class, 'show_supplier_details']) -> name('showsupplierdetails') -> middleware('purchasing');
 
 
 //Staff Routes (Sidebar)

@@ -14,9 +14,17 @@
                          <div class="">
                             <input type="text" name="supplier_name" placeholder="Supplier Name" class="w-full" required>
                          </div>
+
+                         <div class="mt-1">
+                            <input type="text" name="supplier_address" placeholder="Address" class="w-full" required>
+                         </div>
+
+                         <div class="mt-1">
+                            <input type="text" name="contact_number" placeholder="Contact Number" class="w-full" required>
+                         </div>
             
                         <div>
-                            <input type="text" name="item_name[]" placeholder="Item Name" class="mt-2 w-full" required>
+                            <input type="text" name="item_name[]" placeholder="Item Name" class="mt-1 w-full" required>
                          </div>
                                     <div id="item-container" class="mt-2">
                                     </div>

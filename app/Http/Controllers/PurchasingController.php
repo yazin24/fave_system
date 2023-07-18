@@ -62,8 +62,9 @@ class PurchasingController extends Controller
     }
 
     public function purchasing_supplier_list()
-
     {
-        return view('purchasing.purchasing_supplier_list');
+        $suppliers = Suppliers::all();
+
+        return view('purchasing.purchasing_supplier_list', ['suppliers' => $suppliers]);
     }
 }

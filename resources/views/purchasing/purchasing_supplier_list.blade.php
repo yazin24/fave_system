@@ -8,50 +8,28 @@
 
             <div class="mt-4">
 
-                <form method="POST" action="{{route('showsupplieritems')}}">
-                @csrf
-                <div class="flex flex-row">
-                    <div>
-                        <select name="selected_id" class="text-sm">
-                            <option value="" disabled selected>Select</option>
+                <div class="bg-white-900 text-gray-900 mt-1">
+                    <table class="bg-gray-300 shadow-lg w-full">
+                        <thead class="">
+                            <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 h-12">
+                                <th class="text-center w-1/4">SUPPLIER NAME</th>
+                                <th class="text-center w-1/4">NUMBER</th>
+                                <th class="text-center w-1/4">ADDRESS</th>
+                                <th class="text-center w-1/4">ACTION</th>
+                                
+                        </thead>
+                        <tbody>
                             @foreach($suppliers as $supplier)
-                            <option value="{{$supplier -> id}}" for="select">{{$supplier -> supplier_name}}</option>
+                            <tr class="h-10">
+                                <td class="border-b-2 text-sm text-center">{{$supplier -> supplier_name}}</td>
+                                <td class="border-b-2 text-sm text-center">{{$supplier -> contact_number}}</td>
+                                <td class="border-b-2 text-sm text-center">{{$supplier -> supplier_address}}</td>
+                                <td class="border-b-2 text-sm text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('showsupplierdetails', ['supplier' => $supplier -> id])}}">View</a></td>
+                            </tr>
                             @endforeach
-                        </select>
-                        </div>
-
-                            <div class="mt-2 ml-4">
-                                <button type="submit" class="bg-teal-400 hover:bg-teal-600 rounded-md p-1.5 text-xs text-gray-200 shadow-md">See Details</button>
-                            </div>
-                        </div>
-                </form>
-            </div>
-
-            <div class="md:mx-44 mt-8">
-                @if(isset($supplierItems))
-                <table class="bg-gray-300 shadow-lg w-full">
-                
-                    @foreach($supplierItems -> groupBy('suppliers.supplier_name') as $supplierName => $items)
-                    <thead>
-                        <tr class="bg-gray-900 border-b-2 text-gray-300 w-full h-10">
-                            <th>{{$supplierName}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                        <tr>
-                            <td class="h-24 p-4">
-                            @foreach($items as $item)
-                            {{$item -> item_name}}<br><hr><br>
-                            @endforeach
-                            </td>
-                        </tr>
-                    </tbody>
-                    @endforeach
-                </table>
-                @endif
-            </div>
-    {{-- </form> --}}
+                        </tbody>
+                    </table>
+                </div>
 </div>
 
 @endsection

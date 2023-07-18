@@ -228,6 +228,8 @@ class PurchasingFunctionsController extends Controller
         $newSupplier = Suppliers::create([
 
             'supplier_name' => $request -> supplier_name,
+            'supplier_address' => $request -> supplier_address,
+            'contact_number' => $request -> contact_number,
 
         ]);
 
@@ -244,27 +246,20 @@ class PurchasingFunctionsController extends Controller
         return redirect() -> back();
     }
 
-    public function supplier_list()
-    {
-        $suppliers = Suppliers::all();
+    // public function supplier_list()
+    // {
+    //     $suppliers = Suppliers::all();
 
-        return view('purchasing.purchasing_supplier_list', ['suppliers' => $suppliers]);
+    //     return view('purchasing.purchasing_supplier_list', ['suppliers' => $suppliers]);
+    // }
+
+    public function show_supplier_details(Suppliers $supplier)
+    {
+        $supplier -> load('supplierItems.purchaseOrderItems');
+
+        return view('purchasing.purchasing_show_supplier_details', ['supplier' => $supplier]);
     }
 
-    public function show_supplier_items(Request $request)
-    {
-        $supplierName = $request -> input('selected_id');
-
-        $suppliers = Suppliers::all();
-
-        $supplierItems = SupplierItems::with('suppliers')
-                        ->where('supplier_id', $supplierName)
-                        -> get();
-
-        return view('purchasing.purchasing_supplier_list', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers]);
-    }
-
-    //end of add supplier and supplier list
-
+    // end of add supplier and supplier list
 
 }

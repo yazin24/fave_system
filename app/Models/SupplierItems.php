@@ -12,6 +12,11 @@ class SupplierItems extends Model
         return $this -> belongsTo(Suppliers::class, 'supplier_id');
     }
 
+    public function purchaseOrderItems()
+    {
+        return $this -> hasOne(PurchaseOrderItems::class, 'po_id');
+    }
+
     protected $fillable = [
         'supplier_id',
         'item_name',
