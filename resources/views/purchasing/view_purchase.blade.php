@@ -59,9 +59,15 @@
                  </div>
          </div>
 
+         @if($purchase -> systemStatus  -> status === 'queued')
+         <button class="bg-teal-500 p-1 mt-2 rounded-md text-gray-200 text-sm" disabled>
+           Generate Receipt
+        </button>
+        @else
          <button class="bg-teal-500 p-1 mt-2 rounded-md text-gray-200 hover:bg-teal-600 text-sm">
             <a href="{{route('generatereceipt', ['purchase' => $purchase -> id])}}" > Generate Receipt</a>
         </button>
+        @endif
     </div>
 
 </div>
