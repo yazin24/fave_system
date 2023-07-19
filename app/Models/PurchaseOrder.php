@@ -8,6 +8,7 @@ use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderSupplier;
 use App\Models\PurchaseOrderCredentials;
 use App\Models\PurchaseOrderDelDate;
+use PHPUnit\Event\Telemetry\SystemMemoryMeter;
 
 class PurchaseOrder extends Model
 {
@@ -36,9 +37,15 @@ class PurchaseOrder extends Model
         return $this -> belongsTo(SystemStatus::class, 'status');
     }
 
+    public function deliveryStatus() 
+    {
+        return $this -> hasMany(PurchaseOrderDelStatus::class);
+    }
+
     protected $fillable = [
         'po_number',
-        'status'
+        'status',
+        'del_status',
     ];
 
     protected static function boot()
@@ -46,6 +53,7 @@ class PurchaseOrder extends Model
         parent::boot();
         static::creating(function($purchaseOrder){
             $purchaseOrder -> status = SystemStatus::where('status', 'queued') -> first() -> id;
+            $purchaseOrder ->  del_status = false;
             $purchaseOrder -> created_at = now() -> format('Y-m-d h:i:s A');
             $purchaseOrder -> updated_at = now() -> format('Y-m-d h:i:s A');
         });

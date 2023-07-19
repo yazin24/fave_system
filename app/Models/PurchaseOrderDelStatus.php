@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SystemStatus extends Model
+class PurchaseOrderDelStatus extends Model
 {
-    protected $table = 'system_status';
-
     public function purchaseOrder()
     {
-        return $this -> hasOne(PurchaseOrder::class, 'status');
+        return $this -> belongsTo(PurchaseOrder::class, 'po_id');
     }
 
     public function deliveryStatus()
     {
-        return $this -> hasOne(PurchaseOrderDelStatus::class, 'del_status');
+        return $this -> belongsTo(SystemStatus::class, 'del_status');
     }
 
     protected $fillable = [
-        'status',
+        
+        'del_status',
     ];
 }

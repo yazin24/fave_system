@@ -44,7 +44,13 @@ require __DIR__.'/auth.php';
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
-//Inventory Routes Sidebar
+//----------------------------------------------------------INVENTORY-----------------------------------------------------------------
+//----------------------------------------------------------INVENTORY-----------------------------------------------------------------
+
+
+Route::middleware(['auth', 'inventory']) ->group(function(){
+
+    //Inventory Routes Sidebar
 Route::get('/stock-monitoring', [InventoryController::class, 'stock_monitoring'])->name('stockmonitoring');
 
 Route::get('/add-item', [InventoryController::class, 'add_item'])->name('additem');
@@ -55,43 +61,61 @@ Route::get('/supplier', [InventoryController::class, 'supplier'])->name('supplie
 
 Route::get('inventory-history', [InventoryController::class, 'inventory_history'])->name('inventoryhistory');
 
+});
 
-//Purchasing Routes Sidebar
 
-Route::get('/purchasing/purchase-monitoring', [PurchasingController::class, 'purchase_monitoring'])->name('purchasemonitoring') -> middleware('purchasing');
 
-Route::get('/purchasing/purchase', [PurchasingController::class, 'purchase'])->name('purchase') -> middleware('purchasing');
+//----------------------------------------------------------PURCHASING-----------------------------------------------------------------
+//----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 
-Route::get('/purchasing/all-purchases', [PurchasingController::class, 'all_purchases'])->name('allpurchases') -> middleware('purchasing');
 
-Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasing_supplier_list'])->name('purchasingsupplierlist') -> middleware('purchasing');
+Route::middleware(['auth', 'purchasing']) -> group(function(){
+
+    //Purchasing Routes Sidebar
+
+Route::get('/purchasing/purchase-monitoring', [PurchasingController::class, 'purchase_monitoring'])->name('purchasemonitoring');
+
+Route::get('/purchasing/purchase', [PurchasingController::class, 'purchase'])->name('purchase');
+
+Route::get('/purchasing/all-purchases', [PurchasingController::class, 'all_purchases'])->name('allpurchases');
+
+Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasing_supplier_list'])->name('purchasingsupplierlist');
 
 
 //Purchasing Routes (Functionalities)
 
 
-Route::post('/purchasing/purchase-form', [PurchasingFunctionsController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems') -> middleware('purchasing');
+Route::post('/purchasing/purchase-form', [PurchasingFunctionsController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems');
 
-Route::post('/purchasing/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore') -> middleware('purchasing');
+Route::post('/purchasing/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore');
 
 Route::get('/purchasing/view-purchase/{purchase}/view', [PurchasingFunctionsController::class, 'view_purchase_order']) -> name('viewpurchase');
 
-Route::get('/purchasing/generate-receipt/{purchase}', [PurchasingFunctionsController::class, 'generate_po_receipt']) -> name('generatereceipt') -> middleware('purchasing');
+Route::get('/purchasing/generate-receipt/{purchase}', [PurchasingFunctionsController::class, 'generate_po_receipt']) -> name('generatereceipt');
 
-Route::post('/purchasing/all-purchases/show-purchases', [PurchasingFunctionsController::class, 'show_purchases'])-> name('showpurchases') -> middleware('purchasing');
+Route::post('/purchasing/all-purchases/show-purchases', [PurchasingFunctionsController::class, 'show_purchases'])-> name('showpurchases');
 
-Route::get('/purchasing/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder') -> middleware('purchasing');
+Route::get('/purchasing/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder');
 
-Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier') -> middleware('purchasing');
+Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier');
 
 Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
-// Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist') -> middleware('purchasing');
+// Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist');
 
-Route::get('purchasing/supplier-list/supplier-details/{supplier}', [PurchasingFunctionsController::class, 'show_supplier_details']) -> name('showsupplierdetails') -> middleware('purchasing');
+Route::get('purchasing/supplier-list/supplier-details/{supplier}', [PurchasingFunctionsController::class, 'show_supplier_details']) -> name('showsupplierdetails');
+
+});
 
 
-//Staff Routes (Sidebar)
+
+//----------------------------------------------------------STAFF-----------------------------------------------------------------
+//----------------------------------------------------------STAFF-----------------------------------------------------------------
+
+
+Route::middleware(['auth', 'staff']) -> group(function(){
+
+    //Staff Routes (Sidebar)
 
 Route::get('/staff/all-purchasing', [StaffController::class, 'staff_all_purchases']) -> name('staffallpurchases') -> middleware('staff');
 
@@ -102,20 +126,24 @@ Route::post('staff/all-purchasing/view', [StaffFunctionsController::class, 'staf
 
 Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 'staff_show_all_purchases']) -> name('staffshowallpurchases') -> middleware('staff');
 
+});
 
+//----------------------------------------------------------ADMIN-----------------------------------------------------------------
+//----------------------------------------------------------ADMIN-----------------------------------------------------------------
 
-//Admin Routes Sidebar
+Route::middleware(['auth', 'admin']) -> group(function(){
 
-Route::get('/admin/purchasing-monitoring', [AdminController::class, 'admin_purchasing_monitoring']) -> name('adminpurchasingmonitoring') -> middleware('admin');
+    //Admin Routes Sidebar
 
-Route::get('admin/purchase-approval', [AdminController::class, 'admin_purchase_approval']) -> name('adminpurchaseapproval') -> middleware('admin');
+Route::get('/admin/purchasing-monitoring', [AdminController::class, 'admin_purchasing_monitoring']) -> name('adminpurchasingmonitoring');
 
-Route::get('admin/add-supplier', [AdminController::class, 'admin_add_supplier']) -> name('adminaddsupplier') -> middleware('admin');
+Route::get('admin/purchase-approval', [AdminController::class, 'admin_purchase_approval']) -> name('adminpurchaseapproval');
 
-Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list']) -> name('adminsupplierlist') -> middleware('admin');
+Route::get('admin/add-supplier', [AdminController::class, 'admin_add_supplier']) -> name('adminaddsupplier');
 
-Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase']) -> name('adminunpurchase') -> middleware('admin');
+Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list']) -> name('adminsupplierlist');
 
+Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase']) -> name('adminunpurchase');
 
 //Admin Routes (Functionalities)
 
@@ -123,23 +151,28 @@ Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase'
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
 
-Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch') -> middleware('admin');
+Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch');
 
-Route::delete('/admin/purchasing-monitoring/delete/{id}', [AdminFunctionsController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete') -> middleware('admin');
+Route::delete('/admin/purchasing-monitoring/delete/{id}', [AdminFunctionsController::class, 'admin_purchase_order_delete']) -> name('adminpurchaseorderdelete');
 
 Route::get('/admin/purchase-monitoring/view-purchase/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_view_purchase']) -> name('adminviewpurchase');
 
-Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems') -> middleware('admin');
+Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems');
 
-Route::get('/admin/purchase-approval/view-details/{queuePurchase}', [AdminFunctionsController::class, 'admin_purchase_order_approval']) -> name('adminpurchaseorderapproval') -> middleware('admin');
+Route::get('/admin/purchase-approval/view-details/{queuePurchase}', [AdminFunctionsController::class, 'admin_purchase_order_approval']) -> name('adminpurchaseorderapproval');
 
-Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase') -> middleware('admin');
+Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase');
 
-Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFunctionsController::class, 'admin_disapprove_purchase']) -> name('admindisapprovepurchase') -> middleware('admin');
+Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFunctionsController::class, 'admin_disapprove_purchase']) -> name('admindisapprovepurchase');
 
-Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt') -> middleware('admin');
+Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt');
 
-Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase') -> middleware('admin');
+Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');
+
+});
+
+
+
 
 
 

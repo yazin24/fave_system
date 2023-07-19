@@ -54,14 +54,20 @@ class PurchasingFunctionsController extends Controller
         $quantityUnit = $request -> input('quantity_unit', []);
         $unitPrice = $request -> input('unit_price', []);
 
-        $characters = '1234567890';
-        $prefix = 'FV';
-        $poLength = 9 - strlen($prefix);
-        $poPart = '';
+        $lastPurchaseOrder = PurchaseOrder::latest('id') -> first();
+        $lastPoNumber = $lastPurchaseOrder ? $lastPurchaseOrder -> po_number : null;
 
-        for($i = 0; $i < $poLength; $i++){
-            $poPart .= $characters[rand(0, strlen($characters) -1)];
+        $prefix = 'FV';
+        $poLength = 7;
+       
+        $counter = 0;
+        if($lastPoNumber){
+            $lastCounter = (int)substr($lastPoNumber, strlen($prefix));
+            $counter = $lastCounter + 1;
         }
+
+        
+        $poPart = str_pad($counter, $poLength, '0', STR_PAD_LEFT);
 
         $realPoNumber = $prefix . $poPart;
 

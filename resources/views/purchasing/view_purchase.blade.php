@@ -17,6 +17,12 @@
                 <div class="ml-auto">
                     <h2 class="text-gray-800 font-bold">Status: <span class="text-red-700 font-bold capitalize">{{$purchase -> systemStatus -> status}}</span></h2>
                 </div>
+                <div class="ml-auto">
+                    @if($purchase -> del_status == 0)
+                    <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">No</span></h2>
+                    @else <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Yes</span></h2>
+                    @endif
+                </div>
              </div>
                 <h2 class="text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$purchase -> purchaseOrderSupplier -> supplier_name}}</span></h2>
             
