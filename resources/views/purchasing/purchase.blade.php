@@ -36,17 +36,22 @@
             <div class="flex flex-row mt-4">
                 {{-- <input type="text" id="supplier_name" name="supplier_name" placeholder="Supplier Name" class="w-1/2" required> --}}
 
-                <select id="supplier_name" name="supplier_name" class="w-1/2 h-8 text-xs" required>
-    
-                <option value="{{$supplierNameForPurchase -> supplier_name}}">{{$supplierNameForPurchase -> supplier_name}}</option>
-
                 <input type="number" id="po_number" name="po_number" placeholder="PO Number (auto)" class="w-1/2 h-8 text-xs mb-1"  required readonly>
               
-                </select>
+                
+
+                <input type="number" id="po_number" name="po_number" placeholder="Available Credit: {{$supplierCredit}}" class="w-1/2 h-8 text-xs mb-1"  required readonly>
             </div>
 
             <div class="flex flex-row">
                 {{-- <input type="text" id="requested_by" name="requested_by" placeholder="Requested By" class="w-1/2 text-xs" required> --}}
+
+                <select id="supplier_name" name="supplier_name" class="w-1/2 h-8 text-xs" required>
+    
+                    <option value="{{$supplierNameForPurchase -> supplier_name}}">{{$supplierNameForPurchase -> supplier_name}}</option>
+    
+                    </select>
+
                 <select id="requested_by" name="requested_by" class="w-1/2 h-8 text-xs mb-1" required>
                     <option value="" disabled selected>Requested By</option>
                     <option value="Fave">Fave</option>
@@ -57,23 +62,26 @@
                 </select>
 
                 {{-- <input type="text" id="prepared_by" name="prepared_by" placeholder="Prepared By" class="w-1/2 text-xs" required> --}}
-
-                <select id="prepared_by" name="prepared_by" class="w-1/2 h-8 text-xs mb-1" required>
-                        <option value="" disabled selected>Prepared By</option>
-                    <option value="Joy">Joy</option>
-                    <option value="Jane">Jane</option>
-                    <option value="MJ">MJ</option>
-                </select>
             </div>
 
              <div class="flex flex-row mb-3">
                 {{-- <input type="text" id="approved_by" name="approved_by" placeholder="Approved By" class="w-1/2 text-xs" required> --}}
+                <select id="prepared_by" name="prepared_by" class="w-1/2 h-8 text-xs mb-1" required>
+                    <option value="" disabled selected>Prepared By</option>
+                <option value="Joy">Joy</option>
+                <option value="Jane">Jane</option>
+                <option value="MJ">MJ</option>
+                </select>
+
                 <select id="approved_by" name="approved_by" class="w-1/2 h-8 text-xs" required>
                     <option value="" disabled selected>Approved By</option>
                     <option value="Sir Mike">Sir Mike</option>
                     <option value="Sir Calvin">Sir Calvin</option>
                     <option value="Sir Nath">Sir Nath</option>
                 </select>
+
+                
+                
             </div>
 
     
@@ -96,10 +104,7 @@
 
                     <div class="w-full">
                         <select id="quantity_unit" name="quantity_unit[{{$supplierItem -> id}}]" class="w-full h-8 text-xs">
-                            <option value="" disabled selected>Per</option>
-                            <option value="kg">kg</option>
-                            <option value="liters">liters</option>
-                            <option value="pcs">pcs</option>
+                            <option value="{{$supplierItem -> item_unit}}">{{$supplierItem -> item_unit}}</option>
                         </select>
                     </div>
 

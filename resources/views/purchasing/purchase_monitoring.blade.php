@@ -42,6 +42,7 @@
                     <th class="text-center">REQUESTED_BY</th>
                     <th class="text-center">PREPARED_BY</th>
                     <th class="text-center">STATUS</th>
+                    <th class="text-center">PAYMENT STATUS</th>
                     <th class="text-center">DATE_CREATED</th>
                     <th class="text-center">ACTION</th>
                 </tr>
@@ -54,6 +55,19 @@
                     <td class="border-b-2 text-sm text-center">{{$purchase -> purchaseOrderCredentials -> requested_by}}</td>
                     <td class="border-b-2 text-sm text-center">{{$purchase -> purchaseOrderCredentials -> prepared_by}}</td>
                     <td class="border-b-2 text-sm text-center capitalize">{{$purchase -> systemStatus -> status}}</td>
+
+                    <td class="border-b-2 text-sm text-center capitalize">
+                    @if($purchase -> payment_status == 0)
+                    <form method="POST" action="{{route('updatepaymentstatus', [ 'id' => $purchase -> id])}}">
+                        @csrf
+                        @method('POST')
+                        {{-- <input type="hidden" name="paid_status" value="1"> --}}
+                   <button type="submit" onclick="return confirm('Are you sure that this purchase order is paid?')">Unpaid</button>
+                    </form>
+                    </td>
+                    @else
+                    Paid
+                    @endif
                     <td class="border-b-2 text-sm text-center">{{$purchase -> created_at -> format('Y-m-d h:i:s A')}}</td>
                     <td class="border-b-2 text-sm text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchase', ['purchase' => $purchase])}}">View</a></td>
                 </tr>

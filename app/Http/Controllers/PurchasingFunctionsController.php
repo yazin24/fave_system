@@ -21,16 +21,18 @@ class PurchasingFunctionsController extends Controller
 
         $supplierName = $request -> input('supplier_id');
 
-        $suppliers = Suppliers::all();
+        $suppliers = Suppliers::orderBy('created_at', 'desc') -> get();
 
         $supplierNameForPurchase = Suppliers::findOrFail($supplierName);
+
+        $supplierCredit = $supplierNameForPurchase -> supplierCreditLimit -> credit_limit ?? null;
 
         $supplierItems = SupplierItems::with('suppliers')
                         ->where('supplier_id', $supplierName)
                         ->get();
 
 
-        return view('purchasing.purchase', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers, 'supplierNameForPurchase' => $supplierNameForPurchase,]);
+        return view('purchasing.purchase', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers, 'supplierNameForPurchase' => $supplierNameForPurchase, 'supplierCredit' => $supplierCredit]);
     }
 
     public function purchase_order_store(Request $request)
@@ -58,7 +60,7 @@ class PurchasingFunctionsController extends Controller
         $lastPoNumber = $lastPurchaseOrder ? $lastPurchaseOrder -> po_number : null;
 
         $prefix = 'FV';
-        $poLength = 7;
+        $poLength = 5;
        
         $counter = 0;
         if($lastPoNumber){
@@ -198,6 +200,21 @@ class PurchasingFunctionsController extends Controller
 
     //end of view purchase order details and generate receipt
 
+    //update payment status from unpaid to paid
+
+    public function update_payment_status($id)
+    {
+        $paymentStatus = PurchaseOrder::findOrFail($id);
+
+        $paymentStatus -> payment_status = 1;
+        
+        $paymentStatus -> save();
+
+        return redirect() -> back() -> with('success', 'Purchase Order has been paid!');
+    }
+
+    //end of update payment status from unpaid to paid
+
     //show all purchases
 
     public function show_purchases(Request $request)
@@ -236,12 +253,24 @@ class PurchasingFunctionsController extends Controller
             'supplier_name' => $request -> supplier_name,
             'supplier_address' => $request -> supplier_address,
             'contact_number' => $request -> contact_number,
+            'supplier_email' => $request -> supplier_email,
 
         ]);
 
-        for ($i = 0; $i < count($request -> item_name); $i++){
+        $newSupplier -> supplierCreditLimit() -> create([
+
+            'supplier_id' => $newSupplier -> id,
+            'credit_limit' => $request -> supplier_credit_limit,
+        ]);
+
+        $itemNames = $request -> item_name;
+        $itemUnits = $request -> item_unit;
+
+        $supplierItemData = [];
+        for ($i = 0; $i < count($itemNames); $i++){
             $supplierItemData[] = [
-                'item_name' => $request ->item_name[$i],
+                'item_name' =>$itemNames[$i],
+                'item_unit' => isset($itemUnits[$i]) ? $itemUnits[$i] : null,
             ];
         }
 

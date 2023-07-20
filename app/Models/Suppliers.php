@@ -7,15 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Suppliers extends Model
 {
+    protected $table = 'suppliers';
+
     public function supplierItems()
     {
         return $this -> hasMany(SupplierItems::class, 'supplier_id');
+    }
+
+    public function supplierCreditLimit()
+    {
+        return $this -> hasOne(SupplierCreditLimit::class, 'supplier_id');
     }
 
     protected $fillable = [
         'supplier_name',
         'supplier_address',
         'contact_number',
+        'supplier_email',
         
     ];
 }
