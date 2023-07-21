@@ -43,9 +43,9 @@ class PurchasingController extends Controller
             $daysDiff = $dueDate -> diffInDays($dateNow);
 
             if($daysDiff < 0){
-                $purchase -> circleReminder = 'bg-red-500 text-white';
+                $purchase -> circleReminder = 'bg-red-500 text-white font-bold';
             }elseif ($daysDiff < 2){
-                $purchase -> circleReminder = 'bg-yellow-500 text-white';
+                $purchase -> circleReminder = 'bg-yellow-500 text-white font-bold rounded-lg';
             }else {
                 $purchase -> circleReminder = '';
             }
