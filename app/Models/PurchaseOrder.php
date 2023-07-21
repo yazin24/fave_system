@@ -67,17 +67,5 @@ class PurchaseOrder extends Model
             $purchaseOrder -> updated_at = now() -> format('Y-m-d h:i:s A');
         });
 
-        static::saving(function ($purchaseOrder) {
-            $supplier = $purchaseOrder->supplier;
-            $totalAmount = $purchaseOrder->purchaseOrderItems->sum('amount');
-
-            if ($supplier) {
-                $creditLimit = $supplier->credit_limit;
-                $availableCredit = $creditLimit - $totalAmount;
-                $availableCredit = max(0, $availableCredit);
-
-                $supplier->supplierCreditLimit->update(['available_credit_limit' => $availableCredit]);
-            }
-        });
     }
 }
