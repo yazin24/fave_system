@@ -17,5 +17,6 @@ class SupplierCreditLimit extends Model
     protected $fillable = [
         'supplier_id',
         'credit_limit',
+        'available_credit_limit',
     ];
 }

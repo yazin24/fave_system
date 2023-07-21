@@ -43,7 +43,7 @@
                     <th class="text-center">PREPARED_BY</th>
                     <th class="text-center">STATUS</th>
                     <th class="text-center">PAYMENT STATUS</th>
-                    <th class="text-center">DATE_CREATED</th>
+                    <th class="text-center">DUE DATE</th>
                     <th class="text-center">ACTION</th>
                 </tr>
             </thead>
@@ -68,7 +68,13 @@
                     @else
                     Paid
                     @endif
-                    <td class="border-b-2 text-sm text-center">{{$purchase -> created_at -> format('Y-m-d h:i:s A')}}</td>
+                    <td class="border-b-2 text-sm text-center 
+                    @if($purchase -> payment_status == 0)
+                    {{$purchase -> circleReminder}}
+                    @endif
+                    ">
+                        {{date('Y-m-d', strtotime($purchase->purchaseOrderTerms->due_date))}}
+                    </td>
                     <td class="border-b-2 text-sm text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchase', ['purchase' => $purchase])}}">View</a></td>
                 </tr>
                 @endforeach

@@ -37,6 +37,21 @@ class PurchasingController extends Controller
                     ->orderBy('created_at', 'desc')
                     -> get();
 
+        $dateNow = Carbon::now();
+        foreach ($purchases as $purchase){
+            $dueDate = Carbon::parse($purchase -> purchaseOrderTerms -> due_date);
+            $daysDiff = $dueDate -> diffInDays($dateNow);
+
+            if($daysDiff < 0){
+                $purchase -> circleReminder = 'bg-red-500 text-white';
+            }elseif ($daysDiff < 2){
+                $purchase -> circleReminder = 'bg-yellow-500 text-white';
+            }else {
+                $purchase -> circleReminder = '';
+            }
+        };
+        
+
         return view('purchasing.purchase_monitoring', [
             'purchases' => $purchases, 
             'totalPurchase' => $totalPurchase, 

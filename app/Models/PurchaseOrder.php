@@ -12,6 +12,8 @@ use PHPUnit\Event\Telemetry\SystemMemoryMeter;
 
 class PurchaseOrder extends Model
 {
+    protected $table = 'purchase_orders';
+
     public function purchaseOrderItems()
     {
         return $this -> hasMany(PurchaseOrderItems::class, 'po_id');
@@ -42,6 +44,11 @@ class PurchaseOrder extends Model
         return $this -> hasMany(PurchaseOrderDelStatus::class);
     }
 
+    public function purchaseOrderTerms()
+    {
+        return $this -> hasOne(PurchaseOrderTerms::class, 'po_id');
+    }
+
     protected $fillable = [
         'po_number',
         'status',
@@ -58,6 +65,19 @@ class PurchaseOrder extends Model
             $purchaseOrder -> payment_status = false;
             $purchaseOrder -> created_at = now() -> format('Y-m-d h:i:s A');
             $purchaseOrder -> updated_at = now() -> format('Y-m-d h:i:s A');
+        });
+
+        static::saving(function ($purchaseOrder) {
+            $supplier = $purchaseOrder->supplier;
+            $totalAmount = $purchaseOrder->purchaseOrderItems->sum('amount');
+
+            if ($supplier) {
+                $creditLimit = $supplier->credit_limit;
+                $availableCredit = $creditLimit - $totalAmount;
+                $availableCredit = max(0, $availableCredit);
+
+                $supplier->supplierCreditLimit->update(['available_credit_limit' => $availableCredit]);
+            }
         });
     }
 }

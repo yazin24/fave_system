@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class PurchasingFunctionsController extends Controller
 
         $supplierNameForPurchase = Suppliers::findOrFail($supplierName);
 
-        $supplierCredit = $supplierNameForPurchase -> supplierCreditLimit -> credit_limit ?? null;
+        $supplierCredit = $supplierNameForPurchase -> supplierCreditLimit -> available_credit_limit ?? null;
 
         $supplierItems = SupplierItems::with('suppliers')
                         ->where('supplier_id', $supplierName)
@@ -48,6 +49,8 @@ class PurchasingFunctionsController extends Controller
         //     'unit_price.*' => 'required|numeric|min:0',
         //     'amount.*' => 'required|numeric|min:0',
         // ]);
+
+        //dd($request);
 
         $selectedItems = $request -> input('selected_items', []);
 
@@ -89,6 +92,18 @@ class PurchasingFunctionsController extends Controller
             'approved_by' => $request-> approved_by,
         ]);
 
+        $creditTerm = (int) $request -> credit_term;
+
+        $todayDate = now();
+
+        $dueDate = $todayDate -> addDays($creditTerm);
+
+        $newPurchaseOrder -> purchaseOrderTerms() -> create([
+            'po_id' => $newPurchaseOrder -> id,
+            'credit_term' => $request -> credit_term,
+            'payment_term' => $request -> payment_term,
+            'due_date' => $dueDate,
+        ]);
         
         foreach ($itemNames as $itemId => $itemName) {
             if (in_array($itemId, $selectedItems)) {
@@ -109,7 +124,6 @@ class PurchasingFunctionsController extends Controller
                 }
             }
         }
-
 
         Session::flash('success', 'Purchase Order has been successfully created!');
 
