@@ -27,6 +27,9 @@ class HomeController extends Controller
             elseif($usertype == 'purchasing'){
                 return view('purchasing.purchasing_home');
             }
+            elseif($usertype == 'receiving'){
+                return view('receiving.receiving_home');
+            }
         }
     }
 
