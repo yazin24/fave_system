@@ -4,10 +4,6 @@
 
 <h2 class="font-bold text-xl mt-2">Purchase Monitoring</h2>
 
-<div class="flex justify-end mr-0">
-    
-    <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-2" onclick="window.location.reload()">Refresh</button>
-</div>
 
 <div class="mt-1">
 

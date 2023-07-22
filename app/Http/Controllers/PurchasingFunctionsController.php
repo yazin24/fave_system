@@ -125,6 +125,26 @@ class PurchasingFunctionsController extends Controller
             }
         }
 
+
+        $supplierId = $request -> input('supplier_id');
+        dd($supplierId);
+        $supplier = Suppliers::findOrFail($supplierId);
+        $supplierAvailableCredit = $supplier -> supplierCreditLimit;
+
+        $quantities = $request -> input('quantity', []);
+        $unitPrice = $request -> input('unit_price', []);
+
+        $totalAmount = 0;
+        foreach($quantities as $itemId => $quantity){
+            if(isset($unitPrice[$itemId]) && is_numeric($quantity) && is_numeric($unitPrice[$itemId])){
+                $amount = $quantity * $unitPrice[$itemId];
+                $totalAmount += $amount;
+            }
+        }
+
+        $supplierAvailableCredit->credit_limit -= $totalAmount;
+        $supplierAvailableCredit->save();
+
         Session::flash('success', 'Purchase Order has been successfully created!');
 
         return view('purchasing.purchasing_home');

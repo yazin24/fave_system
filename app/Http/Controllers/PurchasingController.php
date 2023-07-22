@@ -33,7 +33,6 @@ class PurchasingController extends Controller
 
         //this code get all the data in the purchase_orders to be display in the table for the current date
          $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'purchaseOrderCredentials', 'systemStatus')
-                    ->whereDate('created_at', $currentDate)
                     ->orderBy('created_at', 'desc')
                     -> get();
 
