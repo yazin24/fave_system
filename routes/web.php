@@ -7,6 +7,8 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchasingController;
 use App\Http\Controllers\PurchasingFunctionsController;
+use App\Http\Controllers\ReceivingController;
+use App\Http\Controllers\ReceivingFunctionsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
 use Illuminate\Support\Facades\Route;
@@ -129,6 +131,15 @@ Route::post('staff/all-purchasing/view', [StaffFunctionsController::class, 'staf
 Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 'staff_show_all_purchases']) -> name('staffshowallpurchases') -> middleware('staff');
 
 });
+
+//----------------------------------------------------------RECEIVING-----------------------------------------------------------------
+//----------------------------------------------------------RECEIVING-----------------------------------------------------------------
+
+
+Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'received_po_monitoring']) -> name('receivedpomonitoring');
+Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -> name('receivepo');
+Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
+Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');
 
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------
