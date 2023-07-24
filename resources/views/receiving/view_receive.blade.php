@@ -32,6 +32,7 @@
                             <tr class="bg-gray-900 text-gray-200 h-10">
                                 <th class="w-1/4 font-bold">Item Name</th>
                                 <th class="w-1/4 font-bold">Quantity</th>
+                                <th class="w-1/4 font-bold">Unit</th>
                                 <th class="w-1/4 font-bold">Price</th>
                                 <th class="w-1/4 font-bold">Amount</th>
                                 
@@ -41,10 +42,16 @@
                         <tbody class="bg-gray-300 w-auto">
                             @foreach($toReceivePurchaseOrder -> purchaseOrderItems as $index => $item)
                             <tr class="h-10">   
-                                <td class="text-sm text-center border-b-2 font-bold"><input class="text-xs items-center w-full" type="text" value="{{$item -> item_name}}"></td>
-                                <td class="text-sm text-center border-b-2 font-bold"><input type="text" class="text-xs items-center w-full" value="{{$item -> quantity}} {{$item -> quantity_unit}}"></td>
-                                <td class="text-sm text-center border-b-2 font-bold"><input type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
-                                <td class="text-sm text-center border-b-2 font-bold"><input type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
+
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="item_name[{{$item -> id}}]" class="text-xs items-center w-full" type="text" value="{{$item -> item_name}}"></td>
+
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> quantity}} "></td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> quantity_unit}}" readonly></td>
+
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
+
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
+
                             </tr>
                             @endforeach    
                         </tbody>
@@ -66,8 +73,8 @@
          </div>
 
          <div>
-            <form method="POST">
-                 <button class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
+            <form method="POST" action="{{route('saveandreceivepo', ['id' => $toReceivePurchaseOrder -> id])}}">
+                 <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
                  Receive
                 </button>
             </form>

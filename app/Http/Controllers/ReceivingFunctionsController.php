@@ -27,5 +27,14 @@ class ReceivingFunctionsController extends Controller
 
         return view('receiving.receive_po', ['purchaseOrders' => $purchaseOrders]);
     }
+
+    public function save_and_receive_po(Request $request, $id)
+    {
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+
+        
+
+        return view('receiving.receiving_home');
+    }
 }
 

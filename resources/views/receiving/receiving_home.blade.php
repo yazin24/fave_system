@@ -17,7 +17,7 @@
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('receivepo')}}'>
           <div class='flex items-center'>
-            <div>Receive P.O</div>
+            <div>Received P.O</div>
           </div>
         </a>
         </li>
