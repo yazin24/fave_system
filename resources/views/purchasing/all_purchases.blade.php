@@ -31,6 +31,7 @@
         <button class="bg-blue-400 text-gray-100 text-xs rounded-md shadow-md hover:bg-blue-600 p-1" onclick="window.location.reload()">Refresh</button>
     </div>
 
+    
     <table class="bg-gray-300 shadow-lg w-full">
         <thead>
             <tr class="bg-gray-900 border-b-2 text-gray-300 w-96">

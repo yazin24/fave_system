@@ -277,6 +277,7 @@ class PurchasingFunctionsController extends Controller
 
             'supplier_id' => $newSupplier -> id,
             'credit_limit' => $request -> supplier_credit_limit,
+            'available_credit_limit' => $request -> supplier_credit_limit,
         ]);
 
         $itemNames = $request -> item_name;

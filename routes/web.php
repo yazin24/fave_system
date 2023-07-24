@@ -137,8 +137,11 @@ Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 's
 
 
 Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'received_po_monitoring']) -> name('receivedpomonitoring');
+
 Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -> name('receivepo');
+
 Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
+
 Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');
 
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------

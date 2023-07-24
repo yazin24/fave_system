@@ -21,13 +21,11 @@ class ReceivingFunctionsController extends Controller
 
         $poNumber = $request -> input('search_po_number');
 
-        $toReceivePo = PurchaseOrder::with('supplierItems')
-                    ->where('po_number', $poNumber)
-                    ->firstOrFail();
+       $purchaseOrders = PurchaseOrder::query()
+                        ->where('po_number', 'LIKE', '%' . $poNumber . '%')
+                        ->get();
 
-        $purchaseOrderItems = $toReceivePo -> supplierItems;
-
-        return view('receiving.receive_po', ['toReceivePo' => $toReceivePo, 'purchaseOrderItems' => $purchaseOrderItems]);
+        return view('receiving.receive_po', ['purchaseOrders' => $purchaseOrders]);
     }
 }
 

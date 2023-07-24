@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function admin_purchase_approval()
     {
-        $queuePurchases = PurchaseOrder::where('status', '3')
+        $queuePurchases = PurchaseOrder::where('status', '1')
                             ->orderBy('created_at', 'desc')
                             ->paginate(10);
 

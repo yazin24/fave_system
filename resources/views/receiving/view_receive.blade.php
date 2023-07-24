@@ -38,13 +38,13 @@
                             </tr>
                         </thead>    
 
-                        <tbody class="bg-gray-300">
+                        <tbody class="bg-gray-300 w-auto">
                             @foreach($toReceivePurchaseOrder -> purchaseOrderItems as $index => $item)
                             <tr class="h-10">   
-                                <td class="text-sm text-center border-b-2 font-bold">{{$item -> item_name}}</td>
-                                <td class="text-sm text-center border-b-2 font-bold">{{$item -> quantity}} {{$item -> quantity_unit}}</td>
-                                <td class="text-sm text-center border-b-2 font-bold">₱{{$item -> unit_price}}</td>
-                                <td class="text-sm text-center border-b-2 font-bold">₱{{$item -> amount}}</td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input class="text-xs items-center w-full" type="text" value="{{$item -> item_name}}"></td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input type="text" class="text-xs items-center w-full" value="{{$item -> quantity}} {{$item -> quantity_unit}}"></td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
                             </tr>
                             @endforeach    
                         </tbody>
@@ -65,6 +65,13 @@
                  </div>
          </div>
 
+         <div>
+            <form method="POST">
+                 <button class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
+                 Receive
+                </button>
+            </form>
+         </div>
 </div>
 
 

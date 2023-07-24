@@ -66,18 +66,5 @@ class PurchaseOrder extends Model
             $purchaseOrder -> updated_at = now() -> format('Y-m-d h:i:s A');
         });
 
-        static::saving(function($purchaseOrder){
-            $totalAmount = $purchaseOrder -> purchaseOrderItems -> sum('amount');
-
-            $supplierCreditLimit = $purchaseOrder -> suppliers -> supplierCreditLimit;
-
-            if($totalAmount > $supplierCreditLimit -> available_credit_limit){
-                throw new \Exception('Insufficient credit limit. Purchase order cannot be processed.');
-            }else {
-                $supplierCreditLimit->available_credit_limit -= $totalAmount;
-                $supplierCreditLimit->save();
-            }
-        });
-
     }
 }
