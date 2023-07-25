@@ -15,17 +15,27 @@
             </tr>
         </thead>
         <tbody>
-           
+           @foreach ( $receivedPurchaseOrders as $receivedPurchaseOrder )
+               
             <tr class="h-10">
                    
-                <td class="border-b-2 text-sm text-center w-1/6 capitalize h-10">Sample</td>
-                <td class="border-b-2 text-sm text-center w-1/6 h-10">Example</td>
+                <td class="border-b-2 text-sm text-center w-1/6 capitalize h-10">{{$receivedPurchaseOrder -> po_number}}</td>
+                <td class="border-b-2 text-sm text-center w-1/6 h-10">{{$receivedPurchaseOrder ->purchaseOrderSupplier -> supplier_name}}</td>
                 
                 <td class="border-b-2 text-sm text-center w-1/6 h-10">
-                 Yes
+                @if($receivedPurchaseOrder -> del_status == 1)
+                Delivered
+                @else
+                Undelivered
+                @endif
                 </td>
-                <td class="border-b-2 text-sm text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                <td class="border-b-2 text-sm text-center w-1/6">
+                @foreach($receivedPurchaseOrder -> purchaseOrderItems as $index => $item)
+                <span>{{$item -> item_name}}</span> <span>{{$item -> quantity}}</span>
+                @endforeach
+                </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

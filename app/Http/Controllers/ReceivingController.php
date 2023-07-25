@@ -19,6 +19,10 @@ class ReceivingController extends Controller
 
     public function receive_po()
     {
-        return view('receiving.receive_po');
+        $receivedPurchaseOrders = PurchaseOrder::where('del_status', 1)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+                                
+        return view('receiving.receive_po', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
     }
 }
