@@ -11,7 +11,7 @@
                 <th class="text-center w-1/6">PO NUMBER</th>
                 <th class="text-center w-1/6">SUPPLIER</th>
                 <th class="text-center w-1/6">DEL STATUS</th>
-                <th class="text-center w-1/6">ACTION</th>
+                <th class="text-center w-1/6">ITEMS</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,9 @@
                 </td>
                 <td class="border-b-2 text-sm text-center w-1/6">
                 @foreach($receivedPurchaseOrder -> purchaseOrderItems as $index => $item)
-                <span>{{$item -> item_name}}</span> <span>{{$item -> quantity}}</span>
+                <span class="flex flex-row justify-center">
+                <span>{{$item -> item_name}}</span>\<span>{{$item -> quantity}}{{$item -> quantity_unit}}</span>
+                 </span>
                 @endforeach
                 </td>
             </tr>

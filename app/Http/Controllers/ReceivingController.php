@@ -10,7 +10,7 @@ class ReceivingController extends Controller
 {
     public function received_po_monitoring()
     {
-        $toReceivePurchaseOrders = PurchaseOrder::where('status', 2)
+        $toReceivePurchaseOrders = PurchaseOrder::where('del_status', 0)
                                 -> orderBy('created_at', 'desc')
                                 -> get();
 
@@ -22,7 +22,7 @@ class ReceivingController extends Controller
         $receivedPurchaseOrders = PurchaseOrder::where('del_status', 1)
                                 ->orderBy('created_at', 'desc')
                                 ->get();
-                                
+
         return view('receiving.receive_po', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
     }
 }
