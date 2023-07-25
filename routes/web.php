@@ -144,7 +144,7 @@ Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [Receiving
 
 Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');
 
-Route::post('receiving/view/purchase-order/receive/save/{id}', [ReceivingFunctionsController::class, 'save_and_receive_po']) -> name('saveandreceivepo');
+Route::put('receiving/view/purchase-order/receive/save/{id}', [ReceivingFunctionsController::class, 'save_and_receive_po']) -> name('saveandreceivepo');
 
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------

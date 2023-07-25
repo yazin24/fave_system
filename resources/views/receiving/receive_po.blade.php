@@ -26,7 +26,6 @@
                 </td>
                 <td class="border-b-2 text-sm text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
             </tr>
-           
         </tbody>
     </table>
 </div>

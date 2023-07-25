@@ -29,6 +29,13 @@
     <div class="font-bold text-red-500 font-2xl">
   </div>
     @yield('receiving-body')
+    
+    <div class="font-bold text-red-500 font-2xl">
+      @if (session('success'))
+          {{ session('success') }}
+      @endif
+  </div>
+
   </div>
 
 </div>

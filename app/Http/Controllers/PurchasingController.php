@@ -41,10 +41,10 @@ class PurchasingController extends Controller
             $dueDate = Carbon::parse($purchase -> purchaseOrderTerms -> due_date);
             $daysDiff = $dueDate -> diffInDays($dateNow);
 
-            if($daysDiff < 0){
+            if($daysDiff <= 0){
                 $purchase -> circleReminder = 'bg-red-500 text-white font-bold';
-            }elseif ($daysDiff < 2){
-                $purchase -> circleReminder = 'bg-yellow-500 text-white font-bold rounded-lg';
+            }elseif ($daysDiff < 3){
+                $purchase -> circleReminder = 'bg-yellow-500 text-white font-bold';
             }else {
                 $purchase -> circleReminder = '';
             }

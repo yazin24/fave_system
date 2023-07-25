@@ -5,7 +5,9 @@
 <h2 class="font-bold text-xl mt-2">View P.O</h2>
 
 <div class="mt-4">
-
+    <form method="POST" action="{{route('saveandreceivepo', ['id' => $toReceivePurchaseOrder -> id])}}">
+        @csrf
+        @method('PUT')
     <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 
@@ -50,7 +52,7 @@
 
                                 <td class="text-sm text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
 
-                                <td class="text-sm text-center border-b-2 font-bold"><input name="[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
+                                <td class="text-sm text-center border-b-2 font-bold"><input name="" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
 
                             </tr>
                             @endforeach    
@@ -73,12 +75,12 @@
          </div>
 
          <div>
-            <form method="POST" action="{{route('saveandreceivepo', ['id' => $toReceivePurchaseOrder -> id])}}">
                  <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
                  Receive
                 </button>
-            </form>
+           
          </div>
+    </form>
 </div>
 
 
