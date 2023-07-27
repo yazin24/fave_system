@@ -26,4 +26,9 @@ class ReceivingController extends Controller
 
         return view('receiving.receive_po', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
     }
+
+    public function pull_out()
+    {
+        return view('receiving.pull_out');
+    }
 }

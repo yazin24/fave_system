@@ -27,7 +27,7 @@ class PurchasingFunctionsController extends Controller
 
         $supplierNameForPurchase = Suppliers::findOrFail($supplierName);
 
-        $supplierCredit = $supplierNameForPurchase -> supplierCreditLimit -> available_credit_limit ?? null;
+        $supplierCredit = Suppliers::where('id', $supplierName) -> value('credit_limit');
 
         $supplierItems = SupplierItems::with('suppliers')
                         ->where('supplier_id', $supplierName)
@@ -37,7 +37,7 @@ class PurchasingFunctionsController extends Controller
         return view('purchasing.purchase', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers, 'supplierNameForPurchase' => $supplierNameForPurchase, 'supplierCredit' => $supplierCredit]);
     }
 
-    public function purchase_order_store(Request $request)
+    public function purchase_order_store(Request $request, $id)
     {
         // $request->validate([
         //     'supplier_name' => 'required',
@@ -125,6 +125,27 @@ class PurchasingFunctionsController extends Controller
                 }
             }
         }
+
+        $supplier = Suppliers::findOrFail($id);
+        
+        $supplierCreditLimit = $supplier->credit_limit;
+
+                    $totalAmount = 0;
+                    foreach ($itemNames as $itemId => $itemName) {
+                     if (in_array($itemId, $selectedItems)) {
+                    $quantityValue = $quantity[$itemId] ?? null;
+                     $unitPriceValue = $unitPrice[$itemId] ?? null;
+
+                     if ($quantityValue && $unitPriceValue) {
+                     $amount = $quantityValue * $unitPriceValue;
+                     $totalAmount += $amount;
+                 }
+                }
+            }
+
+         $newCreditLimit = $supplierCreditLimit - $totalAmount;
+
+         $supplier->update(['credit_limit' => $newCreditLimit]);
 
         $newPurchaseOrder -> save();
 

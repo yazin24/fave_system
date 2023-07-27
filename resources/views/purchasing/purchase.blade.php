@@ -30,17 +30,17 @@
 
         <h2 class="text-center text-gray-200 font-bold text-2xl"> * Purchase Order * </h2>
 
-        <form method="POST" action="{{route('purchaseorderstore')}}">
+        <form method="POST" action="{{route('purchaseorderstore', ['id' => $supplierNameForPurchase -> id] )}}">
         @csrf
         @method('POST')
             <div class="flex flex-row mt-4">
                 {{-- <input type="text" id="supplier_name" name="supplier_name" placeholder="Supplier Name" class="w-1/2" required> --}}
 
-                <input type="number" id="po_number" name="po_number" placeholder="PO Number (auto)" class="w-1/2 h-8 text-xs mb-1"  required readonly>
+                <input type="number" id="supplier_credit" name="po_number" placeholder="PO Number (auto)" class="w-1/2 h-8 text-xs mb-1"  required readonly>
               
                 
 
-                <input type="number" id="po_number" name="po_number" placeholder="Available Credit: {{$supplierCredit}}" class="w-1/2 h-8 text-xs mb-1"  required readonly>
+                <input type="number" id="supplier_credit" name="supplier_credit" placeholder="Available Credit: {{$supplierCredit ?? 0}}" class="w-1/2 h-8 text-xs mb-1"  required readonly>
             </div>
 
             <div class="flex flex-row">

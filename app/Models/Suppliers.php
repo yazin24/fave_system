@@ -24,6 +24,7 @@ class Suppliers extends Model
         'supplier_address',
         'contact_number',
         'supplier_email',
+        'credit_limit',
         
     ];
 }

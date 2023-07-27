@@ -4,16 +4,14 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                
 
                 <!-- Navigation Links -->
                 <div class="hidden sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="text-white hover:text-blue-500 text-xl font-extrabold">
-                        <img src="{{ asset('images/logofave.png') }}" alt="Example Image" class="w-20 ml-4 mr-1"> 
+                        <img src="{{ asset('images/favelogo.png') }}" alt="Example Image" class="w-24 ml-4 mr-1"> 
                     </x-nav-link>
                 </div>
             </div>
-
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

@@ -21,6 +21,12 @@
           </div>
         </a>
         </li>
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('pullout')}}'>
+          <div class='flex items-center'>
+            <div>Pull-Out</div>
+          </div>
+        </a>
+        </li>
       </ul>
     </nav>
   </div>

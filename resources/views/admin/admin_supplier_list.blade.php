@@ -27,8 +27,26 @@
                     @foreach($supplierItems -> groupBy('suppliers.supplier_name') as $supplierName => $items)
                     <thead>
                         <tr class="bg-gray-900 border-b-2 text-gray-300 w-full h-10 text-md">
-                            <th class="">
-                                {{$supplierName}}
+                            <th class="flex flex-row justify-center pt-2">
+                                <span class="mr-6 font-bold">{{$supplierName}}</span>
+
+                                <span class="mr-2 text-blue-500">
+                                <form>
+                                    <button>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </form>
+                                </span>
+
+                            <span>
+                                @foreach($items as $item)
+                                <form method="POST" action="{{route('admindeletesupplier', ['id' => $item -> id])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                                @endforeach
+                            </span>
                             </th>
                         </tr>
                     </thead>
@@ -36,7 +54,8 @@
                         <tr>
                             <td class="h-24 p-4">
                                 @foreach($items as $item)
-                                {{$item -> item_name}}<br><hr><br>
+                                {{$item -> item_name}}  
+                                <br><hr><br>
                                 @endforeach
                             </td>
                         </tr>

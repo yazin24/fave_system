@@ -89,7 +89,7 @@ Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasin
 
 Route::post('/purchasing/purchase-form', [PurchasingFunctionsController::class, 'purchase_show_supplier_items']) -> name('purchaseshowsupplieritems');
 
-Route::post('/purchasing/make-purchase', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore');
+Route::post('/purchasing/make-purchase/{id}', [PurchasingFunctionsController::class, 'purchase_order_store']) -> name('purchaseorderstore');
 
 Route::get('/purchasing/view-purchase/{purchase}/view', [PurchasingFunctionsController::class, 'view_purchase_order']) -> name('viewpurchase');
 
@@ -140,6 +140,9 @@ Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'rece
 
 Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -> name('receivepo');
 
+Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']) -> name('pullout');
+
+
 Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
 
 Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');
@@ -147,6 +150,8 @@ Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsContr
 Route::put('receiving/view/purchase-order/receive/save/{id}', [ReceivingFunctionsController::class, 'save_and_receive_po']) -> name('saveandreceivepo');
 
 Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}', [ReceivingFunctionsController::class, 'view_received']) -> name('viewreceived');
+
+
 
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------
@@ -190,6 +195,8 @@ Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [
 Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');
 
 });
+
+Route::delete('admin/supplier-list/delete/{id}', [AdminFunctionsController::class, 'admin_delete_supplier']) -> name('admindeletesupplier');
 
 
 

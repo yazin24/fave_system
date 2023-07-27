@@ -33,8 +33,21 @@ class PurchasingController extends Controller
 
         //this code get all the data in the purchase_orders to be display in the table for the current date
          $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'purchaseOrderCredentials', 'systemStatus')
+                    ->where(function ($query){
+                        $query -> where('status', 3)
+                                ->where('payment_status', 0);
+                    })
+                    ->orWhere(function($query){
+                        $query -> where('status', 3)
+                                ->where('payment_status', 1);
+                    })
+                    ->orWhere(function($query){
+                        $query -> where('status', 1)
+                                ->where('payment_status', 0);
+                    })
+
                     ->orderBy('created_at', 'desc')
-                    -> get();
+                    ->paginate('10');
 
         $dateNow = Carbon::now();
         foreach ($purchases as $purchase){
