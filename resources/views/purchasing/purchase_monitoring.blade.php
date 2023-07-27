@@ -65,8 +65,12 @@
                     Paid
                     @endif
                     <td class="border-b-2 text-sm text-center 
-                    @if($purchase -> payment_status == 0)
-                    {{$purchase -> circleReminder}}
+                    @if($purchase->payment_status == 0)
+                    @if($purchase->daysDiff < 0)
+                        bg-red-500 text-white font-bold
+                    @elseif($purchase->daysDiff <= 3)
+                        bg-yellow-500 text-white font-bold
+                    @endif
                     @endif
                     ">
                         {{date('Y-m-d', strtotime($purchase->purchaseOrderTerms->due_date))}}

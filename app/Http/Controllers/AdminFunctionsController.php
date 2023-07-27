@@ -75,7 +75,7 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-            $purchaseOrder-> status = 2;
+            $purchaseOrder-> status = 1;
         
             $purchaseOrder -> save();
 
@@ -87,7 +87,7 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
-            $purchaseOrder -> status = 3;
+            $purchaseOrder -> status = 2;
 
             $purchaseOrder -> save();
 

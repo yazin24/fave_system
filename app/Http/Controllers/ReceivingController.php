@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\SystemStatus;
 use Illuminate\Http\Request;
 
 class ReceivingController extends Controller

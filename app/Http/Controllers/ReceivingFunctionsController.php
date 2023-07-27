@@ -48,6 +48,13 @@ class ReceivingFunctionsController extends Controller
 
         return view('receiving.receiving_home') -> with('success', 'Purhase Order has been receive!');
     }
+
+    public function view_received(PurchaseOrder $receivedPurchaseOrder)
+    {
+        $totalAmount = $receivedPurchaseOrder -> purchaseOrderItems() -> sum('amount');
+
+        return view('receiving.view_received', ['receivedPurchaseOrder' => $receivedPurchaseOrder, 'totalAmount' => $totalAmount]);
+    }
    
   
 }

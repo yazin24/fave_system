@@ -27,12 +27,6 @@
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminaddsupplier')}}'>
-            <div class='flex items-center'>
-              <div>Add Supplier</div>
-            </div>
-            </a>
-          </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
             <div class='flex items-center'>
               <div>Supplier List</div>

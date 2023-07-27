@@ -28,20 +28,20 @@
                 <table class="bg-gray-300 shadow-lg w-full">
                     <thead>
                         <tr class="bg-gray-900 border-b-2 text-gray-300">
-                            <th class="text-center">PO_NUMBER</th>
-                            <th class="text-center">SUPPLIER</th>
-                            <th class="text-center">REQUESTED_BY</th>
-                            <th class="text-center">PREPARED_BY</th>
-                            <th class="text-center">APPROVED_BY</th>
-                            <th class="text-center">STATUS</th>
-                            <th class="text-center">DATE_CREATED</th>
-                            <th class="text-center">ACTION</th>
+                            <th class="text-center w-1/8">PO_NUMBER</th>
+                            <th class="text-center w-1/8">SUPPLIER</th>
+                            <th class="text-center w-1/8">REQUESTED_BY</th>
+                            <th class="text-center w-1/8">PREPARED_BY</th>
+                            <th class="text-center w-1/8">APPROVED_BY</th>
+                            <th class="text-center w-1/8">STATUS</th>
+                            <th class="text-center w-1/8">DATE_CREATED</th>
+                            <th class="text-center w-1/8">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($allPurchaseOrders as $allPurchaseOrder)
                             <tr class="h-10">
-                                <td class="border-b-2 text-sm text-center">{{$allPurchaseOrder->po_number}}</td>
+                                <td class="border-b-2 text-sm text-center">{{$allPurchaseOrder->po_number}} </td>
                                 <td class="border-b-2 text-sm text-center">{{$allPurchaseOrder->purchaseOrderSupplier->supplier_name}}</td>
                                 <td class="border-b-2 text-sm text-center">{{$allPurchaseOrder->purchaseOrderCredentials->requested_by}}</td>
                                 <td class="border-b-2 text-sm text-center">{{$allPurchaseOrder->purchaseOrderCredentials->prepared_by}}</td>

@@ -32,11 +32,11 @@
                     <table class="w-full shadow-md bg-gray-400">
                         <thead>
                             <tr class="bg-gray-900 text-gray-200 h-10">
-                                <th class="w-1/4 font-bold">Item Name</th>
-                                <th class="w-1/4 font-bold">Quantity</th>
-                                <th class="w-1/4 font-bold">Unit</th>
-                                <th class="w-1/4 font-bold">Price</th>
-                                <th class="w-1/4 font-bold">Amount</th>
+                                <th class="w-1/5 font-bold">Item Name</th>
+                                <th class="w-1/5 font-bold">Quantity</th>
+                                <th class="w-1/5 font-bold">Unit</th>
+                                <th class="w-1/5 font-bold">Price</th>
+                                <th class="w-1/5 font-bold">Amount</th>
                                 
                             </tr>
                         </thead>    
