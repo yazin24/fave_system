@@ -19,6 +19,11 @@ class Suppliers extends Model
         return $this -> hasOne(SupplierCreditLimit::class, 'supplier_id');
     }
 
+    // public function purchaseOrderSupplier()
+    // {
+    //     return $this -> hasOne(PurchaseOrderSupplier::class);
+    // }
+
     protected $fillable = [
         'supplier_name',
         'supplier_address',

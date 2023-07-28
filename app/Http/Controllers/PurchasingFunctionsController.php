@@ -27,7 +27,7 @@ class PurchasingFunctionsController extends Controller
 
         $supplierNameForPurchase = Suppliers::findOrFail($supplierName);
 
-        $supplierCredit = Suppliers::where('id', $supplierName) -> value('credit_limit');
+        $supplierCredit = SupplierCreditLimit::where('supplier_id', $supplierName) -> value('available_credit_limit');
 
         $supplierItems = SupplierItems::with('suppliers')
                         ->where('supplier_id', $supplierName)
@@ -126,9 +126,14 @@ class PurchasingFunctionsController extends Controller
             }
         }
 
-        $supplier = Suppliers::findOrFail($id);
+        $supplierItem = SupplierItems::where('supplier_id', $id)
+                        -> where('item_name', $itemName)
+                        ->first();
+
+        $newStock = $supplierItem -> item_stock + $quantityValue;
+        $supplierItem -> update(['item_stock' => $newStock]);
         
-        $supplierCreditLimit = $supplier->credit_limit;
+        $supplierCreditLimit = SupplierCreditLimit::where('supplier_id', $id) -> value('available_credit_limit');
 
                     $totalAmount = 0;
                     foreach ($itemNames as $itemId => $itemName) {
@@ -145,7 +150,7 @@ class PurchasingFunctionsController extends Controller
 
          $newCreditLimit = $supplierCreditLimit - $totalAmount;
 
-         $supplier->update(['credit_limit' => $newCreditLimit]);
+         SupplierCreditLimit::where('supplier_id', $id) -> update(['available_credit_limit' => $newCreditLimit]);
 
         $newPurchaseOrder -> save();
 
@@ -247,6 +252,17 @@ class PurchasingFunctionsController extends Controller
         $paymentStatus -> payment_status = 1;
         
         $paymentStatus -> save();
+
+        $supplierId = $paymentStatus -> purchaseOrderSupplier -> supplier_id;
+
+        $currentCreditLimit = SupplierCreditLimit::where('supplier_id', $supplierId) -> value('available_credit_limit');
+
+        $totalAmount = $paymentStatus -> purchaseOrderItems -> sum('amount');
+        
+
+        $newCreditLimit = $currentCreditLimit + $totalAmount;
+
+        SupplierCreditLimit::where('supplier_id', $supplierId) -> update(['available_credit_limit' => $newCreditLimit]);
 
         return redirect() -> back() -> with('success', 'Purchase Order has been paid!');
     }

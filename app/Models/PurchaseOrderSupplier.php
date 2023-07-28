@@ -13,6 +13,11 @@ class PurchaseOrderSupplier extends Model
         return $this -> belongsTo(PurchaseOrder::class);
     }
 
+    // public function suppliers()
+    // {
+    //     return $this -> belongsTo(Suppliers::class);
+    // }
+
     protected $fillable = [
         'supplier_name',
         'po_id',
