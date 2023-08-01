@@ -2,7 +2,7 @@
 
 @section('admin-body')
 
-<h2 class="font-bold text-xl">Unpurchase Orders</h2>
+<h2 class="font-bold md:text-xl">Unpurchase Orders</h2>
 
 
 <div>
@@ -10,28 +10,28 @@
         <div>
             <table class="bg-gray-300 shadow-lg w-full">
                 <thead>
-                    <tr class="bg-gray-900 border-b-1 text-gray-300 h-10">
-                        <th class="text-center">PO_NUMBER</th>
-                        <th class="text-center">SUPPLIER</th>
-                        <th class="text-center">REQUESTED_BY</th>
-                        <th class="text-center">PREPARED_BY</th>
-                        <th class="text-center">APPROVED_BY</th>
-                        <th class="text-center">STATUS</th>
-                        <th class="text-center">DATE_CREATED</th>
-                        <th class="text-center">ACTION</th>
+                    <tr class="bg-gray-900 border-b-1 text-gray-300 md:h-10">
+                        <th class="text-xs text-center">PO_NUMBER</th>
+                        <th class="text-xs text-center">SUPPLIER</th>
+                        <th class="text-xs text-center hidden md:table-cell">REQUESTED_BY</th>
+                        <th class=" text-xs text-center hidden md:table-cell">PREPARED_BY</th>
+                        <th class=" text-xs text-center hidden md:table-cell">APPROVED_BY</th>
+                        <th class=" text-xs text-center">STATUS</th>
+                        <th class="text-xs text-center">DATE</th>
+                        <th class="text-xs text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($unPurchaseOrders as $unPurchaseOrder)
                     <tr class="h-10">
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> po_number}}</td>
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</td>
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> purchaseOrderCredentials -> requested_by}}</td>
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> purchaseOrderCredentials -> prepared_by}}</td>
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> purchaseOrderCredentials -> approved_by}}</td>
-                        <td class="border-b-2 text-sm text-center capitalize">{{$unPurchaseOrder -> systemStatus -> status}}</td>
-                        <td class="border-b-2 text-sm text-center">{{$unPurchaseOrder -> created_at -> format('Y-m-d h:i:s A')}}</td>
-                        <td class="border-b-2 text-sm text-center">
+                        <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> po_number}}</td>
+                        <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> requested_by}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> prepared_by}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> approved_by}}</td>
+                        <td class="border-b-2 text-xs text-center capitalize">{{$unPurchaseOrder -> systemStatus -> status}}</td>
+                        <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> created_at -> format('Y-m-d h:i:s A')}}</td>
+                        <td class="border-b-2 text-xs text-center">
                             
                             
                             <div class="flex flex-row justify-center items-center">

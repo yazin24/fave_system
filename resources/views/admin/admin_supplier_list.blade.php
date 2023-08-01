@@ -5,19 +5,23 @@
 <div class="w-full mx-auto">
     {{-- <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4"> --}}
 
-     <h2 class="font-bold text-xl mb-4 ml-1">Supplier List</h2>
+     <h2 class="font-bold md:text-xl mb-2 ml-1">Supplier List</h2>
         {{-- <div> --}}
-            <div class="mt-8">
+            <div class="flex flex-row mt-2 md:mt-8">
             <form method="POST" action="{{route('adminshowsuppliersitems')}}">
                 @csrf
-                <select name="selected_id" class="text-sm">
+                <div class="flex flex-row">
+                <div>
+                <select name="selected_id" class="text-xs">
                     <option value="" disabled selected>Select</option>
                     @foreach($suppliers as $supplier)
                     <option value="{{$supplier -> id}}" for="select">{{$supplier -> supplier_name}}</option>
                     @endforeach
                 </select>
-                <div class="mt-1">
-                <button type="submit" class="bg-teal-400 hover:bg-teal-600 rounded-md p-1 w-12  text-xs text-gray-200">Enter</button>
+                </div>
+                <div class="ml-1 mt-1">
+                <button type="submit" class="bg-teal-400 hover:bg-teal-600 rounded-md p-1 text-xs text-gray-200">Enter</button>
+                </div>
                 </div>
             </form>
             </div>

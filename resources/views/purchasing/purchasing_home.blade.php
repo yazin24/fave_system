@@ -3,8 +3,9 @@
 @section('content')
 <div class="flex w-auto h-screen">
 
-  <div class="flex bg-gray-900 w-56 text-gray-300 shadow-lg">
-    <nav class=''>
+  <div class="flex bg-gray-900 text-gray-300 shadow-lg">
+
+    <nav class='hidden md:block'>
       <h2 class='h-8 w-56 p-8 font-bold text-xl mb-4'>
         <i class="fa-solid fa-table fa-xl"></i>
         Purchasing</h2>
@@ -53,4 +54,15 @@
   </div>
 
 </div>
+
+<script>
+
+  const buttonMenu = document.getElementById('sidebarMenu');
+  const menuItems = document.getElementById('menuItems');
+
+  toggleButton.addEventListener('click', () => {
+    menuItems.classList.toggle('hidden');
+  });
+
+</script>
 @endsection

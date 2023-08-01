@@ -3,8 +3,8 @@
 @section('content')
 <div class="flex w-auto h-screen">
 
-  <div class="flex bg-gray-900 w-56 text-gray-300 shadow-lg">
-    <nav class=''>
+  <div class="flex bg-gray-900 text-gray-300 shadow-lg">
+    <nav class='hidden md:block'>
       <h2 class='h-8 w-56 p-8 font-bold text-xl mb-4'>
         <i class="fa-solid fa-hands-holding-circle"></i>
         Receiving</h2>
@@ -31,7 +31,7 @@
     </nav>
   </div>
   
-  <div class="ml-6 mt-6 mr-6 w-full">
+  <div class="mx-2 md:ml-6 mt-6 md:mr-6 w-full">
     <div class="font-bold text-red-500 font-2xl">
   </div>
     @yield('receiving-body')

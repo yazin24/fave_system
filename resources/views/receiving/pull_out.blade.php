@@ -2,7 +2,7 @@
 
 @section('receiving-body')
 
-<h2 class="font-bold text-xl mt-2">Pull Out Form</h2>
+<h2 class="font-bold md:text-xl mt-2">Pull Out Form</h2>
 
 <div class="w-full lg:w-1/2">
     

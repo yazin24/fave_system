@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-gray-900 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="mr-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-12 md:h-16">
             <div class="flex">
                 <!-- Logo -->
 
@@ -61,23 +61,69 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+        <div class=" pb-3 flex flex-row justify-between">
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
+            @if(Auth::user()->usertype === 'admin')
+            <x-responsive-nav-link :href="route('adminpurchasingmonitoring')" :active="request()->routeIs('adminpurchasingmonitoring')">
+                <i class="fa-solid fa-rectangle-list text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('adminpurchaseapproval')" :active="request()->routeIs('adminpurchaseapproval')">
+                <i class="fa-solid fa-clipboard-question text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('adminsupplierlist')" :active="request()->routeIs('adminsupplierlist')">
+                <i class="fa-solid fa-address-book 2xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('adminunpurchase')" :active="request()->routeIs('adminunpurchase')">
+                <i class="fa-solid fa-link-slash text-xl"></i>
+            </x-responsive-nav-link>
+
+            @elseif(Auth::user()->usertype === 'purchasing')
+            <x-responsive-nav-link :href="route('purchasemonitoring')" :active="request()->routeIs('purchasemonitoring')">
+                <i class="fa-solid fa-rectangle-list text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('purchase')" :active="request()->routeIs('purchase')">
+                <i class="fa-solid fa-file-circle-plus text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('allpurchases')" :active="request()->routeIs('allpurchases')">
+                <i class="fa-solid fa-eye text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('addsupplier')" :active="request()->routeIs('addsupplier')">
+                <i class="fa-solid fa-folder-plus"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('purchasingsupplierlist')" :active="request()->routeIs('purchasingsupplierlist')">
+                <i class="fa-solid fa-address-book 2xl"></i>
+            </x-responsive-nav-link>
+        
+        @elseif(Auth::user()->usertype === 'receiving')
+            <x-responsive-nav-link :href="route('receivedpomonitoring')" :active="request()->routeIs('receivedpomonitoring')">
+                <i class="fa-solid fa-desktop text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('receivepo')" :active="request()->routeIs('receivepo')">
+                <i class="fa-solid fa-file-medical text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('pullout')" :active="request()->routeIs('pullout')">
+                <i class="fa-solid fa-upload text-xl"></i>
+            </x-responsive-nav-link>
+        
+        @elseif(Auth::user()->usertype === 'staff')
+            <x-responsive-nav-link :href="route('staffallpurchases')" :active="request()->routeIs('staffallpurchases')">
+               All Purchases
+            </x-responsive-nav-link>
+           
+            @endif
+    </div>
+
+        <!-- Responsive Settings ptions -->
+        <div class="pb-1 border-t border-gray-200 dark:border-gray-600">
+            {{-- <div class="px-4">
                 <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+            </div> --}}
 
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+            <div class="flex justify-end">
+                {{-- <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> --}}
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

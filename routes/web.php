@@ -81,7 +81,10 @@ Route::get('/purchasing/purchase', [PurchasingController::class, 'purchase'])->n
 
 Route::get('/purchasing/all-purchases', [PurchasingController::class, 'all_purchases'])->name('allpurchases');
 
+Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier');
+
 Route::get('/purchasing/supplier-list', [PurchasingController::class, 'purchasing_supplier_list'])->name('purchasingsupplierlist');
+
 
 
 //Purchasing Routes (Functionalities)
@@ -99,7 +102,6 @@ Route::post('/purchasing/all-purchases/show-purchases', [PurchasingFunctionsCont
 
 Route::get('/purchasing/all-purchases/all-purchase-order', [PurchasingFunctionsController::class, 'all_purchases']) -> name('allpurchaseorder');
 
-Route::get('/purchasing/add-supplier', [PurchasingFunctionsController::class, 'add_supplier']) -> name('addsupplier');
 
 Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
