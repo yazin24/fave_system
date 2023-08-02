@@ -43,9 +43,9 @@
                             <tr class="h-12">
                                 <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->po_number}} </td>
                                 <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->purchaseOrderSupplier->supplier_name}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->purchaseOrderCredentials->requested_by}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->purchaseOrderCredentials->prepared_by}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->purchaseOrderCredentials->approved_by}}</td>
+                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->requested_by}}</td>
+                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->prepared_by}}</td>
+                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->approved_by}}</td>
                                 <td class="border-b-2 text-xs text-center capitalize w-1/8">{{$allPurchaseOrder->systemStatus->status}}</td>
                                 <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->created_at->format('Y-m-d h:i:s A')}}</td>
                                 <td class="border-b-2 text-xs text-center w-1/8">

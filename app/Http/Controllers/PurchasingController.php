@@ -32,7 +32,7 @@ class PurchasingController extends Controller
                         ->count('po_number');
 
         //this code get all the data in the purchase_orders to be display in the table for the current date
-         $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'purchaseOrderCredentials', 'systemStatus')
+         $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'systemStatus')
                     ->where(function ($query){
                         $query -> where('status', 3)
                                 ->where('payment_status', 0);

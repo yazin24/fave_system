@@ -23,11 +23,6 @@ class PurchaseOrder extends Model
         return $this -> hasOne(PurchaseOrderSupplier::class, 'po_id');
     }
 
-    public function purchaseOrderCredentials()
-    {
-        return $this -> hasOne(PurchaseOrderCredentials::class, 'po_id');
-    }
-
     public function purchaseOrderDelDate()
     {
         return $this -> hasOne(PurchaseOrderDelDate::class, 'po_id');
@@ -58,6 +53,10 @@ class PurchaseOrder extends Model
         'status',
         'payment_stsatus',
         'del_status',
+        'prepared_by',
+        'requested_by',
+        'approved_by',
+        'amount_paid',
     ];
 
     protected static function boot()

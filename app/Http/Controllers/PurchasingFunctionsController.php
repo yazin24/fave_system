@@ -79,6 +79,10 @@ class PurchasingFunctionsController extends Controller
 
         $newPurchaseOrder = PurchaseOrder::create([
             'po_number' => $realPoNumber,
+            'requested_by' => $request -> requested_by,
+            'prepared_by' => $request -> prepared_by,
+            'approved_by' => $request-> approved_by,
+
         ]);
 
         $newPurchaseOrder -> purchaseOrderSupplier() -> create([
@@ -86,12 +90,12 @@ class PurchasingFunctionsController extends Controller
             'supplier_name' => $request -> supplier_name,
         ]);
 
-        $newPurchaseOrder -> purchaseOrderCredentials() -> create([
-            'po_id' => $newPurchaseOrder -> id,
-            'requested_by' => $request -> requested_by,
-            'prepared_by' => $request -> prepared_by,
-            'approved_by' => $request-> approved_by,
-        ]);
+        // $newPurchaseOrder -> purchaseOrderCredentials() -> create([
+        //     'po_id' => $newPurchaseOrder -> id,
+        //     'requested_by' => $request -> requested_by,
+        //     'prepared_by' => $request -> prepared_by,
+        //     'approved_by' => $request-> approved_by,
+        // ]);
 
         $creditTerm = (int) $request -> credit_term;
 
@@ -187,11 +191,11 @@ class PurchasingFunctionsController extends Controller
 
         $templateReceipt -> setvalue('SUPPLIER', $purchase -> purchaseOrderSupplier -> supplier_name);
 
-        $templateReceipt -> setValue('REQUESTED_BY', $purchase -> purchaseOrderCredentials -> requested_by);
+        $templateReceipt -> setValue('REQUESTED_BY', $purchase -> requested_by);
 
-        $templateReceipt -> setValue('PREPARED_BY', $purchase -> purchaseOrderCredentials -> prepared_by);
+        $templateReceipt -> setValue('PREPARED_BY', $purchase -> prepared_by);
 
-        $templateReceipt -> setValue('APPROVED_BY', $purchase -> purchaseOrderCredentials -> approved_by);
+        $templateReceipt -> setValue('APPROVED_BY', $purchase -> approved_by);
 
         // $currentDate = Carbon::now() -> toDateString();
 
@@ -245,24 +249,38 @@ class PurchasingFunctionsController extends Controller
 
     //update payment status from unpaid to paid
 
-    public function update_payment_status($id)
+    public function update_payment_status(Request $request, $id)
     {
+        $amountPaid = $request -> input('confirmPaid');
+
+        // dd($amountPaid);
+
         $paymentStatus = PurchaseOrder::findOrFail($id);
 
         $paymentStatus -> payment_status = 1;
         
+        $paymentStatus -> amount_paid = $amountPaid;
+
+        $supplierName = $paymentStatus->purchaseOrderSupplier->supplier_name;
+
+    // Find the SupplierCreditLimit record using the supplier_name
+        $supplierCreditLimit = SupplierCreditLimit::whereHas('suppliers', function ($query) use ($supplierName) {
+        $query->where('supplier_name', $supplierName);
+        })->first();
+
+        if($supplierCreditLimit){
+
+            $currentCreditLimit = (float) $supplierCreditLimit -> available_credit_limit;
+    
+            $newCreditLimit = $currentCreditLimit + $amountPaid;
+           
+    
+            $supplierCreditLimit -> update(['available_credit_limit' => $newCreditLimit]);
+
+        }
+
+
         $paymentStatus -> save();
-
-        $supplierId = $paymentStatus -> purchaseOrderSupplier -> supplier_id;
-
-        $currentCreditLimit = SupplierCreditLimit::where('supplier_id', $supplierId) -> value('available_credit_limit');
-
-        $totalAmount = $paymentStatus -> purchaseOrderItems -> sum('amount');
-        
-
-        $newCreditLimit = $currentCreditLimit + $totalAmount;
-
-        SupplierCreditLimit::where('supplier_id', $supplierId) -> update(['available_credit_limit' => $newCreditLimit]);
 
         return redirect() -> back() -> with('success', 'Purchase Order has been paid!');
     }
@@ -307,6 +325,9 @@ class PurchasingFunctionsController extends Controller
             'supplier_name' => $request -> supplier_name,
             'supplier_address' => $request -> supplier_address,
             'contact_number' => $request -> contact_number,
+            'tel_number' => $request -> tel_number,
+            'contact_person' => $request -> contact_person,
+            'viber_account' => $request -> viber_account,
             'supplier_email' => $request -> supplier_email,
 
         ]);

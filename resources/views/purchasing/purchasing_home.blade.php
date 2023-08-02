@@ -44,7 +44,7 @@
     </nav>
   </div>
   
-  <div class="ml-6 mt-6 mr-6 w-full">
+  <div class="mx-2 md:ml-6 mt-6 md:mr-6 w-full">
     <div class="font-bold text-red-500 font-2xl">
       @if (session('success'))
           {{ session('success') }}

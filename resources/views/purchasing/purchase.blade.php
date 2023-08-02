@@ -4,13 +4,13 @@
 
 <div class="w-full mx-auto">
     
-         <h2 class="font-bold text-xl mb-4 ml-1">Choose a supplier</h2>
+         <h2 class="font-bold md:text-xl mb-4 ml-1">Choose a supplier</h2>
              <form method="POST" action="{{route('purchaseshowsupplieritems')}}">
                     @csrf
                     @method('POST')
                     <div class="flex flex-row">
-                        <div class="mr-4">
-                            <select id="supplier_id" name="supplier_id" class="text-sm" required>
+                        <div class="mr-2">
+                            <select id="supplier_id" name="supplier_id" class="text-xs" required>
                                 <option value="" disabled selected>Supplier Name</option>
                                 @foreach($suppliers as $supplier)
                                 <option value="{{$supplier -> id}}">{{$supplier -> supplier_name}}</option>
@@ -18,7 +18,7 @@
                             </select>
                             </div>
                             <div class="flex items-center">
-                                <button type="submit" id="show-item-button" class="bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-sm shadow-md">Enter</button>
+                                <button type="submit" id="show-item-button" class="bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-xs shadow-md">Enter</button>
                             </div>
                         </div>
              </form>
@@ -28,7 +28,7 @@
     @if(isset($supplierItems))
     <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 w-full justify-center">
 
-        <h2 class="text-center text-gray-200 font-bold text-2xl"> * Purchase Order * </h2>
+        <h2 class="text-center text-gray-200 font-bold md:text-2xl"> * Purchase Order * </h2>
 
         <form method="POST" action="{{route('purchaseorderstore', ['id' => $supplierNameForPurchase -> id] )}}">
         @csrf
@@ -44,7 +44,6 @@
             </div>
 
             <div class="flex flex-row">
-                {{-- <input type="text" id="requested_by" name="requested_by" placeholder="Requested By" class="w-1/2 text-xs" required> --}}
 
                 <select id="supplier_name" name="supplier_name" class="w-1/2 h-8 text-xs" required>
     
@@ -52,14 +51,15 @@
     
                     </select>
 
-                <select id="requested_by" name="requested_by" class="w-1/2 h-8 text-xs mb-1" required>
+                    <input type="text" id="requested_by" name="requested_by" placeholder="Requested By" class="w-1/2 text-xs" required>
+                {{-- <select id="requested_by" name="requested_by" class="w-1/2 h-8 text-xs mb-1" required>
                     <option value="" disabled selected>Requested By</option>
                     <option value="Fave">Fave</option>
                     <option value="Rodel">Rodel</option>
                     <option value="Theresa">Theresa</option>
                     <option value="Calvin">Calvin</option>
                     <option value="Nath">Nath</option>
-                </select>
+                </select> --}}
 
                 {{-- <input type="text" id="prepared_by" name="prepared_by" placeholder="Prepared By" class="w-1/2 text-xs" required> --}}
             </div>
@@ -139,7 +139,7 @@
             </div>
 
             <div>
-        <button type="submit" id="add-item" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-sm">Submit</button>
+        <button type="submit" id="add-item" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-xs">Submit</button>
         </div>
 
     </form>

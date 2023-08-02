@@ -4,7 +4,7 @@
 
 <div class="w-full lg:w-1/2">
     
-        <h2 class="font-bold text-xl mb-4">Add Supplier</h2>
+        <h2 class="font-bold md:text-xl mb-4">Add Supplier</h2>
         
              <div class="font-bold font-2xl bg-gray-900 rounded-md p-2">
                     <form  method="POST" action="{{route('addsupplierstore')}}" >
@@ -21,6 +21,15 @@
 
                          <div class="mt-1">
                             <input type="text" name="contact_number" placeholder="Contact Number" class="w-full text-xs" required>
+                         </div>
+                         <div class="mt-1">
+                            <input type="text" name="tel_number" placeholder="Telephone Number" class="w-full text-xs" required>
+                         </div>
+                         <div class="mt-1">
+                            <input type="text" name="contact_person" placeholder="Contact Person" class="w-full text-xs" required>
+                         </div>
+                         <div class="mt-1">
+                            <input type="text" name="viber_account" placeholder="Viber" class="w-full text-xs" required>
                          </div>
                          <div class="mt-1">
                             <input type="text" name="supplier_email" placeholder="Email" class="w-full text-xs" required>

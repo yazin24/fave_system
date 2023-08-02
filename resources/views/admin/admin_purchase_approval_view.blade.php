@@ -45,9 +45,9 @@
 
                 <div class="flex flex-row">
                     <div class="mt-4 text-sm">
-                         <h2 class="text-gray-800 font-bold">Requested By: <span class="text-green-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> requested_by}}</span></h2>
-                        <h2 class="text-gray-800 font-bold">Prepared By: <span class="text-green-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> prepared_by}}</span></h2>
-                        <h2 class="text-gray-800 font-bold">Approved By: <span class="text-green-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> approved_by}}</span></h2>
+                         <h2 class="text-gray-800 font-bold">Requested By: <span class="text-green-600 font-bold">{{$queuePurchase -> requested_by}}</span></h2>
+                        <h2 class="text-gray-800 font-bold">Prepared By: <span class="text-green-600 font-bold">{{$queuePurchase -> prepared_by}}</span></h2>
+                        <h2 class="text-gray-800 font-bold">Approved By: <span class="text-green-600 font-bold">{{$queuePurchase -> approved_by}}</span></h2>
                     </div>
 
                     <div class="ml-auto mt-4 font-bold">

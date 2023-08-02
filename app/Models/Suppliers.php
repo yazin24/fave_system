@@ -28,6 +28,9 @@ class Suppliers extends Model
         'supplier_name',
         'supplier_address',
         'contact_number',
+        'tel_number',
+        'contact_person',
+        'viber_account',
         'supplier_email',
         'credit_limit',
         

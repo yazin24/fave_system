@@ -57,9 +57,9 @@
 
             <div class="flex flex-row">
                 <div class="mt-4 text-xs">
-                     <h2 class="text-gray-800 font-bold">Requested By: <span class="text-blue-600">{{$receivedPurchaseOrder -> purchaseOrderCredentials -> requested_by}}</span><h2>
-                    <h2 class="text-gray-800 font-bold">Prepared By: <span class="text-blue-600">{{$receivedPurchaseOrder -> purchaseOrderCredentials -> prepared_by}}</span></h2>
-                    <h2 class="text-gray-800 font-bold">Approved By: <span class="text-blue-600">{{$receivedPurchaseOrder -> purchaseOrderCredentials -> approved_by}}</span></h2>
+                     <h2 class="text-gray-800 font-bold">Requested By: <span class="text-blue-600">{{$receivedPurchaseOrder -> requested_by}}</span><h2>
+                    <h2 class="text-gray-800 font-bold">Prepared By: <span class="text-blue-600">{{$receivedPurchaseOrder -> prepared_by}}</span></h2>
+                    <h2 class="text-gray-800 font-bold">Approved By: <span class="text-blue-600">{{$receivedPurchaseOrder -> approved_by}}</span></h2>
                 </div>
 
                 <div class="text-xs ml-auto mt-4 font-bold mr-4">
