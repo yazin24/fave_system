@@ -56,26 +56,7 @@
                     </div>
                  </div>
                 
-           
-                
-                {{-- <h2 class="text-gray-800">Requested By: <span class="text-yellow-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> requested_by}}</span></h2>
-                <h2 class="text-gray-800">Prepared By: <span class="text-yellow-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> prepared_by}}</span></h2>
-                <h2 class="text-gray-800">Approved By: <span class="text-yellow-600 font-bold">{{$queuePurchase -> purchaseOrderCredentials -> approved_by}}</span></h2>
-        
-                <br>
-                @foreach($queuePurchase -> purchaseOrderItems as $index => $item)
-                <h2 class="text-gray-800">
-                    Item {{$index + 1}}: 
-                    <span class="text-green-600 font-bold">{{$item -> item_name}}</span> 
-                    <span class="text-red-600">||</span> Quantity: <span class="text-green-600 font-bold">{{$item -> quantity}} </span>
-                    <span class="text-red-600">||</span> Price: <span class="text-green-600 font-bold">₱{{$item -> unit_price}} </span>
-                    <span class="text-red-600">||</span> Amount: <span class="text-green-600 font-bold">₱{{$item -> amount}}</span></h2>
-                @endforeach
-                <br>
-                <h2>Total Amount: <span class="text-blue-500 font-bold">₱{{$totalAmount}}.00</span></h2>
-                --}}
          </div>
-
         
             <div class="mt-4 flex flex-row">
 
@@ -89,6 +70,7 @@
             <div>
                 <form method="POST" action="{{route('admindisapprovepurchase', ['id' => $queuePurchase -> id])}}">
                     @csrf
+                    <input type="hidden" name="poAmount" id="poAmount" value="{{$totalAmount}}">
                     <button class="bg-red-400 text-xs p-1 rounded-md text-gray-300 hover:bg-red-600 font-bold">Disapprove</button>
                 </form>
             </div>

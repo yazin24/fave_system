@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class AdminFunctionsController extends Controller
@@ -75,23 +78,52 @@ class AdminFunctionsController extends Controller
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
+            $userName = Auth::user() -> name;
+
             $purchaseOrder-> status = 1;
+
+            $purchaseOrder -> approved_by = $userName;
         
             $purchaseOrder -> save();
 
-            return view('admin.admin_home') -> with('success', 'Purchase Order has been Approved!');
+            Session::flash('success', 'Purchase Order has been successfully approved!');
+
+            return view('admin.admin_home');
         
     }
 
-    public function admin_disapprove_purchase($id)
+    public function admin_disapprove_purchase(Request $request, $id)
     {
         $purchaseOrder = PurchaseOrder::findOrFail($id);
 
             $purchaseOrder -> status = 2;
 
+            $poAmount = $request -> input('poAmount');
+
+            $supplierName = $purchaseOrder -> purchaseOrderSupplier -> supplier_name;
+
+            $supplierCreditLimit = SupplierCreditLimit::whereHas('suppliers', function($query) use ($supplierName){
+
+                $query -> where('supplier_name', $supplierName);
+
+            }) -> first();
+
+            if($supplierCreditLimit) {
+                
+                $currentCreditLimit = (float) $supplierCreditLimit -> available_credit_limit;
+
+                $newCreditLimit = $currentCreditLimit + (float) $poAmount;
+
+                $supplierCreditLimit -> update(['available_credit_limit' => 
+
+                $newCreditLimit]);
+            }
+
             $purchaseOrder -> save();
 
-            return view('admin.admin_home') -> with('success', 'Purchase Order has been Disapproved!');
+            Session::flash('success', 'Purchase Order has been disapproved!');
+
+            return view('admin.admin_home');
 
     }
 

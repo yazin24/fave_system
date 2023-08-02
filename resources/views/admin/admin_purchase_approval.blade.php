@@ -13,8 +13,8 @@
                     
                     <th class="text-xs text-center w-1/5">PO NUMBER</th>
                     <th class="text-xs text-center w-1/5">SUPPLIER</th>
-                    <th class="text-xs text-center w-1/5">REQUESTED BY</th>
-                    <th class="text-xs text-center w-1/5">PREPARED BY</th>
+                    <th class="text-xs text-center w-1/5">REQUESTED</th>
+                    <th class="text-xs text-center w-1/5">PREPARED</th>
                     <th class="text-xs text-center w-1/5">ACTION</th>
                 </tr>
             </thead>

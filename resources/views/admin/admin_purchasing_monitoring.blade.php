@@ -15,40 +15,34 @@
     </form>
 </div>
 
-<div>
-    @if(session()->has('success'))
-        {{session('success')}}
-    @endif
-</div>
-
 @if(isset($allPurchaseOrders))
     @if($allPurchaseOrders->count() > 0)
        
             <div class="">
                 <table class="bg-gray-300 shadow-lg w-full">
                     <thead>
-                        <tr class="md:h-8 bg-gray-900 border-b-2 text-gray-300 w-full">
-                            <th class="text-sm text-center w-1/8">PO_NUMBER</th>
-                            <th class="text-sm text-center w-1/8">SUPPLIER</th>
-                            <th class="text-sm text-center w-1/8 hidden md:table-cell">REQUESTED_BY</th>
-                            <th class="text-sm text-center w-1/8 hidden md:table-cell">PREPARED_BY</th>
-                            <th class="text-sm text-center w-1/8 hidden md:table-cell">APPROVED_BY</th>
-                            <th class="text-sm text-center w-1/8">STATUS</th>
-                            <th class="text-sm text-center w-1/8">DATE</th>
-                            <th class="text-sm text-center w-1/8">ACTION</th>
+                        <tr class="md:h-8 bg-gray-900 border-b-2 text-gray-300">
+                            <th class="text-sm text-center ">PO_NUMBER</th>
+                            <th class="text-sm text-center ">SUPPLIER</th>
+                            <th class="text-sm text-center  hidden md:table-cell">REQUESTED</th>
+                            <th class="text-sm text-center  hidden md:table-cell">PREPARED</th>
+                            <th class="text-sm text-center  hidden md:table-cell">APPROVED</th>
+                            <th class="text-sm text-center ">STATUS</th>
+                            <th class="text-sm text-center ">CREATED</th>
+                            <th class="text-sm text-center ">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($allPurchaseOrders as $allPurchaseOrder)
                             <tr class="h-12">
-                                <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->po_number}} </td>
-                                <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->purchaseOrderSupplier->supplier_name}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->requested_by}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->prepared_by}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8 hidden hidden md:table-cell">{{$allPurchaseOrder->approved_by}}</td>
-                                <td class="border-b-2 text-xs text-center capitalize w-1/8">{{$allPurchaseOrder->systemStatus->status}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8">{{$allPurchaseOrder->created_at->format('Y-m-d h:i:s A')}}</td>
-                                <td class="border-b-2 text-xs text-center w-1/8">
+                                <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder->po_number}} </td>
+                                <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder->purchaseOrderSupplier->supplier_name}}</td>
+                                <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->requested_by}}</td>
+                                <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->prepared_by}}</td>
+                                <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->approved_by}}</td>
+                                <td class="border-b-2 text-xs text-center capitalize ">{{$allPurchaseOrder->systemStatus->status}}</td>
+                                <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder->created_at->format('d-m-y')}}</td>
+                                <td class="border-b-2 text-xs text-center ">
                                     <div class="flex flex-row justify-center items-center">
                                         <div class="bg-yellow-500 p-1 mr-2 rounded-md shadow-md">
                                            

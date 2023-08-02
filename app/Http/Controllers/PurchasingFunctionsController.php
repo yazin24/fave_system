@@ -8,6 +8,7 @@ use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
 
@@ -77,12 +78,13 @@ class PurchasingFunctionsController extends Controller
 
         $realPoNumber = $prefix . $poPart;
 
+        $userName = Auth::user() -> name;
+
         $newPurchaseOrder = PurchaseOrder::create([
+
             'po_number' => $realPoNumber,
             'requested_by' => $request -> requested_by,
-            'prepared_by' => $request -> prepared_by,
-            'approved_by' => $request-> approved_by,
-
+            'prepared_by' => $userName,
         ]);
 
         $newPurchaseOrder -> purchaseOrderSupplier() -> create([
@@ -253,8 +255,6 @@ class PurchasingFunctionsController extends Controller
     {
         $amountPaid = $request -> input('confirmPaid');
 
-        // dd($amountPaid);
-
         $paymentStatus = PurchaseOrder::findOrFail($id);
 
         $paymentStatus -> payment_status = 1;
@@ -263,10 +263,13 @@ class PurchasingFunctionsController extends Controller
 
         $supplierName = $paymentStatus->purchaseOrderSupplier->supplier_name;
 
-    // Find the SupplierCreditLimit record using the supplier_name
-        $supplierCreditLimit = SupplierCreditLimit::whereHas('suppliers', function ($query) use ($supplierName) {
-        $query->where('supplier_name', $supplierName);
-        })->first();
+        $supplierCreditLimit = SupplierCreditLimit::whereHas('suppliers', function ($query) 
+
+        use ($supplierName) {
+
+        $query -> where('supplier_name', $supplierName);
+
+        }) -> first();
 
         if($supplierCreditLimit){
 

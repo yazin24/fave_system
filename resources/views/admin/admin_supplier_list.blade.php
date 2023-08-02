@@ -35,14 +35,14 @@
                                 <span class="mr-6 font-bold">{{$supplierName}}</span>
 
                                 <span class="mr-2 text-blue-500">
-                                <form>
+                                {{-- <form>
                                     <button>
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
-                                </form>
+                                </form> --}}
                                 </span>
 
-                            <span>
+                            {{-- <span>
                                 @foreach($items as $item)
                                 <form method="POST" action="{{route('admindeletesupplier', ['id' => $item -> id])}}">
                                     @csrf
@@ -50,7 +50,7 @@
                                     <button type="submit" class="text-red-500" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash"></i></button>
                                 </form>
                                 @endforeach
-                            </span>
+                            </span> --}}
                             </th>
                         </tr>
                     </thead>

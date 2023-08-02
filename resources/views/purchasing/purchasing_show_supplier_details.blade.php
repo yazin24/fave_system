@@ -38,16 +38,17 @@
                         <table class="w-full border border-gray-500 rounded-sm">
                             <thead>
                             <tr class="bg-green-700 text-gray-200">
-                            <th>Item Name</th>
-                            <th>Stocks</th>
-                            <th>Amount</th>
+                            <th class="w-1/3">Item Name</th>
+                            <th class="w-1/3">Stocks</th>
+                            <th class="w-1/3">Amount</th>
                             </tr>
                             </thead>
                             <tbody>
                                 @foreach($supplier -> supplierItems as $index => $item)
-                                <tr class="flex justify-center">
-                                    <td>{{$item -> item_name}}</td>
-                                   <td>{{$item -> purchaseOrderItems -> sum('quantity')}}</td>
+                                <tr class="">
+                                    <td class="w-1/3 text-center">{{$item -> item_name}}</td>
+                                   <td class="w-1/3 text-center">{{$item -> purchaseOrderItems}}</td>
+                                   <td class="w-1/3 text-center">{{$item -> purchaseOrderItems}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

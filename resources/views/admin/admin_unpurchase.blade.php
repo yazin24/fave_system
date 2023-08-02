@@ -26,9 +26,9 @@
                     <tr class="h-10">
                         <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> po_number}}</td>
                         <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</td>
-                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> requested_by}}</td>
-                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> prepared_by}}</td>
-                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> purchaseOrderCredentials -> approved_by}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> requested_by}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> prepared_by}}</td>
+                        <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$unPurchaseOrder -> approved_by}}</td>
                         <td class="border-b-2 text-xs text-center capitalize">{{$unPurchaseOrder -> systemStatus -> status}}</td>
                         <td class="border-b-2 text-xs text-center">{{$unPurchaseOrder -> created_at -> format('Y-m-d h:i:s A')}}</td>
                         <td class="border-b-2 text-xs text-center">
@@ -38,9 +38,9 @@
                                 <div class="bg-yellow-500 p-1 mr-2 rounded-md shadow-md"><button onclick="openModalDetails(
                                     '{{$unPurchaseOrder -> po_number}}',
                                     '{{$unPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}',
-                                    '{{$unPurchaseOrder -> purchaseOrderCredentials -> requested_by}}',
-                                    '{{$unPurchaseOrder -> purchaseOrderCredentials -> prepared_by}}',
-                                    '{{$unPurchaseOrder -> purchaseOrderCredentials -> approved_by}}',
+                                    '{{$unPurchaseOrder -> requested_by}}',
+                                    '{{$unPurchaseOrder -> prepared_by}}',
+                                    '{{$unPurchaseOrder -> approved_by}}',
                                     '{{$unPurchaseOrder -> systemStatus -> status}}',
                                     [
                                         @foreach($unPurchaseOrder -> purchaseOrderItems as $item)
