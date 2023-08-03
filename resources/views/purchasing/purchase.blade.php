@@ -37,8 +37,6 @@
                 {{-- <input type="text" id="supplier_name" name="supplier_name" placeholder="Supplier Name" class="w-1/2" required> --}}
 
                 <input type="number" id="supplier_credit" name="po_number" placeholder="PO Number (auto)" class="w-1/2 h-8 text-xs mb-1"  required readonly>
-              
-                
 
                 <input type="number" id="supplier_credit" name="supplier_credit" placeholder="Available Credit: {{$supplierCredit ?? 0}}" class="w-1/2 h-8 text-xs mb-1"  required readonly>
             </div>
@@ -47,7 +45,7 @@
 
                 <select id="supplier_name" name="supplier_name" class="w-1/2 h-8 text-xs" required>
     
-                    <option value="{{$supplierNameForPurchase -> supplier_name}}">{{$supplierNameForPurchase -> supplier_name}}</option>
+                    <option value="{{$supplierNameForPurchase -> id}}">{{$supplierNameForPurchase -> supplier_name}}</option>
     
                     </select>
 
@@ -88,7 +86,7 @@
 
     
             <div id="item-container" class="flex flex-col">
-             @foreach($supplierItems as $supplierItem)
+             @foreach($supplierItems -> sortBy('item_name') as $supplierItem)
 
                 <div class="flex flex-row justify-center">
 
@@ -97,7 +95,8 @@
                     </div>
 
                     <div class="w-full">
-                        <input type="text" name="item_name[{{$supplierItem -> id}}]" class="w-full h-8 text-xs mb-1" placeholder="Item Name" value="{{$supplierItem->item_name}}" required>
+                        <input type="text" class="w-full h-8 text-xs mb-1" value="{{$supplierItem ->item_name}}" readonly>
+                        <input type="hidden" name="item_id[{{$supplierItem->id}}]" value="{{$supplierItem->item_id}}">
                     </div>
 
                     <div class="w-full">
@@ -105,13 +104,13 @@
                     </div> 
 
                     <div class="w-full">
-                        <select id="quantity_unit" name="quantity_unit[{{$supplierItem -> id}}]" class="w-full h-8 text-xs">
+                        <select id="quantity_unit" name="item_unit[{{$supplierItem -> id}}]" class="w-full h-8 text-xs">
                             <option value="{{$supplierItem -> item_unit}}">{{$supplierItem -> item_unit}}</option>
                         </select>
                     </div>
 
                     <div class="w-full">
-                        <input type="number" name="unit_price[{{$supplierItem -> id}}]" class="w-full h-8 text-xs" placeholder="Unit Price">
+                        <input type="number" name="unit_price[{{$supplierItem -> id}}]" class="w-full h-8 text-xs" placeholder="Unit Price" value="{{$supplierItem -> default_price}}">
                     </div>
                     <div class="w-full">
                         <input type="number" name="amount[{{$supplierItem -> id}}]" class="w-full h-8 text-xs" placeholder="Amount (auto)" readonly>

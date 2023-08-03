@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\PurchaseOrder;
 use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
@@ -30,9 +31,7 @@ class PurchasingFunctionsController extends Controller
 
         $supplierCredit = SupplierCreditLimit::where('supplier_id', $supplierName) -> value('available_credit_limit');
 
-        $supplierItems = SupplierItems::with('suppliers')
-                        ->where('supplier_id', $supplierName)
-                        ->get();
+        $supplierItems = $supplierNameForPurchase -> allItems;
 
 
         return view('purchasing.purchase', ['supplierItems' => $supplierItems, 'suppliers' => $suppliers, 'supplierNameForPurchase' => $supplierNameForPurchase, 'supplierCredit' => $supplierCredit]);
@@ -56,9 +55,9 @@ class PurchasingFunctionsController extends Controller
 
         $selectedItems = $request -> input('selected_items', []);
 
-        $itemNames = $request -> input('item_name', []);
+        $itemNames = $request -> input('item_id', []);
         $quantity = $request -> input('quantity', []);
-        $quantityUnit = $request -> input('quantity_unit', []);
+        // $quantityUnit = $request -> input('item_unit', []);
         $unitPrice = $request -> input('unit_price', []);
 
         $lastPurchaseOrder = PurchaseOrder::latest('id') -> first();
@@ -92,13 +91,6 @@ class PurchasingFunctionsController extends Controller
             'supplier_name' => $request -> supplier_name,
         ]);
 
-        // $newPurchaseOrder -> purchaseOrderCredentials() -> create([
-        //     'po_id' => $newPurchaseOrder -> id,
-        //     'requested_by' => $request -> requested_by,
-        //     'prepared_by' => $request -> prepared_by,
-        //     'approved_by' => $request-> approved_by,
-        // ]);
-
         $creditTerm = (int) $request -> credit_term;
 
         $todayDate = now();
@@ -115,16 +107,14 @@ class PurchasingFunctionsController extends Controller
         foreach ($itemNames as $itemId => $itemName) {
             if (in_array($itemId, $selectedItems)) {
                 $quantityValue = $quantity[$itemId] ?? null;
-                $quantityUnitValue = $quantityUnit[$itemId] ?? null; 
                 $unitPriceValue = $unitPrice[$itemId] ?? null;
         
-                if ($itemName && $quantityValue && $quantityUnitValue && $unitPriceValue) {
+                if ($itemId && $quantityValue && $unitPriceValue) {
                     $amount = $quantityValue * $unitPriceValue;
         
                     $newPurchaseOrder->purchaseOrderItems()->create([
-                        'item_name' => $itemName,
+                        'item_id' => $itemId,
                         'quantity' => $quantityValue,
-                        'quantity_unit' => $quantityUnitValue,
                         'unit_price' => $unitPriceValue,
                         'amount' => $amount,
                     ]);
@@ -132,13 +122,6 @@ class PurchasingFunctionsController extends Controller
             }
         }
 
-        $supplierItem = SupplierItems::where('supplier_id', $id)
-                        -> where('item_name', $itemName)
-                        ->first();
-
-        $newStock = $supplierItem -> item_stock + $quantityValue;
-        $supplierItem -> update(['item_stock' => $newStock]);
-        
         $supplierCreditLimit = SupplierCreditLimit::where('supplier_id', $id) -> value('available_credit_limit');
 
                     $totalAmount = 0;
@@ -282,7 +265,6 @@ class PurchasingFunctionsController extends Controller
 
         }
 
-
         $paymentStatus -> save();
 
         return redirect() -> back() -> with('success', 'Purchase Order has been paid!');
@@ -318,7 +300,9 @@ class PurchasingFunctionsController extends Controller
     public function add_supplier()
     {
         $suppliers = Suppliers::all();
-        return view('purchasing.purchasing_add_supplier', ['suppliers' => $suppliers]);
+        $allItems = AllItems::all();
+
+        return view('purchasing.purchasing_add_supplier', ['suppliers' => $suppliers, 'allItems' => $allItems]);
     }
 
     public function add_supplier_store(Request $request)
@@ -344,16 +328,25 @@ class PurchasingFunctionsController extends Controller
 
         $itemNames = $request -> item_name;
         $itemUnits = $request -> item_unit;
+        $defaultPrice = $request -> default_price;
 
-        $supplierItemData = [];
+        $selectedItemIds = $request -> input('item_ids', []);
+
+        $newSupplier -> allItems() -> attach($selectedItemIds);
+
+        $itemIds = [];
         for ($i = 0; $i < count($itemNames); $i++){
-            $supplierItemData[] = [
-                'item_name' =>$itemNames[$i],
-                'item_unit' => isset($itemUnits[$i]) ? $itemUnits[$i] : null,
-            ];
+            $item = AllItems::firstOrCreate([
+                'item_name' => $itemNames[$i],
+                'item_unit' => $itemUnits[$i],
+                'default_price' => $defaultPrice[$i],
+            ]);
+
+            $itemIds[] = $item -> id;
+
         }
 
-        $newSupplier -> supplierItems() -> createMany($supplierItemData);
+        $newSupplier -> allItems() -> syncWithoutDetaching($itemIds);
 
         Session::flash('success', 'Supplier and its item has been created successfully!');
 

@@ -45,6 +45,10 @@ class PurchasingController extends Controller
                         $query -> where('status', 1)
                                 ->where('payment_status', 0);
                     })
+                    ->orWhere(function($query){
+                        $query -> where('status', 1)
+                                ->where('payment_status', 1);
+                    })
 
                     ->orderBy('created_at', 'desc')
                     ->paginate('10');

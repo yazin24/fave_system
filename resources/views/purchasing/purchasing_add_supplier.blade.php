@@ -6,11 +6,12 @@
     
         <h2 class="font-bold md:text-xl mb-4">Add Supplier</h2>
         
-             <div class="font-bold font-2xl bg-gray-900 rounded-md p-2">
+             <div class=" font-bold font-2xl bg-gray-900 rounded-md p-2">
                     <form  method="POST" action="{{route('addsupplierstore')}}" >
                          @csrf
                          @method('POST')
-     
+                         <div class="">
+                        <div>
                          <div class="">
                             <input type="text" name="supplier_name" placeholder="Supplier Name" class="w-full text-xs" required>
                          </div>
@@ -42,6 +43,9 @@
                             <div class="w-full">
                             <input type="text" name="item_name[]" placeholder="Item Name" class="mt-1 w-full text-xs" required>
                             </div>
+                            <div class="w-full">
+                              <input type="text" name="default_price[]" placeholder="Default Price" class="mt-1 w-full text-xs" required>
+                              </div>
                             <div class="mt-1 w-1/2">
                                 <select id="" name="item_unit[]" class="w-full text-gray-500 text-xs">
                                     <option value="" disabled selected>Unit Measurement</option>
@@ -54,17 +58,32 @@
                                 </select>
                             </div>
                          </div>
+
                                     <div id="item-container" class="text-gray-500 text-xs">
                                     </div>
                                          <div class="mt-2 flex flex-col gap-4">
                                             <div>
                                                 <button type="button" id="add-item-button" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md text-xs">Add Item</button>
                                             </div>
+
+                                            <p class="font-bold text-gray-200">Select Items:</p>
+                                            <div class="flex flex-wrap">
+                                              @foreach($allItems -> sortBy('item_name') as $item)
+                                              <div class="flex items-center w-1/4">
+                                                  <input type="checkbox" name="item_ids[]" value="{{ $item -> id }}" class="mr-1 text-gray-200"> 
+                                                  <label class="text-gray-200">{{ $item -> item_name }}</label>
+                                              </div>
+                                              @endforeach
+                                           </div>
+
                                                 <div>
                                                     <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md text-xs">Submit</button>
                                                 </div> 
                                          </div>
                                     </div>
+                                 </div>
+
+                                 </div>
                     </form>
               </div>                    
  </div> 
@@ -82,6 +101,9 @@
                         '<div class="w-full">' + 
                          '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-gray-500 text-xs" placeholder="Item Name" required>' + 
                          '</div>' +
+                         '<div class="w-full">' +
+                              '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs" required>' +
+                              '</div>' +
                          '<div class=" w-1/2">' + 
                            ' <select id="" name="item_unit[]" class="w-full text-xs">' +
                                    '<option value="" disabled selected>Unit Measurement</option>' +

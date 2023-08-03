@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('purchase_order_items', function (Blueprint $table) {
-            $table -> string('quantity_unit') -> after('quantity') -> nullable() -> change();
+        Schema::table('all_items', function (Blueprint $table) {
+            $table -> string('item_unit') -> default('') -> after('item_name');
+            $table -> decimal('default_price', 8, 2) -> default(0) -> after('quantity');
         });
     }
 
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('purchase_order_items', function (Blueprint $table) {
-          
+        Schema::table('all_items', function (Blueprint $table) {
+            //
         });
     }
 };

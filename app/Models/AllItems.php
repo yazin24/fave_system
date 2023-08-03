@@ -21,6 +21,9 @@ class AllItems extends Model
 
     protected $fillable = [
         'item_name',
+        'item_unit',
         'quantity',
+        'default_price'
+
     ];
 }

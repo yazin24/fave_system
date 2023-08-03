@@ -14,9 +14,6 @@
                     @endif
                 </div>
 
-                                                        {{-- <div class="bg-gray-900 w-2/4 mt-8 p-2 mr-10"> --}}
-
-
              <div class="">
 
                     <form  method="POST" action="{{route('addsupplierstore')}}" >
@@ -42,10 +39,6 @@
                        </div>
                     </form>
             </div>
-     
-        
-     
-     
      
         <script>
          document.addEventListener('DOMContentLoaded', function(){
