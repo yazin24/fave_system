@@ -17,8 +17,8 @@ return new class extends Migration
             $table -> unsignedBigInteger('del_status');
             $table->timestamps();
 
-            $table -> foreign('po_id') -> references('id') -> on('purchase_orders');
-            $table -> foreign('del_status') -> references('id') -> on('system_status');
+            $table -> foreign('po_id') -> references('id') -> on('purchase_orders') -> onDelete('cascade');
+            $table -> foreign('del_status') -> references('id') -> on('system_status') -> onDelete('cascade');
         });
     }
 

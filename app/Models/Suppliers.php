@@ -9,6 +9,11 @@ class Suppliers extends Model
 {
     protected $table = 'suppliers';
 
+    public function allItems()
+    {
+        return $this -> belongsToMany(AllItems::class, 'supplier_items', 'supplier_id', 'item_id');
+    }
+
     public function supplierItems()
     {
         return $this -> hasMany(SupplierItems::class, 'supplier_id');

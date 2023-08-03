@@ -72,11 +72,6 @@ class PurchasingController extends Controller
         return view('purchasing.purchase', ['suppliers' => $suppliers]);
     }
 
-    public function make_purchase()
-    {
-        
-    }
-
     public function all_purchases()
     {
         return view('purchasing.all_purchases');

@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('supplier_items', function (Blueprint $table) {
             $table->id();
             $table -> unsignedBigInteger('supplier_id');
-            $table -> text('item_name');
+            $table -> unsignedBigInteger('item_id');
+            $table -> integer('quantity') -> default(0);
             $table->timestamps();
 
             $table -> foreign('supplier_id') -> references('id') -> on('suppliers') -> onDelete('cascade');
+
+            $table -> foreign('item_id') -> references('id') -> on('all_items') -> onDelete('cascade');
         });
     }
 

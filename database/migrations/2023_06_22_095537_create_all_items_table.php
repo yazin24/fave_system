@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('supplier_items', function (Blueprint $table) {
-            $table -> dropColumn('item_unit');
+        Schema::create('all_items', function (Blueprint $table) {
+            $table->id();
+            $table -> string('item_name') -> default('');
+            $table -> integer('quantity') -> default(0);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('supplier_items', function (Blueprint $table) {
-            //
-        });
+        // Schema::dropIfExists('all_items');
     }
 };

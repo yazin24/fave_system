@@ -17,7 +17,7 @@ return new class extends Migration
             $table -> string('credit_limit');
             $table->timestamps();
 
-            $table -> foreign('supplier_id') -> references('id') -> on('suppliers');
+            $table -> foreign('supplier_id') -> references('id') -> on('suppliers') -> onDelete('cascade');
         });
     }
 

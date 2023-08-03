@@ -13,13 +13,18 @@ class PurchaseOrderItems extends Model
         return $this -> belongsTo(PurchaseOrder::class);
     }
 
+    public function allItems()
+    {
+        return $this -> belongsTo(AllItems::class, 'item_id');
+    }
+
     // public function supplierItems()
     // {
     //     return $this -> belongsTo(SupplierItems::class, '')
     // }
 
     protected $fillable = [
-        'item_name',
+        'item_id',
         'quantity',
         'quantity_unit',
         'unit_price',

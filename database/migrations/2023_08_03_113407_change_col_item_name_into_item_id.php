@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('supplier_items', function (Blueprint $table) {
-            $table -> string('item_unit') -> after('item_name') -> nullable();
+        Schema::table('purchase_order_items', function (Blueprint $table) {
+
+            $table -> dropColumn('item_name');
+
+            $table -> unsignedBigInteger('item_id') -> after('po_id');
+
+            $table -> foreign('item_id') -> references('id') -> on('all_items') -> onDelete('cascade');
+
         });
     }
 
@@ -21,7 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('supplier_items', function (Blueprint $table) {
+        Schema::table('purchase_order_items', function (Blueprint $table) {
             //
         });
     }

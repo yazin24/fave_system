@@ -17,11 +17,11 @@ class SupplierItems extends Model
         return $this -> hasOne(PurchaseOrderItems::class, 'po_id');
     }
 
-    public function sumItemStock()
-    {
-        $this -> item_stock = $this ->purchaseOrderItems -> sum('quantity');
-        $this -> save();
-    }
+    // public function sumItemStock()
+    // {
+    //     $this -> item_stock = $this ->purchaseOrderItems -> sum('quantity');
+    //     $this -> save();
+    // }
 
     protected $fillable = [
         'supplier_id',
