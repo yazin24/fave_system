@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('received_purchase_order_details', function (Blueprint $table) {
             $table->id();
-            $table -> unsignedBigInteger('received_id');
+            $table -> unsignedBigInteger('po_id');
             $table -> unsignedBigInteger('status');
             $table -> string('supplier_name') -> default('');
             $table -> boolean('payment_status') -> default(0);
@@ -23,9 +23,9 @@ return new class extends Migration
             $table -> string('approved_by') -> default('');
             $table->timestamps();
 
-            $table -> foreign('received_id') -> references('id') -> on('received_purchase_orders');
-            $table -> foreign('status') -> references('id') -> on('system_status');
-            $table -> foreign('del_status') -> references('id') -> on('system_status');
+            $table -> foreign('po_id') -> references('po_id') -> on('received_purchase_orders') -> onDelete('cascade');
+            $table -> foreign('status') -> references('id') -> on('system_status')-> onDelete('cascade');
+            $table -> foreign('del_status') -> references('id') -> on('system_status')-> onDelete('cascade');
         });
     }
 

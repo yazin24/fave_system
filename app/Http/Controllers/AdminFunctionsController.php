@@ -94,13 +94,12 @@ class AdminFunctionsController extends Controller
                     'po_id' => $purchaseOrder -> id,
                     'item_id' => $item -> item_id,
                     'quantity' => $item -> quantity,
-                    
                 ]);
             }
 
 
                 ReceivedPurchaseOrderDetails::create([
-                    'received_id' => $toReceivePurchaseOrder -> id,
+                    'po_id' => $toReceivePurchaseOrder -> po_id,
                     'status' => 1,
                     'supplier_name' => $purchaseOrder -> purchaseorderSupplier -> supplier_name,
                     'payment_status' => false,

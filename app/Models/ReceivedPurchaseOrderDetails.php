@@ -11,11 +11,11 @@ class ReceivedPurchaseOrderDetails extends Model
 
    public function receivedPurchaseOrder()
    {
-    return $this -> belongsTo(ReceivedPurchaseOrder::class, 'received_id');
+    return $this -> belongsTo(ReceivedPurchaseOrder::class, 'po_id');
    }
 
    protected $fillable = [
-    'received_id',
+    'po_id',
     'status',
     'supplier_name',
     'payment_status',
