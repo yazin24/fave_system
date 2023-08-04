@@ -61,7 +61,6 @@ class PurchasingController extends Controller
             $purchase -> daysDiff = $daysDiff;
         };
         
-
         return view('purchasing.purchase_monitoring', [
             'purchases' => $purchases, 
             'totalPurchase' => $totalPurchase, 

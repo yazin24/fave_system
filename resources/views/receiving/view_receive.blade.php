@@ -75,7 +75,7 @@
          </div>
 
          <div>
-                 <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
+                 <button type="button" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
                  Receive
                 </button>
            

@@ -48,6 +48,11 @@ class PurchaseOrder extends Model
         return $this -> hasOne(ReceivedPurchaseOrderCredentials::class, 'po_id');
     }
 
+    public function receivedPurchaseOrder()
+    {
+        return $this -> hasOne(ReceivedPurchaseOrder::class, 'po_id');
+    }
+
     protected $fillable = [
         'po_number',
         'status',

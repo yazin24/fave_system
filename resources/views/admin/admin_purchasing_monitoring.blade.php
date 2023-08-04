@@ -36,7 +36,7 @@
                         @foreach ($allPurchaseOrders as $allPurchaseOrder)
                             <tr class="h-12">
                                 <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder->po_number}} </td>
-                                <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder->purchaseOrderSupplier->supplier_name}}</td>
+                                <td class="border-b-2 text-xs text-center ">{{$allPurchaseOrder-> purchaseOrderSupplier -> supplier -> supplier_name}}</td>
                                 <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->requested_by}}</td>
                                 <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->prepared_by}}</td>
                                 <td class="border-b-2 text-xs text-center  hidden hidden md:table-cell">{{$allPurchaseOrder->approved_by}}</td>

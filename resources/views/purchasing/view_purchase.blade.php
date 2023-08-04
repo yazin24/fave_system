@@ -24,7 +24,7 @@
                     @endif
                 </div>
              </div>
-                <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$purchase -> purchaseOrderSupplier -> supplier_name}}</span></h2>
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$purchase -> supplier_name}}</span></h2>
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">

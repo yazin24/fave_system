@@ -22,7 +22,7 @@
                 @foreach($queuePurchases as $queuePurchase) 
                 <tr class="h-10">
                     <td class="border-b-2 text-xs text-center">{{$queuePurchase -> po_number}}</td>
-                    <td class="border-b-2 text-xs text-center">{{$queuePurchase -> purchaseOrderSupplier -> supplier_name}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$queuePurchase -> purchaseOrderSupplier -> supplier -> supplier_name}}</td>
                     <td class="border-b-2 text-xs text-center">{{$queuePurchase -> requested_by}}</td>
                     <td class="border-b-2 text-xs text-center">{{$queuePurchase -> prepared_by}}</td>
                     <td class="text-red-500 font-bold hover:underline cursor-pointer border-b-2 text-xs text-center"><a href="{{route('adminpurchaseorderapproval', ['queuePurchase' => $queuePurchase])}}">View</a></td>

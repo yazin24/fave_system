@@ -18,7 +18,7 @@
                     <h2 class="text-gray-800 font-bold">Status: <span class="text-red-700 font-bold capitalize">{{$allPurchaseOrder -> systemStatus -> status}}</span></h2>
                 </div>
              </div>
-                <h2 class="text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$allPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</span></h2>
+                <h2 class="text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$allPurchaseOrder -> purchaseOrderSupplier -> supplier -> supplier_name}}</span></h2>
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">

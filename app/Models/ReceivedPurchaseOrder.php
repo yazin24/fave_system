@@ -7,18 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReceivedPurchaseOrder extends Model
 {
-    public function receivedPurchaseOrderCredentials()
-    {
-        return $this -> belongsTo(ReceivedPurchaseOrderCredentials::class, 'received_id');
-    }
+    protected $table = 'received_purchase_orders';
 
-    protected $fillable =[
-        'received_id',
-        'po_number',
-        'item_name',
+     public function purchaseOrder()
+     {
+        return $this -> belongsTo(PurchaseOrder::class, 'po_id');
+     }
+
+     public function receivedPurchaseOrderDetails()
+     {
+        return $this -> hasOne(ReceivedPurchaseOrderDetails::class, 'received_id');
+     }
+
+     public function receivedPartials()
+     {
+        return $this -> hasMany(ReceivedPartial::class, 'received_id');
+     }
+
+    protected $fillable = [
+        'po_id',
+        'item_id',
         'quantity',
-        'quantity_unit',
-        'unit_price',
-        'amount',
+
     ];
 }

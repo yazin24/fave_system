@@ -70,7 +70,7 @@
                                             <div class="flex flex-wrap">
                                               @foreach($allItems -> sortBy('item_name') as $item)
                                               <div class="flex items-center w-1/4">
-                                                  <input type="checkbox" name="item_ids[]" value="{{ $item -> id }}" class="mr-1 text-gray-200"> 
+                                                  <input type="checkbox" name="item_ids[]" value="{{ $item -> id }}" class="mr-1"> 
                                                   <label class="text-gray-200">{{ $item -> item_name }}</label>
                                               </div>
                                               @endforeach
@@ -99,7 +99,7 @@
      
                      '<div class="flex flex-row">' +
                         '<div class="w-full">' + 
-                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-gray-500 text-xs" placeholder="Item Name" required>' + 
+                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-xs" placeholder="Item Name" required>' + 
                          '</div>' +
                          '<div class="w-full">' +
                               '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs" required>' +

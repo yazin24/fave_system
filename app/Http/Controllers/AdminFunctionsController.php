@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\ReceivedPurchaseOrder;
+use App\Models\ReceivedPurchaseOrderDetails;
 use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
@@ -85,6 +87,29 @@ class AdminFunctionsController extends Controller
             $purchaseOrder -> approved_by = $userName;
         
             $purchaseOrder -> save();
+
+            foreach($purchaseOrder -> purchaseOrderItems as $item){
+
+                $toReceivePurchaseOrder = ReceivedPurchaseOrder::create([
+                    'po_id' => $purchaseOrder -> id,
+                    'item_id' => $item -> item_id,
+                    'quantity' => $item -> quantity,
+                    
+                ]);
+            }
+
+
+                ReceivedPurchaseOrderDetails::create([
+                    'received_id' => $toReceivePurchaseOrder -> id,
+                    'status' => 1,
+                    'supplier_name' => $purchaseOrder -> purchaseorderSupplier -> supplier_name,
+                    'payment_status' => false,
+                    'del_status' => 5,
+                    'requested_by' => $purchaseOrder -> requested_by,
+                    'prepared_by' => $purchaseOrder -> prepared_by,
+                    'approved_by' => $purchaseOrder -> approved_by,
+                ]);
+
 
             Session::flash('success', 'Purchase Order has been successfully approved!');
 
