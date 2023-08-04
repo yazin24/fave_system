@@ -26,7 +26,7 @@
                     @endif
                 </div>
              </div>
-                <h2 class=" text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$toReceivePurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</span></h2>
+                <h2 class=" text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$toReceivePurchaseOrder -> purchaseOrderSupplier -> supplier -> supplier_name}}</span></h2>
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">
@@ -45,10 +45,10 @@
                             @foreach($toReceivePurchaseOrder -> purchaseOrderItems as $index => $item)
                             <tr class="h-10">   
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="item_name[{{$item -> id}}]" class="text-xs items-center w-full" type="text" value="{{$item -> item_name}}"></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="item_name[{{$item -> id}}]" class="text-xs items-center w-full" type="text" value="{{$item -> allItems -> item_name}}"></td>
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> quantity}} "></td>
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> quantity_unit}}" readonly></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value=0></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> allItems -> item_unit}}" readonly></td>
 
                                 <td class="text-xs text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
 
@@ -75,12 +75,15 @@
          </div>
 
          <div>
-                 <button type="button" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
-                 Receive
+                 <button type="button" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="complete">
+                 Receive as Complete
                 </button>
-           
+                <button type="button" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="partial">
+                    Receive as Partial
+                   </button>
          </div>
     </form>
+
 </div>
 
 

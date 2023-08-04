@@ -19,8 +19,8 @@
             <tr class="h-10">
                @foreach ($toReceivePurchaseOrders as $toReceivePurchaseOrder)
                    
-                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$toReceivePurchaseOrder -> po_number}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$toReceivePurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$toReceivePurchaseOrder -> purchaseOrder -> po_number}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$toReceivePurchaseOrder -> receivedPurchaseOrderDetails -> supplier_name}}</td>
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-10">
                     @if($toReceivePurchaseOrder -> del_status == 0)

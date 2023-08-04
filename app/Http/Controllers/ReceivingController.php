@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\ReceivedPurchaseOrder;
 use App\Models\SystemStatus;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,11 @@ class ReceivingController extends Controller
 {
     public function received_po_monitoring()
     {
-        $toReceivePurchaseOrders = PurchaseOrder::where('del_status', 0)
-                                ->where('status', 1)
-                                -> orderBy('created_at', 'desc')
-                                -> get();
+        $toReceivePurchaseOrders = ReceivedPurchaseOrder::with('receivedPurchaseOrderDetails',)
+                                    ->where(function ($query){
+                                    $query -> where('status', 1)
+                                    ->where('payment_status', 0);
+        });
 
         return view('receiving.receiving_monitoring', ['toReceivePurchaseOrders' => $toReceivePurchaseOrders]);
     }

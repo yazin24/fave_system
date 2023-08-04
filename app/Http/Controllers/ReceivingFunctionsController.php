@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderSupplier;
+use App\Models\ReceivedPartial;
 use App\Models\ReceivedPurchaseOrder;
 use App\Models\ReceivedPurchaseOrderCredentials;
+use App\Models\ReceivedPurchaseOrderDetails;
 use App\Models\SupplierItems;
 use Illuminate\Http\Request;
 
@@ -23,30 +25,41 @@ class ReceivingFunctionsController extends Controller
     public function save_and_receive_po(Request $request, $id)
     {
 
-
-        $toReceivePurchaseOrder = PurchaseOrder::findOrFail($id);
-
-        $quantities = $request -> input('quantity', []);
-
-
-        if(is_array($quantities)){
-
-            foreach($quantities as $itemId => $quantity){
-                $item = PurchaseOrderItems::findOrFail($itemId);
-                if($item){
-                    $item -> quantity = $quantity;
-                    $item -> save();
-                }
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
     
-                $toReceivePurchaseOrder -> del_status = 1;
+        $action = $request->input('action');
     
-                $toReceivePurchaseOrder -> save();
+        if ($action === 'complete') {
+           
+            $purchaseOrder->del_status = 1;
 
+            $purchaseOrder->save();
+    
+        } elseif ($action === 'partial') {
+           
+            foreach ($purchaseOrder->purchaseOrderItems as $item) {
+
+                $itemId = $item->id;
+
+                $quantityReceived = $request->input("quantity.$itemId");
+    
+                ReceivedPartial::create([
+
+                    'po_id' => $purchaseOrder->id,
+
+                    'item_id' => $itemId,
+
+                    'quantity' => $quantityReceived,
+
+                ]);
             }
-
         }
+    
+    }
 
-        return view('receiving.receiving_home') -> with('success', 'Purhase Order has been receive!');
+    public function receive_as_partial()
+    {
+        
     }
 
     public function view_received(PurchaseOrder $receivedPurchaseOrder)
