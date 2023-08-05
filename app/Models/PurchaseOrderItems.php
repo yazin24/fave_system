@@ -18,6 +18,11 @@ class PurchaseOrderItems extends Model
         return $this -> belongsTo(AllItems::class, 'item_id');
     }
 
+    public function receivedItems()
+    {
+        return $this -> hasMany(ReceivedItems::class, 'item_id');
+    }
+
     // public function supplierItems()
     // {
     //     return $this -> belongsTo(SupplierItems::class, '')

@@ -85,29 +85,29 @@ class AdminFunctionsController extends Controller
             $purchaseOrder-> status = 1;
 
             $purchaseOrder -> approved_by = $userName;
-        
+            
             $purchaseOrder -> save();
 
-            foreach($purchaseOrder -> purchaseOrderItems as $item){
+            // foreach($purchaseOrder -> purchaseOrderItems as $item){
 
-                $toReceivePurchaseOrder = ReceivedPurchaseOrder::create([
-                    'po_id' => $purchaseOrder -> id,
-                    'item_id' => $item -> item_id,
-                    'quantity' => 0,
-                ]);
-            }
+            //     $toReceivePurchaseOrder = ReceivedPurchaseOrder::create([
+            //         'po_id' => $purchaseOrder -> id,
+            //         'item_id' => $item -> item_id,
+            //         'quantity' => 0,
+            //     ]);
+            // }
 
 
-                ReceivedPurchaseOrderDetails::create([
-                    'po_id' => $toReceivePurchaseOrder -> po_id,
-                    'status' => 1,
-                    'supplier_name' => $purchaseOrder -> purchaseorderSupplier -> supplier_name,
-                    'payment_status' => false,
-                    'del_status' => 7,
-                    'requested_by' => $purchaseOrder -> requested_by,
-                    'prepared_by' => $purchaseOrder -> prepared_by,
-                    'approved_by' => $purchaseOrder -> approved_by,
-                ]);
+            //     ReceivedPurchaseOrderDetails::create([
+            //         'po_id' => $toReceivePurchaseOrder -> po_id,
+            //         'status' => 1,
+            //         'supplier_name' => $purchaseOrder -> purchaseorderSupplier -> supplier_name,
+            //         'payment_status' => false,
+            //         'del_status' => 7,
+            //         'requested_by' => $purchaseOrder -> requested_by,
+            //         'prepared_by' => $purchaseOrder -> prepared_by,
+            //         'approved_by' => $purchaseOrder -> approved_by,
+            //     ]);
 
 
             Session::flash('success', 'Purchase Order has been successfully approved!');

@@ -30,7 +30,7 @@ class PurchaseOrder extends Model
 
     public function systemStatus()
     {
-        return $this -> belongsTo(SystemStatus::class, 'status');
+        return $this -> belongsTo(SystemStatus::class, 'status',);
     }
 
     public function deliveryStatus() 
@@ -43,14 +43,9 @@ class PurchaseOrder extends Model
         return $this -> hasOne(PurchaseOrderTerms::class, 'po_id');
     }
 
-    public function receivedPurchaseOrderCredentials()
+    public function receivedItems()
     {
-        return $this -> hasOne(ReceivedPurchaseOrderCredentials::class, 'po_id');
-    }
-
-    public function receivedPurchaseOrder()
-    {
-        return $this -> hasOne(ReceivedPurchaseOrder::class, 'po_id');
+        return $this -> hasMany(ReceivedItems::class, 'po_id');
     }
 
     protected $fillable = [

@@ -16,13 +16,13 @@
                 <h2 class="text-xs text-gray-800 font-bold">Status: <span class="text-blue-600 font-bold capitalize">{{$receivedPurchaseOrder -> systemStatus -> status}}</span></h2>
             </div>
             <div class="ml-auto">
-                @if($receivedPurchaseOrder -> del_status == 0)
-                <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-blue-600 font-bold capitalize">No</span></h2>
-                @else <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-blue-600 font-bold capitalize">Yes</span></h2>
+                @if($receivedPurchaseOrder -> del_status == 4)
+                <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-blue-600 font-bold capitalize">Complete</span></h2>
+                @else <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-blue-600 font-bold capitalize">Incomplete</span></h2>
                 @endif
             </div>
          </div>
-            <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$receivedPurchaseOrder -> purchaseOrderSupplier -> supplier_name}}</span></h2>
+            <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$receivedPurchaseOrder -> purchaseOrderSupplier -> supplier -> supplier_name}}</span></h2>
         
            <div class="bg-white-900 text-gray-900 mt-1"> 
                 <table class="w-full shadow-md bg-gray-400">
@@ -40,10 +40,11 @@
                        @foreach($receivedPurchaseOrder -> purchaseOrderItems as $index => $item)
                         <tr class="h-10">   
 
-                            <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item ->item_name}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item -> allItems -> item_name}}</td>
 
                             <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item -> quantity}}</td>
-                            <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item -> quantity_unit}}</td>
+
+                            <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item -> allItems -> item_unit}}</td>
 
                             <td class="text-xs text-center border-b-2 font-bold w-1/5">{{$item -> unit_price}}</td>
 

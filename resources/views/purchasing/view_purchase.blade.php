@@ -18,13 +18,16 @@
                     <h2 class="text-xs text-gray-800 font-bold">Status: <span class="text-red-700 font-bold capitalize">{{$purchase -> systemStatus -> status}}</span></h2>
                 </div>
                 <div class="ml-auto">
-                    @if($purchase -> del_status == 0)
-                    <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">No</span></h2>
-                    @else <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Yes</span></h2>
+                    @if($purchase -> del_status == 7)
+                    <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Undelivered</span></h2>
+                    @elseif($purchase -> del_status == 6)
+                     <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Partial</span></h2>
+                     @elseif($purchase -> del_status == 4)
+                     <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Complete</span></h2>
                     @endif
                 </div>
              </div>
-                <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$purchase -> supplier_name}}</span></h2>
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">Supplier Name: <span class="text-blue-600 font-bold">{{$purchase -> purchaseOrderSupplier -> supplier -> supplier_name}}</span></h2>
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">

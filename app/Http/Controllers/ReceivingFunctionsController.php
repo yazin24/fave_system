@@ -25,35 +25,58 @@ class ReceivingFunctionsController extends Controller
     public function save_and_receive_po(Request $request, $id)
     {
 
-        $purchaseOrder = PurchaseOrder::findOrFail($id);
-    
-        $action = $request->input('action');
-    
-        if ($action === 'complete') {
-           
-            $purchaseOrder->del_status = 1;
+        
+        $toReceivePurchaseOrder = PurchaseOrder::findOrFail($id);
 
-            $purchaseOrder->save();
-    
-        } elseif ($action === 'partial') {
-           
-            foreach ($purchaseOrder->purchaseOrderItems as $item) {
+        if ($request->has('action')) {
 
-                $itemId = $item->id;
+            $action = $request->input('action');
 
-                $quantityReceived = $request->input("quantity.$itemId");
-    
-                ReceivedPartial::create([
+            if ($action === 'complete') {
+              
+                $toReceivePurchaseOrder->update(['del_status' => 4]);
 
-                    'po_id' => $purchaseOrder->id,
+                foreach ($toReceivePurchaseOrder->purchaseOrderItems as $item) {
 
-                    'item_id' => $itemId,
+                    $quantityReceived = $request->input('quantity.' . $item->id, 0);
+                    
+                    $item->receivedItems()->create([
 
-                    'quantity' => $quantityReceived,
+                        'po_id' => $toReceivePurchaseOrder -> id,
 
-                ]);
+                        'quantity_received' => $quantityReceived,
+
+                        'received_at' => now(), 
+
+                    ]);
+
+                }
+
+            } elseif ($action === 'partial') {
+               
+                $toReceivePurchaseOrder->update(['del_status' => 6]);
+
+                foreach ($toReceivePurchaseOrder->purchaseOrderItems as $item) {
+
+                    $quantityReceived = $request->input('quantity.' . $item->id, 0);
+                    
+                    if ($quantityReceived > 0) {
+
+                        $item->receivedItems()->create([
+
+                            'po_id' => $toReceivePurchaseOrder -> id,
+
+                            'quantity_received' => $quantityReceived,
+
+                            'received_at' => now(), 
+
+                        ]);
+                    }
+                }
             }
         }
+
+        return view('receiving.receiving_home') -> with('success', 'Purchase Order has been Delivered!');
     
     }
 

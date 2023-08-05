@@ -12,18 +12,21 @@ class ReceivingController extends Controller
 {
     public function received_po_monitoring()
     {
-        $toReceivePurchaseOrders = ReceivedPurchaseOrder::with('receivedPurchaseOrderDetails',)
-                                    ->where(function ($query){
-                                    $query -> where('status', 1)
-                                    ->where('payment_status', 0);
-        });
+         $toReceivePurchaseOrders = PurchaseOrder::with(['systemStatus', 'purchaseOrderItems.allItems'])
+        ->where('status', 1)
+        ->where(function ($query) {
+            $query->where('del_status', 6)
+                  ->orWhere('del_status', 7);
+        })
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         return view('receiving.receiving_monitoring', ['toReceivePurchaseOrders' => $toReceivePurchaseOrders]);
     }
 
     public function receive_po()
     {
-        $receivedPurchaseOrders = PurchaseOrder::where('del_status', 1)
+        $receivedPurchaseOrders = PurchaseOrder::where('del_status', 4)
                                 ->orderBy('created_at', 'desc')
                                 ->get();
 

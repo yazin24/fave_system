@@ -19,14 +19,15 @@
             <tr class="h-10">
                @foreach ($toReceivePurchaseOrders as $toReceivePurchaseOrder)
                    
-                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$toReceivePurchaseOrder -> purchaseOrder -> po_number}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$toReceivePurchaseOrder -> receivedPurchaseOrderDetails -> supplier_name}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$toReceivePurchaseOrder -> po_number}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$toReceivePurchaseOrder  -> purchaseOrderSupplier -> supplier -> supplier_name}}</td>
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-10">
-                    @if($toReceivePurchaseOrder -> del_status == 0)
+                    {{-- {{$toReceivePurchaseOrder -> del_status}} --}}
+                    @if($toReceivePurchaseOrder -> del_status == '7')
                     Undelivered
-                    @else
-                    Delivered
+                    @elseif($toReceivePurchaseOrder -> del_status == 6)
+                    Partial
                     @endif
                 </td>
                 <td class="border-b-2 text-xs text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a href="{{route('viewtobereceivepo', ['toReceivePurchaseOrder' => $toReceivePurchaseOrder])}}">View</a></td>

@@ -23,10 +23,10 @@
                 <td class="border-b-2 text-xs text-center w-1/6 h-6 md:h-10">{{$receivedPurchaseOrder ->purchaseOrderSupplier -> supplier_name}}</td>
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-6 md:h-10">
-                @if($receivedPurchaseOrder -> del_status == 1)
-                Delivered
+                @if($receivedPurchaseOrder -> del_status == 4)
+                Complete
                 @else
-                Undelivered
+                Incomplete
                 @endif
                 </td>
                 <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:underline hover:font-bold">

@@ -17,12 +17,16 @@
                 </div>
 
                 <div class="ml-auto">
-                    <h2 class="text-xs text-gray-800 font-bold">Status: <span class="text-red-700 font-bold capitalize">{{$toReceivePurchaseOrder -> systemStatus -> status}}</span></h2>
+                    <h2 class="text-xs text-gray-800 font-bold">Status: <span class="text-red-700 font-bold capitalize">
+                        @if($toReceivePurchaseOrder -> status == 1)
+                        Approved
+                        @endif
+                    </span>
+                    </h2>
                 </div>
                 <div class="ml-auto">
-                    @if($toReceivePurchaseOrder -> del_status == 0)
+                    @if($toReceivePurchaseOrder -> del_status == 7)
                     <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">No</span></h2>
-                    @else <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Yes</span></h2>
                     @endif
                 </div>
              </div>
@@ -75,10 +79,10 @@
          </div>
 
          <div>
-                 <button type="button" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="complete">
+                 <button type="submit" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="complete">
                  Receive as Complete
                 </button>
-                <button type="button" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="partial">
+                <button type="submit" name="action" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold" value="partial">
                     Receive as Partial
                    </button>
          </div>

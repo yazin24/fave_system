@@ -8,6 +8,7 @@ use App\Models\PurchaseOrder;
 use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
+use App\Models\SystemStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -79,9 +80,12 @@ class PurchasingFunctionsController extends Controller
 
         $userName = Auth::user() -> name;
 
+        // $delStatus = SystemStatus::where('status', 'undelivered') -> value('id');
+
         $newPurchaseOrder = PurchaseOrder::create([
 
             'po_number' => $realPoNumber,
+            'del_status' => 7,
             'requested_by' => $request -> requested_by,
             'prepared_by' => $userName,
         ]);
