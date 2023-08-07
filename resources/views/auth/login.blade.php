@@ -4,7 +4,7 @@
 <div>
     <form method="POST" action="{{ route('login') }}">
         <div class="flex justify-center h-20">
-        <img src="{{ asset('images/logofave.png') }}" alt="Example Image" class="fave_login">
+        <img src="{{ asset('images/favelogo.png') }}" alt="Example Image" class="fave_login">
         </div>
         @csrf
 

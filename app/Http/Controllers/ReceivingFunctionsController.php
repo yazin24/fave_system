@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderSupplier;
@@ -54,6 +55,14 @@ class ReceivingFunctionsController extends Controller
 
                     ]);
 
+                    $allItems = AllItems::all();
+
+                    foreach ($allItems as $item) {
+                        $totalQuantityReceived = $item->receivedItems()->sum('quantity_received');
+                        $item->update(['quantity' => $totalQuantityReceived]);
+                    }
+    
+
                 }
 
             } elseif ($action === 'partial') {
@@ -79,6 +88,7 @@ class ReceivingFunctionsController extends Controller
                         ]);
                     }
                 }
+
             }
         }
         

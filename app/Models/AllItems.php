@@ -19,6 +19,11 @@ class AllItems extends Model
         return $this -> hasMany(PurchaseOrderItems::class, 'itemd_id');
     }
 
+    public function receivedItems()
+    {
+        return $this -> hasMany(ReceivedItems::class, 'item_id', 'item_id');
+    }
+
     protected $fillable = [
         'item_name',
         'item_unit',
