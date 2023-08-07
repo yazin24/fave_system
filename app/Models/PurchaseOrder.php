@@ -64,7 +64,6 @@ class PurchaseOrder extends Model
         parent::boot();
         static::creating(function($purchaseOrder){
             $purchaseOrder -> status = SystemStatus::where('status', 'queued') -> first() -> id;
-            $purchaseOrder ->  del_status = false;
             $purchaseOrder -> payment_status = false;
             $purchaseOrder -> created_at = now() -> format('Y-m-d h:i:s A');
             $purchaseOrder -> updated_at = now() -> format('Y-m-d h:i:s A');

@@ -24,7 +24,7 @@
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-10">
                     {{-- {{$toReceivePurchaseOrder -> del_status}} --}}
-                    @if($toReceivePurchaseOrder -> del_status == '7')
+                    @if($toReceivePurchaseOrder -> del_status == 7)
                     Undelivered
                     @elseif($toReceivePurchaseOrder -> del_status == 6)
                     Partial

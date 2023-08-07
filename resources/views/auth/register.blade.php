@@ -18,7 +18,6 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
@@ -41,6 +40,24 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+        <div class="mt-4 text-xs">
+            <x-input-label for="usertype" :value="__('Usertype')" class="text-xs"/>
+            <select id="usertype" name="usertype" class="block mt-1 w-1/2 text-xs border rounded-md border-gray-300" required autocomplete="username">
+                <option value="" disabled selected>Select Usertype</option>
+                <option value="admin" @if(old('usertype') === 'admin') selected @endif>Admin</option>
+                <option value="purchasing" @if(old('usertype') === 'purchasing') selected @endif>Purchasing</option>
+                <option value="receiving" @if(old('usertype') === 'receiving') selected @endif>Receiving</option>
+                <option value="inventory" @if(old('usertype') === 'inventory') selected @endif>Inventory</option>
+                {{-- <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
+                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
+                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
+                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option> --}}
+                <!-- Add more options as needed -->
+            </select>
+            <x-input-error :messages="$errors->get('usertype')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">

@@ -40,8 +40,8 @@
                                 <th class="text-xs w-1/5 font-bold">Quantity</th>
                                 <th class="text-xs w-1/5 font-bold">Unit</th>
                                 <th class="text-xs w-1/5 font-bold">Price</th>
-                                <th class="text-xs w-1/5 font-bold">Amount</th>
-                                
+                                {{-- <th class="text-xs w-1/5 font-bold">Amount</th>
+                                 --}}
                             </tr>
                         </thead>    
 
@@ -49,14 +49,14 @@
                             @foreach($toReceivePurchaseOrder -> purchaseOrderItems as $index => $item)
                             <tr class="h-10">   
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="item_name[{{$item -> id}}]" class="text-xs items-center w-full" type="text" value="{{$item -> allItems -> item_name}}"></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="item_name[{{$item -> id}}]" class="text-xs text-center w-full" type="text" value="{{$item -> allItems -> item_name}}"></td>
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value=0></td>
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs items-center w-full" value="{{$item -> allItems -> item_unit}}" readonly></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs text-center w-full" value=0></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs text-center w-full" value="{{$item -> allItems -> item_unit}}" readonly></td>
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs items-center w-full" value="{{$item -> unit_price}}"></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs text-center w-full" value="{{$item -> unit_price}}"></td>
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td>
+                                {{-- <td class="text-xs text-center border-b-2 font-bold"><input name="" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td> --}}
 
                             </tr>
                             @endforeach    

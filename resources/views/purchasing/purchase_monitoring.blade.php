@@ -47,7 +47,7 @@
                 @foreach($purchases as $purchase)
                 <tr class="h-10">
                     <td class="border-b-2 text-xs text-center">{{$purchase -> po_number}}</td>
-                    <td class="border-b-2 text-xs text-center">{{$purchase -> purchaseOrderSupplier -> supplier_name}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$purchase -> purchaseOrderSupplier -> supplier -> supplier_name}}</td>
                     <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$purchase -> requested_by}}</td>
                     <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$purchase -> prepared_by}}</td>
                     <td class="border-b-2 text-xs text-center capitalize">{{$purchase -> systemStatus -> status}}</td>
@@ -96,8 +96,8 @@
                     <input type="hidden" name="amountPaid" id="amountPaid" value="">
                 </div>
                 <div class="mt-4 flex justify-end">
-                <button type="button" onclick="confirmPayment()" class="text-xs bg-teal-300 hover:bg-teal-500 p-1 rounded-md mr-4 text-gray-200 font-bold"><i class="fa-regular fa-circle-check font-bold"></i> Confirm</button>
-                <button type="button" onclick="closeModal()" class="text-xs p-1 bg-red-300 hover:bg-red-500 text-gray-200 rounded-md"><i class="fa-regular fa-circle-xmark font-bold"></i> Cancel</button>
+                <button type="button" onclick="confirmPayment()" class="text-xs bg-teal-300 hover:bg-teal-600 p-1 rounded-md mr-4 text-gray-200 font-bold"><i class="fa-regular fa-circle-check font-bold"></i> Confirm</button>
+                <button type="button" onclick="closeModal()" class="text-xs p-1 bg-gray-100 border border-gray-400 hover:font-bold text-gray-400 hover:text-gray-800 rounded-md"><i class="fa-regular fa-circle-xmark font-bold"></i> Cancel</button>
                 </div>
             </div>
         </div>

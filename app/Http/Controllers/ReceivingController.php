@@ -15,8 +15,8 @@ class ReceivingController extends Controller
          $toReceivePurchaseOrders = PurchaseOrder::with(['systemStatus', 'purchaseOrderItems.allItems'])
         ->where('status', 1)
         ->where(function ($query) {
-            $query->where('del_status', 6)
-                  ->orWhere('del_status', 7);
+            $query->where('del_status', 7)
+                  ->orWhere('del_status', 6);
         })
         ->orderBy('created_at', 'desc')
         ->get();

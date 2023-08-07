@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
             $table -> boolean('payment_status') -> after('status') -> default(false);
+            $table -> integer('del_status') -> default(7);
         });
     }
 

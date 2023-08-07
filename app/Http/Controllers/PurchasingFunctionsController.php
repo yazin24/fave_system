@@ -80,12 +80,14 @@ class PurchasingFunctionsController extends Controller
 
         $userName = Auth::user() -> name;
 
+        $defaultDelStatus = 7;
+
         // $delStatus = SystemStatus::where('status', 'undelivered') -> value('id');
 
         $newPurchaseOrder = PurchaseOrder::create([
 
             'po_number' => $realPoNumber,
-            'del_status' => 7,
+            'del_status' => $defaultDelStatus,
             'requested_by' => $request -> requested_by,
             'prepared_by' => $userName,
         ]);
@@ -248,7 +250,9 @@ class PurchasingFunctionsController extends Controller
         
         $paymentStatus -> amount_paid = $amountPaid;
 
-        $supplierName = $paymentStatus->purchaseOrderSupplier->supplier_name;
+        $supplierName = $paymentStatus->purchaseOrderSupplier-> supplier -> supplier_name;
+
+        // dd($supplierName);
 
         $supplierCreditLimit = SupplierCreditLimit::whereHas('suppliers', function ($query) 
 
@@ -257,6 +261,7 @@ class PurchasingFunctionsController extends Controller
         $query -> where('supplier_name', $supplierName);
 
         }) -> first();
+        
 
         if($supplierCreditLimit){
 
@@ -354,7 +359,7 @@ class PurchasingFunctionsController extends Controller
 
         Session::flash('success', 'Supplier and its item has been created successfully!');
 
-        return redirect() -> back();
+        return view('purchasing.purchasing_home');
     }
 
     // public function supplier_list()

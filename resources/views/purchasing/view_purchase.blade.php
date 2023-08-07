@@ -21,9 +21,9 @@
                     @if($purchase -> del_status == 7)
                     <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Undelivered</span></h2>
                     @elseif($purchase -> del_status == 6)
-                     <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Partial</span></h2>
+                     <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Partial</span></h2>
                      @elseif($purchase -> del_status == 4)
-                     <h2 class="text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Complete</span></h2>
+                     <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Complete</span></h2>
                     @endif
                 </div>
              </div>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="ml-auto mt-4 font-bold mr-4">
-                        <th class="text-xs">Total Amount:</th>
+                        <th><span class="text-xs">Total Amount</span>:</th>
                         <td><span class="text-xs text-red-600">₱{{$totalAmount}}.00</span></td>
                     </div>
                  </div>
