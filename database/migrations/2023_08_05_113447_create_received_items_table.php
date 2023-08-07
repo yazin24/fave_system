@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('received_items', function (Blueprint $table) {
             $table->id();
-            $table -> unsignedBigInteger('po_id');
-            $table -> unsignedBigInteger('item_id');
+            $table -> unsignedBigInteger('po_id') -> nullable();
+            $table -> unsignedBigInteger('item_id') -> nullable();
             $table -> integer('quantity_received') ->nullable();
             $table->timestamps();
 
             $table -> foreign('po_id') -> references('id') -> on('purchase_orders') -> onDelete('cascade');
-            $table -> foreign('item_id') -> references('item_id') -> on('purchase_order_items') -> onDelete('cascade');
+            $table -> foreign('item_id') -> references('item_id') -> on('purchase_order_items');
         });
     }
 

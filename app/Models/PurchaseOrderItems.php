@@ -20,7 +20,7 @@ class PurchaseOrderItems extends Model
 
     public function receivedItems()
     {
-        return $this -> hasMany(ReceivedItems::class, 'item_id');
+        return $this -> hasMany(ReceivedItems::class, 'item_id', 'item_id');
     }
 
     // public function supplierItems()

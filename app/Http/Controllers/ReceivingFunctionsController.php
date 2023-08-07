@@ -12,6 +12,7 @@ use App\Models\ReceivedPurchaseOrderCredentials;
 use App\Models\ReceivedPurchaseOrderDetails;
 use App\Models\SupplierItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ReceivingFunctionsController extends Controller
 {
@@ -24,7 +25,6 @@ class ReceivingFunctionsController extends Controller
 
     public function save_and_receive_po(Request $request, $id)
     {
-
         
         $toReceivePurchaseOrder = PurchaseOrder::findOrFail($id);
 
@@ -39,10 +39,14 @@ class ReceivingFunctionsController extends Controller
                 foreach ($toReceivePurchaseOrder->purchaseOrderItems as $item) {
 
                     $quantityReceived = $request->input('quantity.' . $item->id, 0);
+
+                    // dd($item -> item_id);
                     
-                    $item->receivedItems()->create([
+                    $item-> receivedItems() ->create([
 
                         'po_id' => $toReceivePurchaseOrder -> id,
+
+                        'item_id' => $item -> item_id,
 
                         'quantity_received' => $quantityReceived,
 
@@ -66,6 +70,8 @@ class ReceivingFunctionsController extends Controller
 
                             'po_id' => $toReceivePurchaseOrder -> id,
 
+                            'item_id' => $item -> item_id,
+
                             'quantity_received' => $quantityReceived,
 
                             'received_at' => now(), 
@@ -75,8 +81,14 @@ class ReceivingFunctionsController extends Controller
                 }
             }
         }
+        
 
-        return view('receiving.receiving_home') -> with('success', 'Purchase Order has been Delivered!');
+        if($toReceivePurchaseOrder -> del_status == 4){
+            return view('receiving.receiving_home') -> with('success', 'Purchase Order has been Delivered!');
+        }elseif($toReceivePurchaseOrder -> del_status == 6) {
+            return view('receiving.receiving_home') -> with('success', 'Purchase Order has been received as partial!');
+        }
+        
     
     }
 

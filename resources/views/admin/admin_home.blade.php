@@ -47,7 +47,7 @@
     <div class="ml-2 md:ml-6 mt-6 mr-2 md:mr-6 w-full">
       <div class="font-bold text-red-500 font-2xl">
         @if (session('success'))
-            {{ session('success') }}
+            {{ session('success')}}
         @endif
     </div>
       @yield('admin-body')
