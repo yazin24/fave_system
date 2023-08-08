@@ -81,15 +81,13 @@ class ReceivingFunctionsController extends Controller
         
 
         if($toReceivePurchaseOrder -> del_status == 4){
+
             return view('receiving.receiving_home') -> with('success', 'Purchase Order has been Delivered!');
+
         }elseif($toReceivePurchaseOrder -> del_status == 6) {
+
             return view('receiving.receiving_home') -> with('success', 'Purchase Order has been received as partial!');
         }
-        
-    }
-
-    public function receive_as_partial()
-    {
         
     }
 
