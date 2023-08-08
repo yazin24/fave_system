@@ -20,7 +20,7 @@
             <tr class="md:h-10">
                    
                 <td class="border-b-2 text-xs text-center w-1/6 capitalize h-6 md:h-10">{{$receivedPurchaseOrder -> po_number}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-6 md:h-10">{{$receivedPurchaseOrder ->purchaseOrderSupplier -> supplier_name}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 h-6 md:h-10">{{$receivedPurchaseOrder ->purchaseOrderSupplier -> supplier ->  supplier_name}}</td>
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-6 md:h-10">
                 @if($receivedPurchaseOrder -> del_status == 4)

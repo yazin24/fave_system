@@ -54,14 +54,17 @@ class ReceivingFunctionsController extends Controller
                         'received_at' => now(), 
 
                     ]);
-
-                    $allItems = AllItems::all();
-
-                    foreach ($allItems as $item) {
-                        $totalQuantityReceived = $item->receivedItems()->sum('quantity_received');
-                        $item->update(['quantity' => $totalQuantityReceived]);
-                    }
     
+                    $allItem = AllItems::where('id', $item -> item_id) -> first();
+
+                    if($allItem){
+                        $allItem -> increment('quantity', $quantityReceived);
+                    }else {
+                        AllItems::create([
+                            'id' => $item -> item_id,
+                            'quantity' => $quantityReceived,
+                        ]);
+                    }
 
                 }
 
@@ -99,7 +102,6 @@ class ReceivingFunctionsController extends Controller
             return view('receiving.receiving_home') -> with('success', 'Purchase Order has been received as partial!');
         }
         
-    
     }
 
     public function receive_as_partial()
