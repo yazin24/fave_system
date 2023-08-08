@@ -33,9 +33,15 @@ class ReceivingFunctionsController extends Controller
 
             $action = $request->input('action');
 
-            if ($action === 'complete') {
+            if ($action === 'complete' || $action === 'partial') {
               
-                $toReceivePurchaseOrder->update(['del_status' => 4]);
+                // $toReceivePurchaseOrder->update(['del_status' => 4]);
+
+                if($action === 'complete') {
+                    $toReceivePurchaseOrder -> update(['del_status' => 4]);
+                }elseif($action === 'partial') {
+                    $toReceivePurchaseOrder -> update(['del_status' => 6]);
+                }
 
                 foreach ($toReceivePurchaseOrder->purchaseOrderItems as $item) {
 
@@ -54,42 +60,20 @@ class ReceivingFunctionsController extends Controller
                         'received_at' => now(), 
 
                     ]);
+
+                    $quantityCountReceived = $item -> receivedItems -> sum('quantity_received');
     
                     $allItem = AllItems::where('id', $item -> item_id) -> first();
 
                     if($allItem){
-                        $allItem -> increment('quantity', $quantityReceived);
+                        $allItem -> update(['quantity' => $quantityCountReceived]);
                     }else {
                         AllItems::create([
                             'id' => $item -> item_id,
-                            'quantity' => $quantityReceived,
+                            'quantity' => $quantityCountReceived,
                         ]);
                     }
 
-                }
-
-            } elseif ($action === 'partial') {
-               
-                $toReceivePurchaseOrder->update(['del_status' => 6]);
-
-                foreach ($toReceivePurchaseOrder->purchaseOrderItems as $item) {
-
-                    $quantityReceived = $request->input('quantity.' . $item->id, 0);
-                    
-                    if ($quantityReceived > 0) {
-
-                        $item->receivedItems()->create([
-
-                            'po_id' => $toReceivePurchaseOrder -> id,
-
-                            'item_id' => $item -> item_id,
-
-                            'quantity_received' => $quantityReceived,
-
-                            'received_at' => now(), 
-
-                        ]);
-                    }
                 }
 
             }
