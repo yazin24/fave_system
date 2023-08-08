@@ -105,8 +105,8 @@ class PurchasingFunctionsController extends Controller
 
         $newPurchaseOrder -> purchaseOrderTerms() -> create([
             'po_id' => $newPurchaseOrder -> id,
-            'credit_term' => $request -> credit_term,
-            'payment_term' => $request -> payment_term,
+            'credit_term' => $request -> payment_term,
+            'payment_term' => $request -> mode_of_payment,
             'due_date' => $dueDate,
         ]);
         

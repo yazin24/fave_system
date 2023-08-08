@@ -64,8 +64,8 @@
 
             <div class="flex flex-row mb-3">
                 {{-- <input type="text" id="approved_by" name="approved_by" placeholder="Approved By" class="w-1/2 text-xs" required> --}}
-                <select id="credit_term" name="credit_term" class="w-1/2 h-8 text-xs mb-1" required>
-                    <option value="" disabled selected>Credit Term</option>
+                <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs mb-1" required>
+                    <option value="" disabled selected>Payment Term</option>
                     <option value=1>sample Days</option>
                 <option value=3>3 Days</option>
                 <option value=7>1 Week</option>
@@ -73,8 +73,8 @@
                 <option value=30>1 Month</option>
                 </select>
 
-                <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs" required>
-                    <option value="" disabled selected>Payment Term</option>
+                <select id="mode_of_payment" name="mode_of_payment" class="w-1/2 h-8 text-xs" required>
+                    <option value="" disabled selected>Mode of Payment</option>
                     <option value="cash">Cash</option>
                     <option value="bank transfer">Bank Transfer</option>
                     <option value="cheque">Cheque</option>
