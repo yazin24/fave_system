@@ -174,6 +174,8 @@ Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list'
 
 Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase']) -> name('adminunpurchase');
 
+Route::get('/admin/stock-monitoring', [AdminController::class, 'admin_stock_monitoring']) -> name('adminstockmonitoring');
+
 //Admin Routes (Functionalities)
 
 //Route::get('/')

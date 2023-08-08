@@ -164,11 +164,11 @@ class AdminFunctionsController extends Controller
 
         $templateReceipt -> setvalue('SUPPLIER', $allPurchaseOrder -> purchaseOrderSupplier -> supplier_name);
 
-        $templateReceipt -> setValue('REQUESTED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> requested_by);
+        $templateReceipt -> setValue('REQUESTED_BY', $allPurchaseOrder -> requested_by);
 
-        $templateReceipt -> setValue('PREPARED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> prepared_by);
+        $templateReceipt -> setValue('PREPARED_BY', $allPurchaseOrder -> prepared_by);
 
-        $templateReceipt -> setValue('APPROVED_BY', $allPurchaseOrder -> purchaseOrderCredentials -> approved_by);
+        $templateReceipt -> setValue('APPROVED_BY', $allPurchaseOrder -> approved_by);
 
         // $currentDate = Carbon::now() -> toDateString();
 
@@ -189,9 +189,9 @@ class AdminFunctionsController extends Controller
 
             $templateReceipt -> setValue("ITEM_QUANTITY{$itemIndex}", $item -> quantity);
 
-            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> quantity_unit);
+            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> allItems -> item_unit);
 
-            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> item_name);
+            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> allItems -> item_name);
 
             $templateReceipt ->  setValue("UNIT_PRICE{$itemIndex}", $item -> unit_price);
 

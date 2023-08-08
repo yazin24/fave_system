@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\PurchaseOrder;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
@@ -51,6 +52,13 @@ class AdminController extends Controller
                         ->paginate(10);
 
         return view('admin.admin_unpurchase', ['unPurchaseOrders' => $unPurchaseOrders]);
+    }
+
+    public function admin_stock_monitoring()
+    {
+        $allStocks = AllItems::all();
+
+        return view('admin.admin_stock_monitoring', ['allStocks' => $allStocks]);
     }
     
 }
