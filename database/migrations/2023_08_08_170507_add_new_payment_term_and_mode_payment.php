@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('purchase_order_terms', function (Blueprint $table) {
-            $table -> dropColumn('credit_term');
-            $table -> dropColumn('payment_term');
+            $table -> integer('payment_term') -> after('po_id') -> default(0);
+            $table -> string('mode_of_payment') -> after('payment_term') -> default('');
         });
     }
 

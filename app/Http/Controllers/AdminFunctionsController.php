@@ -136,7 +136,7 @@ class AdminFunctionsController extends Controller
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
-        $templateReceipt -> setValue('PTERM', $allPurchaseOrder -> purchaseOrderTerms -> credit_term);
+        $templateReceipt -> setValue('PTERM', $allPurchaseOrder -> purchaseOrderTerms -> payment_term);
 
         $templateReceipt -> setValue('PO', $allPurchaseOrder -> po_number);
 

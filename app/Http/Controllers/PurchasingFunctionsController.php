@@ -105,8 +105,8 @@ class PurchasingFunctionsController extends Controller
 
         $newPurchaseOrder -> purchaseOrderTerms() -> create([
             'po_id' => $newPurchaseOrder -> id,
-            'credit_term' => $request -> payment_term,
-            'payment_term' => $request -> mode_of_payment,
+            'payment_term' => $request -> payment_term,
+            'mode_of_payment' => $request -> mode_of_payment,
             'due_date' => $dueDate,
         ]);
         
@@ -176,24 +176,27 @@ class PurchasingFunctionsController extends Controller
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
+        $templateReceipt -> setValue('PTERM', $purchase -> purchaseOrderTerms -> payment_term);
+
         $templateReceipt -> setValue('PO', $purchase -> po_number);
 
-        $templateReceipt -> setValue('PO_DATE', $purchase -> created_at);
+        $createdDate = date('Y-m-d', strtotime($purchase -> created_at));
 
-        $templateReceipt -> setvalue('SUPPLIER', $purchase -> purchaseOrderSupplier -> supplier_name);
+        $templateReceipt -> setValue('PO_DATE', $createdDate);
+
+        $templateReceipt -> setvalue('SUPPLIER', $purchase -> purchaseOrderSupplier -> supplier -> supplier_name);
+
+        $templateReceipt -> setvalue('SUPPLIER_ADDRESS', $purchase -> purchaseOrderSupplier -> supplier -> supplier_address);
+
+        $templateReceipt -> setvalue('SUPPLIER_NUMBER', $purchase -> purchaseOrderSupplier -> supplier -> contact_number);
+
+        $templateReceipt -> setvalue('SUPPLIER_PERSON', $purchase -> purchaseOrderSupplier -> supplier -> contact_person);
 
         $templateReceipt -> setValue('REQUESTED_BY', $purchase -> requested_by);
 
         $templateReceipt -> setValue('PREPARED_BY', $purchase -> prepared_by);
 
         $templateReceipt -> setValue('APPROVED_BY', $purchase -> approved_by);
-
-        // $currentDate = Carbon::now() -> toDateString();
-
-        // $totalAmount = DB::table('purchase_order_items')
-        //             -> whereDate('created_at', '=', $currentDate)
-        //             ->sum('amount');
-
 
         $templateReceipt -> setValue('TOTAL', $purchase -> purchaseOrderItems -> sum('amount'));
 
@@ -207,9 +210,9 @@ class PurchasingFunctionsController extends Controller
 
             $templateReceipt -> setValue("ITEM_QUANTITY{$itemIndex}", $item -> quantity);
 
-            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> quantity_unit);
+            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> allItems -> item_unit);
 
-            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> item_name);
+            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> allItems -> item_name);
 
             $templateReceipt ->  setValue("UNIT_PRICE{$itemIndex}", $item -> unit_price);
 
