@@ -10,20 +10,23 @@
         Receiving</h2>
       <ul>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('receivedpomonitoring')}}'>
-          <div class='flex items-center'>
-            <div>Receiving Monitoring</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-desktop text-xl"></i>
+            <div class="text-sm">Receive Monitoring</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('receivepo')}}'>
-          <div class='flex items-center'>
-            <div>Received P.O</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-file-medical text-xl"></i>
+            <div class="text-sm">Received P.O</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('pullout')}}'>
-          <div class='flex items-center'>
-            <div>Pull-Out</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-upload text-xl"></i>
+            <div class="text-sm">Pull-Out</div>
           </div>
         </a>
         </li>

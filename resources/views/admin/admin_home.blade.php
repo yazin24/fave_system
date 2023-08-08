@@ -10,32 +10,37 @@
             Admin</h2>
         <ul>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href=''>
-            <div class='flex items-center'>
-              <div>Sales Monitoring</div>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-coins text-xl"></i>
+              <div class="text-sm">Sales Monitoring</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 '><a href='{{ route('adminpurchasingmonitoring')}}'>
-            <div class='flex items-center'>
-              <div>Purchasing Monitoring</div>
+            <div class='flex flex-row items-center gap-1'>
+              <div><i class="fa-solid fa-rectangle-list text-xl"></i></div>
+              <div class="text-sm">Purchasing Monitoring</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminpurchaseapproval')}}'>
-            <div class='flex items-center'>
-              <div>Purchase Approval</div>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-clipboard-question text-xl"></i>
+              <div class="text-sm">Purchase Approval</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
-            <div class='flex items-center'>
-              <div>Supplier List</div>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Supplier List</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminunpurchase')}}'>
-            <div class='flex items-center'>
-              <div>Unpurchase Order</div>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-link-slash text-xl"></i>
+              <div class="text-sm">Unpurchase Order</div>
             </div>
             </a>
           </li>

@@ -11,32 +11,37 @@
         Purchasing</h2>
       <ul>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('purchasemonitoring')}}'>
-          <div class='flex items-center'>
-            <div>Purchase Monitoring</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-rectangle-list text-xl"></i>
+            <div class="text-sm">Purchase Monitoring</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('purchase')}}'>
-          <div class='flex items-center'>
-            <div>Purchase</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-file-circle-plus text-xl"></i>
+            <div class="text-sm">Purchase</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('allpurchases')}}'>
-          <div class='flex items-center'>
-            <div>All Purchases</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-eye text-xl"></i>
+            <div class="text-sm">All Purchases</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('addsupplier')}}'>
-          <div class='flex items-center'>
-            <div>Add Supplier</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-folder-plus"></i>
+            <div class="text-sm">Add Supplier</div>
           </div>
         </a>
         </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('purchasingsupplierlist')}}'>
-          <div class='flex items-center'>
-            <div>Supplier List</div>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-address-book 2xl"></i>
+            <div class="text-sm">Supplier List</div>
           </div>
         </a>
         </li>

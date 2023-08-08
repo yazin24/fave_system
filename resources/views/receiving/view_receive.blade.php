@@ -27,6 +27,8 @@
                 <div class="ml-auto">
                     @if($toReceivePurchaseOrder -> del_status == 7)
                     <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">No</span></h2>
+                    @elseif($toReceivePurchaseOrder -> del_status == 6)
+                    <h2 class="text-xs text-gray-800 font-bold">Del Status: <span class="text-red-700 font-bold capitalize">Partial</span></h2>
                     @endif
                 </div>
              </div>
