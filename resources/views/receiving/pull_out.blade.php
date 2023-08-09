@@ -9,16 +9,16 @@
          <div class="font-bold font-2xl bg-gray-900 rounded-md p-2">
                 <form  method="POST" action="{{route('pulloutitems')}}" >
                      @csrf
-                     @method('PUT')
+                     @method('POST')
         
                      <div class="w-full">
-                        <input type="text" name="pull_out_number" placeholder="Pull Out Number (Auto-generated)" class="mt-1 w-full text-xs" required>
+                        <input type="text" name="pull_out_number" placeholder="Pull Out Number (Auto-generated)" class="mt-1 w-full text-xs" value="" readonly>
                         </div>
                      <div class="w-full">
-                        <input type="text" name="requested_by[]" placeholder="Requested By" class="mt-1 w-full text-xs" required>
+                        <input type="text" name="requested_by" placeholder="Requested By" class="mt-1 w-full text-xs" required>
                         </div>
                         <div class="w-full">
-                            <input type="text" name="approved_by[]" placeholder="Approved By" class="mt-1 w-full text-xs" required>
+                            <input type="text" name="approved_by" placeholder="Approved By" class="mt-1 w-full text-xs" required>
                             </div>
                         <div class="flex flex-row">
                         

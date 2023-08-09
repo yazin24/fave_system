@@ -156,7 +156,7 @@ Route::put('receiving/view/purchase-order/receive/partial/{id}', [ReceivingFunct
 
 Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}', [ReceivingFunctionsController::class, 'view_received']) -> name('viewreceived');
 
-Route::put('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
+Route::post('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
 
 
 

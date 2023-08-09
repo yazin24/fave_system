@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
 use App\Models\PullOutItems;
+use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderSupplier;
@@ -101,11 +102,12 @@ class ReceivingFunctionsController extends Controller
    
     public function pull_out_items(Request $request)
     {
-        $lastPullOutNumber = PullOutItems::latest('id') -> first();
+        $lastPullOutNumber = PullOutItemsCredentials::latest('id') -> first();
 
         $lastNumber = $lastPullOutNumber ? $lastPullOutNumber -> po_number : null;
 
         $prefix = '0';
+
         $pullOutNoLength = 5;
 
         $counter = 0;
@@ -119,22 +121,41 @@ class ReceivingFunctionsController extends Controller
         $pullOutPart = str_pad($counter, $pullOutNoLength, '0', STR_PAD_LEFT);
 
         $realPoNumber = $prefix . $pullOutPart;
+       
+        $newPullOutOrderCredentials = PullOutItemsCredentials::create([
+            'pull_out_number' => $realPoNumber,
+            // 'prepared_by' => $pullOutPreparedBy,
+            'requested_by' => $request -> requested_by,
+            'approved_by' => $request -> approved_by,
+        ]);
 
-        $pullOutItemNames = $request -> input('item_name');
+        $pullOutItemNames = $request -> item_name;
 
-        foreach($pullOutItemNames as $pullOutItemName){
+        $pullOutItemsQuantities = $request -> quantity;
+
+        foreach($pullOutItemNames as $index => $pullOutItemName){
 
             $item = AllItems::where('item_name', $pullOutItemName) -> first();
 
+            if($item) {
+                $newPullOutOrder = PullOutItems::create([
+                    'pull_out_id' => $newPullOutOrderCredentials -> id,
+                    'item_id' => $item -> id,
+                    'item_unit' => $item -> item_unit,
+                    'quantity' => $pullOutItemsQuantities[$index],
+                    'price' => $item -> default_price,
+                ]);
+
+                $newPullOutOrder -> save();
+
+                $newQuantity = $item -> quantity - $pullOutItemsQuantities[$index];
+
+                $item -> update(['quantity' => $newQuantity]);
+            }
+
         }
 
-        $newPullOutOrder = PullOutItems::create([
-            'po_number' => $realPoNumber,
-            'item_id' => $item -> id,
-        ]);
-        
-
-        return view('receiving.receiving_home');
+        return view('receiving.receiving_home') -> with('success', 'Pull Out Success!');
     }
   
 }
