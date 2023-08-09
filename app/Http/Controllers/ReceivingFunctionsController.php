@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\PullOutItems;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderSupplier;
@@ -98,8 +99,30 @@ class ReceivingFunctionsController extends Controller
         return view('receiving.view_received', ['receivedPurchaseOrder' => $receivedPurchaseOrder, 'totalAmount' => $totalAmount]);
     }
    
-    public function pull_out_items()
+    public function pull_out_items(Request $request)
     {
+        $lastPullOutNumber = PullOutItems::latest('id') -> first();
+
+        $lastNumber = $lastPullOutNumber ? $lastPullOutNumber -> po_number : null;
+
+        $prefix = '0';
+        $pullOutNoLength = 5;
+
+        $counter = 0;
+        if($lastNumber){
+
+            $lastCounter = (int) substr($lastNumber, strlen($prefix));
+
+            $counter = $lastCounter + 1;
+        }
+
+        $pullOutPart = str_pad($counter, $pullOutNoLength, '0', STR_PAD_LEFT);
+
+        $realPoNumber = $prefix . $pullOutPart;
+
+        $newPullOutOrder = PullOutItems::create([
+            'po_number' => $realPoNumber,
+        ]);
         
 
         return view('receiving.receiving_home');

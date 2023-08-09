@@ -56,7 +56,7 @@
                                 <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$item -> id}}]" type="text" class="text-xs text-center w-full" value=0></td>
                                 <td class="text-xs text-center border-b-2 font-bold"><input name="unit[{{$item -> id}}]" type="text" class="text-xs text-center w-full" value="{{$item -> allItems -> item_unit}}" readonly></td>
 
-                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs text-center w-full" value="{{$item -> unit_price}}"></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="unit_price[{{$item -> id}}]" type="number" class="text-xs text-center w-full" value="{{$item -> unit_price}}" readonly></td>
 
                                 {{-- <td class="text-xs text-center border-b-2 font-bold"><input name="" type="number" class="text-xs items-center w-full" value="{{$item -> amount}}" readonly></td> --}}
 

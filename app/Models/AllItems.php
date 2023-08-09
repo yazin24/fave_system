@@ -24,6 +24,11 @@ class AllItems extends Model
         return $this -> hasMany(ReceivedItems::class, 'item_id', 'item_id');
     }
 
+    public function pullOutItems()
+    {
+        return $this -> hasMany(PullOutItems::class, 'item_id');
+    }
+
     protected $fillable = [
         'item_name',
         'item_unit',
