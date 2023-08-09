@@ -120,8 +120,17 @@ class ReceivingFunctionsController extends Controller
 
         $realPoNumber = $prefix . $pullOutPart;
 
+        $pullOutItemNames = $request -> input('item_name');
+
+        foreach($pullOutItemNames as $pullOutItemName){
+
+            $item = AllItems::where('item_name', $pullOutItemName) -> first();
+
+        }
+
         $newPullOutOrder = PullOutItems::create([
             'po_number' => $realPoNumber,
+            'item_id' => $item -> id,
         ]);
         
 

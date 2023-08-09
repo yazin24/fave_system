@@ -9,19 +9,22 @@ class PullOutItems extends Model
 {
     protected $table = 'pull_out_items';
 
+    public function pullOutItemsCredentials()
+    {
+        return $this -> belongsTo(PullOutItemsCredentials::class);
+    }
+
     public function allItems()
     {
         return $this -> belongsTo(AllItems::class, 'item_id');
     }
 
     protected $fillable = [
-        'po_number',
+        'pull_out_id',
         'item_id',
         'item_unit',
         'quantity',
         'price',
         'total_amount',
-        'requested_by',
-        'approved_by',
     ];
 }

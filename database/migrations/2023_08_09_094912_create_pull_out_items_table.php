@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('pull_out_items', function (Blueprint $table) {
             $table->id();
-            $table -> string('po_number') -> nullable();
+            $table -> unsignedBigInteger('pull_out_id') -> nullable();
             $table -> unsignedBigInteger('item_id') -> nullable();
             $table -> string('item_unit') -> default('');
             $table -> integer('quantity') -> default(0);
             $table -> decimal('price') -> default(0); 
             $table -> decimal('total_amount') -> default(0);
-            $table -> string('requested_by') -> default('');
-            $table -> string('approved_by') -> nullable('');
             $table->timestamps();
 
+            $table -> foreign('pull_out_id') -> references('id') -> on('pull_out_items_credentials');
             $table -> foreign('item_id') -> references('id') -> on('all_items');
         });
     }
