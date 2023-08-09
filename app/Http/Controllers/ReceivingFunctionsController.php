@@ -98,6 +98,12 @@ class ReceivingFunctionsController extends Controller
         return view('receiving.view_received', ['receivedPurchaseOrder' => $receivedPurchaseOrder, 'totalAmount' => $totalAmount]);
     }
    
+    public function pull_out_items()
+    {
+        
+
+        return view('receiving.receiving_home');
+    }
   
 }
 

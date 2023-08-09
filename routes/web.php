@@ -145,6 +145,7 @@ Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -
 Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']) -> name('pullout');
 
 
+
 Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
 
 Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');
@@ -154,6 +155,8 @@ Route::put('receiving/view/purchase-order/receive/save/{id}', [ReceivingFunction
 Route::put('receiving/view/purchase-order/receive/partial/{id}', [ReceivingFunctionsController::class, 'receive_as_partial']) -> name('receiveaspartial');
 
 Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}', [ReceivingFunctionsController::class, 'view_received']) -> name('viewreceived');
+
+Route::put('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
 
 
 
