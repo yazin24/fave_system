@@ -144,6 +144,8 @@ Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'rece
 
 Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -> name('receivepo');
 
+Route::get('receiving/pull-out-monitoring', [ReceivingController::class, 'pull_out_monitoring']) -> name('pulloutmonitoring');
+
 Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']) -> name('pullout');
 
 
@@ -155,6 +157,8 @@ Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsContr
 Route::put('receiving/view/purchase-order/receive/save/{id}', [ReceivingFunctionsController::class, 'save_and_receive_po']) -> name('saveandreceivepo');
 
 Route::put('receiving/view/purchase-order/receive/partial/{id}', [ReceivingFunctionsController::class, 'receive_as_partial']) -> name('receiveaspartial');
+
+Route::get('receiving/pul-out-monitoring/pull-out-details/{pullOut}', [ReceivingFunctionsController::class, 'pull_out_details']) -> name('pulloutdetails');
 
 Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}', [ReceivingFunctionsController::class, 'view_received']) -> name('viewreceived');
 

@@ -23,6 +23,13 @@
           </div>
         </a>
         </li>
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('pulloutmonitoring')}}'>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-outdent text-xl"></i>
+            <div class="text-sm">Pull-Out Monitoring</div>
+          </div>
+        </a>
+        </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('pullout')}}'>
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-upload text-xl"></i>

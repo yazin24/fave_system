@@ -99,32 +99,27 @@ class ReceivingFunctionsController extends Controller
 
         return view('receiving.view_received', ['receivedPurchaseOrder' => $receivedPurchaseOrder, 'totalAmount' => $totalAmount]);
     }
+
+    public function pull_out_details(PullOutItemsCredentials $pullOut)
+    {
+        return view('receiving.pull_out_details', ['pullOut' => $pullOut]);
+    }
    
     public function pull_out_items(Request $request)
     {
         $lastPullOutNumber = PullOutItemsCredentials::latest('id') -> first();
 
-        $lastNumber = $lastPullOutNumber ? $lastPullOutNumber -> po_number : null;
+        $lastNumber = $lastPullOutNumber ? (int) $lastPullOutNumber -> po_number: 0;
 
-        $prefix = '0';
+        $pullOutNoLength = 6;
 
-        $pullOutNoLength = 5;
+            $counter = $lastNumber + 1;
 
-        $counter = 0;
-        if($lastNumber){
-
-            $lastCounter = (int) substr($lastNumber, strlen($prefix));
-
-            $counter = $lastCounter + 1;
-        }
-
-        $pullOutPart = str_pad($counter, $pullOutNoLength, '0', STR_PAD_LEFT);
-
-        $realPoNumber = $prefix . $pullOutPart;
+        $realPoNumber =str_pad($counter, $pullOutNoLength, '0', STR_PAD_LEFT);
        
         $newPullOutOrderCredentials = PullOutItemsCredentials::create([
             'pull_out_number' => $realPoNumber,
-            // 'prepared_by' => $pullOutPreparedBy,
+            'prepared_by' => $request -> prepared_by,
             'requested_by' => $request -> requested_by,
             'approved_by' => $request -> approved_by,
         ]);

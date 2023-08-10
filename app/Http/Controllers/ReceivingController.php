@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ReceivedPurchaseOrder;
 use App\Models\SystemStatus;
@@ -31,6 +32,13 @@ class ReceivingController extends Controller
                                 ->get();
 
         return view('receiving.receive_po', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
+    }
+
+    public function pull_out_monitoring()
+    {
+        $pullOuts = PullOutItemsCredentials::all();
+
+        return view('receiving.pull_out_monitoring', ['pullOuts' => $pullOuts]);
     }
 
     public function pull_out()

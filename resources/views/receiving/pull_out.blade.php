@@ -18,6 +18,9 @@
                         <input type="text" name="requested_by" placeholder="Requested By" class="mt-1 w-full text-xs" required>
                         </div>
                         <div class="w-full">
+                            <input type="text" name="prepared_by" placeholder="Prepared By" class="mt-1 w-full text-xs" required>
+                            </div>
+                        <div class="w-full">
                             <input type="text" name="approved_by" placeholder="Approved By" class="mt-1 w-full text-xs" required>
                             </div>
                         <div class="flex flex-row">

@@ -108,6 +108,9 @@
             <x-responsive-nav-link :href="route('receivepo')" :active="request()->routeIs('receivepo')">
                 <i class="fa-solid fa-file-medical text-xl"></i>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('pulloutmonitoring')" :active="request()->routeIs('pulloutmonitoring')">
+                <i class="fa-solid fa-outdent text-xl"></i>
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('pullout')" :active="request()->routeIs('pullout')">
                 <i class="fa-solid fa-upload text-xl"></i>
             </x-responsive-nav-link>
