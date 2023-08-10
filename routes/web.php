@@ -105,7 +105,9 @@ Route::get('/purchasing/all-purchases/all-purchase-order', [PurchasingFunctionsC
 
 Route::post('/purchasing/add-supplier/store', [PurchasingFunctionsController::class, 'add_supplier_store']) -> name('addsupplierstore');
 
-Route::post('purchasing/purchase-monitoring/update-payment-status/{id}', [PurchasingFunctionsController::class, 'update_payment_status']) -> name('updatepaymentstatus');
+Route::get('purchasing/purchase-monitoring/payment-details/{purchase}', [PurchasingFunctionsController::class, 'payment_details']) -> name('paymentdetails');
+
+Route::post('purchasing/purchase-monitoring/payment-details/update-payment-status/{id}', [PurchasingFunctionsController::class, 'update_payment_status']) -> name('updatepaymentstatus');
 
 // Route::get('/purchasing/supplier-list', [PurchasingFunctionsController::class, 'supplier_list']) -> name('supplierlist');
 

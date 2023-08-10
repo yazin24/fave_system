@@ -9,11 +9,12 @@ use App\Models\SupplierCreditLimit;
 use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use App\Models\SystemStatus;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
-
+use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
 class PurchasingFunctionsController extends Controller
 {
@@ -243,9 +244,24 @@ class PurchasingFunctionsController extends Controller
 
     //update payment status from unpaid to paid
 
+    public function payment_details(PurchaseOrder $purchase)
+    {
+        // $dateNow = Carbon::now();
+        // foreach ($purchases as $purchase){
+        //     $dueDate = Carbon::parse($purchase -> purchaseOrderTerms -> due_date);
+        //     $daysDiff = $dueDate -> diffInDays($dateNow);
+
+        //     $purchase -> daysDiff = $daysDiff;
+        // };
+
+        $totalAmount = $purchase -> purchaseOrderItems -> sum('amount');
+
+        return view('purchasing.purchase_settle_payment', ['purchase' => $purchase, 'totalAmount' => $totalAmount]);
+    }
+
     public function update_payment_status(Request $request, $id)
     {
-        $amountPaid = $request -> input('confirmPaid');
+        $amountPaid = $request -> input('amountPaid');
 
         $paymentStatus = PurchaseOrder::findOrFail($id);
 

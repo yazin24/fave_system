@@ -54,12 +54,7 @@
 
                     <td class="border-b-2 text-xs text-center capitalize">
                     @if($purchase -> payment_status == 0)
-                    <form method="POST" id="purchasePaid" action="{{ route('updatepaymentstatus', ['id' => $purchase->id]) }}">
-                        @csrf
-                        @method('POST')
-                        <input type="hidden" name="confirmPaid" id="confirmPaid" value="">
-                        <button type="button" onclick="openModal()">Unpaid</button>
-                    </form>
+                        <button type="button" onclick="return confirm('Do you want to settle the payment for this Purchase Order?')"><a href='{{route('paymentdetails', ['purchase' => $purchase])}}'>Unpaid</a></button>
                     </td>
                     @else
                     Paid
@@ -86,46 +81,7 @@
        
     </div>
 
-    <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-start z-50">
-        <div class="bg-white p-4 rounded mt-44">
-            <h2 class="text-sm font-bold mb-2">Enter Payment Amount:</h2>
-            <div class="flex flex-col">
-                <div class="w-full">
-                    <input type="number" id="paymentAmount" class="text-xs border p-2 mr-2 w-60 md:w-96 rounded-sm">
-                    <input type="hidden" name="purchaseId" id="purchaseId" value="">
-                    <input type="hidden" name="amountPaid" id="amountPaid" value="">
-                </div>
-                <div class="mt-4 flex justify-end">
-                <button type="button" onclick="confirmPayment()" class="text-xs bg-teal-300 hover:bg-teal-600 p-1 rounded-md mr-4 text-gray-200 font-bold"><i class="fa-regular fa-circle-check font-bold"></i> Confirm</button>
-                <button type="button" onclick="closeModal()" class="text-xs p-1 bg-gray-100 border border-gray-400 hover:font-bold text-gray-400 hover:text-gray-800 rounded-md"><i class="fa-regular fa-circle-xmark font-bold"></i> Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<script>
-    function openModal(purchaseId) {
-        document.getElementById('paymentModal').classList.remove('hidden');
-        document.getElementById('purchaseId').value = purchaseId;
-    }
-
-    function closeModal() {
-        document.getElementById('paymentModal').classList.add('hidden');
-    }
-
-    function confirmPayment() {
-        const inputValue = document.getElementById('paymentAmount').value;
-        const purchaseId = document.getElementById('purchaseId').value;
-
-        if (inputValue !== '' && parseFloat(inputValue) > 0) {
-            document.getElementById('confirmPaid').value = inputValue;
-            document.getElementById('purchasePaid').submit();
-        } else {
-            alert('Please enter a valid payment amount!');
-        }
-    }
-</script>
 
 @endsection
