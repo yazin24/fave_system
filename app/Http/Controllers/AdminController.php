@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\PullOutItems;
+use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
@@ -65,6 +67,13 @@ class AdminController extends Controller
         $allStocks = AllItems::all();
 
         return view('admin.admin_stock_monitoring', ['allStocks' => $allStocks]);
+    }
+
+    public function admin_outgoing_stocks()
+    {
+        $pullOutItems = PullOutItemsCredentials::all();
+
+        return view('admin.admin_outgoing_stocks', ['pullOutItems' => $pullOutItems]);
     }
     
 }

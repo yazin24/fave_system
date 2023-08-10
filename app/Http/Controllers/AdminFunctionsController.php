@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ReceivedPurchaseOrder;
 use App\Models\ReceivedPurchaseOrderDetails;
@@ -221,5 +222,11 @@ class AdminFunctionsController extends Controller
         $supplier -> delete();
 
         return redirect(route('adminpurchasingmonitoring')) -> with('success', 'Purchase Order has been deleted successfully!');
+    }
+
+    public function admin_pull_out_items(PullOutItemsCredentials $pullOutItem)
+    {
+
+        return view('admin.admin_pull_out_items', ['pullOutItem' => $pullOutItem]);
     }
 }

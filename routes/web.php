@@ -183,6 +183,8 @@ Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase'
 
 Route::get('/admin/stock-monitoring', [AdminController::class, 'admin_stock_monitoring']) -> name('adminstockmonitoring');
 
+Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_stocks']) -> name('adminoutgoingstocks');
+
 //Admin Routes (Functionalities)
 
 //Route::get('/')
@@ -208,6 +210,8 @@ Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFuncti
 Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt');
 
 Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');
+
+Route::get('admin/outgoing-stocks/pull-out-items/details/{pullOutItem}', [AdminFunctionsController::class, 'admin_pull_out_items']) -> name('adminpulloutitems');
 
 });
 

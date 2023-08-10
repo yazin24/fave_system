@@ -51,6 +51,13 @@
             </div>
             </a>
           </li>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminoutgoingstocks')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-outdent text-xl"></i>
+              <div class="text-sm">Outgoing Stocks</div>
+            </div>
+            </a>
+          </li>
 
         </ul>
       </nav>
