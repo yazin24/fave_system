@@ -68,9 +68,13 @@
                     <option value="" disabled selected>Payment Term</option>
                     <option value=1>sample Days</option>
                 <option value=3>3 Days</option>
-                <option value=7>1 Week</option>
-                <option value=14>2 Weeks</option>
-                <option value=30>1 Month</option>
+                <option value=7>7 Days</option>
+                <option value=15>15 Days</option>
+                <option value=30>30 Days</option>
+                <option value=7>7 Days PDC</option>
+                <option value=15>15 Days PDC</option>
+                <option value=30>30 Days PDC</option>
+                
                 </select>
 
                 <select id="mode_of_payment" name="mode_of_payment" class="w-1/2 h-8 text-xs" required>
@@ -80,6 +84,11 @@
                     <option value="cheque">Cheque</option>
                     <option value="gcash">Gcash</option>
                     <option value="paymaya">Paymaya</option>
+                    <option value="BDO Deposit">BDO Deposit</option>
+                    <option value="BPI Deposit">BPI Deposit</option>
+                    <option value="CBC Deposit">CBC Deposit</option>
+                    <option value="Security Bank Deposit">Security Bank Deposit</option>
+                    <option value="China Bank Deposit">China Bank Deposit</option>
                 </select>
                 
             </div>

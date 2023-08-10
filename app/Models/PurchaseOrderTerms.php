@@ -20,6 +20,7 @@ class PurchaseOrderTerms extends Model
         'po_id',
         'credit_term',
         'payment_term',
+        'mode_of_payment',
         'due_date',
     ];
 }
