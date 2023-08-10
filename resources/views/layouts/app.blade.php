@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Fave System</title>
-        <link rel="icon" href="{{ asset('images/favelogo.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/newfavelogo.png') }}" type="image/x-icon">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

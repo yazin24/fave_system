@@ -2,75 +2,35 @@
 
 @section('admin-body')
 
-<div class="w-full mx-auto">
-    {{-- <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4"> --}}
 
-     <h2 class="font-bold md:text-xl mb-2 ml-1">Supplier List</h2>
-        {{-- <div> --}}
-            <div class="flex flex-row mt-2 md:mt-8">
-            <form method="POST" action="{{route('adminshowsuppliersitems')}}">
-                @csrf
-                <div class="flex flex-row">
-                <div>
-                <select name="selected_id" class="text-xs">
-                    <option value="" disabled selected>Select</option>
-                    @foreach($suppliers as $supplier)
-                    <option value="{{$supplier -> id}}" for="select">{{$supplier -> supplier_name}}</option>
-                    @endforeach
-                </select>
-                </div>
-                <div class="ml-1 mt-1">
-                <button type="submit" class="bg-teal-400 hover:bg-teal-600 rounded-md p-1 text-xs text-gray-200">Enter</button>
-                </div>
-                </div>
-            </form>
-            </div>
-            <div class="mt-8">
-                @if(isset($supplierItems))
-                <table class="bg-gray-300 shadow-lg w-full">
-                    @foreach($supplierItems -> groupBy('suppliers.supplier_name') as $supplierName => $items)
-                    <thead>
-                        <tr class="bg-gray-900 border-b-2 text-gray-300 w-full h-10 text-md">
-                            <th class="flex flex-row justify-center pt-2">
-                                <span class="mr-6 font-bold">{{$supplierName}}</span>
-
-                                <span class="mr-2 text-blue-500">
-                                {{-- <form>
-                                    <button>
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                </form> --}}
-                                </span>
-
-                            {{-- <span>
-                                @foreach($items as $item)
-                                <form method="POST" action="{{route('admindeletesupplier', ['id' => $item -> id])}}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash"></i></button>
-                                </form>
-                                @endforeach
-                            </span> --}}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="h-24 p-4">
-                                @foreach($items as $item)
-                                {{$item -> item_name}}  
-                                <br><hr><br>
-                                @endforeach
-                            </td>
-                        </tr>
-                    </tbody>
-                    @endforeach
-                </table>
-                @endif
-            </div>
-
-        {{-- </div> --}}
-
-    {{-- </form> --}}
-</div>
+        <div class="w-full">
+            {{-- <form class="bg-indigo shadow-md rounded px-8 pt-6 pb-8 mb-4"> --}}
+        
+                <h2 class="font-bold md:text-xl mb-4 ml-1">Supplier List</h2>
+        
+                    <div class="mt-4">
+        
+                        <div class="bg-white-900 text-gray-900 mt-1">
+                            <table class="bg-gray-300 shadow-lg w-full">
+                                <thead class="">
+                                    <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 h-8 md:h-12">
+                                        <th class="text-xs text-center w-1/4">SUPPLIER NAME</th>
+                                        <th class="text-xs text-center w-1/4">NUMBER</th>
+                                        <th class="text-xs text-center w-1/4">ADDRESS</th>
+                                        <th class="text-xs text-center w-1/4">ACTION</th>
+                                        
+                                </thead>
+                                <tbody>
+                                    @foreach($suppliers as $supplier)
+                                    <tr class="h-8 md:h-10">
+                                        <td class="border-b-2 text-xs text-center">{{$supplier -> supplier_name}}</td>
+                                        <td class="border-b-2 text-xs text-center">{{$supplier -> contact_number}}</td>
+                                        <td class="border-b-2 text-xs text-center">{{$supplier -> supplier_address}}</td>
+                                        <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('adminsupplierdetails', ['supplier' => $supplier])}}">View</a></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+        </div>
 @endsection

@@ -200,6 +200,11 @@ class AdminFunctionsController extends Controller
 
     }
 
+    public function admin_supplier_details(Suppliers $supplier)
+    {
+        return view('admin.admin_supplier_details', ['supplier' => $supplier]);
+    }
+
     public function admin_delete_unpurchase($id)
     {
         $unPurchaseOrder = PurchaseOrder::findOrFail($id);

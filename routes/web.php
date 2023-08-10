@@ -169,6 +169,8 @@ Route::middleware(['auth', 'admin']) -> group(function(){
 
     //Admin Routes Sidebar
 
+Route::get('/admin/sales-monitoring', [AdminController::class, 'admin_sales_monitoring']) -> name('adminsalesmonitoring');
+
 Route::get('/admin/purchasing-monitoring', [AdminController::class, 'admin_purchasing_monitoring']) -> name('adminpurchasingmonitoring');
 
 Route::get('admin/purchase-approval', [AdminController::class, 'admin_purchase_approval']) -> name('adminpurchaseapproval');
@@ -196,6 +198,8 @@ Route::get('/admin/purchase-monitoring/view-purchase/{allPurchaseOrder}', [Admin
 Route::post('admin/supplier-list/items', [AdminFunctionsController::class, 'admin_show_suppliers_items']) -> name('adminshowsuppliersitems');
 
 Route::get('/admin/purchase-approval/view-details/{queuePurchase}', [AdminFunctionsController::class, 'admin_purchase_order_approval']) -> name('adminpurchaseorderapproval');
+
+Route::get('admin/supplier-list/supplier-details/{supplier}', [AdminFunctionsController::class, 'admin_supplier_details']) -> name('adminsupplierdetails');
 
 Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase');
 

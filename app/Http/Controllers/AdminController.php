@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    public function admin_sales_monitoring()
+    {
+        return view('admin.admin_sales_monitoring');
+    }
+
     public function admin_purchasing_monitoring()
     {
 

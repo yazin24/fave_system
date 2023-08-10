@@ -9,7 +9,7 @@
             <i class="fa-solid fa-network-wired fa-xl"></i>
             Admin</h2>
         <ul>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href=''>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-coins text-xl"></i>
               <div class="text-sm">Sales Monitoring</div>
