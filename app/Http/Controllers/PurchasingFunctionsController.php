@@ -98,11 +98,11 @@ class PurchasingFunctionsController extends Controller
             'supplier_name' => $request -> supplier_name,
         ]);
 
-        $creditTerm = (int) $request -> credit_term;
+        $paymentTerm = (int) $request -> payment_term;
 
         $todayDate = now();
 
-        $dueDate = $todayDate -> addDays($creditTerm);
+        $dueDate = $todayDate -> addDays($paymentTerm);
 
         $newPurchaseOrder -> purchaseOrderTerms() -> create([
             'po_id' => $newPurchaseOrder -> id,

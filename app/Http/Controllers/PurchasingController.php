@@ -31,35 +31,37 @@ class PurchasingController extends Controller
                         ->where('status', '3')
                         ->count('po_number');
 
-        //this code get all the data in the purchase_orders to be display in the table for the current date
-         $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'systemStatus')
-                    ->where(function ($query){
-                        $query -> where('status', 3)
-                                ->where('payment_status', 0);
-                    })
-                    ->orWhere(function($query){
-                        $query -> where('status', 3)
-                                ->where('payment_status', 1);
-                    })
-                    ->orWhere(function($query){
-                        $query -> where('status', 1)
-                                ->where('payment_status', 0);
-                    })
-                    ->orWhere(function($query){
-                        $query -> where('status', 1)
-                                ->where('payment_status', 1);
-                    })
-
+             //this code get all the data in the purchase_orders to be display in the table for the current date
+        $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'systemStatus')
+                    ->where(function ($query) {
+                    // Status = 3 (Queued) and Payment Status = 0 (Unpaid)
+                    $query->where('status', 3)->where('payment_status', 0);
+                })
+                    ->orWhere(function ($query) {
+                    // Status = 1 (Approved) and Payment Status = 0 (Unpaid)
+                     $query->where('status', 1)->where('payment_status', 0);
+                })
+                    ->orWhere(function ($query) {
+                    // Status = 3 (Queued) and Payment Status = 1 (Paid)
+                    $query->where('status', 3)->where('payment_status', 1);
+                })
+                    ->orWhere(function ($query) {
+                    // Status = 1 (Approved) and Payment Status = 1 (Paid)
+                    $query->where('status', 1)->where('payment_status', 1);
+                })
                     ->orderBy('created_at', 'desc')
-                    ->paginate('10');
+                    ->paginate(10);
 
-        $dateNow = Carbon::now();
-        foreach ($purchases as $purchase){
-            $dueDate = Carbon::parse($purchase -> purchaseOrderTerms -> due_date);
-            $daysDiff = $dueDate -> diffInDays($dateNow);
+                    $dateNow = Carbon::now();
+                    foreach ($purchases as $purchase) {
+                        $dueDate = Carbon::parse($purchase->purchaseOrderTerms->due_date);
+                        $daysDiff = $dueDate->diffInDays($dateNow);
+                            
 
-            $purchase -> daysDiff = $daysDiff;
-        };
+                        $purchase->dueDateColorClass = '';
+                    
+                        $purchase->daysDiff = $daysDiff;
+                    }
         
         return view('purchasing.purchase_monitoring', [
             'purchases' => $purchases, 

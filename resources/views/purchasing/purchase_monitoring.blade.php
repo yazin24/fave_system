@@ -60,12 +60,11 @@
                     Paid
                     @endif
                     <td class="border-b-2 text-xs text-center 
-                    @if($purchase->payment_status == 0)
-                    @if($purchase->daysDiff < 0)
-                        bg-red-500 text-white font-bold
-                    @elseif($purchase->daysDiff <= 3)
+                    @if($purchase->payment_status == 0 && $purchase->daysDiff <= 0)
                         bg-yellow-500 text-white font-bold
-                    @endif
+                    @elseif($purchase->payment_status == 0  && $purchase->daysDiff < 3)
+                        bg-red-500 text-white font-bold
+                    
                     @endif
                     ">
                         {{date('Y-m-d', strtotime($purchase->purchaseOrderTerms->due_date))}}

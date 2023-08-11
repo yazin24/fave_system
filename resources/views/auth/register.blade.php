@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="flex justify-center h-20">
-        <img src="{{ asset('images/favelogo.png') }}" alt="Example Image">
+    <div class="flex justify-center h-16">
+        <img src="{{ asset('images/newfavelogo.png') }}" alt="Example Image">
         </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
