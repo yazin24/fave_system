@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ReceivingController extends Controller
 {
+    public function product_input()
+    {
+        return view('receiving.product_input');
+    }
+
     public function received_po_monitoring()
     {
          $toReceivePurchaseOrders = PurchaseOrder::with(['systemStatus', 'purchaseOrderItems.allItems'])

@@ -9,6 +9,13 @@
         <i class="fa-solid fa-hands-holding-circle"></i>
         Receiving</h2>
       <ul>
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('productinput')}}'>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-cubes-stacked text-xl"></i>
+            <div class="text-sm">Products</div>
+          </div>
+        </a>
+        </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('receivedpomonitoring')}}'>
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-desktop text-xl"></i>

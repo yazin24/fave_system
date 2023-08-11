@@ -139,6 +139,7 @@ Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 's
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
 
+Route::get('receiving/products', [ReceivingController::class, 'product_input']) -> name('productinput');
 
 Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'received_po_monitoring']) -> name('receivedpomonitoring');
 

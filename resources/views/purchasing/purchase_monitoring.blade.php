@@ -60,12 +60,19 @@
                     Paid
                     @endif
                     <td class="border-b-2 text-xs text-center 
-                    @if($purchase->payment_status == 0 && $purchase->daysDiff <= 0)
-                        bg-yellow-500 text-white font-bold
-                    @elseif($purchase->payment_status == 0  && $purchase->daysDiff < 3)
-                        bg-red-500 text-white font-bold
+                    @if($purchase -> payment_status == 0)
+                    @php
+                    $dueDate = strtotime($purchase->purchaseOrderTerms->due_date);
+                    $today = strtotime('today');
+                    $threeDaysAhead = strtotime('+3 days');
                     
-                    @endif
+                    if ($dueDate < $today) {
+                        echo 'bg-red-500'; // Overdue
+                    } elseif ($dueDate <= $threeDaysAhead) {
+                        echo 'bg-yellow-500'; // Within 3 days
+                    }
+                @endphp
+                @endif
                     ">
                         {{date('Y-m-d', strtotime($purchase->purchaseOrderTerms->due_date))}}
                     </td>
