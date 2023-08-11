@@ -11,9 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_skus', function (Blueprint $table) {
+        Schema::create('product_sku', function (Blueprint $table) {
             $table->id();
+            $table -> string('barcode') -> default('');
+            $table -> unsignedBigInteger('variant_id');
+            $table -> string('sku_name') -> default('');
+            $table -> decimal('sku_size', 5, 5) -> default(0);
+            $table -> integer('sku_quantity') -> default(0);
             $table->timestamps();
+
+            $table -> foreign('variant_id') -> references('id') -> on('product_variants') -> onDelete('cascade');
         });
     }
 
