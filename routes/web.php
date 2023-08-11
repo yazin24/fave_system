@@ -150,6 +150,9 @@ Route::get('receiving/pull-out-monitoring', [ReceivingController::class, 'pull_o
 Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']) -> name('pullout');
 
 
+//Receiving Functionalities
+
+Route::post('/receiving/products/add-products', [ReceivingFunctionsController::class, 'add_product_sku']) -> name('addproductsku');
 
 Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
 

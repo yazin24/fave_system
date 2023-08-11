@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductVariants extends Model
 {
-    use HasFactory;
+    protected $table = 'product_variants';
+
+    public function productSku()
+    {
+        return $this -> hasMany(ProductSku::class, 'variant_id');
+    }
+
+    protected $fillable = [
+        'variant_name',
+    ];
 }

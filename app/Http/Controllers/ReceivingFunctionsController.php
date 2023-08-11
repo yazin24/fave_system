@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\ProductSku;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
@@ -19,6 +20,21 @@ use Illuminate\Support\Facades\Session;
 
 class ReceivingFunctionsController extends Controller
 {
+    public function add_product_sku(Request $request)
+    {
+        $newProductSku = ProductSku::create([
+            'variant_id' => $request -> variant_name,
+            'barcode' => $request -> barcode,
+            'sku_name' => $request -> sku_name,
+            'sku_size' => $request -> sku_size,
+            'sku_quantity' => $request -> sku_quantity,
+        ]);
+
+        Session::flash('success', 'Product SKU has been added!');
+
+        return view('receiving.receiving_home');
+    }
+
     public function view_to_be_receive_po(PurchaseOrder $toReceivePurchaseOrder)
     {
         $totalAmount = $toReceivePurchaseOrder -> purchaseOrderItems -> sum('amount');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ReceivedPurchaseOrder;
@@ -13,7 +14,9 @@ class ReceivingController extends Controller
 {
     public function product_input()
     {
-        return view('receiving.product_input');
+        $allVariants = ProductVariants::all();
+
+        return view('receiving.product_input', ['allVariants' => $allVariants]);
     }
 
     public function received_po_monitoring()
@@ -48,6 +51,7 @@ class ReceivingController extends Controller
 
     public function pull_out()
     {
+
         return view('receiving.pull_out');
     }
 }
