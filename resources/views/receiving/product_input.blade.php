@@ -21,15 +21,15 @@
         <div class="mt-4 font-bold">
             <div>
                 <label>Barcode</label>
-                <input type="text" name="barcode" class="h-8 w-full">
+                <input type="text" name="barcode" class="h-8 w-full" required>
             </div>
             <div>
                 <label>Sku Name</label>
-                <input type="text" name="sku_name" class="h-8 w-full">
+                <input type="text" name="sku_name" class="h-8 w-full" required>
             </div>
             <div>
                 <label>Choose SKU Size</label>
-                <select id="" name="sku_size" class="w-full text-gray-500 text-xs h-8">
+                <select id="" name="sku_size" class="w-full text-gray-500 text-xs h-8" required>
                     <option value="" disabled selected>-</option>
                     <option value="450">450ml</option>
                     <option value="1000">1L</option>

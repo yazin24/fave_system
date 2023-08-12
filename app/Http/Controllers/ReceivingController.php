@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 
 class ReceivingController extends Controller
 {
-    public function product_input()
-    {
-        $allVariants = ProductVariants::all();
 
-        return view('receiving.product_input', ['allVariants' => $allVariants]);
+    public function all_products()
+    {
+        return view('receiving.receiving_all_products');
     }
 
     public function received_po_monitoring()

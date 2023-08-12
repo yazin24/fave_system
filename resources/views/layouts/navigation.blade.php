@@ -102,7 +102,7 @@
             </x-responsive-nav-link>
         
         @elseif(Auth::user()->usertype === 'receiving')
-            <x-responsive-nav-link :href="route('productinput')" :active="request()->routeIs('productinput')">
+            <x-responsive-nav-link :href="route('allproducts')" :active="request()->routeIs('allproducts')">
                 <i class="fa-solid fa-cubes-stacked text-xl"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('receivedpomonitoring')" :active="request()->routeIs('receivedpomonitoring')">

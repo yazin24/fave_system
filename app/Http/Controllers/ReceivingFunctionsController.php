@@ -5,21 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
 use App\Models\ProductSku;
+use App\Models\ProductVariants;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
-use App\Models\PurchaseOrderItems;
-use App\Models\PurchaseOrderSupplier;
-use App\Models\ReceivedPartial;
-use App\Models\ReceivedPurchaseOrder;
-use App\Models\ReceivedPurchaseOrderCredentials;
-use App\Models\ReceivedPurchaseOrderDetails;
-use App\Models\SupplierItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ReceivingFunctionsController extends Controller
 {
+    public function product_input()
+    {
+        $allVariants = ProductVariants::all();
+
+        return view('receiving.product_input', ['allVariants' => $allVariants]);
+    }
+
     public function add_product_sku(Request $request)
     {
         $newProductSku = ProductSku::create([

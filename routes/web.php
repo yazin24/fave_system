@@ -139,7 +139,7 @@ Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 's
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
 
-Route::get('receiving/products', [ReceivingController::class, 'product_input']) -> name('productinput');
+Route::get('receiving/all-products', [ReceivingController::class, 'all_products']) -> name('allproducts');
 
 Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'received_po_monitoring']) -> name('receivedpomonitoring');
 
@@ -151,6 +151,8 @@ Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']
 
 
 //Receiving Functionalities
+
+Route::get('receiving/all-products/input-products', [ReceivingFunctionsController::class, 'product_input']) -> name('productinput');
 
 Route::post('/receiving/products/add-products', [ReceivingFunctionsController::class, 'add_product_sku']) -> name('addproductsku');
 
