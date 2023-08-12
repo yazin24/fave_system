@@ -11,27 +11,55 @@
             <div class="bg-gray-900 rounded-md px-2 py-2 max-w-screen-sm mt-4">
                 <div class="bg-gray-200 px-4 py-4"> 
 
-                    <div class="flex flex-row justify-between">
+                    <div class="md:flex flex-row justify-between">
 
                         <div>
-                            <h2 class="font-bold text-xl">{{$supplier -> supplier_name}}</h2>
+                            <h2 class="font-bold">Supplier Name: {{$supplier -> supplier_name}}</h2>
                         </div>
 
                         <div class="flex items-center">
-                            @if($supplier -> supplier_address)
-                                <h2 class="">{{$supplier -> supplier_address}}</h2>
+                            @if($supplier -> supplier_email)
+                                <h2 class=""> Email: {{$supplier -> supplier_email}}</h2>
                             @else 
-                                <h2>No Address</h2>
+                                <h2>No Email</h2>
                             @endif
                         </div>
 
                     </div>
+                    <div class="mt-1">
+                        @if($supplier -> supplier_address)
+                            <h2>Address: {{$supplier -> supplier_address}}</h2>
+                        @else
+                            <h2>No Address</h2>
+                        @endif
+                    </div>
+                    <div class="mt-1">
+                        @if($supplier -> contact_person)
+                            <h2>Contact Person: {{$supplier -> contact_person}}</h2>
+                        @else
+                            <h2>No Contact Person</h2>
+                        @endif
+                    </div>
 
                         <div class="mt-1">
                             @if($supplier -> contact_number)
-                                <h2>{{$supplier -> contact_number}}</h2>
+                                <h2>CP Number: {{$supplier -> contact_number}}</h2>
                             @else
                                 <h2>No Number</h2>
+                            @endif
+                        </div>
+                        <div class="mt-1">
+                            @if($supplier -> tel_number)
+                                <h2>Tel Number: {{$supplier -> tel_number}}</h2>
+                            @else
+                                <h2>No Tel Number</h2>
+                            @endif
+                        </div>
+                        <div class="mt-1">
+                            @if($supplier -> viber_account)
+                                <h2>Viber: {{$supplier -> viber_account}}</h2>
+                            @else
+                                <h2>No Viber</h2>
                             @endif
                         </div>
                         <br>

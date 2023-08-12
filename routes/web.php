@@ -221,6 +221,8 @@ Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFuncti
 
 Route::get('admin/products/input-products', [AdminFunctionsController::class, 'admin_input_products']) -> name('admininputproducts');
 
+Route::post('admin/products/input-products/add-new', [AdminFunctionsController::class, 'admin_add_products']) -> name('adminaddproducts');
+
 Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt');
 
 Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');

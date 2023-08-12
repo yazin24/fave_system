@@ -9,7 +9,7 @@
             <div class="mt-2 md:mt-4">
     
                 <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
-                    <form method="POST" action="{{route('addproductsku')}}">
+                    <form method="POST" action="{{route('adminaddproducts')}}">
                         @csrf
                     <div class="bg-gray-200 px-4 py-4">
                         <div class="flex flex-wrap justify-between md:mx-8">
