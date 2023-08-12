@@ -44,10 +44,10 @@
                         <tbody class="bg-gray-300">
                             @foreach($purchase -> purchaseOrderItems as $index => $item)
                             <tr class="h-10">   
-                                <td class="text-xs text-center border-b-2 font-bold">{{$item ->allitems -> item_name}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold">{{$item -> quantity}} {{$item -> allItems -> item_unit}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold">₱{{$item -> unit_price}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold">₱{{$item -> amount}}</td>
+                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> allItems -> item_name}}</td>
+                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> quantity}} {{$item -> allItems -> item_unit}}</td>
+                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">₱{{$item -> unit_price}}</td>
+                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">₱{{$item -> amount}}</td>
                             </tr>
                             @endforeach    
                         </tbody>

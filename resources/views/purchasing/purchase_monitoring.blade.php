@@ -9,22 +9,24 @@
 
     <div class="flex flex-row w-full">
 
+        
     <div class="flex flex-row justify-center items-center bg-gray-900 text-gray-200 p-1 md:p-4 mr-2 w-1/4">
-        <div class="mr-2 text-xs md:text-xl">Purchase: </div>
-        <div class="text-xs md:text-xl"> {{$totalPurchase}}</div>
+        <div class="mr-2 text-xs md:text-sm">Purchase: </div>
+        <div class="text-xs md:text-sm"> {{$totalPurchase}}</div>
     </div>
-    
+
+
     <div class="flex flex-row justify-center items-center bg-gray-900 text-gray-200 p-1 md:p-4 mr-2 w-1/4">
-        <div class="mr-2 text-xs md:text-xl">Total:</div>
-        <div class="text-xs md:text-xl">₱{{ $totalAmount % 1 === 0 ? number_format($totalAmount, 0) : number_format($totalAmount, 2) }}</div>
+        <div class="mr-2 text-xs md:text-sm">Total:</div>
+        <div class="text-xs md:text-sm">₱{{ $totalAmount % 1 === 0 ? number_format($totalAmount, 0) : number_format($totalAmount, 2) }}</div>
     </div>
     <div class="flex flex-row justify-center items-center bg-gray-900 text-gray-200 p-1 md:p-4 mr-2 w-1/4">
-        <div class="mr-2 text-xs md:text-xl">Queue:</div>
-        <div class="text-xs md:text-xl">{{$purchaseQueue}}</div>
+        <div class="mr-2 text-xs md:text-sm">Queue:</div>
+        <div class="text-xs md:text-sm">{{$purchaseQueue}}</div>
     </div>
     <div class="flex flex-row justify-center items-center bg-gray-900 text-gray-200 p-1 md:p-4 w-1/4">
-        <div class="mr-2 text-xs md:text-xl">Latest:</div>
-        <div class="text-xs md:text-xl">12-14</div>
+        <div class="mr-2 text-xs md:text-sm">Undelivered:</div>
+        <div class="text-xs md:text-sm">{{$undeliveredPurchase}}</div>
     </div>
 
     </div>

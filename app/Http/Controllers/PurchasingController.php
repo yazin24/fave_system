@@ -27,9 +27,11 @@ class PurchasingController extends Controller
                         -> sum('amount');
 
          // the purchase order has a status of queued. the id of queued is 3 hence i use the 3 in the query builder               
-        $purchaseQueue = PurchaseOrder::whereDate('created_at', $currentDate)
-                        ->where('status', '3')
+        $purchaseQueue = PurchaseOrder::where('status', '3')
                         ->count('po_number');
+
+        $undeliveredPurchase = PurchaseOrder::where('del_status', 7)
+                                ->count('del_status');
 
              //this code get all the data in the purchase_orders to be display in the table for the current date
         $purchases = PurchaseOrder::with('purchaseOrderSupplier', 'systemStatus')
@@ -68,6 +70,7 @@ class PurchasingController extends Controller
             'totalPurchase' => $totalPurchase, 
             'totalAmount' => $totalAmount,
             'purchaseQueue' => $purchaseQueue,
+            'undeliveredPurchase' => $undeliveredPurchase,
         ]);
     }
     

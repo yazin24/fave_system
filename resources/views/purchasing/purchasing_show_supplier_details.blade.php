@@ -3,7 +3,7 @@
 
 <div class="w-full">
 
-        <h2 class="font-bold text-xl mb-4 ml-1">Supplier's Details</h2>
+        <h2 class="font-bold md:text-xl mb-4 ml-1">Supplier's Details</h2>
        
 
         <div class="mt-4">
@@ -14,69 +14,69 @@
                     <div class="md:flex flex-row justify-between">
 
                         <div>
-                            <h2 class="font-bold">Supplier Name: {{$supplier -> supplier_name}}</h2>
+                            <h2 class="font-bold text-md">Supplier Name: {{$supplier -> supplier_name}}</h2>
                         </div>
 
                         <div class="flex items-center">
                             @if($supplier -> supplier_email)
-                                <h2 class=""> Email: {{$supplier -> supplier_email}}</h2>
+                                <h2 class="text-sm"> Email: {{$supplier -> supplier_email}}</h2>
                             @else 
-                                <h2>No Email</h2>
+                                <h2 class="text-sm">No Email</h2>
                             @endif
                         </div>
-
+                    
                     </div>
                     <div class="mt-1">
                         @if($supplier -> supplier_address)
-                            <h2>Address: {{$supplier -> supplier_address}}</h2>
+                            <h2 class="text-sm">Address: {{$supplier -> supplier_address}}</h2>
                         @else
-                            <h2>No Address</h2>
+                            <h2 class="text-sm">No Address</h2>
                         @endif
                     </div>
                     <div class="mt-1">
                         @if($supplier -> contact_person)
-                            <h2>Contact Person: {{$supplier -> contact_person}}</h2>
+                            <h2 class="text-sm">Contact Person: {{$supplier -> contact_person}}</h2>
                         @else
-                            <h2>No Contact Person</h2>
+                            <h2 class="text-sm">No Contact Person</h2>
                         @endif
                     </div>
 
                         <div class="mt-1">
                             @if($supplier -> contact_number)
-                                <h2>CP Number: {{$supplier -> contact_number}}</h2>
+                                <h2 class="text-sm">CP Number: {{$supplier -> contact_number}}</h2>
                             @else
-                                <h2>No Number</h2>
+                                <h2 class="text-sm">No Number</h2>
                             @endif
                         </div>
                         <div class="mt-1">
                             @if($supplier -> tel_number)
-                                <h2>Tel Number: {{$supplier -> tel_number}}</h2>
+                                <h2 class="text-sm">Tel Number: {{$supplier -> tel_number}}</h2>
                             @else
-                                <h2>No Tel Number</h2>
+                                <h2 class="text-sm">No Tel Number</h2>
                             @endif
                         </div>
                         <div class="mt-1">
                             @if($supplier -> viber_account)
-                                <h2>Viber: {{$supplier -> viber_account}}</h2>
+                                <h2 class="text-sm">Viber: {{$supplier -> viber_account}}</h2>
                             @else
-                                <h2>No Viber</h2>
+                                <h2 class="text-sm">No Viber</h2>
                             @endif
                         </div>
                         <br>
-                        <table class="w-full border border-gray-500 rounded-sm">
+                        <table class="w-full rounded-sm bg-gray-300">
                             <thead>
-                            <tr class="bg-green-700 text-gray-200">
+                            <tr class="bg-gray-900 text-gray-200 text-sm">
                             <th class="w-1/3">Item Name</th>
                             <th class="w-1/3">Stocks</th>
-                            <th class="w-1/3">Amount</th>
+                            <th class="w-1/3">Default Price</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($supplier -> supplierItems as $index => $item)
-                                <tr class="">
-                                    <td class="w-1/3 text-center">{{$item -> item_name}}</td>
-                                   <td class="w-1/3 text-center">{{$item -> purchaseOrderItems}}</td>
-                                   <td class="w-1/3 text-center">{{$item -> purchaseOrderItems}}</td>
+                                @foreach($supplier ->allItems as $item)
+                                <tr class="h-8">
+                                    <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> item_name}}</td>
+                                   <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> quantity}}</td>
+                                   <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> default_price}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

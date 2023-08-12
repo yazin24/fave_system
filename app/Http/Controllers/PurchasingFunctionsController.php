@@ -390,7 +390,7 @@ class PurchasingFunctionsController extends Controller
 
     public function show_supplier_details(Suppliers $supplier)
     {
-        $supplier -> load('supplierItems.purchaseOrderItems');
+        $supplier -> load('supplierItems.purchaseOrderItems.allItems');
 
         return view('purchasing.purchasing_show_supplier_details', ['supplier' => $supplier]);
     }
