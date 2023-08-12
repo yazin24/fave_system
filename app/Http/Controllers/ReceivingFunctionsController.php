@@ -126,13 +126,15 @@ class ReceivingFunctionsController extends Controller
     {
         $lastPullOutNumber = PullOutItemsCredentials::latest('id') -> first();
 
-        $lastNumber = $lastPullOutNumber ? (int) $lastPullOutNumber -> po_number: 0;
+        $lastNumber = $lastPullOutNumber ? (int) $lastPullOutNumber -> po_number : 0;
 
         $pullOutNoLength = 6;
 
-            $counter = $lastNumber + 1;
+        $counter = $lastNumber + 1;
 
-        $realPoNumber =str_pad($counter, $pullOutNoLength, '0', STR_PAD_LEFT);
+        $realPoNumber =str_pad((string)$counter, $pullOutNoLength, '0', STR_PAD_LEFT);
+
+        dd($realPoNumber);
        
         $newPullOutOrderCredentials = PullOutItemsCredentials::create([
             'pull_out_number' => $realPoNumber,
