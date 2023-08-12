@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSku;
+use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ReceivedPurchaseOrder;
@@ -198,7 +200,27 @@ class AdminFunctionsController extends Controller
 
         return response() -> download($savePath) -> deleteFileAfterSend(true);
 
+    }
 
+    public function admin_input_products()
+    {
+        $allVariants = ProductVariants::all();
+
+        return view('admin.admin_input_products', ['allVariants' => $allVariants]);
+    }
+
+    public function admin_add_products(Request $request)
+    {
+        $newProductSku = ProductSku::create([
+            'variant_id' => $request -> variant_name,
+            'barcode' => $request -> barcode,
+            'sku_name' => $request -> sku_name,
+            'sku_size' => $request -> sku_size,
+            'sku_quantity' => $request -> sku_quantity,
+        ]);
+
+        Session::flash('success', 'Product has been added!');
+        return view('admin.admin_home');
     }
 
     public function admin_supplier_details(Suppliers $supplier)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\ProductSku;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
@@ -60,6 +61,13 @@ class AdminController extends Controller
                         ->paginate(10);
 
         return view('admin.admin_unpurchase', ['unPurchaseOrders' => $unPurchaseOrders]);
+    }
+
+    public function admin_all_products()
+    {
+        $allProducts = ProductSku::all();
+
+        return view('admin.admin_all_products', ['allProducts' => $allProducts]);
     }
 
     public function admin_stock_monitoring()

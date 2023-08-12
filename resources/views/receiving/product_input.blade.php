@@ -42,7 +42,7 @@
                 <input type="number" name="sku_quantity" class="h-8 w-full">
             </div>
             <div class="mt-4">
-                <button type="submit" class="p-1 bg-teal-400 text-gray-200 font-bold hover:bg-teal-600 rounded-md shadow-md">Submit</button>
+                <button type="submit" class="p-1 bg-teal-500 text-gray-200 font-bold hover:bg-teal-600 rounded-md shadow-md">Submit</button>
             </div>
         </div>
         </div>

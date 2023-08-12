@@ -191,6 +191,8 @@ Route::get('admin/supplier-list', [AdminController::class, 'admin_supplier_list'
 
 Route::get('admin/unpurchase-order', [AdminController::class, 'admin_unpurchase']) -> name('adminunpurchase');
 
+Route::get('admin/products', [AdminController::class, 'admin_all_products']) -> name('adminallproducts');
+
 Route::get('/admin/stock-monitoring', [AdminController::class, 'admin_stock_monitoring']) -> name('adminstockmonitoring');
 
 Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_stocks']) -> name('adminoutgoingstocks');
@@ -216,6 +218,8 @@ Route::get('admin/supplier-list/supplier-details/{supplier}', [AdminFunctionsCon
 Route::post('admin/purchase-approval/view-details/approve/{id}', [AdminFunctionsController::class, 'admin_approve_purchase']) -> name('adminapprovepurchase');
 
 Route::post('admin/purchase-approval/view-details/disapprove/{id}', [AdminFunctionsController::class, 'admin_disapprove_purchase']) -> name('admindisapprovepurchase');
+
+Route::get('admin/products/input-products', [AdminFunctionsController::class, 'admin_input_products']) -> name('admininputproducts');
 
 Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [AdminFunctionsController::class, 'admin_generate_po_receipt']) -> name('admingeneratereceipt');
 

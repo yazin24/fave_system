@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
@@ -15,7 +16,9 @@ class ReceivingController extends Controller
 
     public function all_products()
     {
-        return view('receiving.receiving_all_products');
+        $allProducts = ProductSku::all();
+
+        return view('receiving.receiving_all_products', ['allProducts' => $allProducts]);
     }
 
     public function received_po_monitoring()

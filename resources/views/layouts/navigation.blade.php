@@ -76,6 +76,9 @@
             <x-responsive-nav-link :href="route('adminunpurchase')" :active="request()->routeIs('adminunpurchase')">
                 <i class="fa-solid fa-link-slash text-xl"></i>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('adminallproducts')" :active="request()->routeIs('adminallproducts')">
+                <i class="fa-solid fa-cubes-stacked text-xl"></i>
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('adminstockmonitoring')" :active="request()->routeIs('adminstockmonitoring')">
                 <i class="fa-solid fa-layer-group text-xl"></i>
             </x-responsive-nav-link>
