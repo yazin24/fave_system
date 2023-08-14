@@ -9,6 +9,7 @@ use App\Http\Controllers\PurchasingController;
 use App\Http\Controllers\PurchasingFunctionsController;
 use App\Http\Controllers\ReceivingController;
 use App\Http\Controllers\ReceivingFunctionsController;
+use App\Http\Controllers\SalesAgentController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
@@ -139,6 +140,9 @@ Route::get('staff/all-purchasing/view/all', [StaffFunctionsController::class, 's
 
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
 //----------------------------------------------------------RECEIVING-----------------------------------------------------------------
+Route::middleware(['auth', 'receiving']) -> group(function(){
+
+    //Receiving Siebar
 
 Route::get('receiving/all-products', [ReceivingController::class, 'all_products']) -> name('allproducts');
 
@@ -171,10 +175,13 @@ Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}'
 
 Route::post('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
 
+});
 
 
 //----------------------------------------------------------SALES-----------------------------------------------------------------
 //----------------------------------------------------------SALES-----------------------------------------------------------------
+
+Route::middleware(['auth', 'sales']) -> group(function(){
 
 //Sales Sidebar
 
@@ -183,6 +190,24 @@ Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring'
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 
 Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring']) -> name('agentmonitoring');
+
+});
+
+//----------------------------------------------------------SALES AGENT-----------------------------------------------------------------
+//----------------------------------------------------------SALES AGENT-----------------------------------------------------------------
+
+Route::middleware(['auth', 'sales_agent']) -> group(function(){
+
+//Sales Agent Sidebar
+
+Route::get('sales-agent/sales-monitoring', [SalesAgentController::class, 'sales_agent_monitoring']) -> name('salesagentmonitoring');
+
+Route::get('sales/request-po', [SalesAgentController::class, 'request_po']) -> name('requestpo');
+
+Route::get('sales/customer-monitoring', [SalesAgentController::class, 'customer_monitoring']) -> name('customermonitoring');
+
+
+});
 
 
 //----------------------------------------------------------ADMIN-----------------------------------------------------------------

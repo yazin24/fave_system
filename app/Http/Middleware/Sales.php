@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Sales
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth() -> user() -> usertype == 'admin'){
+        if(Auth() -> user() -> usertype == 'sales'){
             return $next($request);
         }
         abort(401);
-
-        
     }
 }
