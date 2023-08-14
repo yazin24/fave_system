@@ -10,6 +10,7 @@ use App\Http\Controllers\PurchasingFunctionsController;
 use App\Http\Controllers\ReceivingController;
 use App\Http\Controllers\ReceivingFunctionsController;
 use App\Http\Controllers\SalesAgentController;
+use App\Http\Controllers\SalesAgentFunctionsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
@@ -205,6 +206,10 @@ Route::get('sales-agent/sales-monitoring', [SalesAgentController::class, 'sales_
 Route::get('sales/request-po', [SalesAgentController::class, 'request_po']) -> name('requestpo');
 
 Route::get('sales/customer-monitoring', [SalesAgentController::class, 'customer_monitoring']) -> name('customermonitoring');
+
+//Sales Agent Functionalities
+
+Route::get('sales/customer-monitoring/new-customer', [SalesAgentFunctionsController::class, 'new_customer']) -> name('newcustomer');
 
 
 });
