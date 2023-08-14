@@ -19,6 +19,22 @@ return new class extends Migration
         });
 
         $area = [
+            ['area_name' => 'CALOOCAN'],
+            ['area_name' => 'LAS PINAS'],
+            ['area_name' => 'MAKATI'],
+            ['area_name' => 'MALABON'],
+            ['area_name' => 'MANDALUYONG'],
+            ['area_name' => 'MANILA'],
+            ['area_name' => 'MARIKINA'],
+            ['area_name' => 'MUNTINLUPA'],
+            ['area_name' => 'NAVOTAS'],
+            ['area_name' => 'PARANAQUE'],
+            ['area_name' => 'PASAY'],
+            ['area_name' => 'PASIG'],
+            ['area_name' => 'PATEROS'],
+            ['area_name' => 'QUEZON CITY'],
+            ['area_name' => 'SAN JUAN'],
+            ['area_name' => 'TAGUIG'],
             ['area_name' => 'ANGONO'],
             ['area_name' => 'ANTIPOLO'],
             ['area_name' => 'BINANGONAN'],

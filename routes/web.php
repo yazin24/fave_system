@@ -12,6 +12,7 @@ use App\Http\Controllers\ReceivingFunctionsController;
 use App\Http\Controllers\SalesAgentController;
 use App\Http\Controllers\SalesAgentFunctionsController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SalesFunctionsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
 use Illuminate\Support\Facades\Route;
@@ -191,6 +192,12 @@ Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring'
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 
 Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring']) -> name('agentmonitoring');
+
+//Sales Functionalities
+
+Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class, 'new_agent']) -> name('newagent');
+
+Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
 
 });
 
