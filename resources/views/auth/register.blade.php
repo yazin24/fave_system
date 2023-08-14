@@ -46,14 +46,11 @@
             <select id="usertype" name="usertype" class="block mt-1 w-1/2 text-xs border rounded-md border-gray-300" required autocomplete="username">
                 <option value="" disabled selected>Select Usertype</option>
                 <option value="admin" @if(old('usertype') === 'admin') selected @endif>Admin</option>
+                <option value="inventory" @if(old('usertype') === 'inventory') selected @endif>Inventory</option>
                 <option value="purchasing" @if(old('usertype') === 'purchasing') selected @endif>Purchasing</option>
                 <option value="receiving" @if(old('usertype') === 'receiving') selected @endif>Receiving</option>
-                <option value="inventory" @if(old('usertype') === 'inventory') selected @endif>Inventory</option>
-                {{-- <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
-                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
-                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option>
-                <option value="option2" @if(old('usertype') === 'option2') selected @endif>Option 2</option> --}}
-                <!-- Add more options as needed -->
+                <option value="sales" @if(old('usertype') === 'sales') selected @endif>Sales</option>
+                <option value="sales_agent" @if(old('usertype') === 'sales_agent') selected @endif>Sales Agent</option>
             </select>
             <x-input-error :messages="$errors->get('usertype')" class="mt-2" />
         </div>

@@ -120,6 +120,19 @@
             <x-responsive-nav-link :href="route('pullout')" :active="request()->routeIs('pullout')">
                 <i class="fa-solid fa-upload text-xl"></i>
             </x-responsive-nav-link>
+
+            @elseif(Auth::user()->usertype === 'sales')
+            <x-responsive-nav-link :href="route('salesmonitoring')" :active="request()->routeIs('salesmonitoring')">
+                <i class="fa-solid fa-coins text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('salespurchaseorders')" :active="request()->routeIs('salespurchaseorders')">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('agentmonitoring')" :active="request()->routeIs('agentmonitoring')">
+                <i class="fa-brands fa-redhat text-xl"></i>
+            </x-responsive-nav-link>
+           
+           
         
         @elseif(Auth::user()->usertype === 'staff')
             <x-responsive-nav-link :href="route('staffallpurchases')" :active="request()->routeIs('staffallpurchases')">
