@@ -26,7 +26,7 @@ class ReceivingFunctionsController extends Controller
         $newProductSku = ProductSku::create([
             'variant_id' => $request -> variant_name,
             'barcode' => $request -> barcode,
-            'sku_name' => $request -> sku_name,
+            'full_name' => $request -> full_name,
             'sku_size' => $request -> sku_size,
             'sku_quantity' => $request -> sku_quantity,
         ]);

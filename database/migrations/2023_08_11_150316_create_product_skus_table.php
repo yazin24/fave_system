@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table -> string('barcode') -> default('');
             $table -> unsignedBigInteger('variant_id');
-            $table -> string('sku_name') -> default('');
+            $table -> string('full_name') -> default('');
             $table -> decimal('sku_size', 10, 2) -> default(0);
             $table -> integer('sku_quantity') -> default(0);
             $table->timestamps();

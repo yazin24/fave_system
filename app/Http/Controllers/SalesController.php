@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agents;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -19,6 +20,8 @@ class SalesController extends Controller
 
     public function agent_monitoring()
     {
-        return view('sales.agent_monitoring');
+        $allAgents = Agents::all();
+
+        return view('sales.agent_monitoring', ['allAgents' => $allAgents]);
     }
 }

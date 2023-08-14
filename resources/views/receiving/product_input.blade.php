@@ -24,8 +24,8 @@
                 <input type="text" name="barcode" class="h-8 w-full" required>
             </div>
             <div>
-                <label>Sku Name</label>
-                <input type="text" name="sku_name" class="h-8 w-full" required>
+                <label>Full Name</label>
+                <input type="text" name="full_name" class="h-8 w-full" required>
             </div>
             <div>
                 <label>Choose SKU Size</label>
