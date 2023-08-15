@@ -131,6 +131,11 @@
             <x-responsive-nav-link :href="route('agentmonitoring')" :active="request()->routeIs('agentmonitoring')">
                 <i class="fa-brands fa-redhat text-xl"></i>
             </x-responsive-nav-link>
+
+            @elseif(Auth::user()->usertype === 'sales_agent')
+            <x-responsive-nav-link :href="route('agentlist')" :active="request()->routeIs('agentlist')">
+                <i class="fa-solid fa-users-line text-xl"></i>
+            </x-responsive-nav-link>
            
            
         

@@ -21,7 +21,7 @@
                 <td class="border-b-2 text-xs text-center">{{$agent -> areas -> area_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$agent -> agent_name}}</td>
                 <td class="border-b-2 text-xs text-center hidden md:table-cell"">{{$agent -> agent_number}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><button onclick="return prompt('Enter Password!')"><a href="{{route('viewdashboard')}}">View</a></button></td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('enterpassword', ['agent' => $agent -> id])}}">View</button></td>
             </tr>
            @endforeach  
         </tbody>
