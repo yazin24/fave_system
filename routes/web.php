@@ -222,6 +222,8 @@ Route::get('sales-agent/agent-list/view-dashboard/{agent}', [SalesAgentFunctions
 
 Route::get('sales-agent/agent-list/viewdashboard/{agent}/new-customer', [SalesAgentFunctionsController::class, 'new_customer']) -> name('newcustomer');
 
+Route::post('sales-agent/agent-list/view-dashboard/{agent}/new-customer/add', [SalesAgentFunctionsController::class, 'add_customer']) -> name('addcustomer');
+
 Route::get('sales-agent/agent-list/view-dashboard/{agent}/request-po', [SalesAgentFunctionsController::class, 'request_po']) -> name('requestpo');
 
 });

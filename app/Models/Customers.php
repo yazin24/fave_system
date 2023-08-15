@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customers extends Model
 {
-    use HasFactory;
+    protected $table = 'customers';
+
+    public function agents()
+    {
+        return $this -> belongsTo(Agents::class, 'agent_id');
+    }
+
+
+    protected $fillable = [
+        'full_name',
+        'store_name',
+        'agent_id',
+        'contact_number',
+        'address',
+    ];
 }

@@ -14,6 +14,11 @@ class Agents extends Model
         return $this -> belongsTo(Areas::class, 'area_id');
     }
 
+    public function customers()
+    {
+        return $this -> hasMany(Customers::class, 'agent_id');
+    }
+
     protected $fillable = [
         'agent_name',
         'area_id',

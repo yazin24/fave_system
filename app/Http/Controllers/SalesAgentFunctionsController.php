@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
+use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,6 +44,29 @@ class SalesAgentFunctionsController extends Controller
     public function new_customer(Agents $agent)
     {
         return view('salesagent.new_customer', ['agent' => $agent]);
+    }
+
+    public function add_customer(Request $request, Agents $agent)
+    {
+        $customerAgent = $agent -> id;
+
+        $customerName = $request -> input('full_name');
+        
+        $customerStore = $request -> input('store_name');
+
+        $customerNumber = $request -> input('contact_number');
+
+        $customerAddress = $request -> input('address');
+
+        $newCustomer = Customers::create([
+            'full_name' => $customerName,
+            'store_name' => $customerStore,
+            'agent_id' => $customerAgent,
+            'contact_number' => $customerNumber,
+            'address' => $customerAddress,
+        ]);
+
+        return view('salesagent.agent_dashboard');
     }
 
     public function request_po(Agents $agent)
