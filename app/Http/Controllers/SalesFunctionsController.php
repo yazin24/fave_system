@@ -31,6 +31,8 @@ class SalesFunctionsController extends Controller
 
         $agentEmail = $request -> input('email_address');
 
+        $agentPassword = $request -> input('password');
+
         $newAgent = Agents::create([
 
             'agent_name' => $agentName,
@@ -39,6 +41,7 @@ class SalesFunctionsController extends Controller
             'agent_address' => $agentAddress,
             'fb_messenger' => $agentFbMessenger,
             'email_address' => $agentEmail,
+            'agents_password' => $agentPassword,
 
         ]);
 

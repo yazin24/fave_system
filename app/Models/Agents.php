@@ -21,5 +21,6 @@ class Agents extends Model
         'agent_address',
         'fb_messenger',
         'email_address',
+        'agents_password',
     ];
 }

@@ -23,6 +23,9 @@
         <div class="w-full mb-1">
             <input type="text" placeholder="Email Address" class="h-10 w-full" name="email_address">
         </div>
+        <div class="w-full mb-1">
+            <input type="password" placeholder="Password" class="h-10 w-full" name="password">
+        </div>
         <div class="w-full relative mb-1 text-gray-500 text-xs">
            <select class="w-full h-10" id="designated_area" name="designated_area">
             <option disabled selected value="">Choose Area of Responsibility</option>

@@ -9,24 +9,11 @@
         <i class="fa-brands fa-redhat fa-xl"></i>
         Sales Agent</h2>
       <ul>
-        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('salesagentmonitoring')}}">
-          <div class='flex items-center gap-1'>
-            <i class="fa-solid fa-coins text-xl"></i>
-            <div>Sales Monitoring</div>
-          </div>
-        </a>
-        </li>
-        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('requestpo')}}">
-            <div class='flex items-center gap-1'>
-                <i class="fa-solid fa-cart-shopping text-xl"></i>
-              <div>Request P.O</div>
-            </div>
-          </a>
-          </li>
+
           <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('customermonitoring')}}">
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-person text-xl"></i>
-              <div>CS Monitoring</div>
+              <div>Agent List</div>
             </div>
           </a>
           </li>
