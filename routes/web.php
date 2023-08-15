@@ -210,7 +210,6 @@ Route::middleware(['auth', 'sales_agent']) -> group(function(){
 
 Route::get('sales-agent/sales-monitoring', [SalesAgentController::class, 'sales_agent_monitoring']) -> name('salesagentmonitoring');
 
-
 Route::get('sales/agent-list', [SalesAgentController::class, 'agent_list']) -> name('agentlist');
 
 //Sales Agent Functionalities
@@ -221,7 +220,9 @@ Route::post('sales-agent/agent-list/password-verified/{agent}', [SalesAgentFunct
 
 Route::get('sales-agent/agent-list/view-dashboard/{agent}', [SalesAgentFunctionsController::class, 'view_dashboard']) -> name('viewdashboard');
 
+Route::get('sales-agent/agent-list/viewdashboard/{agent}/new-customer', [SalesAgentFunctionsController::class, 'new_customer']) -> name('newcustomer');
 
+Route::get('sales-agent/agent-list/view-dashboard/{agent}/request-po', [SalesAgentFunctionsController::class, 'request_po']) -> name('requestpo');
 
 });
 

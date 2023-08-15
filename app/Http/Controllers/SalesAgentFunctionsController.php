@@ -39,4 +39,14 @@ class SalesAgentFunctionsController extends Controller
 
         }
     }
+
+    public function new_customer(Agents $agent)
+    {
+        return view('salesagent.new_customer', ['agent' => $agent]);
+    }
+
+    public function request_po(Agents $agent)
+    {
+        return view('salesagent.request_po', ['agent' => $agent]);
+    }
 }
