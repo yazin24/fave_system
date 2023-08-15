@@ -10,9 +10,9 @@
         Sales Agent</h2>
       <ul>
 
-          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('customermonitoring')}}">
+          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('agentlist')}}">
             <div class='flex items-center gap-1'>
-              <i class="fa-solid fa-person text-xl"></i>
+              <i class="fa-solid fa-users-line text-xl"></i>
               <div>Agent List</div>
             </div>
           </a>

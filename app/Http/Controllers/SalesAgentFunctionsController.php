@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class SalesAgentFunctionsController extends Controller
 {
-    public function new_customer()
+    public function view_dashboard()
     {
-        return view('salesagent.new_customer');
+        return view('salesagent.agent_dashboard');
+    }
+
+    public function enter_password()
+    {
+        return view('salesagent.agent_password');
     }
 }
