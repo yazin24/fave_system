@@ -217,9 +217,9 @@ Route::get('sales/agent-list', [SalesAgentController::class, 'agent_list']) -> n
 
 Route::get('sales-agent/agent-list/enter-password/{agent}', [SalesAgentFunctionsController::class, 'enter_password']) -> name('enterpassword');
 
-Route::post('sales-agent/agent-list/password-verified/{agentId}', [SalesAgentFunctionsController::class, 'verify_password']) -> name('verifypassword');
+Route::post('sales-agent/agent-list/password-verified/{agent}', [SalesAgentFunctionsController::class, 'verify_password']) -> name('verifypassword');
 
-Route::get('sales/agent-list/view-dashboard', [SalesAgentFunctionsController::class, 'view_dashboard']) -> name('viewdashboard');
+Route::get('sales-agent/agent-list/view-dashboard/{agent}', [SalesAgentFunctionsController::class, 'view_dashboard']) -> name('viewdashboard');
 
 
 

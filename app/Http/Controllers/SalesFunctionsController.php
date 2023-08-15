@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Areas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 class SalesFunctionsController extends Controller
@@ -41,7 +42,7 @@ class SalesFunctionsController extends Controller
             'agent_address' => $agentAddress,
             'fb_messenger' => $agentFbMessenger,
             'email_address' => $agentEmail,
-            'agents_password' => $agentPassword,
+            'agents_password' => Hash::make($agentPassword),
 
         ]);
 
