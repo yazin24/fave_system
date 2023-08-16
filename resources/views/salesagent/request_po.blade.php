@@ -43,11 +43,11 @@
                     <input type="text" class="w-full h-8 text-xs mb-1" value="
                         
                         @if($allProduct -> sku_size == 3785.41)
-                        1 Gallon
+                        1Gallon
                         @elseif($allProduct -> sku_sie == 1000.00)
-                        1 Liter
+                        1Liter
                         @elseif($allProduct -> sku_size == 450.00)
-                        450 ml
+                        450ml
                         @endif
                         
                     " readonly>
