@@ -18,6 +18,7 @@ return new class extends Migration
             $table -> string('full_name') -> default('');
             $table -> decimal('sku_size', 10, 2) -> default(0);
             $table -> integer('sku_quantity') -> default(0);
+            $table -> decimal('default_price', 8, 2) -> default(0);
             $table->timestamps();
 
             $table -> foreign('variant_id') -> references('id') -> on('product_variants') -> onDelete('cascade');

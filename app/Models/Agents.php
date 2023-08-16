@@ -19,6 +19,11 @@ class Agents extends Model
         return $this -> hasMany(Customers::class, 'agent_id');
     }
 
+    public function customersPurchaseOrders()
+    {
+        return $this -> hasMany(CustomersPurchaseOrders::class, 'agent_id');
+    }
+
     protected $fillable = [
         'agent_name',
         'area_id',

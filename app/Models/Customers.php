@@ -14,6 +14,11 @@ class Customers extends Model
         return $this -> belongsTo(Agents::class, 'agent_id');
     }
 
+    public function customersPurchaseOrders()
+    {
+        return $this -> hasMany(CustomersPurchaseOrders::class, 'cs_id');
+    }
+
 
     protected $fillable = [
         'full_name',
