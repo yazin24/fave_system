@@ -220,6 +220,10 @@ Route::post('sales-agent/agent-list/password-verified/{agent}', [SalesAgentFunct
 
 Route::get('sales-agent/agent-list/view-dashboard/{agent}', [SalesAgentFunctionsController::class, 'view_dashboard']) -> name('viewdashboard');
 
+Route::get('sales-agent/agent-list/view-dashboard/{agent}/sales-monitoring', [SalesAgentFunctionsController::class, 'agent_sales_monitoring']) -> name('agentsalesmonitoring');
+
+Route::get('sales-agent/agent-list/view-dashboard/{agent}/customer-list', [SalesAgentFunctionsController::class, 'customer_list']) -> name('customerlist');
+
 Route::get('sales-agent/agent-list/viewdashboard/{agent}/new-customer', [SalesAgentFunctionsController::class, 'new_customer']) -> name('newcustomer');
 
 Route::post('sales-agent/agent-list/view-dashboard/{agent}/new-customer/add', [SalesAgentFunctionsController::class, 'add_customer']) -> name('addcustomer');

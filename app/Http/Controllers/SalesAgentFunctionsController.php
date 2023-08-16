@@ -42,6 +42,19 @@ class SalesAgentFunctionsController extends Controller
         }
     }
 
+    public function agent_sales_monitoring(Agents $agent)
+    {
+        return view('salesagent.sales_monitoring', ['agent' => $agent]);
+    }
+
+    public function customer_list(Agents $agent)
+    {
+
+        $allCustomers = Customers::where('agent_id', $agent -> id);
+
+        return view('salesagent.customer_list', ['agent' => $agent, 'allCustomers' => $allCustomers]);
+    }
+
     public function new_customer(Agents $agent)
     {
         return view('salesagent.new_customer', ['agent' => $agent]);
