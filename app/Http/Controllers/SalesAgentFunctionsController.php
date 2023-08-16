@@ -7,6 +7,7 @@ use App\Models\Agents;
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SalesAgentFunctionsController extends Controller
 {
@@ -48,6 +49,8 @@ class SalesAgentFunctionsController extends Controller
 
     public function add_customer(Request $request, Agents $agent)
     {
+        // $theAgent = Agents::findOrFail($agent);
+
         $customerAgent = $agent -> id;
 
         $customerName = $request -> input('full_name');
@@ -66,7 +69,8 @@ class SalesAgentFunctionsController extends Controller
             'address' => $customerAddress,
         ]);
 
-        return view('salesagent.agent_dashboard');
+        Session::flash('success', 'Customer has been added to your list!');
+        return view('salesagent.agent_dashboard', ['agent' => $agent]);
     }
 
     public function request_po(Agents $agent)
