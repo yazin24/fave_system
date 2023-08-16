@@ -14,6 +14,11 @@ class ProductSku extends Model
         return $this -> belongsTo(ProductVariants::class, 'variant_id');
     }
 
+    public function customersPurchaseOrders()
+    {
+        return $this -> belongsToMany(CustomersPurchaseOrders::class, 'customers_purchase_orders_products', 'cs_po_id', 'sku_id');
+    }
+
     protected $fillable = [
         'barcode',
         'variant_id', 

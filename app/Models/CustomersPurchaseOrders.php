@@ -21,7 +21,12 @@ class CustomersPurchaseOrders extends Model
 
     public function systemStatus()
     {
-        return $this -> belongsTo(SystemStatus::class, ['status', 'del_status']);
+        return $this -> belongsTo(SystemStatus::class, 'status',);
+    }
+
+    public function productSku()
+    {
+        return $this -> belongsToMany(ProductSku::class, 'customers_purchase_orders_products', 'cs_po_id', 'sku_id');
     }
 
 
