@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Customers;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -88,6 +89,12 @@ class SalesAgentFunctionsController extends Controller
 
     public function request_po(Agents $agent)
     {
-        return view('salesagent.request_po', ['agent' => $agent]);
+        $agentCustomers = Customers::where('agent_id', $agent -> id) -> get(); 
+
+        $allProducts = ProductSku::all();
+
+        // dd($allProducts);
+
+        return view('salesagent.request_po', ['agent' => $agent, 'allProducts' => $allProducts, 'agentCustomers' => $agentCustomers]);
     }
 }
