@@ -50,7 +50,7 @@ class SalesAgentFunctionsController extends Controller
     public function customer_list(Agents $agent)
     {
 
-        $allCustomers = Customers::where('agent_id', $agent -> id);
+        $allCustomers = Customers::where('agent_id', $agent -> id) -> get();
 
         return view('salesagent.customer_list', ['agent' => $agent, 'allCustomers' => $allCustomers]);
     }

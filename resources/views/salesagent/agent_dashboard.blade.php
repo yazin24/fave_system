@@ -2,7 +2,7 @@
 
 @section('sales_agent-body')
 
-<h2 class="font-bold md:text-xl mb-1"><span class="text-blue-500 font-bold">{{$agent -> agent_name}}</span> Dashboard!</h2>
+<h2 class="font-bold md:text-xl mb-1"><span class="text-blue-500 font-bold"><a href="">{{$agent -> agent_name}}</a></span> Dashboard!</h2>
 
 <div class="">
 
