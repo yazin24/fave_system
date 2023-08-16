@@ -16,8 +16,11 @@ return new class extends Migration
             $table -> unsignedBigInteger('cs_po_id');
             $table -> unsignedBigInteger('sku');
             $table -> integer('quantity');
-            
+            $table -> decimal('total_price', 8,2) -> default(0);
             $table->timestamps();
+
+            $table -> foreign('cs_po_id') -> references('id') -> on('customers_purchase_orders');
+            $table -> foreign('sku') -> references('id') -> on('product_sku');
         });
     }
 

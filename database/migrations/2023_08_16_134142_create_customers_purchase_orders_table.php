@@ -16,7 +16,7 @@ return new class extends Migration
             $table -> unsignedBigInteger('cs_id');
             $table -> unsignedBigInteger('agent_id');
             $table -> unsignedBigInteger('status');
-            $table -> unsignedBigInteger('del_status');
+            $table -> unsignedBigInteger('del_status') -> default(7);
             $table->timestamps();
 
             $table -> foreign('cs_id') -> references('id') -> on('customers');
