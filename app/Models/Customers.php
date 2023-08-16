@@ -19,6 +19,11 @@ class Customers extends Model
         return $this -> hasMany(CustomersPurchaseOrders::class, 'cs_id');
     }
 
+    public function customerStocks()
+    {
+        return $this -> hasMany(CustomersStocks::class, 'cs_id');
+    }
+
 
     protected $fillable = [
         'full_name',
