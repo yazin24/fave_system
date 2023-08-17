@@ -128,7 +128,7 @@ class SalesAgentFunctionsController extends Controller
                 $theQuantity = $skuQuantity[$index] ?? null;
                 $thePrice = $skuPrice[$index] ?? null;
 
-                if($index && $theQuantity && $thePrice){
+                if($theQuantity && $thePrice){
 
                     $orderSku = [
                         'cs_po_id' => $csPurchaseOrderId,
@@ -148,9 +148,7 @@ class SalesAgentFunctionsController extends Controller
                         $orderSku['isWholesale'] = false;
                     }
 
-                    dd($orderSku);
-
-                 $newCustomerPurchaseOrder -> productSku() -> attach([$index => $orderSku]);
+                 $newCustomerPurchaseOrder -> productSku() -> attach($index, $orderSku);
 
                 }
             }
@@ -158,5 +156,12 @@ class SalesAgentFunctionsController extends Controller
 
         Session::flash('success', 'The Purchase Order has been created!');
         return view('salesagent.agent_dashboard', ['agent' => $agentId]);
+    }
+
+    public function view_customers_stocks(Agents $agent)
+    {
+        $customerPo = CustomersPurchaseOrders::all();
+
+        return view('salesagent.view_customers_stocks', ['customerPo' => $customerPo, 'agent' => $agent]);
     }
 }
