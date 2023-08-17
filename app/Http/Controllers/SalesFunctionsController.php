@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Areas;
+use App\Models\CustomersPurchaseOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session as FacadesSession;
@@ -48,5 +49,12 @@ class SalesFunctionsController extends Controller
 
         FacadesSession::flash('success', 'New Agent has been added');
         return view('sales.sales_home');
+    }
+
+    public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
+    {
+
+
+        return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder]);
     }
 }

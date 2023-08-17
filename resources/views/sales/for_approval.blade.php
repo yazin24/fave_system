@@ -22,7 +22,7 @@
                 <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> store_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> full_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> contact_number}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewapprovepo', ['purchaseOrder' => $purchaseOrder])}}">View</a></td>
             </tr>
             @endforeach
         </tbody>

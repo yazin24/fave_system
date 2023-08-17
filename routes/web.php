@@ -201,6 +201,8 @@ Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class,
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
 
+Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_approve_po']) -> name('viewapprovepo');
+
 });
 
 //----------------------------------------------------------SALES AGENT-----------------------------------------------------------------
