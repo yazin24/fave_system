@@ -20,7 +20,7 @@
                 <td class="border-b-2 text-xs text-center">{{$customer -> store_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$customer -> full_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$customer -> contact_number}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewcustomersstocks', ['customer' => $customer])}}">View</a></td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewcustomersstocks', ['agent' => $agent, 'customer' => $customer])}}">View</a></td>
             </tr>
             @endforeach
         </tbody>

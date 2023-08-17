@@ -158,10 +158,10 @@ class SalesAgentFunctionsController extends Controller
         return view('salesagent.agent_dashboard', ['agent' => $agentId]);
     }
 
-    public function view_customers_stocks(Agents $agent)
-    {
-        $customerPo = CustomersPurchaseOrders::all();
+    // public function view_customers_stocks($agent, $customer)
+    // {
+    //     // $customerPo = CustomersPurchaseOrders::all();
 
-        return view('salesagent.view_customers_stocks', ['customerPo' => $customerPo, 'agent' => $agent]);
-    }
+    //     return view('salesagent.view_customers_stock', ['agent' => $agent, 'customer' => $customer]);
+    // }
 }
