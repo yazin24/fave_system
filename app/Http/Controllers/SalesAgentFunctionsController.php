@@ -99,11 +99,11 @@ class SalesAgentFunctionsController extends Controller
         return view('salesagent.request_po', ['agent' => $agent, 'allProducts' => $allProducts, 'agentCustomers' => $agentCustomers]);
     }
 
-    public function create_po(Request $request, Agents $agent)
+    public function create_po(Request $request, $agent)
     {
         $customerName = $request -> input('customer_name');
 
-        $agentId = $agent -> id;
+        $agentId = Agents::findOrFail($agent);
 
         $selectedSkus = $request -> input('selected_product', []);
 
@@ -116,10 +116,12 @@ class SalesAgentFunctionsController extends Controller
         $newCustomerPurchaseOrder = CustomersPurchaseOrders::create([
 
         'cs_id' => $customerName,
-        'agent_id' => $agentId,
+        'agent_id' => $agentId -> id,
         'status' => 3,
         'del_status' => 7,
         ]);
+
+        $csPurchaseOrderId = $newCustomerPurchaseOrder -> id;
 
         foreach($skuNames as $index => $skuName){
             if(in_array($index, $selectedSkus)){
@@ -129,7 +131,7 @@ class SalesAgentFunctionsController extends Controller
                 if($index && $theQuantity && $thePrice){
 
                     $orderSku = [
-                        'cs_po_id' => $newCustomerPurchaseOrder -> id,
+                        'cs_po_id' => $csPurchaseOrderId,
                         'sku' => $index,
                         'quantity' => $theQuantity,
                         'price' => $thePrice,
@@ -146,13 +148,15 @@ class SalesAgentFunctionsController extends Controller
                         $orderSku['isWholesale'] = false;
                     }
 
-                    $newCustomerPurchaseOrder -> customerPurchaseOrdersProducts() -> create($orderSku);
+                    dd($orderSku);
+
+                 $newCustomerPurchaseOrder -> productSku() -> attach([$index => $orderSku]);
 
                 }
             }
         }
 
-
-        return view('salesagent.sales_agent_home');
+        Session::flash('success', 'The Purchase Order has been created!');
+        return view('salesagent.agent_dashboard', ['agent' => $agentId]);
     }
 }

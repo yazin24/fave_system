@@ -16,8 +16,11 @@ class CustomersPurchaseOrdersProducts extends Model
 
     protected $fillable = [
         'cs_po_id',
+        'sku_id',
         'sku',
         'quantity',
-        'total_price',
+        'price',
+        'isRetail',
+        'isWholesale'
     ];
 }

@@ -230,6 +230,8 @@ Route::post('sales-agent/agent-list/view-dashboard/{agent}/new-customer/add', [S
 
 Route::get('sales-agent/agent-list/view-dashboard/{agent}/request-po', [SalesAgentFunctionsController::class, 'request_po']) -> name('requestpo');
 
+Route::post('sales-agent/agent-list/view-dashboard/{agent}/create-po', [SalesAgentFunctionsController::class, 'create_po']) -> name('createpo');
+
 });
 
 

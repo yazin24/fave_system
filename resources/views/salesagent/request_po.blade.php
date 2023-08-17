@@ -14,10 +14,9 @@
     </p>
    
 
-    <form method="POST" action="">
+    <form method="POST" action="{{route('createpo', ['agent' => $agent -> id])}}">
     @csrf
     @method('POST')
-
         <div class="flex flex-row mb-1">
            
             <select id="customer_name" name="customer_name" class="w-full h-8 text-xs" required>
