@@ -20,7 +20,7 @@
 
         <div class="flex flex-row mb-1">
            
-            <select id="supplier_name" name="supplier_name" class="w-full h-8 text-xs" required>
+            <select id="customer_name" name="customer_name" class="w-full h-8 text-xs" required>
                 <option value="" disabled selected>Choose Customer</option>
                 @foreach($agentCustomers as $agentCustomer)
                 <option value="{{$agentCustomer -> id}}">{{$agentCustomer -> full_name}}</option>
@@ -34,12 +34,12 @@
             <div class="flex flex-row justify-center">
 
                 <div class="mt-2.5">
-                    <input type="checkbox" name="selected_items[]" value="{{$allProduct -> id}}" class="">
+                    <input type="checkbox" name="selected_product[]" value="{{$allProduct -> id}}" class="">
                 </div>
 
                 <div class="w-full">
                     <input type="text" class="w-full h-8 text-xs mb-1" value="{{$allProduct -> full_name}}" readonly>
-                    <input type="hidden" name="item_id[{{$allProduct -> id}}]" value="{{$allProduct -> id}}">
+                    <input type="hidden" name="product_id[{{$allProduct -> id}}]" value="{{$allProduct -> id}}">
                 </div>
 
                 <div class="w-full">
@@ -48,7 +48,7 @@
 
                 <div class="w-full">
                     <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>
-                    <input type="hidden" name="item_id[]" value="">
+                    
                 </div>
 
                 <div class="w-full">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Customers;
+use App\Models\CustomersPurchaseOrders;
 use App\Models\ProductSku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -96,5 +97,62 @@ class SalesAgentFunctionsController extends Controller
         // dd($allProducts);
 
         return view('salesagent.request_po', ['agent' => $agent, 'allProducts' => $allProducts, 'agentCustomers' => $agentCustomers]);
+    }
+
+    public function create_po(Request $request, Agents $agent)
+    {
+        $customerName = $request -> input('customer_name');
+
+        $agentId = $agent -> id;
+
+        $selectedSkus = $request -> input('selected_product', []);
+
+        $skuNames = $request -> input('product_id', []);
+
+        $skuPrice = $request -> input('price', []);
+
+        $skuQuantity = $request -> input('quantity', []);
+
+        $newCustomerPurchaseOrder = CustomersPurchaseOrders::create([
+
+        'cs_id' => $customerName,
+        'agent_id' => $agentId,
+        'status' => 3,
+        'del_status' => 7,
+        ]);
+
+        foreach($skuNames as $index => $skuName){
+            if(in_array($index, $selectedSkus)){
+                $theQuantity = $skuQuantity[$index] ?? null;
+                $thePrice = $skuPrice[$index] ?? null;
+
+                if($index && $theQuantity && $thePrice){
+
+                    $orderSku = [
+                        'cs_po_id' => $newCustomerPurchaseOrder -> id,
+                        'sku' => $index,
+                        'quantity' => $theQuantity,
+                        'price' => $thePrice,
+                    ];
+
+                    if($thePrice == 35 || $thePrice == 129){
+                        $orderSku['isRetail'] = true;
+                        $orderSku['isWholesale'] = false;
+                    }elseif($thePrice ==29 || $thePrice == 115){
+                        $orderSku['isRetail'] = false;
+                        $orderSku['isWholesale'] = true;
+                    }else {
+                        $orderSku['isRetail'] = false;
+                        $orderSku['isWholesale'] = false;
+                    }
+
+                    $newCustomerPurchaseOrder -> customerPurchaseOrdersProducts() -> create($orderSku);
+
+                }
+            }
+        }
+
+
+        return view('salesagent.sales_agent_home');
     }
 }
