@@ -23,6 +23,13 @@
             </div>
           </a>
           </li>
+          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('forapproval')}}">
+            <div class='flex items-center gap-1'>
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+              <div>For Approval</div>
+            </div>
+          </a>
+          </li>
           <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-4'><a href="{{route('agentmonitoring')}}">
             <div class='flex items-center gap-1'>
                 <i class="fa-brands fa-redhat text-xl"></i>

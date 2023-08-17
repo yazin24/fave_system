@@ -191,6 +191,8 @@ Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring'
 
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 
+route::get('sales/for-approval', [SalesController::class, 'for_approval']) -> name('forapproval');
+
 Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring']) -> name('agentmonitoring');
 
 //Sales Functionalities
