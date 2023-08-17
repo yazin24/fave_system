@@ -6,7 +6,7 @@
 
 <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 w-full justify-center">
 
-    <h2 class="text-center text-gray-200 font-bold md:text-2xl"> * Enter Details Carefully * </h2>
+    <h2 class="text-center text-gray-200 font-bold md:text-2xl mb-2"> * Enter Details Carefully * </h2>
 
     <form method="POST" action="">
     @csrf
@@ -28,29 +28,19 @@
             <div class="flex flex-row justify-center">
 
                 <div class="mt-2.5">
-                    <input type="checkbox" name="selected_items[]" value="" class="">
+                    <input type="checkbox" name="selected_items[]" value="{{$allProduct -> id}}" class="">
                 </div>
 
                 <div class="w-full">
                     <input type="text" class="w-full h-8 text-xs mb-1" value="{{$allProduct -> full_name}}" readonly>
+                    <input type="hidden" name="item_id[{{$allProduct -> id}}]" value="{{$allProduct -> id}}">
+                </div>
+                <div class="w-full">
+                    <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> productVariants -> variant_name === 'Calamansi') C @elseif($allProduct -> productVariants -> variant_name === 'Honey Lemon') HL @elseif($allProduct -> productVariants -> variant_name === 'Fresh Antibac') FA @endif" readonly>
                     <input type="hidden" name="item_id[]" value="">
                 </div>
                 <div class="w-full">
-                    <input type="text" class="w-full h-8 text-xs mb-1" value="{{$allProduct -> productVariants -> variant_name}}" readonly>
-                    <input type="hidden" name="item_id[]" value="">
-                </div>
-                <div class="w-full">
-                    <input type="text" class="w-full h-8 text-xs mb-1" value="
-                        
-                        @if($allProduct -> sku_size == 3785.41)
-                        1Gallon
-                        @elseif($allProduct -> sku_sie == 1000.00)
-                        1Liter
-                        @elseif($allProduct -> sku_size == 450.00)
-                        450ml
-                        @endif
-                        
-                    " readonly>
+                    <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>
                     <input type="hidden" name="item_id[]" value="">
                 </div>
                 <div class="w-full">
