@@ -53,7 +53,7 @@ class SalesFunctionsController extends Controller
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
     {
-
+        $purchaseOrder = CustomersPurchaseOrders::with('productSku') -> find($purchaseOrder -> id);
 
         return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder]);
     }

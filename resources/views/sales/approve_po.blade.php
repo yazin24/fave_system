@@ -30,25 +30,40 @@
                             </tr>
                         </thead>    
                         <tbody class="bg-gray-300 w-auto">
-                            @foreach($purchaseOrder -> customersPurchaseOrdersProducts as $index => $product)
+                            @foreach($purchaseOrder -> productSku as $product)
                             <tr class="h-10">   
                                 <td class="text-xs text-center border-b-2 font-bold">{{$product -> full_name}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold"></td>
-                                <td class="text-xs text-center border-b-2 font-bold"></td>
-                                <td class="text-xs text-center border-b-2 font-bold"></td>
+                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> productVariants -> variant_name}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">
+                                    @if($product -> sku_size ==3785.41) 1 Gallon 
+                                    @elseif($product -> sku_size == 1000) 1 Liter
+                                    @else 500 ml
+                                    @endif
+                                </td>
+                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> pivot -> price}}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                </div>
-               <div class="flex flex-row text-sm justify-between">
-                    <h2 class="text-gray-800 font-bold">Wholesale: <span class="text-green-600 font-bold"></span></h2>
+               <div class="flex flex-row text-sm justify-between mt-4">
+                    <h2 class="text-gray-800 font-bold">Purchase type:
+                        @if($product -> pivot -> isRetail == 1) 
+                        <span class="text-green-600 font-bold">Retail</span>
+                        @else <span class="text-green-600 font-bold">Wholesale</span>
+                        @endif
+                    </h2>
                     <h2 class="text-gray-800 font-bold">Total Amount: <span class="text-green-600 font-bold"></span></h2>  
          </div>
 
+         <div class="flex flex-row gap-2 mt-8">
          <div>
-                
+            <button class="font-bold text-xs bg-teal-500 hover:bg-teal-600 p-1 text-gray-200 rounded-md shadow-md">Approve</button>
          </div>
+         <div>
+            <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md">Disapprove</button>
+         </div>
+        </div>
     </form>
 
 </div>

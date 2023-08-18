@@ -26,7 +26,8 @@ class CustomersPurchaseOrders extends Model
 
     public function productSku()
     {
-        return $this -> belongsToMany(ProductSku::class, 'customers_purchase_orders_products', 'cs_po_id', 'sku_id');
+        return $this -> belongsToMany(ProductSku::class, 'customers_purchase_orders_products', 'cs_po_id', 'sku_id')
+                    ->withPivot('quantity', 'price', 'isRetail', 'isWholesale');
     }
 
 
