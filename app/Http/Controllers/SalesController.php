@@ -16,14 +16,14 @@ class SalesController extends Controller
 
     public function sales_purchase_orders()
     {
-        
+        $allPurchaseOrders = CustomersPurchaseOrders::where('status', 1) -> get();
 
-        return view('sales.sales_purchase_orders');
+        return view('sales.sales_purchase_orders',['allPurchaseOrders' => $allPurchaseOrders]);
     }
 
     public function for_approval()
     {
-        $purchaseOrders = CustomersPurchaseOrders::all();
+        $purchaseOrders = CustomersPurchaseOrders::where('status', 3) -> get();
 
         return view('sales.for_approval', ['purchaseOrders' => $purchaseOrders]);
     }
