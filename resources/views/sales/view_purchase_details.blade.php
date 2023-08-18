@@ -57,7 +57,7 @@
          </div>
 
          <div class="flex flex-row gap-2 mt-8 text-xs">
-            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200">Generate Receipt</button>
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200"><a href="{{route('generatecsreceipt', ['allPurchaseOrder' => $allPurchaseOrder -> id])}}">Generate Receipt</a></button>
         </div>
 
 </div>

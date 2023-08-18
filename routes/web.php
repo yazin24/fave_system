@@ -209,6 +209,8 @@ Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[S
 
 Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
 
+Route::get('sales/purchase-orders/view-details/{allPurchaseOrder}', [SalesFunctionsController::class, 'generate_po_receipt']) -> name('generatecsreceipt');
+
 });
 
 //----------------------------------------------------------SALES AGENT-----------------------------------------------------------------
