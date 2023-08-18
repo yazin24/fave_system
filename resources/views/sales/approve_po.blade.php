@@ -26,6 +26,7 @@
                                 <th class="text-xs w-1/5 font-bold">Sku</th>
                                 <th class="text-xs w-1/5 font-bold">Variant</th>
                                 <th class="text-xs w-1/5 font-bold">Size</th>
+                                <th class="text-xs w-1/5 font-bold">Quantity</th>
                                 <th class="text-xs w-1/5 font-bold">Price</th>
                             </tr>
                         </thead>    
@@ -40,6 +41,7 @@
                                     @else 500 ml
                                     @endif
                                 </td>
+                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> pivot -> quantity}}</td>
                                 <td class="text-xs text-center border-b-2 font-bold">{{$product -> pivot -> price}}</td>
                             </tr>
                             @endforeach
@@ -53,15 +55,15 @@
                         @else <span class="text-green-600 font-bold">Wholesale</span>
                         @endif
                     </h2>
-                    <h2 class="text-gray-800 font-bold">Total Amount: <span class="text-green-600 font-bold"></span></h2>  
+                    <h2 class="text-gray-800 font-bold">Total Amount: <span class="text-green-600 font-bold">₱{{$totalAmount}}.00</span></h2>  
          </div>
 
          <div class="flex flex-row gap-2 mt-8">
          <div>
-            <button class="font-bold text-xs bg-teal-500 hover:bg-teal-600 p-1 text-gray-200 rounded-md shadow-md">Approve</button>
+            <button class="font-bold text-xs bg-teal-500 hover:bg-teal-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-check"></i> Approve</button>
          </div>
          <div>
-            <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md">Disapprove</button>
+            <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-xmark"></i> Disapprove</button>
          </div>
         </div>
     </form>

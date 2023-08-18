@@ -53,8 +53,12 @@ class SalesFunctionsController extends Controller
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
     {
-        $purchaseOrder = CustomersPurchaseOrders::with('productSku') -> find($purchaseOrder -> id);
+            $totalAmount = 0;
 
-        return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder]);
+            foreach($purchaseOrder -> productSku as $product){
+                $totalAmount += $product -> pivot -> quantity * $product -> pivot -> price;
+            }
+
+        return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
     }
 }
