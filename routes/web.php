@@ -203,6 +203,10 @@ Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::c
 
 Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_approve_po']) -> name('viewapprovepo');
 
+Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[SalesFunctionsController::class, 'approve_purchase_order']) -> name('approvepurchaseorder');
+
+Route::post('sales/for-approval/view-approve-details/{purchaseOrder/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
+
 });
 
 //----------------------------------------------------------SALES AGENT-----------------------------------------------------------------

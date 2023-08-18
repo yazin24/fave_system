@@ -30,6 +30,11 @@ class CustomersPurchaseOrders extends Model
                     ->withPivot('quantity', 'price', 'isRetail', 'isWholesale');
     }
 
+    public function customersStocks()
+    {
+        return $this -> hasMany(CustomersStocks::class, 'cs_id');
+    }
+
 
     protected $fillable = [
 

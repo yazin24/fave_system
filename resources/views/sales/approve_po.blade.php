@@ -5,9 +5,7 @@
 <h2 class="font-bold md:text-xl mt-2">Purchase Orders (FOR APPROVAL)</h2>
 
 <div class="mt-2 md:mt-4">
-    {{-- <form method="POST" action="{{route('saveandreceivepo', ['id' => $toReceivePurchaseOrder -> id])}}"> --}}
-        {{-- @csrf
-        @method('PUT') --}}
+   
     <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
 
         <div class="bg-gray-200 px-4 py-4"> 
@@ -66,7 +64,6 @@
             <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-xmark"></i> Disapprove</button>
          </div>
         </div>
-    </form>
 
 </div>
 

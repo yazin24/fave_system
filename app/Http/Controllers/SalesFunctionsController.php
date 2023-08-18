@@ -8,7 +8,7 @@ use App\Models\Areas;
 use App\Models\CustomersPurchaseOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Illuminate\Support\Facades\Session;
 
 class SalesFunctionsController extends Controller
 {
@@ -47,7 +47,7 @@ class SalesFunctionsController extends Controller
 
         ]);
 
-        FacadesSession::flash('success', 'New Agent has been added');
+        Session::flash('success', 'New Agent has been added');
         return view('sales.sales_home');
     }
 
@@ -60,5 +60,20 @@ class SalesFunctionsController extends Controller
             }
 
         return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
+    }
+
+    public function approve_purchase_order()
+    {
+
+        Session::flash('success', 'Purchase Order has been approved!');
+        return view('sales.sales_home');
+
+    }
+
+    public function disapprove_purchase_order()
+    {
+        Session::flash('success', 'Purchase Order has been approved!');
+        return view('sales.sales_home');
+
     }
 }
