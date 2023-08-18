@@ -51,9 +51,15 @@ class SalesFunctionsController extends Controller
         return view('sales.sales_home');
     }
 
-    public function view_purchase_details($allPurchaseOrder)
+    public function view_purchase_details(CustomersPurchaseOrders $allPurchaseOrder)
     {
-        return view('sales.view_purchase_details', ['allPurchaseOrder' => $allPurchaseOrder]);
+        $totalAmount = 0;
+
+            foreach($allPurchaseOrder -> productSku as $product){
+                $totalAmount += $product -> pivot -> quantity * $product -> pivot -> price;
+            }
+
+        return view('sales.view_purchase_details', ['allPurchaseOrder' => $allPurchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)

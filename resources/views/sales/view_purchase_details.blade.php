@@ -9,7 +9,7 @@
     <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
 
         <div class="bg-gray-200 px-4 py-4"> 
-            {{-- <h2 class="flex justify-end text-gray-800 font-bold text-sm">Agent Name: {{$allPurchaseOrder -> agents -> agent_name}}</h2> --}}
+            <h2 class="flex justify-end text-gray-800 font-bold text-sm">Agent Name: {{$allPurchaseOrder -> agents -> agent_name}}</h2>
             <div class="flex flex-row">
                 <div class="text-sm">
                      <h2 class="text-gray-800 font-bold">Store Name: {{$allPurchaseOrder -> customers -> store_name}}</h2>
@@ -56,8 +56,8 @@
                     <h2 class="text-gray-800 font-bold">Total Amount: <span class="text-green-600 font-bold">₱{{$totalAmount}}.00</span></h2>  
          </div>
 
-         <div class="flex flex-row gap-2 mt-8">
-       
+         <div class="flex flex-row gap-2 mt-8 text-xs">
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200">Generate Receipt</button>
         </div>
 
 </div>
