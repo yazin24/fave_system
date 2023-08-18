@@ -127,7 +127,7 @@ class SalesFunctionsController extends Controller
 
         // $templateReceipt -> setValue('PTERM', $allPurchaseOrder -> purchaseOrderTerms -> payment_term);
 
-        // $templateReceipt -> setValue('PO', $allPurchaseOrder -> productSku -> barcode);
+        // $templateReceipt -> setValue('PO', $allPurchaseOrder -> id);
 
         $createdDate = date('Y-m-d', strtotime($allPurchaseOrder -> created_at));
 
@@ -135,11 +135,11 @@ class SalesFunctionsController extends Controller
 
         $templateReceipt -> setvalue('CUSTOMER', $allPurchaseOrder -> customers -> store_name);
 
-        $templateReceipt -> setvalue('CUSTOMER_ADDRESS', $allPurchaseOrder -> customers -> address);
+        $templateReceipt -> setvalue('ADDRESS', $allPurchaseOrder -> customers -> address);
 
-        $templateReceipt -> setvalue('CUSTOMER_NUMBER', $allPurchaseOrder -> customers -> contact_number);
+        $templateReceipt -> setvalue('NUMBER', $allPurchaseOrder -> customers -> contact_number);
 
-        $templateReceipt -> setvalue('CUSTOMER_PERSON', $allPurchaseOrder -> customers -> full_name);
+        $templateReceipt -> setvalue('PERSON', $allPurchaseOrder -> customers -> full_name);
 
         // $templateReceipt -> setValue('REQUESTED_BY', $allPurchaseOrder -> requested_by);
 
@@ -157,15 +157,15 @@ class SalesFunctionsController extends Controller
         foreach($items as $item)
         {
 
-            $templateReceipt -> setValue("ITEM_QUANTITY{$itemIndex}", $item -> quantity);
+            $templateReceipt -> setValue("PRODUCT{$itemIndex}", $item -> full_name);
 
-            $templateReceipt -> setValue("UNIT{$itemIndex}", $item -> allItems -> item_unit);
+            $templateReceipt -> setValue("VARIANT{$itemIndex}", $item -> productVariants -> variant_name);
 
-            $templateReceipt -> setValue("ITEM_NAME{$itemIndex}", $item -> allItems -> item_name);
+            $templateReceipt -> setValue("SIZE{$itemIndex}", $item -> sku_size);
 
-            $templateReceipt ->  setValue("UNIT_PRICE{$itemIndex}", $item -> unit_price);
+            $templateReceipt ->  setValue("QUANTITY{$itemIndex}", $item -> pivot -> quantity);
 
-            $templateReceipt -> setValue("AMOUNT{$itemIndex}", $item -> amount);
+            $templateReceipt -> setValue("PRICE{$itemIndex}", $item -> pivot -> price);
 
             $itemIndex++;
 
@@ -173,11 +173,11 @@ class SalesFunctionsController extends Controller
 
          //     //this remove the placeholder for the remaining rows in the table thats empty
          for ($i = $itemIndex; $i <= $itemRows; $i++) {
-            $templateReceipt->setValue("ITEM_QUANTITY{$i}", '');
-            $templateReceipt->setValue("UNIT{$i}", '');
-            $templateReceipt->setValue("ITEM_NAME{$i}", '');
-            $templateReceipt->setValue("UNIT_PRICE{$i}", '');
-            $templateReceipt->setValue("AMOUNT{$i}", '');
+            $templateReceipt->setValue("PRODUCT{$i}", '');
+            $templateReceipt->setValue("VARIANT{$i}", '');
+            $templateReceipt->setValue("SIZE{$i}", '');
+            $templateReceipt->setValue("QUANTITY{$i}", '');
+            $templateReceipt->setValue("PRICE{$i}", '');
         }
 
         $savePath = public_path('P.O_' . $allPurchaseOrder -> customers -> full_name . '_receipt.docx');
