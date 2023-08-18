@@ -72,15 +72,19 @@ class SalesFunctionsController extends Controller
 
         $customer = $approvePurchaseOrder -> customers;
 
-        foreach($approvePurchaseOrder -> productSku as $product)
-        {
-
-            $approvePurchaseOrder -> $customer -> customersStocks() -> create([
-                'cs_id' => $approvePurchaseOrder -> cs_id,
-                'sku_id' => $product -> id,
-                'quantity' => $product -> pivot -> quantity,
-            ]);
-
+        foreach ($approvePurchaseOrder->productSku as $product) {
+            $customerStock = $customer->customersStocks()->where('sku_id', $product->id)->first();
+    
+            if ($customerStock) {
+                $customerStock->quantity += $product->pivot->quantity;
+                $customerStock->save();
+            } else {
+                $customer->customersStocks()->create([
+                    'cs_id' => $approvePurchaseOrder->cs_id,
+                    'sku_id' => $product->id,
+                    'quantity' => $product->pivot->quantity,
+                ]);
+            }
         }
 
         Session::flash('success', 'Purchase Order has been approved!');

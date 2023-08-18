@@ -19,7 +19,7 @@ class Customers extends Model
         return $this -> hasMany(CustomersPurchaseOrders::class, 'cs_id');
     }
 
-    public function customerStocks()
+    public function customersStocks()
     {
         return $this -> hasMany(CustomersStocks::class, 'cs_id');
     }

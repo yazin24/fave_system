@@ -205,7 +205,7 @@ Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunc
 
 Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[SalesFunctionsController::class, 'approve_purchase_order']) -> name('approvepurchaseorder');
 
-Route::post('sales/for-approval/view-approve-details/{purchaseOrder/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
+Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
 
 });
 
