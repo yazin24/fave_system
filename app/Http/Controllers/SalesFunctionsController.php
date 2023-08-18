@@ -52,15 +52,15 @@ class SalesFunctionsController extends Controller
         return view('sales.sales_home');
     }
 
-    public function view_purchase_details(CustomersPurchaseOrders $allPurchaseOrder)
+    public function view_purchase_details(CustomersPurchaseOrders $purchaseOrder)
     {
         $totalAmount = 0;
 
-            foreach($allPurchaseOrder -> productSku as $product){
+            foreach($purchaseOrder -> productSku as $product){
                 $totalAmount += $product -> pivot -> quantity * $product -> pivot -> price;
             }
 
-        return view('sales.view_purchase_details', ['allPurchaseOrder' => $allPurchaseOrder, 'totalAmount' => $totalAmount]);
+        return view('sales.view_purchase_details', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
@@ -119,37 +119,37 @@ class SalesFunctionsController extends Controller
 
     }
 
-    public function generate_po_receipt(CustomersPurchaseOrders $allPurchaseOrder)
+    public function generate_po_receipt(CustomersPurchaseOrders $purchaseOrder)
     {
         $templateReceiptPath = ('receipts/cspo_template.docx');
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
-        // $templateReceipt -> setValue('PTERM', $allPurchaseOrder -> purchaseOrderTerms -> payment_term);
+        // $templateReceipt -> setValue('PTERM', $purchaseOrder -> purchaseOrderTerms -> payment_term);
 
         // $templateReceipt -> setValue('PO', $allPurchaseOrder -> id);
 
-        $createdDate = date('Y-m-d', strtotime($allPurchaseOrder -> created_at));
+        $createdDate = date('Y-m-d', strtotime($purchaseOrder -> created_at));
 
         $templateReceipt -> setValue('PO_DATE', $createdDate);
 
-        $templateReceipt -> setvalue('CUSTOMER', $allPurchaseOrder -> customers -> store_name);
+        $templateReceipt -> setvalue('CUSTOMER', $purchaseOrder -> customers -> store_name);
 
-        $templateReceipt -> setvalue('ADDRESS', $allPurchaseOrder -> customers -> address);
+        $templateReceipt -> setvalue('ADDRESS', $purchaseOrder -> customers -> address);
 
-        $templateReceipt -> setvalue('NUMBER', $allPurchaseOrder -> customers -> contact_number);
+        $templateReceipt -> setvalue('NUMBER', $purchaseOrder -> customers -> contact_number);
 
-        $templateReceipt -> setvalue('PERSON', $allPurchaseOrder -> customers -> full_name);
+        $templateReceipt -> setvalue('PERSON', $purchaseOrder -> customers -> full_name);
 
-        // $templateReceipt -> setValue('REQUESTED_BY', $allPurchaseOrder -> requested_by);
+        // $templateReceipt -> setValue('REQUESTED_BY', $purchaseOrder -> requested_by);
 
-        // $templateReceipt -> setValue('PREPARED_BY', $allPurchaseOrder -> prepared_by);
+        // $templateReceipt -> setValue('PREPARED_BY', $purchaseOrder -> prepared_by);
 
-        // $templateReceipt -> setValue('APPROVED_BY', $allPurchaseOrder -> approved_by);
+        // $templateReceipt -> setValue('APPROVED_BY', $purchaseOrder -> approved_by);
 
-        // $templateReceipt -> setValue('TOTAL', $allPurchaseOrder -> pivot -> sum('amount'));
+        // $templateReceipt -> setValue('TOTAL', $purchaseOrder -> pivot -> sum('amount'));
 
-        $items = $allPurchaseOrder -> productSku;
+        $items = $purchaseOrder -> productSku;
         $itemRows = 16;
 
         $itemIndex = 1;
@@ -161,7 +161,17 @@ class SalesFunctionsController extends Controller
 
             $templateReceipt -> setValue("VARIANT{$itemIndex}", $item -> productVariants -> variant_name);
 
-            $templateReceipt -> setValue("SIZE{$itemIndex}", $item -> sku_size);
+            $size = '';
+
+            if ($item->sku_size == 1000) {
+                $size = '1 Liter';
+            } elseif ($item->sku_size == 3785.41) {
+                $size = '1 Gallon';
+            } else {
+                // Add more conditions if needed
+            }
+
+            $templateReceipt -> setValue("SIZE{$itemIndex}", $size);
 
             $templateReceipt ->  setValue("QUANTITY{$itemIndex}", $item -> pivot -> quantity);
 
@@ -180,7 +190,7 @@ class SalesFunctionsController extends Controller
             $templateReceipt->setValue("PRICE{$i}", '');
         }
 
-        $savePath = public_path('P.O_' . $allPurchaseOrder -> customers -> full_name . '_receipt.docx');
+        $savePath = public_path('P.O_' . $purchaseOrder -> customers -> full_name . '_receipt.docx');
         $templateReceipt -> saveAs($savePath);
 
         return response() -> download($savePath) -> deleteFileAfterSend(true);

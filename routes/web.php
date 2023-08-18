@@ -201,7 +201,7 @@ Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class,
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
 
-Route::get('sales/purchase-orders/view-details/{allPurchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
+Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
 
 Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_approve_po']) -> name('viewapprovepo');
 
@@ -209,7 +209,7 @@ Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[S
 
 Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
 
-Route::get('sales/purchase-orders/view-details/{allPurchaseOrder}', [SalesFunctionsController::class, 'generate_po_receipt']) -> name('generatecsreceipt');
+Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'generate_po_receipt']) -> name('generatecsreceipt');
 
 });
 

@@ -21,7 +21,7 @@
                 <td class="border-b-2 text-xs text-center">{{$allPurchaseOrder -> customers -> store_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$allPurchaseOrder -> customers -> full_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$allPurchaseOrder -> customers -> contact_number}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchasedetails', ['allPurchaseOrder' => $allPurchaseOrder -> id])}}">View</a></td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchasedetails', ['purchaseOrder' => $allPurchaseOrder -> id])}}">View</a></td>
             </tr>
             @endforeach
         </tbody>

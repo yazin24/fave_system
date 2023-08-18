@@ -9,12 +9,12 @@
     <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
 
         <div class="bg-gray-200 px-4 py-4"> 
-            <h2 class="flex justify-end text-gray-800 font-bold text-sm">Agent Name: {{$allPurchaseOrder -> agents -> agent_name}}</h2>
+            <h2 class="flex justify-end text-gray-800 font-bold text-sm">Agent Name: {{$purchaseOrder -> agents -> agent_name}}</h2>
             <div class="flex flex-row">
                 <div class="text-sm">
-                     <h2 class="text-gray-800 font-bold">Store Name: {{$allPurchaseOrder -> customers -> store_name}}</h2>
-                    <h2 class="text-gray-800 font-bold">Full Name: {{$allPurchaseOrder -> customers -> full_name}}</h2>
-                    <h2 class="text-gray-800 font-bold">Contact Number: {{$allPurchaseOrder -> customers -> contact_number}}</h2>
+                     <h2 class="text-gray-800 font-bold">Store Name: {{$purchaseOrder -> customers -> store_name}}</h2>
+                    <h2 class="text-gray-800 font-bold">Full Name: {{$purchaseOrder -> customers -> full_name}}</h2>
+                    <h2 class="text-gray-800 font-bold">Contact Number: {{$purchaseOrder -> customers -> contact_number}}</h2>
                 </div>
              </div>
                <div class="bg-white-900 text-gray-900 mt-4"> 
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>    
                         <tbody class="bg-gray-300 w-auto">
-                            @foreach($allPurchaseOrder -> productSku as $product)
+                            @foreach($purchaseOrder -> productSku as $product)
                             <tr class="h-10">   
                                 <td class="text-xs text-center border-b-2 font-bold">{{$product -> full_name}}</td>
                                 <td class="text-xs text-center border-b-2 font-bold">{{$product -> productVariants -> variant_name}}</td>
@@ -57,7 +57,7 @@
          </div>
 
          <div class="flex flex-row gap-2 mt-8 text-xs">
-            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200"><a href="{{route('generatecsreceipt', ['allPurchaseOrder' => $allPurchaseOrder -> id])}}">Generate Receipt</a></button>
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Generate Receipt</a></button>
         </div>
 
 </div>
