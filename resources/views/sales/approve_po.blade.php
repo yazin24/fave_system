@@ -31,16 +31,13 @@
                         <tbody class="bg-gray-300 w-auto">
                             @foreach($purchaseOrder -> productSku as $product)
                             <tr class="h-10">   
-                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> full_name}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> productVariants -> variant_name}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="full_name[{{$product -> id}}]" class="text-xs text-center w-full" type="text" value="{{$product -> full_name}}" readonly></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="variant_name[{{$product -> id}}]" class="text-xs text-center w-full" type="text" value="{{$product -> productVariants -> variant_name}}" readonly></td>
                                 <td class="text-xs text-center border-b-2 font-bold">
-                                    @if($product -> sku_size ==3785.41) 1 Gallon 
-                                    @elseif($product -> sku_size == 1000) 1 Liter
-                                    @else 500 ml
-                                    @endif
+                                    <input name="sku_size[{{$product -> id}}]" class="text-xs text-center w-full" type="text" value=" @if($product -> sku_size ==3785.41) 1 Gallon @elseif($product -> sku_size == 1000) 1 Liter @else 500 ml @endif">
                                 </td>
-                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> pivot -> quantity}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold">{{$product -> pivot -> price}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="quantity[{{$product -> id}}]" class="text-xs text-center w-full" type="text" value="{{$product -> pivot -> quantity}}" readonly></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><input name="price[{{$product -> id}}]" class="text-xs text-center w-full" type="text" value="{{$product -> pivot -> price}}" read></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -58,10 +55,16 @@
 
          <div class="flex flex-row gap-2 mt-8">
          <div>
-            <button class="font-bold text-xs bg-teal-500 hover:bg-teal-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-check"></i> Approve</button>
+            <form method="POST" action="{{route('approvepurchaseorder', ['purchaseOrder' => $purchaseOrder -> id])}}">
+                <button class="font-bold text-xs bg-teal-500 hover:bg-teal-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-check"></i> Approve</button>
+            </form>
+           
          </div>
          <div>
-            <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-xmark"></i> Disapprove</button>
+            <form method="POST" action="{{route('disapprovepurchaseorder', ['purchaseOrder' => $purchaseOrder -> id])}}">
+                <button class="font-bold text-xs bg-red-500 hover:bg-red-600 p-1 text-gray-200 rounded-md shadow-md"><i class="fa-regular fa-circle-xmark"></i> Disapprove</button>
+            </form>
+           
          </div>
         </div>
 

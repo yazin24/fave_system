@@ -62,16 +62,42 @@ class SalesFunctionsController extends Controller
         return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
-    public function approve_purchase_order()
+    public function approve_purchase_order(Request $request, $purchaseOrder)
     {
+        $approvePurchaseOrder = CustomersPurchaseOrders::findOrFail($purchaseOrder);
+
+        $approvePurchaseOrder -> status = 1;
+
+        $approvePurchaseOrder -> save();
+
+        $customer = $approvePurchaseOrder -> customers;
+
+        foreach($approvePurchaseOrder -> productSku as $product)
+        {
+
+            $approvePurchaseOrder -> $customer -> customersStocks() -> create([
+                'cs_id' => $approvePurchaseOrder -> cs_id,
+                'sku_id' => $product -> id,
+                'quantity' => $product -> pivot -> quantity,
+            ]);
+
+        }
 
         Session::flash('success', 'Purchase Order has been approved!');
         return view('sales.sales_home');
 
     }
 
-    public function disapprove_purchase_order()
+    public function disapprove_purchase_order($purchaseOrder)
     {
+
+        $disapprovePurchaseOrder = CustomersPurchaseOrders::findOrFail($purchaseOrder);
+
+        $disapprovePurchaseOrder -> status = 2; 
+
+        $disapprovePurchaseOrder -> save();
+
+
         Session::flash('success', 'Purchase Order has been approved!');
         return view('sales.sales_home');
 
