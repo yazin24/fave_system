@@ -158,7 +158,7 @@ class SalesAgentFunctionsController extends Controller
         return view('salesagent.agent_dashboard', ['agent' => $agentId]);
     }
 
-    public function view_customers_stocks(Agents $agent, $customer)
+    public function view_customers_stocks(Agents $agent,Customers $customer)
     {
 
         return view('salesagent.view_customers_stock', ['agent' => $agent, 'customer' => $customer]);
