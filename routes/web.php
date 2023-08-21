@@ -244,7 +244,7 @@ Route::get('sales-agent/agent-list/view-dashboard/{agent}/request-po', [SalesAge
 
 Route::post('sales-agent/agent-list/view-dashboard/{agent}/create-po', [SalesAgentFunctionsController::class, 'create_po']) -> name('createpo');
 
-// Route::get('sales-agent/agent-list/view-dashboard/{agent}/view/customer-stocks/{customer}', [SalesAgentFunctionsController::class, 'view_customers_stocks']) -> name('viewcustomersstocks');
+Route::get('sales-agent/agent-list/view-dashboard/{agent}/view/customer-stocks/{customer}', [SalesAgentFunctionsController::class, 'view_customers_stocks']) -> name('viewcustomersstocks');
 
 });
 
