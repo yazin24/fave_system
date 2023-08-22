@@ -21,6 +21,11 @@ class SalesController extends Controller
         return view('sales.sales_purchase_orders',['allPurchaseOrders' => $allPurchaseOrders]);
     }
 
+    public function sales_manual_po()
+    {
+        return view('sales.manual_po');
+    }
+
     public function for_approval()
     {
         $purchaseOrders = CustomersPurchaseOrders::where('status', 3) -> get();

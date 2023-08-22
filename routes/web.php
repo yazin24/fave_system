@@ -15,6 +15,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesFunctionsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
+use App\Http\Middleware\Sales;
 use Illuminate\Support\Facades\Route;
 
 
@@ -191,6 +192,8 @@ Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring'
 
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 
+Route::get('sales/manual_po', [SalesController::class, 'sales_manual_po']) -> name('salesmanualpo');
+
 Route::get('sales/for-approval', [SalesController::class, 'for_approval']) -> name('forapproval');
 
 Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring']) -> name('agentmonitoring');
@@ -200,6 +203,8 @@ Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring'
 Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class, 'new_agent']) -> name('newagent');
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
+
+Route::get('sales/manual_po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
 

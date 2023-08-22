@@ -128,6 +128,9 @@
             <x-responsive-nav-link :href="route('salespurchaseorders')" :active="request()->routeIs('salespurchaseorders')">
                 <i class="fa-solid fa-cart-shopping text-xl"></i>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('salesmanualpo')" :active="request()->routeIs('salesmanualpo')">
+                <i class="fa-solid fa-cart-plus text-xl"></i>
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('forapproval')" :active="request()->routeIs('forapproval')">
                 <i class="fa-solid fa-file-circle-check text-xl"></i>
             </x-responsive-nav-link>

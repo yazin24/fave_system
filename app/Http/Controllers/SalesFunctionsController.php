@@ -63,6 +63,11 @@ class SalesFunctionsController extends Controller
         return view('sales.view_purchase_details', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
+    public function manual_purchase_order()
+    {
+        return view('sales.create_customer_po');
+    }
+
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
     {
             $totalAmount = 0;
