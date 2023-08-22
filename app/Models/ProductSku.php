@@ -24,6 +24,11 @@ class ProductSku extends Model
         return $this -> hasMany(ProductSku::class, 'sku_id');
     }
 
+    public function manualPurchaseOrderProducts()
+    {
+        return $this -> hasMany(ManualPurchaseOrderProducts::class, 'sku_id');
+    }
+
     protected $fillable = [
         'barcode',
         'variant_id', 

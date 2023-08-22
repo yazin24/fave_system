@@ -4,7 +4,7 @@
 
 <h2>Create Purchase Order</h2>
 
-<div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 w-full justify-center">
+<div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
 
     <h2 class="text-center text-gray-200 font-bold md:text-2xl mb-2"> * Customer Purchase Order * </h2>
 
@@ -17,15 +17,31 @@
     <form method="POST" action="">
     @csrf
     @method('POST')
-        <div class="flex flex-row mb-1">
-{{--            
-            <select id="customer_name" name="customer_name" class="w-full h-8 text-xs" required>
-                <option value="" disabled selected>Choose Customer</option>
-                @foreach($agentCustomers as $agentCustomer)
-                <option value="{{$agentCustomer -> id}}">{{$agentCustomer -> full_name}}</option>
-                @endforeach
-            </select> --}}
+    <div class="bg-gray-200 px-4 py-4"> 
+
+        <div class="flex flex-col">
+        <h2 class="text-xs font-bold mb-1">**Customer Details</h2>
+        <div class="mb-1 font-bold">
+            <input type="text" placeholder="Full Name" class="h-8 w-full" name="customers_name">
         </div>
+
+        <div class="mb-1 font-bold">
+            <input type="text" placeholder="Contact Number" class="h-8 w-full" name="contact_number">
+        </div>
+
+        <div class="mb-1 font-bold">
+            <input type="text" placeholder="Address" class="h-8 w-full" name="address">
+        </div>
+
+        <div class="mb-1 font-bold text-gray-500">
+            <select class="h-8 w-full text-xs" name="purchase_type">
+                <option value="" disabled selected>Purchase Type</option>
+                <option>Retail</option>
+                <option>Wholesale</option>
+            </select>
+        </div>
+
+     </div>
 
 
         <div id="item-container" class="flex flex-col">
@@ -57,8 +73,6 @@
                 <div class="w-full">
                     <input type="number" name="quantity[{{$allProduct -> id}}]" class="w-full h-8 text-xs" placeholder="quantity">
                 </div> 
-
-               
             </div>
             @endforeach
         </div>

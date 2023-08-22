@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Areas;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -65,7 +66,9 @@ class SalesFunctionsController extends Controller
 
     public function manual_purchase_order()
     {
-        return view('sales.create_customer_po');
+        $allProducts = ProductSku::all();
+
+        return view('sales.create_customer_po',['allProducts' => $allProducts]);
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
