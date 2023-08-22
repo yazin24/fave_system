@@ -14,23 +14,23 @@
     </div>
     <table class="bg-gray-300 shadow-lg w-full">
         <thead class="">
-            <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 md:h-12">
-                <th class="text-xs md:font-bold text-center">STORE NAME</th>
-                <th class="text-xs text-center">FULL NAME</th>
-                <th class="text-xs text-center">CP NUMBER</th>
-                <th class="text-xs text-center">ACTION</th>
+            <tr class="bg-gray-900 border-b-1 text-gray-300 md:h-12">
+                <th class="text-xs md:font-bold text-center w-1/4">CUSTOMER'S NAME</th>
+                <th class="text-xs text-center w-1/4">CP NUMBER</th>
+                <th class="text-xs text-center w-1/4">ADDRESS</th>
+                <th class="text-xs text-center w-1/4">DETAILS</th>
                
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach($purchaseOrders as $purchaseOrder)
+            @foreach($allManualPurchaseOrders as $manualPurchase)
             <tr class="h-10">
-                <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> store_name}}</td>
-                <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> full_name}}</td>
-                <td class="border-b-2 text-xs text-center">{{$purchaseOrder -> customers -> contact_number}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewapprovepo', ['purchaseOrder' => $purchaseOrder])}}">View</a></td>
+                <td class="border-b-2 text-xs text-center">{{$manualPurchase ->  customers_name}}</td>
+                <td class="border-b-2 text-xs text-center">{{$manualPurchase -> contact_number}}</td>
+                <td class="border-b-2 text-xs text-center">{{$manualPurchase -> address}}</td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewmanualpo', ['manualPurchase' => $manualPurchase -> id])}}">View</a></td>
             </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>

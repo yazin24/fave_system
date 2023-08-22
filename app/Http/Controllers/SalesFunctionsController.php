@@ -128,6 +128,11 @@ class SalesFunctionsController extends Controller
         return view('sales.sales_home');
     }
 
+    public function view_manual_po(ManualPurchaseOrder $manualPurchase)
+    {
+        return view('sales.view_manual_po', ['manualPurchase' => $manualPurchase]);
+    }
+
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
     {
             $totalAmount = 0;

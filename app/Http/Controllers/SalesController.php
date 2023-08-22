@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\ManualPurchaseOrder;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -23,7 +24,9 @@ class SalesController extends Controller
 
     public function sales_manual_po()
     {
-        return view('sales.manual_po');
+        $allManualPurchaseOrders = ManualPurchaseOrder::all();
+
+        return view('sales.manual_po', ['allManualPurchaseOrders' => $allManualPurchaseOrders]);
     }
 
     public function for_approval()
