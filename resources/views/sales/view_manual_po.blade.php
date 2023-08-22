@@ -51,17 +51,23 @@
 
                 <div class="flex">
                     <div class="mt-12 text-xs">
-                        @if($manualPurchase -> isApproved == 0)
+                        @if($manualPurchase -> isApproved == 3)
                         <div class="flex gap-1">
                             <form method="POST" action="{{route('approvemanual', ['manualPurchase' => $manualPurchase -> id])}}">
+                                @csrf
+                                @method('PUT')
                                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
                             </form>
                             <form method="POST" action="{{route('disapprovemanual', ['manualPurchase' => $manualPurchase -> id])}}">
+                                @csrf
+                                @method('PUT')
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
                             </form>
                         </div>
 
-                        @else 
+                        @elseif($manualPurchase -> isApproved == 2)
+                        <h2 class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapproved</h2>
+                        @elseif($manualPurchase -> isApproved == 1)
 
                         <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</button>
 

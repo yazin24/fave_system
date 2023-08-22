@@ -141,7 +141,34 @@ class SalesFunctionsController extends Controller
 
         $manualPo -> isApproved = 1;
 
-        $manualPo -> save();
+        $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
+
+        foreach($manualPoProducts as $manualPoProduct){
+
+            $skuId = $manualPoProduct -> sku_id;
+
+            $manualQuantity = $manualPoProduct -> quantity;
+
+            $sku = ProductSku::findOrFail($skuId);
+
+            $newSkuQuantity = $sku -> sku_quantity - $manualQuantity;
+
+            if($newSkuQuantity >= 0){
+                $sku -> sku_quantity = $newSkuQuantity;
+                $sku -> save();
+
+            }else{
+
+                $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
+
+                Session::flash('error', $errorMessage);
+
+                return redirect()->route('sales.view_manual_po', $manualPurchase -> id);
+
+            }
+        }
+
+        $manualPo->save();
 
         Session::flash('sucess', 'The Purchase Order has been Approved!');
         return view('sales.view_manual_po');
@@ -149,6 +176,10 @@ class SalesFunctionsController extends Controller
 
     public function disapprove_manual(ManualPurchaseOrder $manualPurchase)
     {
+        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase);
+
+        $manualPo -> isApproved = 2;
+
         Session::flash('sucess', 'The Purchase Order has been Disapproved!');
         return view('sales.view_manual_po');
     }
