@@ -159,7 +159,8 @@ class SalesFunctionsController extends Controller
 
     public function approve_manual(ManualPurchaseOrder $manualPurchase)
     {
-        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase);
+
+        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
 
         $manualPo -> isApproved = 1;
 
@@ -190,7 +191,7 @@ class SalesFunctionsController extends Controller
             }
         }
 
-        $manualPo->save();
+        $manualPo -> save();
 
         Session::flash('sucess', 'The Purchase Order has been Approved!');
         return view('sales.sales_home');
@@ -198,14 +199,14 @@ class SalesFunctionsController extends Controller
 
     public function disapprove_manual(ManualPurchaseOrder $manualPurchase)
     {
-        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase);
-
-        dd($manualPo);
+        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
 
         $manualPo -> isApproved = 2;
 
+        $manualPo -> save();
+
         Session::flash('sucess', 'The Purchase Order has been Disapproved!');
-        return view('sales.view_manual_po');
+        return view('sales.sales_home');
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
