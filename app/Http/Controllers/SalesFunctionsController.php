@@ -82,14 +82,47 @@ class SalesFunctionsController extends Controller
 
         $purchaseType = $request -> input('purchase_type');
 
+        $selectedSkus = $request -> input('selected_product', []);
+
+        $chosenProducts = $request -> input('product_id', []);
+        
+        $inputPrice = $request -> input('price', []);
+
+        $inputQuantity = $request -> input('quantity', []);
+
         $newManualPurchaseOrder = ManualPurchaseOrder::create([
 
             'customers_name' => $customerName,
             'contact_number' => $contactNumber,
             'address' => $customerAddress,
             'purchase_type' => $purchaseType,
+            'isApproved' => 0,
 
         ]);
+
+        $manualPoId = $newManualPurchaseOrder -> id;
+
+        foreach($chosenProducts as $index){
+            if(in_array($index, $selectedSkus)){
+                $theQuantity = $inputQuantity[$index] ?? null;
+                $thePrice = $inputPrice[$index] ?? null;
+
+                if($theQuantity && $thePrice){
+                    $totalAmount = $theQuantity * $thePrice;
+
+                    $newManualPurchaseOrder -> manualPurchaseOrderProducts() -> create([
+
+                            'manual_po_id' => $manualPoId,
+                            'sku_id' => $index,
+                            'quantity' => $theQuantity,
+                            'price' => $thePrice,
+                            'amount' => $totalAmount,
+
+                    ]);
+                }
+            }
+
+        }
 
         Session::flash('success', 'The Purchase Order has been created!');
         return view('sales.sales_home');

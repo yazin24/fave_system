@@ -14,7 +14,7 @@
     </p>
    
 
-    <form method="POST" action="">
+    <form method="POST" action="{{route('createcustomerpo')}}">
     @csrf
     @method('POST')
     <div class="bg-gray-200 px-4 py-4"> 
@@ -78,7 +78,8 @@
         </div>
 
         <div>
-    <button type="submit" id="add-item" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-xs">Submit</button>
+           
+    <button type="submit" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-xs">Submit</button>
     </div>
 
 </form>

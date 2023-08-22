@@ -204,7 +204,9 @@ Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class,
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
 
-Route::get('sales/manual_po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
+Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
+
+Route::post('sales/manual-po/new-purchase-order/create-new',[SalesFunctionsController::class, 'create_customer_po']) -> name('createcustomerpo');
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
 
