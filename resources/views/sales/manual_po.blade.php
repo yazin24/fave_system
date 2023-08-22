@@ -8,7 +8,7 @@
 <div class="bg-white-900 text-gray-900 mt-1">
     <div class="flex justify-end">
         <form method="GET" action="{{route('manualpurchaseorder')}}">
-            <button class="bg-teal-500 hover:bg-teal-600 font-bold text-gray-200 p-1 rounded-sm text-sm shadow-md mb-1"><a>Create New</a></button>
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md mb-1"><a>Create New</a></button>
         </form>
         
     </div>

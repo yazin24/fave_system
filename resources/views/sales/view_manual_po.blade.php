@@ -2,7 +2,7 @@
 
 @section('sales-body')
 
-<h2 class="font-bold md:text-xl">View Purchase Order Details</h2>
+<h2 class="font-bold md:text-xl">Manual Purchase Order Details</h2>
 
 <div class="mt-4">
 
@@ -32,17 +32,17 @@
                         <tbody class="bg-gray-300">
                             @foreach($manualPurchase -> manualPurchaseOrderProducts as $index => $item)
                             <tr class="h-10">   
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> productSku -> full_name}}</td>
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> productSku -> productVariants -> variant_name}}</td>
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">
+                                <td class="text-xs text-center border-b-2 font-bold">{{$item -> productSku -> full_name}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">{{$item -> productSku -> productVariants -> variant_name}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">
                                     @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
                                     @elseif($item -> productSku -> sku_size == 1000) 1 Liter
                                     @else 500 ml
                                     @endif
                                 </td>
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">{{$item -> quantity}}</td>
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">₱{{$item -> price}}</td>
-                                <td class="text-xs md:text-sm text-center border-b-2 font-bold">₱{{$item-> amount}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">{{$item -> quantity}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">₱{{$item -> price}}</td>
+                                <td class="text-xs text-center border-b-2 font-bold">₱{{$item-> amount}}</td>
                             </tr>
                             @endforeach    
                         </tbody>
