@@ -36,8 +36,8 @@
         <div class="mb-1 font-bold text-gray-500">
             <select class="h-8 w-full text-xs" name="purchase_type">
                 <option value="" disabled selected>Purchase Type</option>
-                <option>Retail</option>
-                <option>Wholesale</option>
+                <option value="Retail">Retail</option>
+                <option value="Wholesale">Wholesale</option>
             </select>
         </div>
 

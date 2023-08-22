@@ -11,7 +11,7 @@ class ManualPurchaseOrderProducts extends Model
 
     public function manualPurchaseOrder()
     {
-        return $this -> belongsTo(ManualPurchaseOrder::class, 'cs_id');
+        return $this -> belongsTo(ManualPurchaseOrder::class, 'manual_po_id');
     }
 
     public function productSku()
@@ -20,7 +20,7 @@ class ManualPurchaseOrderProducts extends Model
     }
 
     protected $fillable = [
-        'cs_id',
+        'manual_po_id',
         'sku_id',
         'quantity',
         'price',

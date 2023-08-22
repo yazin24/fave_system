@@ -11,7 +11,7 @@ class ManualPurchaseOrder extends Model
 
     public function manualPurchaseOrderProducts()
     {
-        return $this -> hasMany(ManualPurchaseOrderProducts::class, 'cs_id');
+        return $this -> hasMany(ManualPurchaseOrderProducts::class, 'manual_po_id');
     }
 
     protected $fillable = [

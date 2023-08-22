@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Areas;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -69,6 +70,29 @@ class SalesFunctionsController extends Controller
         $allProducts = ProductSku::all();
 
         return view('sales.create_customer_po',['allProducts' => $allProducts]);
+    }
+
+    public function create_customer_po(Request $request)
+    {
+        $customerName = $request -> input('customers_name');
+
+        $contactNumber = $request -> input('contact_number');
+
+        $customerAddress = $request -> input('address');
+
+        $purchaseType = $request -> input('purchase_type');
+
+        $newManualPurchaseOrder = ManualPurchaseOrder::create([
+
+            'customers_name' => $customerName,
+            'contact_number' => $contactNumber,
+            'address' => $customerAddress,
+            'purchase_type' => $purchaseType,
+
+        ]);
+
+        Session::flash('success', 'The Purchase Order has been created!');
+        return view('sales.sales_home');
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)
