@@ -90,8 +90,30 @@ class SalesFunctionsController extends Controller
 
         $inputQuantity = $request -> input('quantity', []);
 
+        $lastPurchaseOrder = ManualPurchaseOrder::latest('id') -> first();
+
+        $lastPoNumber = $lastPurchaseOrder ? $lastPurchaseOrder -> po_number : null;
+
+        $prefix = 'MP';
+
+        $poLength = 5;
+       
+        $counter = 0;
+
+        if($lastPoNumber){
+
+            $lastCounter = (int)substr($lastPoNumber, strlen($prefix));
+
+            $counter = $lastCounter + 1;
+        }
+        
+        $poPart = str_pad($counter, $poLength, '0', STR_PAD_LEFT);
+
+        $realPoNumber = $prefix . $poPart;
+
         $newManualPurchaseOrder = ManualPurchaseOrder::create([
 
+            'po_number' => $realPoNumber,
             'customers_name' => $customerName,
             'contact_number' => $contactNumber,
             'address' => $customerAddress,
@@ -163,7 +185,7 @@ class SalesFunctionsController extends Controller
 
                 Session::flash('error', $errorMessage);
 
-                return redirect()->route('sales.view_manual_po', $manualPurchase -> id);
+                return view('sales.sales_home');
 
             }
         }
@@ -171,12 +193,14 @@ class SalesFunctionsController extends Controller
         $manualPo->save();
 
         Session::flash('sucess', 'The Purchase Order has been Approved!');
-        return view('sales.view_manual_po');
+        return view('sales.sales_home');
     }
 
     public function disapprove_manual(ManualPurchaseOrder $manualPurchase)
     {
         $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase);
+
+        dd($manualPo);
 
         $manualPo -> isApproved = 2;
 

@@ -15,6 +15,7 @@ class ManualPurchaseOrder extends Model
     }
 
     protected $fillable = [
+        'po_number',
         'customers_name',
         'contact_number',
         'address',

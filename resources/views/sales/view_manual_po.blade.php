@@ -9,7 +9,7 @@
     <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 
-                <h2 class="text-xs text-gray-800 mb-4 font-bold">P.O Number: <span class="text-blue-600 font-bold"></span></h2>
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">P.O Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> po_number}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Full Name: <span class="text-blue-600 font-bold">{{$manualPurchase -> customers_name}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Contact Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> contact_number}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Address: <span class="text-blue-600 font-bold">{{$manualPurchase -> address}}</span></h2>
@@ -53,16 +53,20 @@
                     <div class="mt-12 text-xs">
                         @if($manualPurchase -> isApproved == 3)
                         <div class="flex gap-1">
+                            <div>
                             <form method="POST" action="{{route('approvemanual', ['manualPurchase' => $manualPurchase -> id])}}">
                                 @csrf
-                                @method('PUT')
+                                
                                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
                             </form>
+                        </div> 
+                        <div>
                             <form method="POST" action="{{route('disapprovemanual', ['manualPurchase' => $manualPurchase -> id])}}">
                                 @csrf
-                                @method('PUT')
+                                
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
                             </form>
+                        </div>
                         </div>
 
                         @elseif($manualPurchase -> isApproved == 2)
@@ -81,15 +85,6 @@
                  </div>
          </div>
 
-         {{-- @if($purchase -> systemStatus  -> status === 'queued')
-         <button class="bg-teal-500 p-1 mt-2 rounded-md text-gray-200 text-xs" disabled>
-           Generate Receipt
-        </button>
-        @else
-         <button class="bg-teal-500 p-1 mt-2 rounded-md text-gray-200 hover:bg-teal-600 text-xs">
-            <a href="{{route('generatereceipt', ['purchase' => $purchase -> id])}}" > Generate Receipt</a>
-        </button>
-        @endif --}}
     </div>
 
 </div>
