@@ -16,8 +16,8 @@ return new class extends Migration
             $table -> string('customers_name') -> default('');
             $table -> string('contact_number') -> default('');
             $table -> string('address') -> default('');
-            $table -> string('purchase_type') -> default(0);
-            $table -> boolean('isApproved') -> default(0);
+            $table -> string('purchase_type') -> default('');
+            $table -> integer('isApproved') -> default(3);
             $table->timestamps();
         });
     }

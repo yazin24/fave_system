@@ -130,7 +130,27 @@ class SalesFunctionsController extends Controller
 
     public function view_manual_po(ManualPurchaseOrder $manualPurchase)
     {
-        return view('sales.view_manual_po', ['manualPurchase' => $manualPurchase]);
+        $totalAmount = $manualPurchase -> manualPurchaseOrderProducts() -> sum('amount');
+
+        return view('sales.view_manual_po', ['manualPurchase' => $manualPurchase, 'totalAmount' => $totalAmount]);
+    }
+
+    public function approve_manual(ManualPurchaseOrder $manualPurchase)
+    {
+        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase);
+
+        $manualPo -> isApproved = 1;
+
+        $manualPo -> save();
+
+        Session::flash('sucess', 'The Purchase Order has been Approved!');
+        return view('sales.view_manual_po');
+    }
+
+    public function disapprove_manual(ManualPurchaseOrder $manualPurchase)
+    {
+        Session::flash('sucess', 'The Purchase Order has been Disapproved!');
+        return view('sales.view_manual_po');
     }
 
     public function view_approve_po(CustomersPurchaseOrders $purchaseOrder)

@@ -208,6 +208,12 @@ Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::clas
 
 Route::get('sales/manual-po/view-details/{manualPurchase}', [SalesFunctionsController::class, 'view_manual_po']) -> name('viewmanualpo');
 
+Route::post('sales/manual-po/view-details/{manualPurchase}/approved', [SalesFunctionsController::class, 'approve_manual']) -> name('approvemanual');
+
+Route::post('sales/manual-po/view-details/{manualPurchase}/disapproved', [SalesFunctionsController::class, 'disapprove_manual']) -> name('disapprovemanual');
+
+
+
 Route::post('sales/manual-po/new-purchase-order/create-new',[SalesFunctionsController::class, 'create_customer_po']) -> name('createcustomerpo');
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
@@ -216,7 +222,7 @@ Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunc
 
 Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[SalesFunctionsController::class, 'approve_purchase_order']) -> name('approvepurchaseorder');
 
-Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove}', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
+Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove', [SalesFunctionsController::class, 'disapprove_purchase_order']) -> name('disapprovepurchaseorder');
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}/generate-receipt', [SalesFunctionsController::class, 'generate_po_receipt']) -> name('generatecsreceipt');
 
