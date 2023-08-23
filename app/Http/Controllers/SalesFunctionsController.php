@@ -425,4 +425,9 @@ class SalesFunctionsController extends Controller
         return response() -> download($savePath) -> deleteFileAfterSend(true);
 
     }
+
+    public function agent_details(Agents $agent)
+    {
+        return view('sales.agent_details', ['agent' => $agent]);
+    }
 }

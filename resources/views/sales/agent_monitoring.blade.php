@@ -33,7 +33,7 @@
                 <td class="border-b-2 text-xs text-center">{{$agent -> fb_messenger}}</td>
                 <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$agent -> email_address}}</td>
                 <td class="border-b-2 text-xs text-center hidden md:table-cell">{{$agent -> created_at -> format('Y-m-d h:s:i A')}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('agentdetails', ['agent' => $agent -> id])}}">View</a></td>
             </tr>
            @endforeach  
         </tbody>
