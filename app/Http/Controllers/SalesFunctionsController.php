@@ -267,7 +267,7 @@ class SalesFunctionsController extends Controller
 
     public function generate_po_receipt(CustomersPurchaseOrders $purchaseOrder)
     {
-        $templateReceiptPath = ('receipts/cspo_template.docx');
+        $templateReceiptPath = ('receipts/mpo_template.docx');
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
@@ -326,7 +326,6 @@ class SalesFunctionsController extends Controller
             $itemIndex++;
 
         }
-
          //     //this remove the placeholder for the remaining rows in the table thats empty
          for ($i = $itemIndex; $i <= $itemRows; $i++) {
             $templateReceipt->setValue("PRODUCT{$i}", '');
@@ -337,6 +336,90 @@ class SalesFunctionsController extends Controller
         }
 
         $savePath = public_path('P.O_' . $purchaseOrder -> customers -> full_name . '_receipt.docx');
+        $templateReceipt -> saveAs($savePath);
+
+        return response() -> download($savePath) -> deleteFileAfterSend(true);
+
+    }
+
+    public function manual_receipt(ManualPurchaseOrder $manualPurchase)
+    {
+        $templateReceiptPath = ('receipts/cspo_template.docx');
+
+        $templateReceipt = new TemplateProcessor($templateReceiptPath);
+
+        // $templateReceipt -> setValue('PTERM', $purchaseOrder -> purchaseOrderTerms -> payment_term);
+
+        $templateReceipt -> setValue('PO', $manualPurchase -> po_number);
+
+        $templateReceipt -> setValue('PTYPE', $manualPurchase -> purchase_type);
+
+        $createdDate = date('Y-m-d', strtotime($manualPurchase -> created_at));
+
+        $templateReceipt -> setValue('PO_DATE', $createdDate);
+
+        $templateReceipt -> setvalue('CUSTOMER', $manualPurchase -> customers_name);
+
+        $templateReceipt -> setvalue('ADDRESS', $manualPurchase -> address);
+
+        $templateReceipt -> setvalue('NUMBER', $manualPurchase -> contact_number);
+
+        // $templateReceipt -> setvalue('PERSON', $manualPurchase -> full_name);
+
+        // $templateReceipt -> setValue('REQUESTED_BY', $purchaseOrder -> requested_by);
+
+        // $templateReceipt -> setValue('PREPARED_BY', $purchaseOrder -> prepared_by);
+
+        // $templateReceipt -> setValue('APPROVED_BY', $purchaseOrder -> approved_by);
+
+        // $templateReceipt -> setValue('TOTAL', $manualPurchase -> pivot -> sum('amount'));
+
+        $items = $manualPurchase -> manualPurchaseOrderProducts;
+        $itemRows = 16;
+
+        $itemIndex = 1;
+
+        foreach($items as $item)
+        {
+
+            $templateReceipt -> setValue("PRODUCT{$itemIndex}", $item -> productSku -> full_name);
+
+            $templateReceipt -> setValue("VARIANT{$itemIndex}", $item -> productSku -> productVariants -> variant_name);
+
+            $size = '';
+
+            if ($item -> productSku -> sku_size == 1000) {
+                $size = '1 Liter';
+            } elseif ($item-> productSku -> sku_size == 3785.41) {
+                $size = '1 Gallon';
+            } else {
+                // Add more conditions if needed
+            }
+
+            $templateReceipt -> setValue("SIZE{$itemIndex}", $size);
+
+            $templateReceipt ->  setValue("QUANTITY{$itemIndex}", $item -> manualPurchaseOrderProducts -> quantity);
+
+            $templateReceipt -> setValue("PRICE{$itemIndex}", $item -> manualPurchaseOrderProducts -> price);
+
+            $itemIndex++;
+
+        }
+
+        $totalAmount = $manualPurchase -> manualPurchaseOrderProducts() -> sum('amount');
+
+        $templateReceipt -> setvalue('TOTAL', $totalAmount);
+
+         //     //this remove the placeholder for the remaining rows in the table thats empty
+         for ($i = $itemIndex; $i <= $itemRows; $i++) {
+            $templateReceipt->setValue("PRODUCT{$i}", '');
+            $templateReceipt->setValue("VARIANT{$i}", '');
+            $templateReceipt->setValue("SIZE{$i}", '');
+            $templateReceipt->setValue("QUANTITY{$i}", '');
+            $templateReceipt->setValue("PRICE{$i}", '');
+        }
+
+        $savePath = public_path('P.O_' . $manualPurchase -> customers -> full_name . '_receipt.docx');
         $templateReceipt -> saveAs($savePath);
 
         return response() -> download($savePath) -> deleteFileAfterSend(true);
