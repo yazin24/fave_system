@@ -9,7 +9,7 @@
     <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 
-            <div class="flex flex-row mb-4 text-xs"> 
+            <div class="flex flex-row mb-2 text-xs"> 
                 <div>
                     <h2 class="text-gray-800 font-bold">Agent Name: <span class="text-blue-600 font-bold">{{$agent -> agent_name}}</span></h2>
                 </div>
@@ -18,10 +18,10 @@
                     <h2 class="text-gray-800 font-bold">Area: <span class="text-red-700 font-bold capitalize">{{$agent -> areas -> area_name}}</span></h2>
                 </div>
              </div>
-                <h2 class="text-gray-800 mb-4 font-bold text-xs">Address: <span class="text-blue-600 font-bold">{{$agent -> agent_address}}</span></h2>
-                <h2 class="text-gray-800 mb-4 font-bold text-xs">Number: <span class="text-blue-600 font-bold">{{$agent -> agent_number}}</span></h2>
-                <h2 class="text-gray-800 mb-4 font-bold text-xs">Email: <span class="text-blue-600 font-bold">{{$agent -> email_address}}</span></h2>
-                <h2 class="text-gray-800 mb-4 font-bold text-xs">FB Messenger: <span class="text-blue-600 font-bold">{{$agent -> fb_messenger}}</span></h2>
+                <h2 class="text-gray-800 mb-2 font-bold text-xs">Address: <span class="text-blue-600 font-bold">{{$agent -> agent_address}}</span></h2>
+                <h2 class="text-gray-800 mb-2 font-bold text-xs">Number: <span class="text-blue-600 font-bold">{{$agent -> agent_number}}</span></h2>
+                <h2 class="text-gray-800 mb-2 font-bold text-xs">Email: <span class="text-blue-600 font-bold">{{$agent -> email_address}}</span></h2>
+                <h2 class="text-gray-800 mb-2 font-bold text-xs">FB Messenger: <span class="text-blue-600 font-bold">{{$agent -> fb_messenger}}</span></h2>
             <hr class="border border-gray-900">
                <div class="bg-white-900 text-gray-900 mt-4"> 
                 <h2 class="font-bold text-xs mb-1">Customer List</h2>
