@@ -267,7 +267,7 @@ class SalesFunctionsController extends Controller
 
     public function generate_po_receipt(CustomersPurchaseOrders $purchaseOrder)
     {
-        $templateReceiptPath = ('receipts/mpo_template.docx');
+        $templateReceiptPath = ('receipts/cspo_template.docx');
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
@@ -344,7 +344,7 @@ class SalesFunctionsController extends Controller
 
     public function manual_receipt(ManualPurchaseOrder $manualPurchase)
     {
-        $templateReceiptPath = ('receipts/cspo_template.docx');
+        $templateReceiptPath = ('receipts/mpo_template.docx');
 
         $templateReceipt = new TemplateProcessor($templateReceiptPath);
 
@@ -358,7 +358,7 @@ class SalesFunctionsController extends Controller
 
         $templateReceipt -> setValue('PO_DATE', $createdDate);
 
-        $templateReceipt -> setvalue('CUSTOMER', $manualPurchase -> customers_name);
+        $templateReceipt -> setvalue('FULLNAME', $manualPurchase -> customers_name);
 
         $templateReceipt -> setvalue('ADDRESS', $manualPurchase -> address);
 
@@ -398,9 +398,9 @@ class SalesFunctionsController extends Controller
 
             $templateReceipt -> setValue("SIZE{$itemIndex}", $size);
 
-            $templateReceipt ->  setValue("QUANTITY{$itemIndex}", $item -> manualPurchaseOrderProducts -> quantity);
+            $templateReceipt ->  setValue("QUANTITY{$itemIndex}", $item -> quantity);
 
-            $templateReceipt -> setValue("PRICE{$itemIndex}", $item -> manualPurchaseOrderProducts -> price);
+            $templateReceipt -> setValue("PRICE{$itemIndex}", $item -> price);
 
             $itemIndex++;
 
@@ -419,7 +419,7 @@ class SalesFunctionsController extends Controller
             $templateReceipt->setValue("PRICE{$i}", '');
         }
 
-        $savePath = public_path('P.O_' . $manualPurchase -> customers -> full_name . '_receipt.docx');
+        $savePath = public_path('P.O_' . $manualPurchase -> po_number . '_receipt.docx');
         $templateReceipt -> saveAs($savePath);
 
         return response() -> download($savePath) -> deleteFileAfterSend(true);

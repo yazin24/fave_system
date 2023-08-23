@@ -212,6 +212,8 @@ Route::post('sales/manual-po/view-details/{manualPurchase}/approved', [SalesFunc
 
 Route::post('sales/manual-po/view-details/{manualPurchase}/disapproved', [SalesFunctionsController::class, 'disapprove_manual']) -> name('disapprovemanual');
 
+Route::get('sales/manual/view-details/{manualPurchase}/generate-manual-receipt', [SalesFunctionsController::class, 'manual_receipt']) -> name('manualreceipt');
+
 Route::post('sales/manual-po/new-purchase-order/create-new',[SalesFunctionsController::class, 'create_customer_po']) -> name('createcustomerpo');
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_purchase_details']) -> name('viewpurchasedetails');
