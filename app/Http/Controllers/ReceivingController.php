@@ -46,7 +46,7 @@ class ReceivingController extends Controller
 
     public function pull_out_monitoring()
     {
-        $pullOuts = PullOutItemsCredentials::all();
+        $pullOuts = PullOutItemsCredentials::orderBy('created_at', 'desc') -> get();
 
         return view('receiving.pull_out_monitoring', ['pullOuts' => $pullOuts]);
     }

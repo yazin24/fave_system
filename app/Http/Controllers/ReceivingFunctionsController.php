@@ -124,20 +124,26 @@ class ReceivingFunctionsController extends Controller
    
     public function pull_out_items(Request $request)
     {
-        $lastPullOutNumber = PullOutItemsCredentials::latest('id') -> first();
+        $lastPullOut = PullOutItemsCredentials::latest('id') -> first();
 
-        $lastNumber = $lastPullOutNumber ? (int) $lastPullOutNumber -> po_number : 0;
+        $lastPullOutNumber = $lastPullOut ? $lastPullOut -> pull_out_number : null;
 
-        $pullOutNoLength = 6;
+        $prefix = '00';
+        $poLength = 5;
 
-        $counter = $lastNumber + 1;
+        $counter = 0;
+        if($lastPullOutNumber){
+            $lastCounter = (int)substr($lastPullOutNumber, strlen($prefix));
+            $counter = $lastCounter + 1;
+        }
 
-        $realPoNumber =str_pad((string)$counter, $pullOutNoLength, '0', STR_PAD_LEFT);
+        
+        $poPart = str_pad($counter, $poLength, '0', STR_PAD_LEFT);
 
-        dd($realPoNumber);
+        $realPullOutNumber = $prefix . $poPart;
        
         $newPullOutOrderCredentials = PullOutItemsCredentials::create([
-            'pull_out_number' => $realPoNumber,
+            'pull_out_number' => $realPullOutNumber,
             'prepared_by' => $request -> prepared_by,
             'requested_by' => $request -> requested_by,
             'approved_by' => $request -> approved_by,

@@ -24,6 +24,9 @@ class PurchasingFunctionsController extends Controller
     public function purchase_show_supplier_items(Request $request)
     {
 
+        // $validId = $request -> validate([
+        //     'supplier_id' => 'required| exists:suppliers, id',
+        // ]);
 
         $supplierName = $request -> input('supplier_id');
 
@@ -53,8 +56,7 @@ class PurchasingFunctionsController extends Controller
         //     'amount.*' => 'required|numeric|min:0',
         // ]);
 
-        //dd($request);
-
+        
         $selectedItems = $request -> input('selected_items', []);
 
         $itemNames = $request -> input('item_id', []);
