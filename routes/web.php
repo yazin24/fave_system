@@ -164,6 +164,8 @@ Route::get('receiving/all-products/input-products', [ReceivingFunctionsControlle
 
 Route::post('/receiving/products/add-products', [ReceivingFunctionsController::class, 'add_product_sku']) -> name('addproductsku');
 
+Route::get('receiving/all-products/update-stock/{allProduct}', [ReceivingFunctionsController::class, 'update_stock']) -> name('updatestock');
+
 Route::get('/receiving/view/purchase-order/{toReceivePurchaseOrder}', [ReceivingFunctionsController::class, 'view_to_be_receive_po']) -> name('viewtobereceivepo');
 
 Route::get('/receiving/receive-po/purchase-order-form', [ReceivingFunctionsController::class, 'receive_po_form']) -> name('receivepoform');

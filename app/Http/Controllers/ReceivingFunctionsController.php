@@ -21,6 +21,11 @@ class ReceivingFunctionsController extends Controller
         return view('receiving.product_input', ['allVariants' => $allVariants]);
     }
 
+    public function update_stock(ProductSku $allProduct)
+    {
+        return view('receiving.update_product_stock', ['allProduct' => $allProduct]);
+    }
+
     public function add_product_sku(Request $request)
     {
         $newProductSku = ProductSku::create([

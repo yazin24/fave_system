@@ -11,17 +11,23 @@
     <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 
-            <div class="flex flex-row mb-4"> 
-                <div>
-                    <h2 class="text-xs text-gray-800 font-bold">SKU NAME: <span class="text-blue-600 font-bold"></span></h2>
-                    <h2 class="text-xs text-gray-800 font-bold">VARIANT: <span class="text-red-700 font-bold capitalize"></span></h2>
-                    <h2 class="text-xs text-gray-800 font-bold">SIZE: <span class="text-red-700 font-bold capitalize"></span></h2>
+            <div class="flex flex-col mb-4"> 
+                
+                    <h2 class="text-xs text-gray-800 font-bold mb-2">SKU NAME: <span class="text-blue-600 font-bold">{{$allProduct -> full_name}}</span></h2>
+                    <h2 class="text-xs text-gray-800 font-bold mb-2">VARIANT: <span class="text-blue-600 font-bold capitalize">{{$allProduct -> productVariants -> variant_name}}</span></h2>
+                    <h2 class="text-xs text-gray-800 font-bold mb-2">SIZE: <span class="text-blue-600 font-bold">
+                        @if($allProduct -> sku_size == 3785.41) 1 Gallon
+                        @elseif($allProduct -> sku_size == 1000) 1 Liter
+                        @else 500 ml
+                        @endif    
+                    </span></h2>
+                    <h2 class="text-xs text-gray-800 font-bold mb-2">ENTER QUANTITY: <input type="number" class="h-6 w-24 text-xs" name="quantity"></h2>
                 </div>
-         <div>
-                 <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 mt-2 rounded-sm text-gray-200 text-sm w-full font-bold">
+                 <button type="submit" class="text-xs bg-teal-500 hover:bg-teal-600 font-bold text-gray-200 p-1 rounded-md shadow-md">
                  Update Stocks
                 </button>
-         </div>
+            </div>
+         
     </form>
 
 </div>

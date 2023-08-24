@@ -38,7 +38,7 @@
                     @endif
                 </td>
                 <td class="border-b-2 text-xs text-center w-1/6 font-bold">{{$allProduct -> sku_quantity}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="">Update</a></td>
+                <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="{{route('updatestock', ['allProduct' => $allProduct])}}">Update</a></td>
             </tr>
                 @endforeach
         </tbody>
