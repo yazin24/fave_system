@@ -44,7 +44,7 @@
                                 <td class="text-xs text-center border-b-2 font-bold">{{$agentCustomer -> full_name}}</td>
                                 <td class="text-xs text-center border-b-2 font-bold">{{$agentCustomer -> address}}</td>
                                 <td class="text-xs text-center border-b-2 font-bold">{{$agentCustomer -> contact_number}}</td>
-                                <td class="text-xs text-center border-b-2 font-bold"><a href=""><i class="fa-solid fa-eye text-xl text-red-500 hover:text-red-600"></i></a></td>
+                                <td class="text-xs text-center border-b-2 font-bold"><a href="{{route('agentcustomerdetails', ['agent' => $agent, 'agentCustomer' => $agentCustomer])}}"><i class="fa-solid fa-eye text-xl text-red-500 hover:text-red-600"></i></a></td>
                             </tr>
                             @endforeach    
                         </tbody>

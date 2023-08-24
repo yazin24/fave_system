@@ -226,7 +226,9 @@ Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/disapprove'
 
 Route::get('sales/purchase-orders/view-details/{purchaseOrder}/generate-receipt', [SalesFunctionsController::class, 'generate_po_receipt']) -> name('generatecsreceipt');
 
-Route::get('sales/agent-monitoring/{agent}', [SalesFunctionsController::class, 'agent_details']) -> name('agentdetails');
+Route::get('sales/agent-monitoring/agent/{agent}', [SalesFunctionsController::class, 'agent_details']) -> name('agentdetails');
+
+Route::get('sales/agent-monitoring/agent/{agent}/view/customer/{agentCustomer}', [SalesFunctionsController::class, 'agent_customer_details']) -> name('agentcustomerdetails');
 
 });
 

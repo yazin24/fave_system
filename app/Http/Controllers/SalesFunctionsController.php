@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\Areas;
+use App\Models\Customers;
 use App\Models\CustomersPurchaseOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
@@ -429,5 +430,10 @@ class SalesFunctionsController extends Controller
     public function agent_details(Agents $agent)
     {
         return view('sales.agent_details', ['agent' => $agent]);
+    }
+
+    public function agent_customer_details(Agents $agent, Customers $agentCustomer)
+    {
+        return view('sales.agent_customer_details', ['agent' => $agent, 'agentCustomer' => $agentCustomer]);
     }
 }
