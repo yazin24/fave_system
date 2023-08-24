@@ -26,6 +26,20 @@ class ReceivingFunctionsController extends Controller
         return view('receiving.update_product_stock', ['allProduct' => $allProduct]);
     }
 
+    public function add_stock(Request $request, $allProduct)
+    {
+        $theStock = ProductSku::findOrFail($allProduct);
+
+        $quantityToAdd = $request -> input('quantity');
+
+        $totalQuantity = $theStock -> sku_quantity + $quantityToAdd;
+
+        $theStock -> update(['sku_quantity' => $totalQuantity]);
+
+        return redirect()->back()->with('success', 'Stock added successfully.');
+
+    }
+
     public function add_product_sku(Request $request)
     {
         $newProductSku = ProductSku::create([
