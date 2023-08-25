@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('shopee_sales', function (Blueprint $table) {
             $table->id();
+            $table -> unsignedBigInteger('shopee_order_id');
+            $table -> decimal('total_amount', 8, 2) -> default(0);
+
+            $table -> foreign('shopee_order_id') -> references('id') -> on('shopee_orders');
             $table->timestamps();
         });
     }

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('shopee_orders', function (Blueprint $table) {
             $table->id();
+            $table -> string('customers_name') -> default('');
+            $table -> string('customers_address') -> default('');
+            $table -> string('phone_number') -> default('');
+            $table -> unsignedBigInteger('status');
+
+            $table -> foreign('status') -> references('id') -> on('system_status');
             $table->timestamps();
         });
     }

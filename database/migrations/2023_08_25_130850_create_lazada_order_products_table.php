@@ -18,6 +18,10 @@ return new class extends Migration
             $table -> integer('quantity') -> default(0);
             $table -> decimal('price', 8,2) -> default(0);
             $table -> decimal('amount', 8, 2) -> default(0);
+
+            $table -> foreign('lazada_order_id') -> references('id') -> on('lazada_orders') -> onDelete('cascade');
+            $table -> foreign('sku_id') -> references('id') -> on('product_sku') -> onDelete('cascade');
+
             $table->timestamps();
         });
     }
