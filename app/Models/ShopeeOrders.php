@@ -7,5 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShopeeOrders extends Model
 {
-    use HasFactory;
+    protected $table = 'shopee_orders';
+
+    public function systemStatus()
+    {
+        return $this -> hasOne(SystemStatus::class, 'status');
+    }
+
+    public function shopeeOrderProducts()
+    {
+        return $this -> hasMany(ShopeeOrderProducts::class, 'shopee_order_id');
+    }
+
+    public function shopeeSales()
+    {
+        return $this -> hasOne(ShopeeSales::class, 'shopee_order_id');
+    }
+
+    protected $fillable = [
+
+        'customers_name',
+        'customers_address',
+        'phone_number',
+        'order_id',
+        'status',
+
+    ];
+
 }

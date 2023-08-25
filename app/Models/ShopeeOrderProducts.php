@@ -7,5 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShopeeOrderProducts extends Model
 {
-    use HasFactory;
+    protected $table = 'shopee_order_products';
+
+    public function shopeeOrders()
+    {
+        return $this -> belongsTo(ShopeeOrders::class, 'shopee_order_id');
+    }
+
+    public function productSku()
+    {
+        return $this -> hasMany(ProductSku::class, 'sku_id');
+    }
+
+    protected $filalble = [
+
+        'shopee_order_id',
+        'sku_id',
+        'quantity',
+        'price',
+        'amount',
+
+    ];
 }

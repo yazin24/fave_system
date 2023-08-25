@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShopeeSales extends Model
 {
-    use HasFactory;
+    protected $table = 'shopee_sales';
+
+    public function shopeeOrders()
+    {
+        return $this -> belongsTo(ShopeeOrders::class, 'shopee_order_id');
+    }
+
+    protected $fillable = [
+
+        'shopee_order_id',
+        'total_amount',
+
+    ];
 }
