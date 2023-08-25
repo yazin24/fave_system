@@ -16,6 +16,7 @@ return new class extends Migration
             $table -> string('customers_name') -> default('');
             $table -> string('customers_address') -> default('');
             $table -> string('phone_number') -> default('');
+            $table -> string('order_number') -> default(0);
             $table -> unsignedBigInteger('status');
 
             $table -> foreign('status') -> references('id') -> on('system_status');
