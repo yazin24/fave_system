@@ -16,7 +16,9 @@ class AdminController extends Controller
 
     public function admin_sales_monitoring()
     {
-        return view('admin.admin_sales_monitoring');
+        $stocksData = ProductSku::select('full_name', 'sku_quantity as stock_quantity') -> get();
+
+        return view('admin.admin_sales_monitoring',['stocksData' => $stocksData]);
     }
 
     public function admin_purchasing_monitoring()
