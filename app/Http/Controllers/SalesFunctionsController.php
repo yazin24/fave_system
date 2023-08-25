@@ -439,11 +439,15 @@ class SalesFunctionsController extends Controller
 
     public function shopee_sales_form()
     {
-        return view('sales.shopee_sales_form');
+        $allProducts = ProductSku::all();
+
+        return view('sales.shopee_sales_form', ['allProducts' => $allProducts]);
     }
 
     public function lazada_sales_form()
     {
-        return view('sales.lazada_sales_form');
+        $allProducts = ProductSku::all();
+
+        return view('sales.lazada_sales_form', ['allProducts' => $allProducts]);
     }
 }
