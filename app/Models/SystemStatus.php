@@ -19,6 +19,16 @@ class SystemStatus extends Model
         return $this -> hasOne(PurchaseOrderDelStatus::class, 'del_status');
     }
 
+    public function shopeeOrders()
+    {
+        return $this -> belongsTo(ShopeeOrders::class, 'status');
+    }
+
+    public function lazadaOrders()
+    {
+        return $this -> belongsTo(LazadaOrders::class, 'status');
+    }
+
     protected $fillable = [
         'status',
     ];

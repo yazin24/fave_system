@@ -29,6 +29,16 @@ class ProductSku extends Model
         return $this -> hasMany(ManualPurchaseOrderProducts::class, 'sku_id');
     }
 
+    public function shopeeOrderProducts()
+    {
+        return $this -> belongsTo(ShopeeOrderProducts::class, 'sku_id');
+    }
+
+    public function lazadaOrderProducts()
+    {
+        return $this -> belongsTo(LazadaOrderProducts::class, 'sku_id');
+    }
+
     protected $fillable = [
         'barcode',
         'variant_id', 
