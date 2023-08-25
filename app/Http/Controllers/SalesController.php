@@ -15,6 +15,12 @@ class SalesController extends Controller
         return view('sales.sales_monitoring');
     }
 
+    public function shopee_lazada_sales()
+    {
+        return view('sales.shopee_lazada_sales');
+    }
+
+
     public function sales_purchase_orders()
     {
         $allPurchaseOrders = CustomersPurchaseOrders::where('status', 1) -> get();

@@ -194,6 +194,8 @@ Route::middleware(['auth', 'sales']) -> group(function(){
 
 Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring']) -> name('salesmonitoring');
 
+Route::get('sales/shopee/lazada', [SalesController::class, 'shopee_lazada_sales']) -> name('shopeelazadasales');
+
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 
 Route::get('sales/manual_po', [SalesController::class, 'sales_manual_po']) -> name('salesmanualpo');

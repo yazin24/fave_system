@@ -125,7 +125,7 @@
             <x-responsive-nav-link :href="route('salesmonitoring')" :active="request()->routeIs('salesmonitoring')">
                 <i class="fa-solid fa-coins text-xl"></i>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('salesmonitoring')" :active="request()->routeIs('salesmonitoring')">
+            <x-responsive-nav-link :href="route('shopeelazadasales')" :active="request()->routeIs('shopeelazadasales')">
                 <i class="fa-solid fa-money-bills text-xl"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('salespurchaseorders')" :active="request()->routeIs('salespurchaseorders')">
