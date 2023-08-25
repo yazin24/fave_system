@@ -436,4 +436,14 @@ class SalesFunctionsController extends Controller
     {
         return view('sales.agent_customer_details', ['agent' => $agent, 'agentCustomer' => $agentCustomer]);
     }
+
+    public function shopee_sales_form()
+    {
+        return view('sales.shopee_sales_form');
+    }
+
+    public function lazada_sales_form()
+    {
+        return view('sales.lazada_sales_form');
+    }
 }

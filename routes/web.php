@@ -210,6 +210,10 @@ Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class,
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');
 
+Route::get('sales/shopee/lazada/shopee-form', [SalesFunctionsController::class, 'shopee_sales_form']) -> name('shopeesalesform');
+
+Route::get('sales/shopee/lazada/lazada-form', [SalesFunctionsController::class, 'lazada_sales_form']) -> name('lazadasalesform');
+
 Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 
 Route::get('sales/manual-po/view-details/{manualPurchase}', [SalesFunctionsController::class, 'view_manual_po']) -> name('viewmanualpo');
