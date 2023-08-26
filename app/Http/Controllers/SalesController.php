@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
+use App\Models\ShopeeOrders;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -17,7 +19,11 @@ class SalesController extends Controller
 
     public function shopee_lazada_sales()
     {
-        return view('sales.shopee_lazada_sales');
+        $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(6);
+
+        $allLazadaSales = LazadaOrders::orderBy('created_at', 'desc') -> paginate(6);
+
+        return view('sales.shopee_lazada_sales', ['allShopeeSales' => $allShopeeSales, 'allLazadaSales' => $allLazadaSales]);
     }
 
 
