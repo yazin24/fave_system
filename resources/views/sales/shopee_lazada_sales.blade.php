@@ -1,25 +1,15 @@
 @extends('sales.sales_home')
 
 @section('sales-body')
-
-<h2 class="font-bold md:text-xl mt-2">Shopee And Lazada</h2>
-
-<div class="flex flex-row gap-2 justify-end">
-    
-    <div>
-            <button class="bg-orange-600 hover:bg-orange-700 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="{{route('shopeesalesform')}}">Shopee</a></button>
-    </div>
-
-    <div>
-            <button class="bg-blue-900 hover:bg-blue-800 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="{{route('lazadasalesform')}}">Lazada</a></button>
-    </div>
-
-</div>
-
         
 <div class="bg-white-900 text-gray-900 mt-2">
-        <div>
-                <h2>Shopee Orders</h2>
+        <div class="flex flex-row justify-between">
+                <div>
+                        <h2 class="font-bold text-orange-600">Shopee Orders</h2>
+                </div>
+                <div class="mb-1">
+                        <button class="bg-orange-600 hover:bg-orange-700 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="{{route('shopeesalesform')}}">Shopee</a></button>
+                </div>
         </div>
 
         <table class="bg-gray-300 shadow-lg w-full">
@@ -52,8 +42,13 @@
 
 
     <div class="bg-white-900 text-gray-900 mt-2">
-        <div>
-                <h2>Lazada Orders</h2>
+        <div class="flex flex-row justify-between">
+                <div>
+                        <h2 class="font-bold text-blue-900">Lazada Orders</h2>
+                </div>
+                <div class="mb-1">
+                        <button class="bg-blue-900 hover:bg-blue-800 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="{{route('lazadasalesform')}}">Lazada</a></button>
+                </div>
         </div>
         <table class="bg-gray-300 shadow-lg w-full">
             <thead>
