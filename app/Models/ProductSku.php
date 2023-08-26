@@ -31,12 +31,12 @@ class ProductSku extends Model
 
     public function shopeeOrderProducts()
     {
-        return $this -> belongsTo(ShopeeOrderProducts::class, 'sku_id');
+        return $this -> hasMany(ShopeeOrderProducts::class, 'sku_id');
     }
 
     public function lazadaOrderProducts()
     {
-        return $this -> belongsTo(LazadaOrderProducts::class, 'sku_id');
+        return $this -> hasMany(LazadaOrderProducts::class, 'sku_id');
     }
 
     protected $fillable = [

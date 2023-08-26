@@ -16,7 +16,7 @@ class ShopeeOrderProducts extends Model
 
     public function productSku()
     {
-        return $this -> hasMany(ProductSku::class, 'sku_id');
+        return $this -> belongsTo(ProductSku::class, 'sku_id');
     }
 
     protected $fillable = [
