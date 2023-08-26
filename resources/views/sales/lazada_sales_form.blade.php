@@ -11,19 +11,19 @@
         <form method="POST" action="{{route('addlazadasales')}}">
             @csrf
             <div>
-                <input type="text" name="order_number" placeholder="Order Number" class="h-6 w-full mb-2">
+                <input type="text" name="order_number" placeholder="Order Number" class="h-6 w-full mb-2" required>
             </div>
             <div>
-                <input type="text" name="full_name" placeholder="Full Name" class="h-8 w-full mb-2">
+                <input type="text" name="full_name" placeholder="Full Name" class="h-8 w-full mb-2" required>
             </div>
             <div>
-                <input type="text" name="full_address" placeholder="Full Address" class="h-8 w-full mb-2">
+                <input type="text" name="customers_address" placeholder="Full Address" class="h-8 w-full mb-2" required>
             </div>
             <div>
-                <input type="text" name="phone_number" placeholder="Phone Number" class="h-8 w-full mb-2">
+                <input type="text" name="phone_number" placeholder="Phone Number" class="h-8 w-full mb-2" required>
             </div>
             <div class="mb-2">
-                <select class="h-8 text-xs" name="status">
+                <select class="h-8 text-xs" name="status" required>
                     <option value="" disabled selected>Choose Status</option>w
                     <option value=4>Delivered</option>
                     <option value=7>Undelivered</option>

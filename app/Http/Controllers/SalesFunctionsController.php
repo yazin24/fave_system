@@ -476,7 +476,7 @@ class SalesFunctionsController extends Controller
         $newShopeeCustomerOrders = ShopeeOrders::create([
 
             'customers_name' => $shopeeCustomerName,
-            'customers_adress' => $shopeeCustomerAddress,
+            'customers_address' => $shopeeCustomerAddress,
             'phone_number' => $shopeeCustomerNumber,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
@@ -518,7 +518,7 @@ class SalesFunctionsController extends Controller
 
         $lazadaCustomerName = $request -> input('full_name');
 
-        $lazadaCustomerAddress = $request -> input('full_address');
+        $lazadaCustomerAddress = $request -> input('customers_address');
 
         $lazadaCustomerNumber = $request -> input('phone_number');
 
@@ -535,7 +535,7 @@ class SalesFunctionsController extends Controller
         $newlazadaCustomerOrders = LazadaOrders::create([
 
             'customers_name' => $lazadaCustomerName,
-            'customers_adress' => $lazadaCustomerAddress,
+            'customers_address' => $lazadaCustomerAddress,
             'phone_number' => $lazadaCustomerNumber,
             'order_number' => $lazadaOrderId,
             'status' => $lazadaCustomerStatus,
