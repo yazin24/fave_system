@@ -572,11 +572,39 @@ class SalesFunctionsController extends Controller
 
     public function shopee_order_details(ShopeeOrders $shopeeSale)
     {
-        return view('sales.shopee_order_details', ['shopeeSale' => $shopeeSale]);
+        $orderTotalAmount = $shopeeSale -> shopeeOrderProducts() -> sum('amount');
+
+        return view('sales.shopee_order_details', ['shopeeSale' => $shopeeSale, 'orderTotalAmount' => $orderTotalAmount]);
     }
 
     public function lazada_order_details(LazadaOrders $lazadaSale)
     {
-        return view('sales.lazada_order_details', ['lazadaSale' => $lazadaSale]);
+        $orderTotalAmount = $lazadaSale -> lazadaOrderProducts() -> sum('amount');
+
+        return view('sales.lazada_order_details', ['lazadaSale' => $lazadaSale, 'orderTotalAmount' => $orderTotalAmount]);
+    }
+
+    public function delivered_shopee_status(Request $request, ShopeeOrders $shopeeSale)
+    {
+        $shopeeOrders = ShopeeOrders::findOrFail($shopeeSale);
+
+        $status = $request -> input('status');
+
+        $shopeeOrders -> update([
+            'status' => $status,
+        ]);
+
+        $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
+
+        $shopeeOrders -> shopeeSales() -> create([
+            'shopee_order_id' => $shopeeOrders -> id,
+            'total_amount' => $shopeeOrderTotalAmount,
+
+        ]);
+
+        $shopeeOrders -> save();
+        
+
+        return redirect() -> back() -> with('success', 'Shopee Order has been delivered!');
     }
 }

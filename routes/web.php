@@ -214,11 +214,13 @@ Route::get('sales/shopee/lazada/shopee-form', [SalesFunctionsController::class, 
 
 Route::post('sales/shopee/lazada/shopee-form/add-shopee-sales', [SalesFunctionsController::class, 'add_shopee_sales']) -> name('addshopeesales');
 
+Route::get('sales/shopee/lazada/view-shopee-order/{shopeeSale}', [SalesFunctionsController::class, 'shopee_order_details']) -> name('shopeeorderdetails');
+
+Route::put('sales/shopee/lazada/view-shopee-order/{shopeeSale}/delivered-status', [SalesFunctionsController::class, 'delivered_shopee_status']) -> name('deliveredshopeestatus');
+
 Route::get('sales/shopee/lazada/lazada-form', [SalesFunctionsController::class, 'lazada_sales_form']) -> name('lazadasalesform');
 
 Route::post('sales/shopee/lazada/lazada-form/add-lazada-sales', [SalesFunctionsController::class, 'add_lazada_sales']) -> name('addlazadasales');
-
-Route::get('sales/shopee/lazada/view-shopee-order/{shopeeSale}', [SalesFunctionsController::class, 'shopee_order_details']) -> name('shopeeorderdetails');
 
 Route::get('sales/shopee/lazada/view-lazada-order/{lazadaSale}',[SalesFunctionsController::class, 'lazada_order_details']) -> name('lazadaorderdetails');
 

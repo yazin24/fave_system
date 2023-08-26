@@ -5,13 +5,14 @@
 <h2 class="font-bold md:text-xl text-orange-600">Shopee Order Details</h2>
 
 <div class="mt-2">
+    <form method="POST" action="{{route('deliveredshopeestatus', ['shopeeSale' => $shopeeSale -> id])}}">
     <div class="bg-orange-600 rounded-md px-2 py-2 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
             <h2 class="font-bold text-sm mb-1">Order ID: {{$shopeeSale -> order_id}}</h2>
             <h2 class="font-bold text-sm mb-1">Full Name: {{$shopeeSale -> customers_name}}</h2>
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$shopeeSale -> customers_address}}</h2>
             <h2 class="font-bold text-sm mb-1">Status:
-                <select class="text-xs">
+                <select class="text-xs" name="status">
                     <option value="" selected disabled>Change Status</option>
                     <option value=4>Delivered</option>
                     <option value=7>Undelivered</option>
@@ -53,15 +54,19 @@
                 </table>
            </div>
 
+           <div class="flex justify-end mt-2">
+            <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}</h2>
+           </div>
+
            <div class="mt-4 w-full">
-            <button class="w-full text-gray-200 bg-orange-600 hover:bg-orange-700 font-bold text-sm p-1 rounded-md shadow-md">Update</button>
+            <button type="submit" class="w-full text-gray-200 bg-orange-600 hover:bg-orange-700 font-bold text-sm p-1 rounded-md shadow-md">Update</button>
            </div>
     
 
         </div>
 
     </div>
-
+    </form>
 </div>
 
 
