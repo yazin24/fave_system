@@ -586,7 +586,7 @@ class SalesFunctionsController extends Controller
 
     public function delivered_shopee_status(Request $request, ShopeeOrders $shopeeSale)
     {
-        $shopeeOrders = ShopeeOrders::findOrFail($shopeeSale);
+        $shopeeOrders = ShopeeOrders::findOrFail($shopeeSale -> id);
 
         $status = $request -> input('status');
 
@@ -594,17 +594,55 @@ class SalesFunctionsController extends Controller
             'status' => $status,
         ]);
 
-        $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
+        if($status == 4){
 
-        $shopeeOrders -> shopeeSales() -> create([
-            'shopee_order_id' => $shopeeOrders -> id,
-            'total_amount' => $shopeeOrderTotalAmount,
+            $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
 
-        ]);
+            $shopeeOrders -> shopeeSales() -> create([
+                'shopee_order_id' => $shopeeOrders -> id,
+                'total_amount' => $shopeeOrderTotalAmount,
+    
+            ]);
+        }
+
 
         $shopeeOrders -> save();
         
-
-        return redirect() -> back() -> with('success', 'Shopee Order has been delivered!');
+        
+        return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
     }
+
+    public function delivered_lazada_status(Request $request, LazadaOrders $lazadaSale)
+    {
+        $lazadaOrders = LazadaOrders::findOrFail($lazadaSale -> id);
+
+        $status = $request -> input('status');
+
+        $lazadaOrders -> update([
+            'status' => $status,
+        ]);
+
+        if($status == 4){
+
+            $lazadaOrderTotalAmount = $lazadaOrders -> lazadaOrderProducts() -> sum('amount');
+
+            $lazadaOrders -> lazadaSales() -> create([
+                'lazada_order_id' => $lazadaOrders -> id,
+                'total_amount' => $lazadaOrderTotalAmount,
+    
+            ]);
+        }
+
+
+        $lazadaOrders -> save();
+        
+        if($status == 4){
+            return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+        }else{
+            return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
+        }
+        
+    }
+
+    
 }

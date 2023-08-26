@@ -5,14 +5,16 @@
 <h2 class="font-bold md:text-xl text-blue-900">Lazada Order Details</h2>
 
 <div class="mt-2">
-    <form>
+    <form method="POST" action="{{route('deliveredlazadastatus', ['lazadaSale' => $lazadaSale -> id])}}">
+        @csrf
+        @method('PUT')
     <div class="bg-blue-900 rounded-md px-2 py-2 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
             <h2 class="font-bold text-sm mb-1">Order Number: {{$lazadaSale -> order_number}}</h2>
             <h2 class="font-bold text-sm mb-1">Full Name: {{$lazadaSale -> customers_name}}</h2>
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$lazadaSale -> customers_address}}</h2>
             <h2 class="font-bold text-sm mb-1">Status:
-                <select class="text-xs">
+                <select class="text-xs" name="status">
                     <option value="" selected disabled>Change Status</option>
                     <option value=4>Delivered</option>
                     <option value=7>Undelivered</option>
@@ -59,7 +61,13 @@
            </div>
 
            <div class="mt-4 w-full">
+            @if($lazadaSale -> status == 7)
             <button type="submit" class="w-full text-gray-200 bg-blue-900 hover:bg-blue-800 font-bold text-sm p-1 rounded-md shadow-md">Update</button>
+            @elseif($lazadaSale -> status == 8)
+            <h2 class="w-full text-gray-200 bg-red-600 hover:bg-red-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Cancelled</h2>
+            @elseif($lazadaSale -> status == 4)
+            <h2 class="w-full text-gray-200 bg-blue-900 hover:bg-blue-800 font-bold text-sm p-1 rounded-md shadow-md text-center">Completed</h2>
+            @endif
            </div>
     
 
