@@ -10,22 +10,22 @@
         
         <form>
             <div>
-                <input type="text" placeholder="Order Number" class="h-6 w-full mb-2">
+                <input type="text" name="order_number" placeholder="Order Number" class="h-6 w-full mb-2">
             </div>
             <div>
-                <input type="text" placeholder="Full Name" class="h-8 w-full mb-2">
+                <input type="text" name="full_name" placeholder="Full Name" class="h-8 w-full mb-2">
             </div>
             <div>
-                <input type="text" placeholder="Full Address" class="h-8 w-full mb-2">
+                <input type="text" name="full_address" placeholder="Full Address" class="h-8 w-full mb-2">
             </div>
             <div>
-                <input type="text" placeholder="Phone Number" class="h-8 w-full mb-2">
+                <input type="text" name="phone_number" placeholder="Phone Number" class="h-8 w-full mb-2">
             </div>
             <div class="mb-2">
-                <select class="h-8 text-xs">
-                    <option disabled selected>Choose Status</option>
-                    <option>Delivered</option>
-                    <option>Undelivered</option>
+                <select class="h-8 text-xs" name="status">
+                    <option value="" disabled selected>Choose Status</option>w
+                    <option value=4>Delivered</option>
+                    <option value=7>Undelivered</option>
                 </select>
             </div>
 

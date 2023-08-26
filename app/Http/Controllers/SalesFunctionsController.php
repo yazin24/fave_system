@@ -9,6 +9,7 @@ use App\Models\Customers;
 use App\Models\CustomersPurchaseOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
+use App\Models\ShopeeOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -449,5 +450,64 @@ class SalesFunctionsController extends Controller
         $allProducts = ProductSku::all();
 
         return view('sales.lazada_sales_form', ['allProducts' => $allProducts]);
+    }
+
+    public  function add_shopee_sales(Request $request)
+    {
+        $shopeeOrderId = $request -> input('order_id');
+
+        $shopeeCustomerName = $request -> input('full_name');
+
+        $shopeeCustomerAddress = $request -> input('full_address');
+
+        $shopeeCustomerNumber = $request -> input('phone_number');
+
+        $shopeeCustomerStatus = $request -> input('status');
+
+        $shopeeCustomerChosenProducts = $request -> input('selected_product', []);
+
+        $shopeeCustomerProducts = $request -> input('product_id', []);
+
+        $shopeeProductPrice = $request -> input('price', []);
+
+        $shopeeProductQuantity = $request -> input('quantity',[]);
+
+        $newShopeeCustomerOrders = ShopeeOrders::create([
+
+            'customers_name' => $shopeeCustomerName,
+            'customer_adress' => $shopeeCustomerAddress,
+            'phone_number' => $shopeeCustomerNumber,
+            'order_id' => $shopeeOrderId,
+            'status' => $shopeeCustomerStatus,
+
+        ]);
+
+        $shopeeId = $newShopeeCustomerOrders -> id;
+
+        foreach($shopeeCustomerProducts as $index){
+            if(in_array($index, $shopeeCustomerChosenProducts)){
+                $theShopeePrice = $shopeeProductPrice[$index] ?? null;
+                $theShopeeQuantity = $shopeeProductQuantity[$index] ?? null;
+
+                if($theShopeePrice && $theShopeeQuantity){
+
+                    $amount = $theShopeePrice * $theShopeeQuantity;
+
+                    $newShopeeCustomerOrders -> shopeeOrderProducts() -> create([
+
+                        'shopee_order_id' => $shopeeId,
+                        'sku_id' => $index,
+                        'quanttity' => $theShopeeQuantity,
+                        'price' => $theShopeePrice,
+                        'amount' => $amount,
+
+                    ]);
+
+                }
+            }
+        }
+
+        return redirect() -> back() -> with('success', 'Shopee sales Order id('. $shopeeOrderId .')has been added!');
+
     }
 }
