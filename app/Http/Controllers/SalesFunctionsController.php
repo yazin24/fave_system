@@ -7,6 +7,7 @@ use App\Models\Agents;
 use App\Models\Areas;
 use App\Models\Customers;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use App\Models\ShopeeOrders;
@@ -475,7 +476,7 @@ class SalesFunctionsController extends Controller
         $newShopeeCustomerOrders = ShopeeOrders::create([
 
             'customers_name' => $shopeeCustomerName,
-            'customer_adress' => $shopeeCustomerAddress,
+            'customers_adress' => $shopeeCustomerAddress,
             'phone_number' => $shopeeCustomerNumber,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
@@ -497,7 +498,7 @@ class SalesFunctionsController extends Controller
 
                         'shopee_order_id' => $shopeeId,
                         'sku_id' => $index,
-                        'quanttity' => $theShopeeQuantity,
+                        'quantity' => $theShopeeQuantity,
                         'price' => $theShopeePrice,
                         'amount' => $amount,
 
@@ -507,7 +508,66 @@ class SalesFunctionsController extends Controller
             }
         }
 
-        return redirect() -> back() -> with('success', 'Shopee sales Order id('. $shopeeOrderId .')has been added!');
+        return redirect() -> back() -> with('success', 'Shopee sales Order('. $shopeeOrderId .') has been added!');
+
+    }
+
+    public  function add_lazada_sales(Request $request)
+    {
+        $lazadaOrderId = $request -> input('order_number');
+
+        $lazadaCustomerName = $request -> input('full_name');
+
+        $lazadaCustomerAddress = $request -> input('full_address');
+
+        $lazadaCustomerNumber = $request -> input('phone_number');
+
+        $lazadaCustomerStatus = $request -> input('status');
+
+        $lazadaCustomerChosenProducts = $request -> input('selected_product', []);
+
+        $lazadaCustomerProducts = $request -> input('product_id', []);
+
+        $lazadaProductPrice = $request -> input('price', []);
+
+        $lazadaProductQuantity = $request -> input('quantity',[]);
+
+        $newlazadaCustomerOrders = LazadaOrders::create([
+
+            'customers_name' => $lazadaCustomerName,
+            'customers_adress' => $lazadaCustomerAddress,
+            'phone_number' => $lazadaCustomerNumber,
+            'order_number' => $lazadaOrderId,
+            'status' => $lazadaCustomerStatus,
+
+        ]);
+
+        $lazadaId = $newlazadaCustomerOrders -> id;
+
+        foreach($lazadaCustomerProducts as $index){
+            if(in_array($index, $lazadaCustomerChosenProducts)){
+                $thelazadaPrice = $lazadaProductPrice[$index] ?? null;
+                $thelazadaQuantity = $lazadaProductQuantity[$index] ?? null;
+
+                if($thelazadaPrice && $thelazadaQuantity){
+
+                    $amount = $thelazadaPrice * $thelazadaQuantity;
+
+                    $newlazadaCustomerOrders -> lazadaOrderProducts() -> create([
+
+                        'lazada_order_id' => $lazadaId,
+                        'sku_id' => $index,
+                        'quantity' => $thelazadaQuantity,
+                        'price' => $thelazadaPrice,
+                        'amount' => $amount,
+
+                    ]);
+
+                }
+            }
+        }
+
+        return redirect() -> back() -> with('success', 'Lazada sales Order('. $lazadaOrderId .') has been added!');
 
     }
 }

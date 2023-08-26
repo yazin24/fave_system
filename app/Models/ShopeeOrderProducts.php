@@ -19,7 +19,7 @@ class ShopeeOrderProducts extends Model
         return $this -> hasMany(ProductSku::class, 'sku_id');
     }
 
-    protected $filalble = [
+    protected $fillable = [
 
         'shopee_order_id',
         'sku_id',

@@ -212,7 +212,11 @@ Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::c
 
 Route::get('sales/shopee/lazada/shopee-form', [SalesFunctionsController::class, 'shopee_sales_form']) -> name('shopeesalesform');
 
+Route::post('sales/shopee/lazada/shopee-form/add-shopee-sales', [SalesFunctionsController::class, 'add_shopee_sales']) -> name('addshopeesales');
+
 Route::get('sales/shopee/lazada/lazada-form', [SalesFunctionsController::class, 'lazada_sales_form']) -> name('lazadasalesform');
+
+Route::post('sales/shopee/lazada/lazada-form/add-lazada-sales', [SalesFunctionsController::class, 'add_lazada_sales']) -> name('addlazadasales');
 
 Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 

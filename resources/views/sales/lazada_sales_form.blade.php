@@ -8,7 +8,8 @@
 
     <div class="bg-gray-200 px-4 py-4">
         
-        <form>
+        <form method="POST" action="{{route('addlazadasales')}}">
+            @csrf
             <div>
                 <input type="text" name="order_number" placeholder="Order Number" class="h-6 w-full mb-2">
             </div>
@@ -63,7 +64,7 @@
             </div>
 
             <div class="mt-2">
-                <button class="bg-blue-900 hover:bg-blue-800 font-bold p-1 text-xs rounded-md text-gray-200">Submit</button>
+                <button type="submit" class="bg-blue-900 hover:bg-blue-800 font-bold p-1 text-xs rounded-md text-gray-200">Submit</button>
             </div>
         </form>
 
