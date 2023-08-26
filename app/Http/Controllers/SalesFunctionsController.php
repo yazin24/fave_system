@@ -568,6 +568,15 @@ class SalesFunctionsController extends Controller
         }
 
         return redirect() -> back() -> with('success', 'Lazada sales Order('. $lazadaOrderId .') has been added!');
+    }
 
+    public function shopee_order_details(ShopeeOrders $shopeeSale)
+    {
+        return view('sales.shopee_order_details', ['shopeeSale' => $shopeeSale]);
+    }
+
+    public function lazada_order_details(LazadaOrders $lazadaSale)
+    {
+        return view('sales.lazada_order_details', ['lazadaSale' => $lazadaSale]);
     }
 }

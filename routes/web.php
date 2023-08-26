@@ -218,6 +218,10 @@ Route::get('sales/shopee/lazada/lazada-form', [SalesFunctionsController::class, 
 
 Route::post('sales/shopee/lazada/lazada-form/add-lazada-sales', [SalesFunctionsController::class, 'add_lazada_sales']) -> name('addlazadasales');
 
+Route::get('sales/shopee/lazada/view-shopee-order/{shopeeSale}', [SalesFunctionsController::class, 'shopee_order_details']) -> name('shopeeorderdetails');
+
+Route::get('sales/shopee/lazada/view-lazada-order/{lazadaSale}',[SalesFunctionsController::class, 'lazada_order_details']) -> name('lazadaorderdetails');
+
 Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 
 Route::get('sales/manual-po/view-details/{manualPurchase}', [SalesFunctionsController::class, 'view_manual_po']) -> name('viewmanualpo');

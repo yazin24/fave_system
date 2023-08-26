@@ -29,7 +29,7 @@
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> customers_name}}</td>
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> customers_address}}</td>
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> phone_number}}</td>
-                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('shopeeorderdetails', ['shopeeSale' => $shopeeSale -> id])}}">View</a></td>
                 </tr>
                @endforeach  
             </tbody>
@@ -67,7 +67,7 @@
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_address}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> phone_number}}</td>
-                        <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                        <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('lazadaorderdetails', ['lazadaSale' => $lazadaSale])}}">View</a></td>
                 </tr>
                @endforeach  
             </tbody>
