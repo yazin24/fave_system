@@ -17,7 +17,7 @@
                 <input type="text" name="full_name" placeholder="Full Name" class="h-8 w-full mb-2">
             </div>
             <div>
-                <input type="text" name="full_address" placeholder="Full Address" class="h-8 w-full mb-2">
+                <input type="text" name="customers_address" placeholder="Full Address" class="h-8 w-full mb-2">
             </div>
             <div>
                 <input type="text" name="phone_number" placeholder="Phone Number" class="h-8 w-full mb-2">

@@ -459,7 +459,7 @@ class SalesFunctionsController extends Controller
 
         $shopeeCustomerName = $request -> input('full_name');
 
-        $shopeeCustomerAddress = $request -> input('full_address');
+        $shopeeCustomerAddress = $request -> input('customers_address');
 
         $shopeeCustomerNumber = $request -> input('phone_number');
 
