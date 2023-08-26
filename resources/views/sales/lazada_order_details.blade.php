@@ -15,9 +15,8 @@
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$lazadaSale -> customers_address}}</h2>
             <h2 class="font-bold text-sm mb-1">Status:
                 <select class="text-xs" name="status">
-                    <option value="" selected disabled>Change Status</option>
+                    <option value="" selected disabled>Undelivered</option>
                     <option value=4>Delivered</option>
-                    <option value=7>Undelivered</option>
                     <option value=8>Cancelled</option>
                 </select>
             </h2>

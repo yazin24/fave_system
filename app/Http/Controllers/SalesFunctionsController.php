@@ -608,8 +608,12 @@ class SalesFunctionsController extends Controller
 
         $shopeeOrders -> save();
         
-        
-        return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+       
+        if($status == 4){
+            return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+        }else{
+            return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
+        }
     }
 
     public function delivered_lazada_status(Request $request, LazadaOrders $lazadaSale)
