@@ -290,7 +290,13 @@ class SalesFunctionsController extends Controller
 
         $templateReceipt -> setvalue('PERSON', $purchaseOrder -> customers -> full_name);
 
-        // $templateReceipt -> setValue('REQUESTED_BY', $purchaseOrder -> requested_by);
+        // $retail = $purchaseOrder -> customersPurchaseOrderProducts() -> isRetail;
+
+        // dd($retail);
+
+        // if($purchaseOrder -> customers_purchase_order_products() -> isRetail)
+
+        // $templateReceipt -> setValue('P_TYPE', $purchaseOrder -> requested_by);
 
         // $templateReceipt -> setValue('PREPARED_BY', $purchaseOrder -> prepared_by);
 
