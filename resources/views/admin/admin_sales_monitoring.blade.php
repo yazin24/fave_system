@@ -10,14 +10,14 @@
     </div>
 
     <script>
-        var stocksData = {!! json_encode($stocksData) !!}; // Pass stocks data from your controller
+        var stocksData = {!! json_encode($salesData) !!}; // Pass stocks data from your controller
 
-        var labels = stocksData.map(item => item.full_name);
-        var quantities = stocksData.map(item => item.stock_quantity);
+        var formattedDate = stocksData.map(item => item.formatted_date);
+        var amount = stocksData.map(item => item.total_amount);
 
         var data = {
-            labels: labels,
-            series: [quantities]
+            labels: formattedDate,
+            series: [amount],
         };
 
         var options = {
@@ -26,5 +26,6 @@
         };
 
         new Chartist.Bar('#bar-chart', data);
+
     </script>
 @endsection
