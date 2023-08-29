@@ -26,6 +26,7 @@ return new class extends Migration
             ['status' => 'incomplete'],
             ['status' => 'partial'],
             ['status' => 'undelivered'],
+            ['status' => 'cancelled'],
         ];
 
         DB::table('system_status') -> insert($status);

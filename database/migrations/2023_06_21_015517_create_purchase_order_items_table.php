@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('po_id');
             $table->text('item_name');
             $table->integer('quantity') -> default(0);
-            $table->decimal('unit_price') -> default(0);
-            $table-> decimal('amount') -> default(0);
+            $table->decimal('unit_price',8,2) -> default(0);
+            $table-> decimal('amount', 8,2) -> default(0);
             $table->timestamps();
 
             $table -> foreign('po_id') -> references('id') -> on('purchase_orders') -> onDelete('cascade');
