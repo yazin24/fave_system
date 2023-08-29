@@ -121,7 +121,7 @@ class SalesFunctionsController extends Controller
             'contact_number' => $contactNumber,
             'address' => $customerAddress,
             'purchase_type' => $purchaseType,
-            'isApproved' => 0,
+            'isApproved' => 3,
 
         ]);
 

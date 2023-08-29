@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('customers_purchase_orders_products', function (Blueprint $table) {
             $table->id();
             $table -> unsignedBigInteger('cs_po_id');
-            $table -> unsignedBigInteger('sku');
+            $table -> unsignedBigInteger('sku_id');
             $table -> integer('quantity');
             $table -> decimal('total_price', 8,2) -> default(0);
             $table->timestamps();
 
             $table -> foreign('cs_po_id') -> references('id') -> on('customers_purchase_orders');
-            $table -> foreign('sku') -> references('id') -> on('product_sku');
+            $table -> foreign('sku_id') -> references('id') -> on('product_sku');
         });
     }
 

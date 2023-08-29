@@ -132,7 +132,7 @@ class SalesAgentFunctionsController extends Controller
 
                     $orderSku = [
                         'cs_po_id' => $csPurchaseOrderId,
-                        'sku' => $index,
+                        'sku_id' => $index,
                         'quantity' => $theQuantity,
                         'price' => $thePrice,
                     ];
