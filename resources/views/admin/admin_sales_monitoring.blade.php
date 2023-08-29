@@ -16,35 +16,43 @@
     </div>
 
     <script>
-        var fixedValue = 50000;
+        var fixedValue = 50000; // Fixed value for the series
 
         var shopeeData = {!! json_encode($shopeeData) !!}; // Pass stocks data from your controller
         var formattedDate = shopeeData.map(item => item.formatted_date);
         var amount = shopeeData.map(item => item.total_amount);
-        var scaledAmount = amount.map(value => (value * 100) / fixedValue);
-        var shopeeSalesdata = {
+
+        // Calculate the scaling factor based on the maximum amount
+        var maxAmount = Math.max(...amount);
+        var scalingFactor = fixedValue / maxAmount;
+
+        // Scale the bar heights using the scaling factor
+        var scaledAmount = amount.map(value => value * scalingFactor);
+
+        var shopeeSalesData = {
             labels: formattedDate,
-            series: [scaledAmount],
+            series: [scaledAmount], // Use the scaled amounts for bar heights
         };
         var options = {
             height: 300
         };
 
         var lazadaData = {!! json_encode($lazadaData) !!}; // Pass stocks data from your controller
-        var formattedDate = lazadaData.map(item => item.formatted_date);
-        var amount = lazadaData.map(item => item.total_amount);
-        var lazadaSalesdata = {
+        var lazadaAmount = lazadaData.map(item => item.total_amount);
+
+        // Calculate the scaling factor for Lazada chart
+        var maxLazadaAmount = Math.max(...lazadaAmount);
+        var scalingFactorLazada = fixedValue / maxLazadaAmount;
+
+        // Scale the bar heights for Lazada chart
+        var scaledLazadaAmount = lazadaAmount.map(value => value * scalingFactorLazada);
+
+        var lazadaSalesData = {
             labels: formattedDate,
-            series: [amount],
-        };
-        var options = {
-            height: 300
+            series: [scaledLazadaAmount], // Use the scaled amounts for bar heights
         };
 
-
-        new Chartist.Bar('#shopee-chart', shopeeSalesdata);
-        new Chartist.Bar('#lazada-chart', lazadaSalesdata);
-        new Chartist.Bar('#shopee-chart', data);
-
+        new Chartist.Bar('#shopee-chart', shopeeSalesData, options);
+        new Chartist.Bar('#lazada-chart', lazadaSalesData, options);
     </script>
 @endsection
