@@ -290,13 +290,7 @@ class SalesFunctionsController extends Controller
 
         $templateReceipt -> setvalue('PERSON', $purchaseOrder -> customers -> full_name);
 
-        // $retail = $purchaseOrder -> customersPurchaseOrderProducts() -> isRetail;
-
-        // dd($retail);
-
-        // if($purchaseOrder -> customers_purchase_order_products() -> isRetail)
-
-        // $templateReceipt -> setValue('P_TYPE', $purchaseOrder -> requested_by);
+        $templateReceipt -> setValue('AGENT', $purchaseOrder -> agents -> agent_name);
 
         // $templateReceipt -> setValue('PREPARED_BY', $purchaseOrder -> prepared_by);
 
@@ -308,6 +302,8 @@ class SalesFunctionsController extends Controller
         $itemRows = 16;
 
         $itemIndex = 1;
+
+        $totalAmount = 0;
 
         foreach($items as $item)
         {
@@ -332,9 +328,14 @@ class SalesFunctionsController extends Controller
 
             $templateReceipt -> setValue("PRICE{$itemIndex}", $item -> pivot -> price);
 
+            $totalAmount += $item->pivot->price;
+
             $itemIndex++;
 
         }
+
+        $templateReceipt ->  setValue("TOTAL", $totalAmount);
+
          //     //this remove the placeholder for the remaining rows in the table thats empty
          for ($i = $itemIndex; $i <= $itemRows; $i++) {
             $templateReceipt->setValue("PRODUCT{$i}", '');
