@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\LazadaSales;
 use App\Models\ProductSku;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ShopeeSales;
 use App\Models\Suppliers;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,24 +18,20 @@ class AdminController extends Controller
 
     public function admin_sales_monitoring()
     {
-        $stocksData = ShopeeSales::select('created_at', 'total_amount')->get();
-
-        // Group the sales data by created_at date and calculate the total amount for each date
-        $dailySalesTotal = $stocksData->groupBy(function ($item) {
-            return Carbon::parse($item->created_at)->format('m-d-Y');
-        })->map(function ($group) {
-            return $group->sum('total_amount');
-        });
+        $shopeeData = ShopeeSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
+            ->groupBy('formatted_date')
+            ->orderBy('formatted_date')
+            ->get();
+            $lazadaData = LazadaSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
+            ->groupBy('formatted_date')
+            ->orderBy('formatted_date')
+            ->get();
+            // $shopeeData = ShopeeSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
+            // ->groupBy('formatted_date')
+            // ->orderBy('formatted_date')
+            // ->get();
     
-        // Prepare the formatted sales data for the view
-        $formattedSalesData = $dailySalesTotal->map(function ($totalAmount, $formattedDate) {
-            return [
-                'formatted_date' => $formattedDate,
-                'total_amount' => $totalAmount,
-            ];
-        });
-    
-        return view('admin.admin_sales_monitoring', ['salesData' => $formattedSalesData]);
+        return view('admin.admin_sales_monitoring', ['shopeeData' => $shopeeData, 'lazadaData' => $lazadaData]);
     }
 
     public function admin_purchasing_monitoring()
