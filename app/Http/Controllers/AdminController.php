@@ -17,21 +17,22 @@ class AdminController extends Controller
 {
 
     public function admin_sales_monitoring()
-    {
-        $shopeeData = ShopeeSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
-            ->groupBy('formatted_date')
-            ->orderBy('formatted_date')
-            ->get();
-            $lazadaData = LazadaSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
-            ->groupBy('formatted_date')
-            ->orderBy('formatted_date')
-            ->get();
-            // $shopeeData = ShopeeSales::selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date, SUM(total_amount) as total_amount")
-            // ->groupBy('formatted_date')
-            // ->orderBy('formatted_date')
-            // ->get();
+    {   
+        $shopeeSalesData = ShopeeSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
+        ->groupByRaw('DATE(created_at)')
+        ->get();
+
+        $shopeeDates = $shopeeSalesData->pluck('date');
+        $shopeeAmounts = $shopeeSalesData->pluck('total_amount');
+
+        $lazadaSalesData = LazadaSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
+        ->groupByRaw('DATE(created_at)')
+        ->get();
+
+        $lazadaDates = $lazadaSalesData->pluck('date');
+        $lazadaAmounts = $lazadaSalesData->pluck('total_amount');
     
-        return view('admin.admin_sales_monitoring', ['shopeeData' => $shopeeData, 'lazadaData' => $lazadaData]);
+    return view('admin.admin_sales_monitoring', ['shopeeDates' => $shopeeDates, 'shopeeAmounts' => $shopeeAmounts, 'lazadaDates' => $lazadaDates, 'lazadaAmounts' => $lazadaAmounts]);
     }
 
     public function admin_purchasing_monitoring()
