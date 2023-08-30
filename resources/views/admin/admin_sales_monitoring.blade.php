@@ -5,9 +5,9 @@
         <h2 class="font-bold md:text-xl mb-4 ml-1">Sales Graph Monitoring</h2>
 
         <div class="flex flex-col md:flex-row gap-2">
-            <canvas id="shopeeChart" class="bg-gray-200" width="200" height="400"></canvas>
+            <canvas id="shopeeChart" class="bg-gray-200""></canvas>
 
-        <canvas id="lazadaChart" class="bg-gray-200" width="200" height="400"></canvas>
+        <canvas id="lazadaChart" class="bg-gray-200"</canvas>
         </div>
     </div>
 
