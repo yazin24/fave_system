@@ -33,7 +33,12 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return '₱' + value; // Add peso sign
+                            }
+                        }
                     }
                 }
             }
@@ -52,6 +57,31 @@
                     data: @json($lazadaAmounts),
                     backgroundColor: 'rgb(70,0,186, 1)',
                     borderColor: 'rgb(70,154,255,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var ctx = document.getElementById('manualChart').getContext('2d');
+        
+        var userChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($manualDates),
+                datasets: [{
+                    label: 'Manual Total Sales',
+                    data: @json($manualAmounts),
+                    backgroundColor: 'rgb(151,0,255,1)',
+                    borderColor: 'rgb(151,201,255,1)',
                     borderWidth: 1
                 }]
             },
