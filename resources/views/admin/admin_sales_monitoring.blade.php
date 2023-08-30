@@ -2,12 +2,15 @@
 
 @section('admin-body')
     <div class="w-full">
-        <h2 class="font-bold md:text-xl mb-4 ml-1">Sales Graph Monitoring</h2>
+        <h2 class="font-bold md:text-xl mb-2 ml-1">Sales Graph Monitoring</h2>
 
-        <div class="flex flex-col md:flex-row gap-2">
-            <canvas id="shopeeChart" class="bg-gray-200""></canvas>
-
-        <canvas id="lazadaChart" class="bg-gray-200"</canvas>
+        <div class="flex flex-col lg:flex-row gap-2" style="position: relative; height:38vh; width:80vw;">
+            <canvas id="shopeeChart" class="bg-gray-200" ></canvas>
+            <canvas id="lazadaChart" class="bg-gray-200"</canvas>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-2 mt-2" style="position: relative; height:38vh; width:80vw;">
+            <canvas id="manualChart" class="bg-gray-200" ></canvas>
+            {{-- <canvas id="lazadaChart" class="bg-gray-200"</canvas> --}}
         </div>
     </div>
 

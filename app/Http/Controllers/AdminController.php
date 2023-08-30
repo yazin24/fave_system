@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
 use App\Models\LazadaSales;
+use App\Models\ManualPurchaseOrderProducts;
 use App\Models\ProductSku;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
@@ -31,8 +32,15 @@ class AdminController extends Controller
 
         $lazadaDates = $lazadaSalesData->pluck('date');
         $lazadaAmounts = $lazadaSalesData->pluck('total_amount');
+
+        $manualSalesData = ManualPurchaseOrderProducts::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
+        ->groupByRaw('DATE(created_at)')
+        ->get();
+
+        $manualDates = $manualSalesData->pluck('date');
+        $manualAmounts = $manualSalesData->pluck('total_amount');
     
-    return view('admin.admin_sales_monitoring', ['shopeeDates' => $shopeeDates, 'shopeeAmounts' => $shopeeAmounts, 'lazadaDates' => $lazadaDates, 'lazadaAmounts' => $lazadaAmounts]);
+    return view('admin.admin_sales_monitoring', ['shopeeDates' => $shopeeDates, 'shopeeAmounts' => $shopeeAmounts, 'lazadaDates' => $lazadaDates, 'lazadaAmounts' => $lazadaAmounts, 'manualDates' => $manualDates, 'manualAmounts' => $manualAmounts]);
     }
 
     public function admin_purchasing_monitoring()
