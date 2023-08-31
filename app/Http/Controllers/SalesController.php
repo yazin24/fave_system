@@ -45,6 +45,7 @@ class SalesController extends Controller
         $skuShopeeQuantities = ShopeeOrderProducts::groupBy('sku_id')
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
+        
 
         $skuLazadaQuantities = LazadaOrderProducts::groupBy('sku_id')
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
@@ -54,16 +55,16 @@ class SalesController extends Controller
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
 
-    // Combine the data from all sales channels
-    $allProductsData =  $skuShopeeQuantities->concat($skuLazadaQuantities)->concat($skuManualQuantities);
-
-    // Group the combined data by product name and sum the quantities
-    $bestSellingProductsData = $allProductsData->groupBy('sku_id')->map(function ($group) {
-        return $group->sum('total_quantity');
-    });
+        $allSkuQuantities = $skuShopeeQuantities
+        ->concat($skuLazadaQuantities)
+        ->concat($skuManualQuantities)
+        ->groupBy('sku_id')
+        ->map(function ($group) {
+            return $group->sum('total_quantity');
+        });
 
     // Sort the best selling products data in descending order
-    $sortedBestSellingProducts = $bestSellingProductsData->sortDesc();
+    $sortedBestSellingProducts = $allSkuQuantities->sortDesc();
 
     // Prepare data for the line chart
     $bestSellingLabels = ProductSku::whereIn('id', $sortedBestSellingProducts -> keys()) -> pluck('full_name') -> toArray();
@@ -78,6 +79,9 @@ class SalesController extends Controller
         'manualAmounts' => $manualAmounts,
         'bestSellingLabels' => $bestSellingLabels,
         'bestSellingData' => $bestSellingData,
+        'skuShopeeQuantities' => $skuShopeeQuantities,
+        'skuLazadaQuantities' => $skuLazadaQuantities,
+        'skuManualQuantities' => $skuManualQuantities,
     ]);
     }
 

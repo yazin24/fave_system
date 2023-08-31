@@ -102,21 +102,36 @@
             options: barChartOptions
         });
 
+        var shopeeData = @json($skuShopeeQuantities)->map(item => parseInt(item.total_quantity));
+        var lazadaData = @json($skuLazadaQuantities)->map(item => parseInt(item.total_quantity));
+        var manualData = @json($skuManualQuantities)->map(item => parseInt(item.total_quantity));
+
+
         var donutCtx = document.getElementById('donutChart').getContext('2d');
         var donutChart = new Chart(donutCtx, {
             type: 'line',
             data: {
                 labels: @json($bestSellingLabels),
-                datasets: [{
-                    label: 'Product Quantity Sales',
-                    data: @json($bestSellingData),
-                    backgroundColor: '#339933',
-                    borderColor: '#ff0000',
-                    pointStyle: 'circle',
-                    pointRadius: 5,
-                    pointHoverRadius: 15
-                    
-                }]
+                datasets: [
+                    {
+                        label: 'Shopee',
+                        data: shopeeData,
+                        borderColor: '#ff6600',
+                        fill: false
+                    },
+                    {
+                        label: 'Lazada',
+                        data: lazadaData,
+                        borderColor: '#4600ba',
+                        fill: false
+                    },
+                    {
+                        label: 'Manual',
+                        data: manualData,
+                        borderColor: '#9700ff',
+                        fill: false
+                    }
+            ]
             },
             options: commonOptions
         });
