@@ -4,7 +4,6 @@
 
 <h2 class="font-bold md:text-xl mt-2">Manual PO</h2>
 
-
 <div class="bg-white-900 text-gray-900 mt-1">
     <div class="flex justify-end">
         <form method="GET" action="{{route('manualpurchaseorder')}}">

@@ -224,34 +224,46 @@ class SalesFunctionsController extends Controller
     }
 
     public function approve_purchase_order(Request $request, $purchaseOrder)
-    {
-        $approvePurchaseOrder = CustomersPurchaseOrders::findOrFail($purchaseOrder);
+{
+    $approvePurchaseOrder = CustomersPurchaseOrders::findOrFail($purchaseOrder);
 
-        $approvePurchaseOrder -> status = 1;
+    $approvePurchaseOrder->status = 1;
 
-        $approvePurchaseOrder -> save();
+    $approvePurchaseOrder->save();
 
-        $customer = $approvePurchaseOrder -> customers;
+    $customer = $approvePurchaseOrder->customers;
 
-        foreach ($approvePurchaseOrder->productSku as $product) {
-            $customerStock = $customer->customersStocks()->where('sku_id', $product->id)->first();
-    
-            if ($customerStock) {
-                $customerStock->quantity += $product->pivot->quantity;
-                $customerStock->save();
-            } else {
-                $customer->customersStocks()->create([
-                    'cs_id' => $approvePurchaseOrder->cs_id,
-                    'sku_id' => $product->id,
-                    'quantity' => $product->pivot->quantity,
-                ]);
-            }
+    foreach ($approvePurchaseOrder->productSku as $product) {
+        $sku = $product->pivot->sku_id;
+        $orderedQuantity = $product->pivot->quantity;
+
+        $customerStock = $customer->customersStocks()->where('sku_id', $sku)->first();
+
+        if ($customerStock) {
+            $customerStock->quantity += $orderedQuantity;
+            $customerStock->save();
+        } else {
+            $customer->customersStocks()->create([
+                'cs_id' => $approvePurchaseOrder->cs_id,
+                'sku_id' => $sku,
+                'quantity' => $orderedQuantity,
+            ]);
         }
 
-        Session::flash('success', 'Purchase Order has been approved!');
-        return view('sales.sales_home');
-
+        $sku = ProductSku::findOrFail($sku);
+        if ($sku->sku_quantity >= $orderedQuantity) {
+            $sku->sku_quantity -= $orderedQuantity;
+            $sku->save();
+        } else {
+            
+            $errorMessage = "Ordered quantity for SKU '{$sku->sku_name}' exceeds available stock!";
+            return redirect()->back()->with('error', $errorMessage);
+        }
     }
+
+    Session::flash('success', 'Purchase Order has been approved!');
+    return view('sales.sales_home');
+}
 
     public function disapprove_purchase_order($purchaseOrder)
     {
@@ -629,7 +641,7 @@ class SalesFunctionsController extends Controller
                     $sku -> save();
 
                 }else {
-                    
+
                    return redirect() -> back() -> with('error', 'Insufficient Stocks!');
                 }
             }
