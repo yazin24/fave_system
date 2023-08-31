@@ -4,28 +4,32 @@
     <div class="w-full">
         <h2 class="font-bold md:text-xl mb-2 ml-1">Sales Graph Monitoring</h2>
         
-            <div class="flex flex-col lg:flex-row gap-2 mb-2" style="height:38vh; width:80vw;">
+            <div class="flex flex-col lg:flex-row gap-2">
 
-                <div>
-                <div>
+                <div class="w-full">
+
+                <div class="mb-2">
                     <canvas id="shopeeChart" class="bg-gray-200" ></canvas>
                 </div>
 
-                <div>
-                    <canvas id="lazadaChart" class="bg-gray-200"</canvas>
+                <div class="">
+                    <canvas id="manualChart" class="bg-gray-200"</canvas>
                 </div>
-            </div>
 
-             <div>
-                <div>
-                <canvas id="manualChart" class="bg-gray-200" ></canvas>
+                </div>
+
+                <div class="w-full">
+
+                <div class="mb-2">
+                <canvas id="lazadaChart" class="bg-gray-200" ></canvas>
                 </div>
 
                 <div>
                 <canvas id="donutChart" class="bg-gray-200"</canvas>
                 </div>
+
+                </div>
             </div>
-            
     </div>
 
     <script>
