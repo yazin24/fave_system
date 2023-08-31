@@ -43,7 +43,7 @@ class AdminController extends Controller
         $manualDates = $manualSalesData->pluck('date');
         $manualAmounts = $manualSalesData->pluck('total_amount');
 
-        $shopeeProductsData = ShopeeOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
+     $shopeeProductsData = ShopeeOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
         ->groupBy('sku_id')
         ->orderByDesc('total_quantity')
         ->get();
