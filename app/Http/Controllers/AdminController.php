@@ -21,7 +21,7 @@ class AdminController extends Controller
 {
 
     public function admin_sales_monitoring()
-    {   
+    {
         $shopeeSalesData = ShopeeSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
         ->get();
@@ -46,6 +46,7 @@ class AdminController extends Controller
         $skuShopeeQuantities = ShopeeOrderProducts::groupBy('sku_id')
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
+        
 
         $skuLazadaQuantities = LazadaOrderProducts::groupBy('sku_id')
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
@@ -55,17 +56,16 @@ class AdminController extends Controller
         ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
 
-
-    // Combine the data from all sales channels
-    $allProductsData = $skuShopeeQuantities->concat($skuLazadaQuantities)->concat($skuManualQuantities);
-
-    // Group the combined data by product name and sum the quantities
-    $bestSellingProductsData = $allProductsData->groupBy('sku_id')->map(function ($group) {
-        return $group->sum('total_quantity');
-    });
+        $allSkuQuantities = $skuShopeeQuantities
+        ->concat($skuLazadaQuantities)
+        ->concat($skuManualQuantities)
+        ->groupBy('sku_id')
+        ->map(function ($group) {
+            return $group->sum('total_quantity');
+        });
 
     // Sort the best selling products data in descending order
-    $sortedBestSellingProducts = $bestSellingProductsData->sortDesc();
+    $sortedBestSellingProducts = $allSkuQuantities->sortDesc();
 
     // Prepare data for the line chart
     $bestSellingLabels = ProductSku::whereIn('id', $sortedBestSellingProducts -> keys()) -> pluck('full_name') -> toArray();
@@ -80,6 +80,9 @@ class AdminController extends Controller
         'manualAmounts' => $manualAmounts,
         'bestSellingLabels' => $bestSellingLabels,
         'bestSellingData' => $bestSellingData,
+        'skuShopeeQuantities' => $skuShopeeQuantities,
+        'skuLazadaQuantities' => $skuLazadaQuantities,
+        'skuManualQuantities' => $skuManualQuantities,
     ]);
     }
 
