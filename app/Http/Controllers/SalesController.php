@@ -19,9 +19,9 @@ class SalesController extends Controller
 
     public function shopee_lazada_sales()
     {
-        $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(8);
+        $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(10);
 
-        $allLazadaSales = LazadaOrders::orderBy('created_at', 'desc') -> paginate(8);
+        $allLazadaSales = LazadaOrders::orderBy('created_at', 'desc') -> paginate(10);
 
         return view('sales.shopee_lazada_sales', ['allShopeeSales' => $allShopeeSales, 'allLazadaSales' => $allLazadaSales]);
     }
@@ -36,7 +36,7 @@ class SalesController extends Controller
 
     public function sales_manual_po()
     {
-        $allManualPurchaseOrders = ManualPurchaseOrder::all();
+        $allManualPurchaseOrders = ManualPurchaseOrder::orderBy('created_at', 'desc') -> paginate();
 
         return view('sales.manual_po', ['allManualPurchaseOrders' => $allManualPurchaseOrders]);
     }

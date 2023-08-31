@@ -144,12 +144,6 @@ class SalesFunctionsController extends Controller
                             'amount' => $totalAmount,
 
                     ]);
-
-                    $sku = ProductSku::find($index);
-                    if($sku){
-                        $sku -> sku_quantity -=$theQuantity;
-                        $sku -> save();
-                    }
                 }
             }
 
@@ -576,6 +570,21 @@ class SalesFunctionsController extends Controller
 
                     ]);
 
+                    $sku = ProductSku::findOrFail($index);
+
+            $newSkuQuantity = $sku -> sku_quantity - $thelazadaQuantity;
+
+            if($newSkuQuantity >= 0){
+                $sku -> sku_quantity = $newSkuQuantity;
+                $sku -> save();
+
+            }else{
+
+                $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
+                return redirect() -> back() -> with('error', $errorMessage);
+
+                }
+
                 }
             }
         }
@@ -609,6 +618,22 @@ class SalesFunctionsController extends Controller
 
         if($status == 4){
 
+            foreach($shopeeOrders -> shopeeOrderProducts as $shopeeProduct){
+
+                $sku = ProductSku::findOrFail($shopeeProduct -> sku_id);
+
+                if($sku -> sku_quantity >= $shopeeProduct -> quantity){
+
+                    $sku -> sku_quantity -= $shopeeProduct -> quantity;
+
+                    $sku -> save();
+
+                }else {
+                    
+                   return redirect() -> back() -> with('error', 'Insufficient Stocks!');
+                }
+            }
+
             $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
 
             $shopeeOrders -> shopeeSales() -> create([
@@ -640,6 +665,22 @@ class SalesFunctionsController extends Controller
         ]);
 
         if($status == 4){
+
+            foreach($lazadaOrders -> lazadaOrderProducts as $lazadaProduct){
+
+                $sku = ProductSku::findOrFail($lazadaProduct -> sku_id);
+
+                if($sku -> sku_quantity >= $lazadaProduct -> quantity){
+
+                    $sku -> sku_quantity -= $lazadaProduct -> quantity;
+
+                    $sku -> save();
+
+                }else {
+
+                   return redirect() -> back() -> with('error', 'Insufficient Stocks!');
+                }
+            }
 
             $lazadaOrderTotalAmount = $lazadaOrders -> lazadaOrderProducts() -> sum('amount');
 

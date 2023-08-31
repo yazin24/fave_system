@@ -49,6 +49,7 @@
                     </table>
                </div>
 
+
                 <div class="flex">
                     <div class="mt-12 text-xs">
                         @if($manualPurchase -> isApproved == 3)
