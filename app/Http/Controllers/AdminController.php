@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\LazadaOrderProducts;
 use App\Models\LazadaSales;
 use App\Models\ManualPurchaseOrderProducts;
 use App\Models\ProductSku;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
+use App\Models\ShopeeOrderProducts;
 use App\Models\ShopeeSales;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -39,8 +42,47 @@ class AdminController extends Controller
 
         $manualDates = $manualSalesData->pluck('date');
         $manualAmounts = $manualSalesData->pluck('total_amount');
+
+        $shopeeProductsData = ShopeeOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
+        ->groupBy('sku_id')
+        ->orderByDesc('total_quantity')
+        ->get();
+
+    $lazadaProductsData = LazadaOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
+        ->groupBy('sku_id')
+        ->orderByDesc('total_quantity')
+        ->get();
+
+    $manualProductsData = ManualPurchaseOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
+        ->groupBy('sku_id')
+        ->orderByDesc('total_quantity')
+        ->get();
+
+    // Combine the data from all sales channels
+    $allProductsData = $shopeeProductsData->concat($lazadaProductsData)->concat($manualProductsData);
+
+    // Group the combined data by product name and sum the quantities
+    $bestSellingProductsData = $allProductsData->groupBy('sku_id')->map(function ($group) {
+        return $group->sum('total_quantity');
+    });
+
+    // Sort the best selling products data in descending order
+    $sortedBestSellingProducts = $bestSellingProductsData->sortDesc();
+
+    // Prepare data for the line chart
+    $bestSellingLabels = ProductSku::whereIn('id', $sortedBestSellingProducts -> keys()) -> pluck('full_name') -> toArray();
+    $bestSellingData = $sortedBestSellingProducts->values()->toArray();
     
-    return view('admin.admin_sales_monitoring', ['shopeeDates' => $shopeeDates, 'shopeeAmounts' => $shopeeAmounts, 'lazadaDates' => $lazadaDates, 'lazadaAmounts' => $lazadaAmounts, 'manualDates' => $manualDates, 'manualAmounts' => $manualAmounts]);
+    return view('admin.admin_sales_monitoring', [
+        'shopeeDates' => $shopeeDates, 
+        'shopeeAmounts' => $shopeeAmounts, 
+        'lazadaDates' => $lazadaDates, 
+        'lazadaAmounts' => $lazadaAmounts, 
+        'manualDates' => $manualDates, 
+        'manualAmounts' => $manualAmounts,
+        'bestSellingLabels' => $bestSellingLabels,
+        'bestSellingData' => $bestSellingData,
+    ]);
     }
 
     public function admin_purchasing_monitoring()

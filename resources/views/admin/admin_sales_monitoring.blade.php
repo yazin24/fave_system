@@ -18,110 +18,92 @@
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('shopeeChart').getContext('2d');
-        
-        var userChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: @json($shopeeDates),
-                datasets: [{
-                    label: 'Shopee Total Sales',
-                    data: @json($shopeeAmounts),
-                    backgroundColor: 'rgb(255,123,0, 0.90)',
-                    borderColor: 'rgb(255,0,0.74)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
+        document.addEventListener('DOMContentLoaded', function () {
+            var commonOptions = {
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: true
+                    }
+                },
+            };
+
+            var barChartOptions = {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        ...commonOptions.scales.y,
                         ticks: {
                             callback: function (value) {
-                                return '₱' + value; // Add peso sign
+                                return '₱' + value;
                             }
                         }
                     }
                 }
-            }
-        });
-    });
+            };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('lazadaChart').getContext('2d');
-        
-        var userChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: @json($lazadaDates),
-                datasets: [{
-                    label: 'Lazada Total Sales',
-                    data: @json($lazadaAmounts),
-                    backgroundColor: 'rgb(70,0,186, 1)',
-                    borderColor: 'rgb(70,154,255,1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    });
+            var shopeeCtx = document.getElementById('shopeeChart').getContext('2d');
+            var shopeeChart = new Chart(shopeeCtx, {
+                type: 'bar',
+                data: {
+                    labels: @json($shopeeDates),
+                    datasets: [{
+                        label: 'Shopee Total Sales',
+                        data: @json($shopeeAmounts),
+                        backgroundColor: '#ff6600',
+                        borderWidth: 1
+                    }]
+                },
+                options: barChartOptions
+            });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('manualChart').getContext('2d');
-        
-        var userChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: @json($manualDates),
-                datasets: [{
-                    label: 'Manual Total Sales',
-                    data: @json($manualAmounts),
-                    backgroundColor: 'rgb(151,0,255,1)',
-                    borderColor: 'rgb(151,201,255,1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    });
+            var lazadaCtx = document.getElementById('lazadaChart').getContext('2d');
+            var lazadaChart = new Chart(lazadaCtx, {
+                type: 'bar',
+                data: {
+                    labels: @json($lazadaDates),
+                    datasets: [{
+                        label: 'Lazada Total Sales',
+                        data: @json($lazadaAmounts),
+                        backgroundColor: '#4600ba',
+                        borderWidth: 1
+                    }]
+                },
+                options: barChartOptions
+            });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('donutChart').getContext('2d');
-        
-        var userChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: @json($manualDates),
-                datasets: [{
-                    label: 'Manual Total Sales',
-                    data: @json($manualAmounts),
-                    backgroundColor: 'rgb(151,0,255,1)',
-                    borderColor: 'rgb(151,201,255,1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+            var manualCtx = document.getElementById('manualChart').getContext('2d');
+            var manualChart = new Chart(manualCtx, {
+                type: 'bar',
+                data: {
+                    labels: @json($manualDates),
+                    datasets: [{
+                        label: 'Manual Total Sales',
+                        data: @json($manualAmounts),
+                        backgroundColor: '#9700ff',
+                        borderWidth: 1
+                    }]
+                },
+                options: barChartOptions
+            });
+
+            var donutCtx = document.getElementById('donutChart').getContext('2d');
+            var donutChart = new Chart(donutCtx, {
+                type: 'line',
+                data: {
+                    labels: @json($bestSellingLabels),
+                    datasets: [{
+                        label: 'Product Quantity Sales',
+                        data: @json($bestSellingData),
+                        backgroundColor: '#339933',
+                        borderColor: '#ff0000',
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 15
+                        
+                    }]
+                },
+                options: commonOptions
+            });
         });
-    });
-    
     </script>
 @endsection
