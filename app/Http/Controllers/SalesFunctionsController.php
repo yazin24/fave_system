@@ -144,6 +144,12 @@ class SalesFunctionsController extends Controller
                             'amount' => $totalAmount,
 
                     ]);
+
+                    $sku = ProductSku::find($index);
+                    if($sku){
+                        $sku -> sku_quantity -=$theQuantity;
+                        $sku -> save();
+                    }
                 }
             }
 

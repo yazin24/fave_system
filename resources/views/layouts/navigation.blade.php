@@ -64,6 +64,9 @@
         <div class=" pb-3 flex flex-row justify-between">
 
             @if(Auth::user()->usertype === 'admin')
+            <x-responsive-nav-link :href="route('adminsalesmonitoring')" :active="request()->routeIs('adminsalesmonitoring')">
+                <i class="fa-solid fa-coins text-xl"></i>
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('adminpurchasingmonitoring')" :active="request()->routeIs('adminpurchasingmonitoring')">
                 <i class="fa-solid fa-rectangle-list text-xl"></i>
             </x-responsive-nav-link>
