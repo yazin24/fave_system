@@ -42,23 +42,20 @@ class SalesController extends Controller
         $manualDates = $manualSalesData->pluck('date');
         $manualAmounts = $manualSalesData->pluck('total_amount');
 
-     $shopeeProductsData = ShopeeOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
-        ->groupBy('sku_id')
-        ->orderByDesc('total_quantity')
+        $skuShopeeQuantities = ShopeeOrderProducts::groupBy('sku_id')
+        ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
 
-    $lazadaProductsData = LazadaOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
-        ->groupBy('sku_id')
-        ->orderByDesc('total_quantity')
+        $skuLazadaQuantities = LazadaOrderProducts::groupBy('sku_id')
+        ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
 
-    $manualProductsData = ManualPurchaseOrderProducts::select('sku_id', DB::raw('SUM(quantity) as total_quantity'))
-        ->groupBy('sku_id')
-        ->orderByDesc('total_quantity')
+        $skuManualQuantities = ManualPurchaseOrderProducts::groupBy('sku_id')
+        ->selectRaw('sku_id, SUM(quantity) as total_quantity')
         ->get();
 
     // Combine the data from all sales channels
-    $allProductsData = $shopeeProductsData->concat($lazadaProductsData)->concat($manualProductsData);
+    $allProductsData =  $skuShopeeQuantities->concat($skuLazadaQuantities)->concat($skuManualQuantities);
 
     // Group the combined data by product name and sum the quantities
     $bestSellingProductsData = $allProductsData->groupBy('sku_id')->map(function ($group) {
