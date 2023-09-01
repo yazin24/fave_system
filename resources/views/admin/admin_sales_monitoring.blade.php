@@ -9,16 +9,16 @@
             <div class="w-full">
 
             <div class="mb-2">
-                <canvas id="shopeeChart" class="bg-gray-200" ></canvas>
-                <div class="">
-                    <x-shopee-pagination :paginator="$shopeeSalesData" :paginationId="'shopee'"/>
-                </div>
+                <canvas id="shopeeChart" class="bg-gray-200 overflow-x-auto" ></canvas>
+                {{-- <div class="">
+                    <x-shopee-pagination :paginator="$shopeeSalesData" />
+                </div> --}}
             </div>
 
             <div class="">
                 <canvas id="manualChart" class="bg-gray-200"</canvas>
                     <div class="">
-                        <x-manual-pagination :paginator="$manualSalesData" :paginationId="'manual'"/>
+                        <x-manual-pagination :paginator="$manualSalesData" />
                     </div>
             </div>
 
@@ -29,7 +29,7 @@
             <div class="mb-2">
             <canvas id="lazadaChart" class="bg-gray-200" ></canvas>
             <div class="">
-                <x-lazada-pagination :paginator="$lazadaSalesData" :paginationId="'lazada'"/>
+                <x-lazada-pagination :paginator="$lazadaSalesData" />
             </div>
             </div>
 
