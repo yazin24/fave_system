@@ -67,7 +67,13 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-8 text-xs mb-1" placeholder="price">
+                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-8 text-xs mb-1" placeholder="@if(request('purchase_type') == 'Retail') 50
+                    @else 40
+                    @endif" value="
+                    @if(request('purchase_type') == 'Retail') 50
+                    @else 40
+                    @endif
+                    ">
                 </div>
 
                 <div class="w-full">
