@@ -6,12 +6,12 @@
         @if ($paginator->onFirstPage())
             <span class="text-gray-500" aria-disabled="true"><i class="fa-solid fa-circle-arrow-left text-md"></i></span>
         @else
-            <a href="{{ $paginator->previousPageUrl() }}" class="text-gray-900 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
+            <a href="{{ $paginator->previousPageUrl() }}" class="text-gray-900 hover:text-violet-700"><i class="fa-solid fa-circle-arrow-left"></i></a>
         @endif
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}" class="text-gray-900 hover:text-gray-700"><i class="fa-solid fa-circle-arrow-right"></i></a>
+            <a href="{{ $paginator->nextPageUrl() }}" class="text-gray-900 hover:text-violet-700"><i class="fa-solid fa-circle-arrow-right"></i></a>
         @else
             <span class="text-gray-500" aria-disabled="true"><i class="fa-solid fa-circle-arrow-right"></i></span>
         @endif

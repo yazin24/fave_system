@@ -2,12 +2,12 @@
 
 @section('admin-body')
 <div class="w-full">
-    <div class="flex flex-row justify-between">
+    <div class="flex flex-row">
         <div>
             <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Graph Monitoring</h2>
         </div>
         
-        <div class="flex justify-center">
+        <div class="flex justify-end ml-2">
             <x-shopee-pagination :paginator="$shopeeSalesData" />
         </div>
     </div>

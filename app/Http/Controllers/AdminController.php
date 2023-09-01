@@ -24,21 +24,21 @@ class AdminController extends Controller
     {
         $shopeeSalesData = ShopeeSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->paginate(2);
+        ->paginate(10);
 
         $shopeeDates = $shopeeSalesData->pluck('date');
         $shopeeAmounts = $shopeeSalesData->pluck('total_amount');
 
         $lazadaSalesData = LazadaSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->paginate(2);
+        ->paginate(10);
 
         $lazadaDates = $lazadaSalesData->pluck('date');
         $lazadaAmounts = $lazadaSalesData->pluck('total_amount');
 
         $manualSalesData = ManualPurchaseOrderProducts::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->paginate(2);
+        ->paginate(10);
 
         $manualDates = $manualSalesData->pluck('date');
         $manualAmounts = $manualSalesData->pluck('total_amount');
