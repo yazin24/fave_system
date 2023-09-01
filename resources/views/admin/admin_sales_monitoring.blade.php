@@ -2,24 +2,29 @@
 
 @section('admin-body')
 <div class="w-full">
-    <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Graph Monitoring</h2>
-    
+    <div class="flex flex-row justify-between">
+        <div>
+            <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Graph Monitoring</h2>
+        </div>
+        
+        <div class="flex justify-center">
+            <x-shopee-pagination :paginator="$shopeeSalesData" />
+        </div>
+    </div>
+
         <div class="flex flex-col lg:flex-row gap-2">
 
             <div class="w-full">
 
             <div class="mb-2">
                 <canvas id="shopeeChart" class="bg-gray-200 overflow-x-auto" ></canvas>
-                {{-- <div class="">
-                    <x-shopee-pagination :paginator="$shopeeSalesData" />
-                </div> --}}
             </div>
 
             <div class="">
                 <canvas id="manualChart" class="bg-gray-200"</canvas>
-                    <div class="">
+                    {{-- <div class="">
                         <x-manual-pagination :paginator="$manualSalesData" />
-                    </div>
+                    </div> --}}
             </div>
 
             </div>
@@ -28,9 +33,9 @@
 
             <div class="mb-2">
             <canvas id="lazadaChart" class="bg-gray-200" ></canvas>
-            <div class="">
+            {{-- <div class="">
                 <x-lazada-pagination :paginator="$lazadaSalesData" />
-            </div>
+            </div> --}}
             </div>
 
             <div>
