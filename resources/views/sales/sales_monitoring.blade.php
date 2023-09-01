@@ -3,8 +3,15 @@
 @section('sales-body')
 
 <div class="w-full">
-    <h2 class="font-bold md:text-xl mb-2 ml-1">Sales Graph Monitoring</h2>
-    
+    <div class="flex flex-row">
+        <div>
+            <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Graph Monitoring</h2>
+        </div>
+        
+        <div class="flex justify-end ml-2">
+            <x-shopee-pagination :paginator="$shopeeSalesData" />
+        </div>
+    </div>
         <div class="flex flex-col lg:flex-row gap-2">
 
             <div class="w-full">
