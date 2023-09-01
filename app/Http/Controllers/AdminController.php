@@ -24,21 +24,21 @@ class AdminController extends Controller
     {
         $shopeeSalesData = ShopeeSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->get();
+        ->simplePaginate(2);
 
         $shopeeDates = $shopeeSalesData->pluck('date');
         $shopeeAmounts = $shopeeSalesData->pluck('total_amount');
 
         $lazadaSalesData = LazadaSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->get();
+        ->simplePaginate(2);
 
         $lazadaDates = $lazadaSalesData->pluck('date');
         $lazadaAmounts = $lazadaSalesData->pluck('total_amount');
 
         $manualSalesData = ManualPurchaseOrderProducts::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
-        ->get();
+        ->simplePaginate(2);
 
         $manualDates = $manualSalesData->pluck('date');
         $manualAmounts = $manualSalesData->pluck('total_amount');
@@ -72,6 +72,9 @@ class AdminController extends Controller
     $bestSellingData = $sortedBestSellingProducts->values()->toArray();
     
     return view('admin.admin_sales_monitoring', [
+        'shopeeSalesData' => $shopeeSalesData,
+        'lazadaSalesData' => $lazadaSalesData,
+        'manualSalesData' => $manualSalesData,
         'shopeeDates' => $shopeeDates, 
         'shopeeAmounts' => $shopeeAmounts, 
         'lazadaDates' => $lazadaDates, 
