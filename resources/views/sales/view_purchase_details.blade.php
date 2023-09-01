@@ -15,6 +15,12 @@
                      <h2 class="text-gray-800 font-bold">Store Name: {{$purchaseOrder -> customers -> store_name}}</h2>
                     <h2 class="text-gray-800 font-bold">Full Name: {{$purchaseOrder -> customers -> full_name}}</h2>
                     <h2 class="text-gray-800 font-bold">Contact Number: {{$purchaseOrder -> customers -> contact_number}}</h2>
+                    <select class="text-xs h-8 mt-1">
+                        <option disabled selected>Update Status</option>
+                        <option >Delivered</option>
+                        <option >Undelivered</option>
+                        <option>Update Status</option>
+                    </select>
                 </div>
              </div>
                <div class="bg-white-900 text-gray-900 mt-4"> 
@@ -56,8 +62,11 @@
                     <h2 class="text-gray-800 font-bold">Total Amount: <span class="text-green-600 font-bold">₱{{$totalAmount}}.00</span></h2>  
          </div>
 
-         <div class="flex flex-row gap-2 mt-8 text-xs">
-            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Generate Receipt</a></button>
+         <div class="flex flex-row gap-2 mt-8 text-xs w-full">
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Generate Receipt</a></button>
+        </div>
+        <div class="flex flex-row gap-2 mt-1 text-xs w-full">
+            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Update</a></button>
         </div>
 
 </div>
