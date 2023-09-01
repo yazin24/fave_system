@@ -1,4 +1,4 @@
-@props(['paginator', 'paginationId'])
+@props(['paginator'])
 
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="Pagination" class="flex items-center justify-start text-sm gap-1">

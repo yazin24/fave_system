@@ -11,14 +11,14 @@
             <div class="mb-2">
                 <canvas id="shopeeChart" class="bg-gray-200" ></canvas>
                 <div class="">
-                    <x-custom-pagination :paginator="$shopeeSalesData" :paginationId="'shopee'"/>
+                    <x-shopee-pagination :paginator="$shopeeSalesData" :paginationId="'shopee'"/>
                 </div>
             </div>
 
             <div class="">
                 <canvas id="manualChart" class="bg-gray-200"</canvas>
                     <div class="">
-                        <x-custom-pagination :paginator="$manualSalesData" :paginationId="'manual'"/>
+                        <x-manual-pagination :paginator="$manualSalesData" :paginationId="'manual'"/>
                     </div>
             </div>
 
@@ -29,7 +29,7 @@
             <div class="mb-2">
             <canvas id="lazadaChart" class="bg-gray-200" ></canvas>
             <div class="">
-                <x-custom-pagination :paginator="$lazadaSalesData" :paginationId="'lazada'"/>
+                <x-lazada-pagination :paginator="$lazadaSalesData" :paginationId="'lazada'"/>
             </div>
             </div>
 
