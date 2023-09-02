@@ -22,6 +22,9 @@
             <div>
                 <input type="text" name="phone_number" placeholder="Phone Number" class="h-8 w-full mb-2">
             </div>
+            <div>
+                <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-8 w-full mb-2">
+            </div>
             <div class="mb-2">
                 <select class="h-8 text-xs" name="status">
                     <option value="" disabled selected>Choose Status</option>

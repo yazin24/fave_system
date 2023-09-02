@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('shopee_orders', function (Blueprint $table) {
             $table -> decimal('charges_and_fees', 8,2) -> after('order_id') -> default(0);
+            $table -> string('encoded_by') -> default('') -> after('status');
         });
     }
 

@@ -30,6 +30,7 @@ class ShopeeOrders extends Model
         'customers_address',
         'phone_number',
         'order_id',
+        'charges_and_fees',
         'status',
 
     ];

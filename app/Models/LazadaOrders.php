@@ -30,6 +30,7 @@ class LazadaOrders extends Model
         'customers_address',
         'phone_number',
         'order_number',
+        'charges_and_fees',
         'status',
 
     ];
