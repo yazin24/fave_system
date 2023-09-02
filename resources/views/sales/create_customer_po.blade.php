@@ -62,14 +62,7 @@
 
                 <div class="w-full">
                     <select name="product_size[{{$allProduct->id}}]" class="w-full h-8 text-xs mb-1">
-                        <option value="
-                        @if($allProduct -> sku_size == 3785.41) 1Gal 
-
-                        @elseif($allProduct -> sku_size == 1000) 1Liter 
-
-                        @elseif($allProduct -> sku_size == 500) 500ml 
-
-                        @endif">
+                        <option value="0">
 
                         @if($allProduct -> sku_size == 3785.41) 1Gal 
 

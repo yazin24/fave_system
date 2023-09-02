@@ -66,37 +66,12 @@
 
                 <div class="flex">
                     <div class="mt-12 text-xs">
-                        @if($manualPurchase -> isApproved == 3)
-                        <div class="flex gap-1">
-                            <div>
-                            <form method="POST" action="{{route('approvemanual', ['manualPurchase' => $manualPurchase -> id])}}">
-                                @csrf
-                                
-                                <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
-                            </form>
-                        </div> 
-                        <div>
-                            <form method="POST" action="{{route('disapprovemanual', ['manualPurchase' => $manualPurchase -> id])}}">
-                                @csrf
-                                
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
-                            </form>
-                        </div>
-                        </div>
 
-                        @elseif($manualPurchase -> isApproved == 2)
-                        <h2 class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapproved</h2>
-                        @elseif($manualPurchase -> isApproved == 1)
-                        <div class="flex flex-col w-full">
-                            <button class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</a></button>
-                        </div>
-                        @endif
-
-                        @if($manualPurchase -> isApproved == 1)
+                        @if($manualPurchase -> status == 7)
                         <button type="submit" class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Update</button>
                         @elseif($manualPurchase -> status == 4)
                         <h2 class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Completed</h2>
-                        @elseif($manualPurchase -> status == 4)
+                        @else
                         <h2 class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Cancelled</h2>
                         @endif
                     </div>
@@ -107,9 +82,33 @@
                     </div>
                  </div>
          </div>
+        </form>
+         @if($manualPurchase -> isApproved == 3)
+         <div class="flex gap-1">
+             <div>
+             <form method="POST" action="{{route('approvemanual', ['manualPurchase' => $manualPurchase -> id])}}">
+                 @csrf
+                 
+                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
+             </form>
+         </div> 
+         <div>
+             <form method="POST" action="{{route('disapprovemanual', ['manualPurchase' => $manualPurchase -> id])}}">
+                 @csrf
+                 
+                 <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
+             </form>
+         </div>
+         </div>
 
+         @elseif($manualPurchase -> isApproved == 2)
+         <h2 class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapproved</h2>
+         @elseif($manualPurchase -> isApproved == 1)
+         <div class="flex flex-col w-full">
+             <button class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</a></button>
+         </div>
+         @endif
     </div>
-</form>
 </div>
 
 @endsection

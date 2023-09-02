@@ -134,7 +134,7 @@ class SalesFunctionsController extends Controller
                 $thePrice = $inputPrice[$index] ?? null;
 
                 if($theQuantity && $thePrice){
-                    $isBox = ($request -> input('product_size.$index') === 1) ? true : false;
+                    $isBox = (int)($request -> input("product_size.$index") === '1') ? true : false;
                     $totalAmount = $theQuantity * $thePrice;
 
                     $newManualPurchaseOrder -> manualPurchaseOrderProducts() -> create([
@@ -188,8 +188,6 @@ class SalesFunctionsController extends Controller
         $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
 
         $manualPo -> isApproved = 1;
-
-        $manualPo -> status = 7;
 
         $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
 
@@ -254,7 +252,7 @@ class SalesFunctionsController extends Controller
         $manualPurchase -> update([
 
             'status' => $status,
-            
+
         ]);
 
         $manualPurchase -> save();
