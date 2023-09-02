@@ -2,22 +2,6 @@
 
 @section('sales-body')
 
-<div class="flex flex-row w-full">
-    <form method="POST">
-        @csrf
-    <div class="mb-1 font-bold text-gray-500 w-1/2">
-        <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
-            <option value="" disabled selected>Purchase Type</option>
-            <option value="Retail">Retail</option>
-            <option value="Wholesale">Wholesale</option>
-        </select>
-    </div>
-    <div class="w-full flex items-center">
-        <button class="bg-teal-500 hover:bg-teal-600 p-1 text-xs text-gray-200 rounded-sm ml-1">Enter</button>
-    </div>
-    </form>
-</div>
-
 <h2>Create Purchase Order</h2>
 
 <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
@@ -49,8 +33,15 @@
             <input type="text" placeholder="Address" class="h-8 w-full" name="address">
         </div>
 
-     </div>
+        <div class="mb-1 font-bold text-gray-500">
+            <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
+                <option value="" disabled selected>Purchase Type</option>
+                <option value="Retail">Retail</option>
+                <option value="Wholesale">Wholesale</option>
+            </select>
+        </div>
 
+     </div>
 
         <div id="item-container" class="flex flex-col">
             @foreach($allProducts as $allProduct)
@@ -88,7 +79,7 @@
 
                         @endif
                     </option>
-                        <option value=1>@if($allProduct -> sku_size == 3785.41) 1Gal(Box) @elseif($allProduct -> sku_size == 1000) 1Liter(Box) @elseif($allProduct -> sku_size == 500) 500ml(Box) @endif</option>
+                        <option value=1 data-price-per-box=305>@if($allProduct -> sku_size == 3785.41) 1Gal(Box) @elseif($allProduct -> sku_size == 1000) 1Liter(Box) @elseif($allProduct -> sku_size == 500) 500ml(Box) @endif</option>
                     </select>
                 </div>
 
@@ -111,31 +102,62 @@
 </form>
 </div>
 
-{{-- <script>
-
+<script>
     const purchaseTypeDropDown = document.getElementById('purchase_type');
-
-    purchaseTypeDropDown.addEventListener('change', function(){
-
-        const priceInputs = document.querySelectorAll('[name^="price["]');
-
-        const selectedPurchaseType = purchaseTypeDropDown.value;
-
-        priceInputs.forEach(function(priceInput){
-
-            if(selectedPurchaseType === 'Retail'){
-
-                priceInput.value = 135;
-
-            }else if(selectedPurchaseType === 'Wholesale'){
-
-                priceInput.value = 129;
-                
-            }
+    
+    purchaseTypeDropDown.addEventListener('change', function () {
+        updatePrices();
+    });
+    
+    // Add event listeners to all product size dropdowns
+    document.querySelectorAll('[name^="product_size["]').forEach(function (productSizeDropdown) {
+        productSizeDropdown.addEventListener('change', function () {
+            updatePrices();
         });
     });
-
-</script> --}}
-
+    
+    function updatePrices() {
+        const selectedPurchaseType = purchaseTypeDropDown.value;
+    
+        // Loop through each product row
+        document.querySelectorAll('[name^="price["]').forEach(function (priceInput) {
+            const productRow = priceInput.closest('.flex-row');
+            const productId = productRow.querySelector('[name^="selected_product["]').value;
+            const productSizeDropdown = productRow.querySelector('[name^="product_size["]');
+            const selectedSize = productSizeDropdown.value;
+    
+            let pricePerBox = 0;
+            
+            if (productId in productSizes) {
+                pricePerBox = productSizes[productId];
+            }
+    
+            let price = 0;
+    
+            if (selectedPurchaseType === 'Retail') {
+                price = (pricePerBox === 3785.41) ? 35 : 129;
+            } else if (selectedPurchaseType === 'Wholesale') {
+                price = (pricePerBox === 3785.41) ? 29 : 115;
+            }
+    
+            // Update the price input
+            priceInput.value = price;
+    
+            // If a specific size is selected, update the price accordingly
+            if (selectedSize === '1') {
+                priceInput.value = (pricePerBox === 3785.41) ? 305 : 280;
+            }
+        });
+    }
+    
+    const productSizes = {
+        1: 3785.41,
+        2: 1000,
+        3: 3785.41,
+        4: 1000,
+        5: 3785.41,
+        6: 1000,
+    };
+    </script>
 
 @endsection

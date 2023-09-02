@@ -70,19 +70,11 @@ class SalesFunctionsController extends Controller
 
     public function manual_purchase_order()
     {
-        // $allProducts = ProductSku::all();
-
-        return view('sales.create_customer_po');
-    }
-
-    public function price_per_purchase_type(Request $request)
-    {
-        $purchaseType = $request -> input('purchase_type');
-
         $allProducts = ProductSku::all();
 
-        return view('sales.create_customer_po', ['allProducts' => $allProducts]);
+        return view('sales.create_customer_po',['allProducts' => $allProducts]);
     }
+
 
     public function create_customer_po(Request $request)
     {
