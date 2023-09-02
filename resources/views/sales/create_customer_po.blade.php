@@ -34,7 +34,7 @@
         </div>
 
         <div class="mb-1 font-bold text-gray-500">
-            <select class="h-8 w-full text-xs" name="purchase_type">
+            <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
                 <option value="" disabled selected>Purchase Type</option>
                 <option value="Retail">Retail</option>
                 <option value="Wholesale">Wholesale</option>
@@ -62,8 +62,7 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>
-                    
+                    <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>  
                 </div>
 
                 <div class="w-full">
@@ -90,6 +89,34 @@
 
 </form>
 </div>
+
+<script>
+
+    const purchaseTypeDropDown = document.getElementById('purchase_type');
+
+    purchaseTypeDropDown.addEventListener('change', function(){
+
+        console.log('Purchase type change!');
+
+        const priceInputs = document.querySelectorAll('[name^="price["]');
+
+        const selectedPurchaseType = purchaseTypeDropDown.value;
+
+        priceInputs.forEach(function(priceInput){
+
+            if(selectedPurchaseType === 'Retail'){
+
+                priceInput.value = 50;
+
+            }else if(selectedPurchaseType === 'Wholesale'){
+
+                priceInput.value = 40;
+                
+            }
+        });
+    });
+
+</script>
 
 
 @endsection
