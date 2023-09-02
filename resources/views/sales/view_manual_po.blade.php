@@ -14,6 +14,9 @@
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Contact Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> contact_number}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Address: <span class="text-blue-600 font-bold">{{$manualPurchase -> address}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Purchase Type: <span class="text-blue-600 font-bold">{{$manualPurchase -> purchase_type}}</span></h2>
+                <select name="del_status">
+                    <option>Update Status</option>
+                </select>
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">
@@ -73,9 +76,12 @@
                         @elseif($manualPurchase -> isApproved == 2)
                         <h2 class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapproved</h2>
                         @elseif($manualPurchase -> isApproved == 1)
+                        <div class="flex flex-col w-full">
+                            <button class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</a></button>
+                            <button class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"></i>Update</a></button>
 
-                        <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</a></button>
-
+                        </div>
+                    
                         @endif
                     </div>
 

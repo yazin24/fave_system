@@ -242,7 +242,7 @@ Route::get('sales/purchase-orders/view-details/{purchaseOrder}', [SalesFunctions
 
 Route::get('sales/for-approval/view-approve-details/{purchaseOrder}', [SalesFunctionsController::class, 'view_approve_po']) -> name('viewapprovepo');
 
-Route::post('sales/purchase-orders/view-details/{purhcaseOrder}/update-del-status', [SalesFunctionsController::class, 'update_del_status_cs_po']) -> name('updatedelstatuscspo');
+Route::put('sales/purchase-orders/view-details/{purchaseOrder}/update-del-status', [SalesFunctionsController::class, 'update_del_status_cs_po']) -> name('updatedelstatuscspo');
 
 Route::post('sales/for-approval/view-approve-details/{purchaseOrder}/approve',[SalesFunctionsController::class, 'approve_purchase_order']) -> name('approvepurchaseorder');
 
