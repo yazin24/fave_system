@@ -199,10 +199,27 @@ class SalesFunctionsController extends Controller
 
             $sku = ProductSku::findOrFail($skuId);
 
+            $isBox = $manualPoProduct->isBox;
+
+            if ($isBox) {
+                // Adjust quantity based on the box size
+                if ($sku->sku_size == 3785.41) {
+                    // 1 Gallon Box = 12 individual units
+                    $manualQuantity *= 4;
+                } elseif ($sku->sku_size == 1000) {
+                    // 1 Liter Box = 12 individual units
+                    $manualQuantity *= 12;
+                } else {
+                    // Handle other sizes accordingly
+                }
+            }
+
             $newSkuQuantity = $sku -> sku_quantity - $manualQuantity;
 
             if($newSkuQuantity >= 0){
+
                 $sku -> sku_quantity = $newSkuQuantity;
+
                 $sku -> save();
 
             }else{
@@ -523,6 +540,8 @@ class SalesFunctionsController extends Controller
 
         $shopeeCustomerNumber = $request -> input('phone_number');
 
+        $shopeeChargesAndFees = $request -> input('charges_and_fees');
+
         $shopeeCustomerStatus = $request -> input('status');
 
         $shopeeCustomerChosenProducts = $request -> input('selected_product', []);
@@ -538,6 +557,7 @@ class SalesFunctionsController extends Controller
             'customers_name' => $shopeeCustomerName,
             'customers_address' => $shopeeCustomerAddress,
             'phone_number' => $shopeeCustomerNumber,
+            'charges_and_fees' => $shopeeChargesAndFees,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
 
@@ -582,6 +602,8 @@ class SalesFunctionsController extends Controller
 
         $lazadaCustomerNumber = $request -> input('phone_number');
 
+        $lazadaChargesAndFees = $request -> input('charges_and_fees');
+
         $lazadaCustomerStatus = $request -> input('status');
 
         $lazadaCustomerChosenProducts = $request -> input('selected_product', []);
@@ -597,6 +619,7 @@ class SalesFunctionsController extends Controller
             'customers_name' => $lazadaCustomerName,
             'customers_address' => $lazadaCustomerAddress,
             'phone_number' => $lazadaCustomerNumber,
+            'charges_and_fees' => $lazadaChargesAndFees,
             'order_number' => $lazadaOrderId,
             'status' => $lazadaCustomerStatus,
 
@@ -678,6 +701,7 @@ class SalesFunctionsController extends Controller
                 if($sku -> sku_quantity >= $shopeeProduct -> quantity){
 
                     $sku -> sku_quantity -= $shopeeProduct -> quantity;
+                    
 
                     $sku -> save();
 
@@ -687,11 +711,15 @@ class SalesFunctionsController extends Controller
                 }
             }
 
+            $shopeeChargeAndFees = $shopeeOrders -> charges_and_fees;
+
             $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
+
+            $realTotalAmount = $shopeeOrderTotalAmount - $shopeeChargeAndFees;
 
             $shopeeOrders -> shopeeSales() -> create([
                 'shopee_order_id' => $shopeeOrders -> id,
-                'total_amount' => $shopeeOrderTotalAmount,
+                'total_amount' => $realTotalAmount,
     
             ]);
         }
@@ -735,15 +763,18 @@ class SalesFunctionsController extends Controller
                 }
             }
 
+            $lazadaChargeAndFees = $lazadaOrders -> charges_and_fees;
+
             $lazadaOrderTotalAmount = $lazadaOrders -> lazadaOrderProducts() -> sum('amount');
+
+            $realTotalAmount = $lazadaOrderTotalAmount - $lazadaChargeAndFees;
 
             $lazadaOrders -> lazadaSales() -> create([
                 'lazada_order_id' => $lazadaOrders -> id,
-                'total_amount' => $lazadaOrderTotalAmount,
+                'total_amount' => $realTotalAmount,
     
             ]);
         }
-
 
         $lazadaOrders -> save();
         
