@@ -153,6 +153,26 @@ class SalesFunctionsController extends Controller
         return view('sales.sales_home');
     }
 
+    public function update_del_status_cs_po(Request $request, CustomersPurchaseOrders $purchaseOrder) 
+    {
+        $del_status = $request -> input('del_status');
+
+        $purchaseOrder -> update([
+
+            'del_status' => $del_status,
+
+        ]);
+
+        $purchaseOrder -> save();
+
+        if($del_status == 4){
+             return redirect() -> back() -> with('success', 'Purchase Order has been Delivered!');
+        }elseif($del_status == 8){
+            return redirect() -> back() -> with('success', 'Purchase Order has been Cancelled!');
+        }
+       
+    }
+
     public function view_manual_po(ManualPurchaseOrder $manualPurchase)
     {
         $totalAmount = $manualPurchase -> manualPurchaseOrderProducts() -> sum('amount');

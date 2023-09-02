@@ -16,10 +16,10 @@
                     <h2 class="text-gray-800 font-bold">Full Name: {{$purchaseOrder -> customers -> full_name}}</h2>
                     <h2 class="text-gray-800 font-bold">Contact Number: {{$purchaseOrder -> customers -> contact_number}}</h2>
                     <select class="text-xs h-8 mt-1">
-                        <option disabled selected>Update Status</option>
-                        <option >Delivered</option>
-                        <option >Undelivered</option>
-                        <option>Update Status</option>
+                        <option disabled selected name="del_status">Update Status</option>
+                        <option value=4>Delivered</option>
+                        <option value=7>Undelivered</option>
+                        <option value=8>Cancelled</option>
                     </select>
                 </div>
              </div>
@@ -66,7 +66,17 @@
             <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Generate Receipt</a></button>
         </div>
         <div class="flex flex-row gap-2 mt-1 text-xs w-full">
-            <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full"><a href="{{route('generatecsreceipt', ['purchaseOrder' => $purchaseOrder -> id])}}">Update</a></button>
+            @if($purchaseOrder -> del_status == 7)
+            <form method="POST" action="{{route('updatedelstatuscspo', ['purchaseOrder' => $purchaseOrder])}}">
+                @csrf
+                @method('PUT')
+                <button class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full"><a href="{{route('updatedelstatuscspo', ['purchaseOrder' => $purchaseOrder -> id])}}">Update</a></button>
+            </form>
+            @elseif($puchaseOrder -> del_status == 4)
+            <h2 class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full">Completed</h2>
+            @else
+            <h2 class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-md shadow-md text-gray-200 w-full">Cancelled</h2>
+            @endif
         </div>
 
 </div>
