@@ -243,8 +243,25 @@ class SalesFunctionsController extends Controller
         return view('sales.approve_po', ['purchaseOrder' => $purchaseOrder, 'totalAmount' => $totalAmount]);
     }
 
+    public function update_del_status_manual(Request $request, ManualPurchaseOrder $manualPurchase)
+    {
+        $status = $request -> input('del_status');
+
+        $manualPurchase -> update([
+            'status' => $status,
+        ]);
+
+        $manualPurchase -> save();
+
+        if($status == 4){
+            return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
+       }elseif($status == 8){
+           return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
+       }
+    }
+
     public function approve_purchase_order(Request $request, $purchaseOrder)
-{
+    {
     $approvePurchaseOrder = CustomersPurchaseOrders::findOrFail($purchaseOrder);
 
     $approvePurchaseOrder->status = 1;

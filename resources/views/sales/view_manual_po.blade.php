@@ -5,7 +5,9 @@
 <h2 class="font-bold md:text-xl">Manual Purchase Order Details</h2>
 
 <div class="mt-4">
-
+<form method="POST" action="{{route('updatedelstatusmanual', ['manualPurchase' => $manualPurchase -> id])}}">
+    @csrf
+    @method('PUT')
     <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 
@@ -14,9 +16,18 @@
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Contact Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> contact_number}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Address: <span class="text-blue-600 font-bold">{{$manualPurchase -> address}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Purchase Type: <span class="text-blue-600 font-bold">{{$manualPurchase -> purchase_type}}</span></h2>
-                <select name="del_status">
-                    <option>Update Status</option>
+                @if($manualPurchase -> status == 7)
+                <select class="text-xs h-8 mt-1 mb-2" name="del_status">
+                    <option value="" disabled selected>Update Status</option>
+                    <option value=4>Completed</option>
+                    <option value=7>Undelivered</option>
+                    <option value=8>Cancelled</option>
                 </select>
+                @elseif($manualPurchase -> status == 4)
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Completed</span></h2>
+                @else
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Cancelled</span></h2>
+                @endif
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
                     <table class="w-full shadow-md bg-gray-400">
@@ -78,13 +89,18 @@
                         @elseif($manualPurchase -> isApproved == 1)
                         <div class="flex flex-col w-full">
                             <button class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"><i class="fa-solid fa-print mr-0.5"></i>Generate Receipt</a></button>
-                            <button class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2"><a href="{{route('manualreceipt', ['manualPurchase' => $manualPurchase])}}"></i>Update</a></button>
-
                         </div>
-                    
+                        @endif
+
+                        @if($manualPurchase -> status == 7)
+                        <button type="submit" class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Update</button>
+                        @elseif($manualPurchase -> status == 4)
+                        <h2 class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Completed</h2>
+                        @else
+                        <h2 class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Cancelled</h2>
                         @endif
                     </div>
-
+                    
                     <div class="ml-auto mt-4 font-bold mr-4">
                         <th><span class="text-xs">Total Amount</span>:</th>
                         <td><span class="text-xs text-red-600">₱{{$totalAmount}}</span></td>
@@ -93,7 +109,7 @@
          </div>
 
     </div>
-
+</form>
 </div>
 
 

@@ -21,5 +21,6 @@ class ManualPurchaseOrder extends Model
         'address',
         'purchase_type',
         'isApproved',
+        'status',
     ];
 }
