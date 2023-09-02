@@ -16,7 +16,7 @@
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Contact Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> contact_number}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Address: <span class="text-blue-600 font-bold">{{$manualPurchase -> address}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Purchase Type: <span class="text-blue-600 font-bold">{{$manualPurchase -> purchase_type}}</span></h2>
-                @if($manualPurchase -> status == 7)
+                @if($manualPurchase -> status == 7 && $manualPurchase -> isApproved == 1)
                 <select class="text-xs h-8 mt-1 mb-2" name="del_status">
                     <option value="" disabled selected>Update Status</option>
                     <option value=4>Completed</option>
@@ -92,11 +92,11 @@
                         </div>
                         @endif
 
-                        @if($manualPurchase -> status == 7)
+                        @if($manualPurchase -> isApproved == 1)
                         <button type="submit" class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Update</button>
                         @elseif($manualPurchase -> status == 4)
                         <h2 class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Completed</h2>
-                        @else
+                        @elseif($manualPurchase -> status == 4)
                         <h2 class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Cancelled</h2>
                         @endif
                     </div>
@@ -111,6 +111,5 @@
     </div>
 </form>
 </div>
-
 
 @endsection

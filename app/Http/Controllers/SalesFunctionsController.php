@@ -134,12 +134,14 @@ class SalesFunctionsController extends Controller
                 $thePrice = $inputPrice[$index] ?? null;
 
                 if($theQuantity && $thePrice){
+                    $isBox = ($request -> input('product_size.$index') === 1) ? true : false;
                     $totalAmount = $theQuantity * $thePrice;
 
                     $newManualPurchaseOrder -> manualPurchaseOrderProducts() -> create([
 
                             'manual_po_id' => $manualPoId,
                             'sku_id' => $index,
+                            'isBox' => $isBox,
                             'quantity' => $theQuantity,
                             'price' => $thePrice,
                             'amount' => $totalAmount,
@@ -150,8 +152,7 @@ class SalesFunctionsController extends Controller
 
         }
 
-        Session::flash('success', 'The Purchase Order has been created!');
-        return view('sales.sales_home');
+        return redirect() -> back() -> with('success', 'Manual Purchase Order has been created!');
     }
 
     public function update_del_status_cs_po(Request $request, CustomersPurchaseOrders $purchaseOrder) 
@@ -187,6 +188,8 @@ class SalesFunctionsController extends Controller
         $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
 
         $manualPo -> isApproved = 1;
+
+        $manualPo -> status = 7;
 
         $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
 
@@ -249,7 +252,9 @@ class SalesFunctionsController extends Controller
         $status = $request -> input('del_status');
 
         $manualPurchase -> update([
+
             'status' => $status,
+            
         ]);
 
         $manualPurchase -> save();

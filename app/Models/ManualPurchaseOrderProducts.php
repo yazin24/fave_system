@@ -22,6 +22,7 @@ class ManualPurchaseOrderProducts extends Model
     protected $fillable = [
         'manual_po_id',
         'sku_id',
+        'isBox',
         'quantity',
         'price',
         'amount',
