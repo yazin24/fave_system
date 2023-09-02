@@ -45,5 +45,7 @@ class ProductSku extends Model
         'full_name',
         'sku_size',
         'sku_quantity',
+        'retail_price',
+        'wholesale_price',
     ];
 }

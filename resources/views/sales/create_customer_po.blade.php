@@ -2,6 +2,22 @@
 
 @section('sales-body')
 
+<div class="flex flex-row w-full">
+    <form method="POST">
+        @csrf
+    <div class="mb-1 font-bold text-gray-500 w-1/2">
+        <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
+            <option value="" disabled selected>Purchase Type</option>
+            <option value="Retail">Retail</option>
+            <option value="Wholesale">Wholesale</option>
+        </select>
+    </div>
+    <div class="w-full flex items-center">
+        <button class="bg-teal-500 hover:bg-teal-600 p-1 text-xs text-gray-200 rounded-sm ml-1">Enter</button>
+    </div>
+    </form>
+</div>
+
 <h2>Create Purchase Order</h2>
 
 <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
@@ -33,14 +49,6 @@
             <input type="text" placeholder="Address" class="h-8 w-full" name="address">
         </div>
 
-        <div class="mb-1 font-bold text-gray-500">
-            <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
-                <option value="" disabled selected>Purchase Type</option>
-                <option value="Retail">Retail</option>
-                <option value="Wholesale">Wholesale</option>
-            </select>
-        </div>
-
      </div>
 
 
@@ -62,13 +70,25 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="text" class="w-full h-8 text-xs mb-1" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>  
-                </div>
-
-                <div class="w-full">
                     <select name="product_size[{{$allProduct->id}}]" class="w-full h-8 text-xs mb-1">
-                        <option value="" @if($allProduct->sku_size == 1000) selected @endif>1Liter</option>
-                        <option value=1 @if($allProduct->sku_size == 500) selected @endif>1Liter(Box)</option>
+                        <option value="
+                        @if($allProduct -> sku_size == 3785.41) 1Gal 
+
+                        @elseif($allProduct -> sku_size == 1000) 1Liter 
+
+                        @elseif($allProduct -> sku_size == 500) 500ml 
+
+                        @endif">
+
+                        @if($allProduct -> sku_size == 3785.41) 1Gal 
+
+                        @elseif($allProduct -> sku_size == 1000) 1Liter 
+
+                        @elseif($allProduct -> sku_size == 500) 500ml 
+
+                        @endif
+                    </option>
+                        <option value=1>@if($allProduct -> sku_size == 3785.41) 1Gal(Box) @elseif($allProduct -> sku_size == 1000) 1Liter(Box) @elseif($allProduct -> sku_size == 500) 500ml(Box) @endif</option>
                     </select>
                 </div>
 
@@ -91,13 +111,11 @@
 </form>
 </div>
 
-<script>
+{{-- <script>
 
     const purchaseTypeDropDown = document.getElementById('purchase_type');
 
     purchaseTypeDropDown.addEventListener('change', function(){
-
-        console.log('Purchase type change!');
 
         const priceInputs = document.querySelectorAll('[name^="price["]');
 
@@ -117,7 +135,7 @@
         });
     });
 
-</script>
+</script> --}}
 
 
 @endsection
