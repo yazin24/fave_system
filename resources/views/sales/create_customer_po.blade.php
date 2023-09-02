@@ -66,13 +66,14 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-8 text-xs mb-1" placeholder="@if(request('purchase_type') == 'Retail') 50
-                    @else 40
-                    @endif" value="
-                    @if(request('purchase_type') == 'Retail') 50
-                    @else 40
-                    @endif
-                    ">
+                    <select name="product_size[{{$allProduct->id}}]" class="w-full h-8 text-xs mb-1">
+                        <option value="" @if($allProduct->sku_size == 1000) selected @endif>1Liter</option>
+                        <option value=1 @if($allProduct->sku_size == 500) selected @endif>1Liter(Box)</option>
+                    </select>
+                </div>
+
+                <div class="w-full">
+                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-8 text-xs mb-1" placeholder="0">
                 </div>
 
                 <div class="w-full">
@@ -106,11 +107,11 @@
 
             if(selectedPurchaseType === 'Retail'){
 
-                priceInput.value = 50;
+                priceInput.value = 135;
 
             }else if(selectedPurchaseType === 'Wholesale'){
 
-                priceInput.value = 40;
+                priceInput.value = 129;
                 
             }
         });
