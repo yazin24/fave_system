@@ -2,16 +2,14 @@
 
 @section('sales-body')
 
-<h2>Create Purchase Order</h2>
-
 <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
 
     <h2 class="text-center text-gray-200 font-bold md:text-2xl mb-2"> * Customer Purchase Order * </h2>
 
-    <p class="text-gray-300 flex flex-col text-[10px] mb-1">
+    {{-- <p class="text-gray-300 flex flex-col text-[10px] mb-1">
         <span>**Retail Price: 1L = 35.00 1Gal = 129.00</span>
         <span>**Wholesale Price: 1L = 29.00 1Gal = 115.00</span>
-    </p>
+    </p> --}}
    
 
     <form method="POST" action="{{route('createcustomerpo')}}">
@@ -22,15 +20,15 @@
         <div class="flex flex-col">
         <h2 class="text-xs font-bold mb-1">**Customer Details</h2>
         <div class="mb-1 font-bold">
-            <input type="text" placeholder="Full Name" class="h-8 w-full" name="customers_name">
+            <input type="text" placeholder="Full Name" class="h-6 w-full" name="customers_name">
         </div>
 
         <div class="mb-1 font-bold">
-            <input type="text" placeholder="Contact Number" class="h-8 w-full" name="contact_number">
+            <input type="text" placeholder="Contact Number" class="h-6 w-full" name="contact_number">
         </div>
 
         <div class="mb-1 font-bold">
-            <input type="text" placeholder="Address" class="h-8 w-full" name="address">
+            <input type="text" placeholder="Address" class="h-6 w-full" name="address">
         </div>
 
         <div class="mb-1 font-bold text-gray-500">
@@ -68,11 +66,22 @@
 
                         @elseif($allProduct -> sku_size == 1000) 1Liter 
 
-                        @elseif($allProduct -> sku_size == 500) 500ml 
+                        @elseif($allProduct -> sku_size == 900) 900g 
+
+                        @elseif($allProduct -> sku_size == 180) 180g
 
                         @endif
                     </option>
-                        <option value=1 data-price-per-box=305>@if($allProduct -> sku_size == 3785.41) 1Gal(Box) @elseif($allProduct -> sku_size == 1000) 1Liter(Box) @elseif($allProduct -> sku_size == 500) 500ml(Box) @endif</option>
+                        <option value=1 data-price-per-box=305>
+                            @if($allProduct -> sku_size == 3785.41) 1Gal(Box) 
+
+                            @elseif($allProduct -> sku_size == 1000) 1Liter(Box) 
+
+                            @elseif($allProduct -> sku_size == 900) 900g(Box) 
+
+                            @elseif($allProduct -> sku_size == 180) 180g(Box)
+                            @endif
+                        </option>
                     </select>
                 </div>
 

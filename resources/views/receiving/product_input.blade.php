@@ -31,7 +31,8 @@
                 <label>Choose SKU Size</label>
                 <select id="" name="sku_size" class="w-full text-gray-500 text-xs h-8" required>
                     <option value="" disabled selected>-</option>
-                    <option value="500">500ml</option>
+                    <option value="180">180 grams</option>
+                    <option value="900">900 grams</option>
                     <option value="1000">1L</option>
                     <option value=3785.41>1Gallon</option>
                     
