@@ -9,10 +9,10 @@
 
     <div class="flex flex-row items-center mt-2">
         <div>
-            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md mr-1"><i class="fa-regular fa-square-plus mr-1"></i>Input</button>
+            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md mr-1"><a href="{{route('storageinputform')}}"><i class="fa-regular fa-square-plus mr-1"></i>Input</a></button>
         </div>
         <div>
-            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><i class="fa-regular fa-square-minus mr-1"></i>Output</button>
+            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><a href="{{route('storageoutputform')}}"><i class="fa-regular fa-square-minus mr-1"></i>Output</a></button>
         </div>
     </div>
    

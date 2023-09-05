@@ -184,6 +184,10 @@ Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}'
 
 Route::post('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
 
+Route::get('/receiving/manufacturing-storage/input-form', [ReceivingFunctionsController::class, 'storage_input_form']) -> name('storageinputform');
+
+Route::get('/receiving/manufacturing-storage/output-form', [ReceivingFunctionsController::class, 'storage_output_form']) -> name('storageoutputform');
+
 });
 
 

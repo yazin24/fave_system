@@ -196,6 +196,16 @@ class ReceivingFunctionsController extends Controller
 
         return view('receiving.receiving_home') -> with('success', 'Pull Out Success!');
     }
+
+    public function storage_input_form()
+    {
+        return view('receiving.storage_input_form');
+    }
+
+    public function storage_output_form()
+    {
+        return view('receiving.storage_output_form');
+    }
   
 }
 
