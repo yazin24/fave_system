@@ -186,9 +186,7 @@ Route::post('/receiving/pull-out-items/submit/form', [ReceivingFunctionsControll
 
 Route::get('receiving/manufacturing-storage/view-sku-storage-details/{storageSku}', [ReceivingFunctionsController::class, 'storage_sku_details']) -> name('storageskudetails');
 
-Route::get('/receiving/manufacturing-storage/input-form', [ReceivingFunctionsController::class, 'storage_input_form']) -> name('storageinputform');
-
-Route::get('/receiving/manufacturing-storage/output-form', [ReceivingFunctionsController::class, 'storage_output_form']) -> name('storageoutputform');
+Route::get('/receiving/manufacturing-storage/output-form/view/{storageSku}', [ReceivingFunctionsController::class, 'storage_output_form']) -> name('storageoutputform');
 
 });
 

@@ -17,6 +17,19 @@
                         @endif
                     </h2>
                     <h2 class="font-bold mb-2">Total Quantity(Drums): {{$storageSku -> quantity}}</h2>
+                    <div class="flex flex-row justify-between">
+                        <div class="mt-2">
+                            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md mr-1"><a href=""><i class="fa-regular fa-square-plus mr-1"></i>Log History</a></button>
+                        </div>
+                    
+                        <div class="flex flex-row items-center mt-2">
+                            <div>
+                                <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><a href="{{route('storageoutputform', ['storageSku' => $storageSku -> id])}}"><i class="fa-regular fa-square-minus mr-1"></i>Output</a></button>
+                            </div>
+                        </div>
+                       
+                    
+                    </div>
                 </div>
            </div>
         </div>

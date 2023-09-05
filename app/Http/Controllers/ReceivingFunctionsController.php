@@ -215,17 +215,20 @@ class ReceivingFunctionsController extends Controller
 
     public function storage_sku_details(ManufacturingStorage $storageSku)
     {
+        // $storageSku = ManufacturingStorage::findOrFail($storageSku -> id);
+
         return view('receiving.sku_storage_details', ['storageSku' => $storageSku]);
     }
 
-    public function storage_input_form()
+    public function storage_input_form(ManufacturingStorage $storageSku)
     {
+       
         return view('receiving.storage_input_form');
     }
 
-    public function storage_output_form()
+    public function storage_output_form(ManufacturingStorage $storageSku)
     {
-        return view('receiving.storage_output_form');
+        return view('receiving.storage_output_form', ['storageSku' => $storageSku]);
     }
   
 }
