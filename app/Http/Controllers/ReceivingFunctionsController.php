@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\ManufacturingStorage;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItems;
@@ -210,6 +211,11 @@ class ReceivingFunctionsController extends Controller
         }
 
         return view('receiving.receiving_home') -> with('success', 'Pull Out Success!');
+    }
+
+    public function storage_sku_details(ManufacturingStorage $storageSku)
+    {
+        return view('receiving.sku_storage_details', ['storageSku' => $storageSku]);
     }
 
     public function storage_input_form()

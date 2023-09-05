@@ -45,7 +45,7 @@
                 </td>
                 
                 <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$storageSku -> quantity}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a>View</a></td>
+                <td class="border-b-2 text-xs text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a href="{{route('storageskudetails', ['storageSku' => $storageSku -> id])}}">View</a></td>
             </tr>
             @endforeach
         </tbody>
