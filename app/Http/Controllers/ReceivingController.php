@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ManufacturingStorage;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
@@ -52,7 +53,9 @@ class ReceivingController extends Controller
 
     public function manufacturing_storage()
     {
-        return view('receiving.product_storage');
+        $storageSkus = ManufacturingStorage::all();
+
+        return view('receiving.product_storage', ['storageSkus' => $storageSkus]);
     }
 
     public function all_products()

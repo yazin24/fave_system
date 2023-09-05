@@ -42,6 +42,16 @@ class ReceivingFunctionsController extends Controller
 
     public function add_product_sku(Request $request)
     {
+        $request -> validate([
+
+            'variant_name' => 'required|numeric',
+            'barcode' => 'required',
+            'full_name' => 'required',
+            'sku_size' => 'required|in:180,900,1000,3785.41',
+            'sku_quantity' => 'numeric',
+
+        ]);
+
         $newProductSku = ProductSku::create([
             'variant_id' => $request -> variant_name,
             'barcode' => $request -> barcode,
@@ -53,13 +63,11 @@ class ReceivingFunctionsController extends Controller
         $newProductSku -> manufacturingStorage() -> create([
 
             'sku_id' => $newProductSku -> id,
-            
+            'quantity' => 0,
+
         ]);
 
-
-        Session::flash('success', 'Product SKU has been added!');
-
-        return view('receiving.receiving_home');
+        return redirect() -> back() -> with('success', 'Product Sku has been added!');
     }
 
     public function view_to_be_receive_po(PurchaseOrder $toReceivePurchaseOrder)

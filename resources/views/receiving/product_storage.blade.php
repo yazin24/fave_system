@@ -33,17 +33,21 @@
         <tbody>
            
             <tr class="h-10">
-               {{-- @foreach ($toReceivePurchaseOrders as $toReceivePurchaseOrder) --}}
+               @foreach ($storageSkus as $storageSku)
                    
-                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10"></td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-10"></td>
-                
+                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$storageSku -> productSku -> productVariants -> variant_name}}</td>
                 <td class="border-b-2 text-xs text-center w-1/6 h-10">
-                   
+                        @if($storageSku -> productSku -> sku_size == 3785.41) 1 Gallon
+                        @elseif($storageSku -> productSku -> sku_size == 1000) 1 Liter
+                        @elseif($storageSku -> productSku -> sku_size == 900) 900 Grams
+                        @elseif($storageSku -> productSku -> sku_size == 180) 180 Grams
+                        @endif
                 </td>
+                
+                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$storageSku -> quantity}}</td>
                 <td class="border-b-2 text-xs text-center w-1/6 hover:underline text-red-600 hover:font-bold"><a>View</a></td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>
