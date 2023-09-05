@@ -2,7 +2,23 @@
 
 @section('receiving-body')
 
-<h2 class="font-bold md:text-xl mt-2">Products Storage</h2>
+<div class="flex flex-row justify-between">
+    <div>
+        <h2 class="font-bold md:text-xl mt-2">Products Storage</h2>
+    </div>
+
+    <div class="flex flex-row items-center mt-2">
+        <div>
+            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md mr-1"><i class="fa-regular fa-square-plus mr-1"></i>Input</button>
+        </div>
+        <div>
+            <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><i class="fa-regular fa-square-minus mr-1"></i>Output</button>
+        </div>
+    </div>
+   
+
+</div>
+
 
 <div class="bg-white-900 text-gray-900 mt-1">
     <table class="bg-gray-300 shadow-lg w-full">
