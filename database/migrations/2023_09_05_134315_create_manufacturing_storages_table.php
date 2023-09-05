@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manufacturing_storages', function (Blueprint $table) {
+        Schema::create('manufacturing_storage', function (Blueprint $table) {
             $table->id();
+            $table -> unsignedBigInteger('sku_id');
+            $table -> integer('quantity') -> default(0);
             $table->timestamps();
+
+            $table -> foreign('sku_id') -> references('id') -> on('product_sku');
         });
     }
 

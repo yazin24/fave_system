@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class ManufacturingStorage extends Model
 {
-    use HasFactory;
+    protected $table = 'manufacturing_storage';
+
+    public function productSku()
+    {
+        return $this -> belongsTo(ProductSku::class, 'sku_id');
+    }
+
+
+    protected $fillable = [
+
+        'sku_id',
+        'quantity',
+
+    ];
+
 }

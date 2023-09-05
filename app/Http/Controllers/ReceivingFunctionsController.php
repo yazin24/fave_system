@@ -50,6 +50,13 @@ class ReceivingFunctionsController extends Controller
             'sku_quantity' => $request -> sku_quantity,
         ]);
 
+        $newProductSku -> manufacturingStorage() -> create([
+
+            'sku_id' => $newProductSku -> id,
+            
+        ]);
+
+
         Session::flash('success', 'Product SKU has been added!');
 
         return view('receiving.receiving_home');
