@@ -147,8 +147,6 @@ Route::middleware(['auth', 'receiving']) -> group(function(){
 
     //Receiving Siebar
 
-Route::get('receiving/all-products', [ReceivingController::class, 'all_products']) -> name('allproducts');
-
 Route::get('/receiving/receiving-monitoring', [ReceivingController::class, 'received_po_monitoring']) -> name('receivedpomonitoring');
 
 Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -> name('receivepo');
@@ -156,6 +154,10 @@ Route::get('receiving/receive-po', [ReceivingController::class, 'receive_po']) -
 Route::get('receiving/pull-out-monitoring', [ReceivingController::class, 'pull_out_monitoring']) -> name('pulloutmonitoring');
 
 Route::get('/receiving/pull-out-items', [ReceivingController::class, 'pull_out']) -> name('pullout');
+
+Route::get('receiving/manufacturing-storage', [ReceivingController::class, 'manufacturing_storage']) -> name('manufacturingstorage');
+
+Route::get('receiving/all-products', [ReceivingController::class, 'all_products']) -> name('allproducts');
 
 
 //Receiving Functionalities

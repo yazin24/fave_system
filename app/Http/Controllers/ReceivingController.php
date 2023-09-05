@@ -10,17 +10,10 @@ use App\Models\PurchaseOrder;
 use App\Models\ReceivedPurchaseOrder;
 use App\Models\SystemStatus;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
 class ReceivingController extends Controller
 {
-
-    public function all_products()
-    {
-        $allProducts = ProductSku::all();
-
-        return view('receiving.receiving_all_products', ['allProducts' => $allProducts]);
-    }
-
     public function received_po_monitoring()
     {
          $toReceivePurchaseOrders = PurchaseOrder::with(['systemStatus', 'purchaseOrderItems.allItems'])
@@ -55,5 +48,17 @@ class ReceivingController extends Controller
     {
 
         return view('receiving.pull_out');
+    }
+
+    public function manufacturing_storage()
+    {
+        return view('receiving.product_storage');
+    }
+
+    public function all_products()
+    {
+        $allProducts = ProductSku::all();
+
+        return view('receiving.receiving_all_products', ['allProducts' => $allProducts]);
     }
 }

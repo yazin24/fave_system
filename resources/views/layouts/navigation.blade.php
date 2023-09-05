@@ -108,9 +108,6 @@
             </x-responsive-nav-link>
         
         @elseif(Auth::user()->usertype === 'receiving')
-            <x-responsive-nav-link :href="route('allproducts')" :active="request()->routeIs('allproducts')">
-                <i class="fa-solid fa-cubes-stacked text-xl"></i>
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('receivedpomonitoring')" :active="request()->routeIs('receivedpomonitoring')">
                 <i class="fa-solid fa-desktop text-xl"></i>
             </x-responsive-nav-link>
@@ -122,6 +119,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('pullout')" :active="request()->routeIs('pullout')">
                 <i class="fa-solid fa-upload text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('manufacturingstorage')" :active="request()->routeIs('allproducts')">
+                <i class="fa-solid fa-box-open text-xl"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('allproducts')" :active="request()->routeIs('allproducts')">
+                <i class="fa-solid fa-cubes-stacked text-xl"></i>
             </x-responsive-nav-link>
 
             @elseif(Auth::user()->usertype === 'sales')
