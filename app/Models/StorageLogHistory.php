@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StorageLogHistory extends Model
 {
-    protected $table = 'storage_log_hsitory';
+    protected $table = 'storage_log_history';
 
     public function manufacturingStorage()
     {

@@ -184,9 +184,13 @@ Route::get('/receiving/receive-po/view-details-received/{receivedPurchaseOrder}'
 
 Route::post('/receiving/pull-out-items/submit/form', [ReceivingFunctionsController::class, 'pull_out_items']) -> name('pulloutitems');
 
-Route::get('receiving/manufacturing-storage/view-sku-storage-details/{storageSku}', [ReceivingFunctionsController::class, 'storage_sku_details']) -> name('storageskudetails');
+Route::get('/receiving/manufacturing-storage/view-sku-storage-details/{storageSku}', [ReceivingFunctionsController::class, 'storage_sku_details']) -> name('storageskudetails');
 
 Route::get('/receiving/manufacturing-storage/output-form/view/{storageSku}', [ReceivingFunctionsController::class, 'storage_output_form']) -> name('storageoutputform');
+
+Route::put('/receiving/manufacturing-storage/output-form/view/{storageSku}/update-quantity', [ReceivingFunctionsController::class, 'storage_sku_update']) -> name('storageskuupdate');
+
+Route::get('/receiving/manufacturing-storage/view-storage-details/view-log-history/{storageSku}', [ReceivingFunctionsController::class, 'storage_sku_log']) -> name('storageskulog');
 
 });
 

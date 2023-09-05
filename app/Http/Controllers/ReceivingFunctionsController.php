@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\ManualPurchaseOrder;
 use App\Models\ManufacturingStorage;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
@@ -220,16 +221,65 @@ class ReceivingFunctionsController extends Controller
         return view('receiving.sku_storage_details', ['storageSku' => $storageSku]);
     }
 
-    public function storage_input_form(ManufacturingStorage $storageSku)
-    {
-       
-        return view('receiving.storage_input_form');
-    }
-
     public function storage_output_form(ManufacturingStorage $storageSku)
     {
         return view('receiving.storage_output_form', ['storageSku' => $storageSku]);
     }
+
+    public function storage_sku_log(ManufacturingStorage $storageSku)
+    {
+        // $storage = ManufacturingStorage::all();
+
+        $skuStorageLog = $storageSku -> storageLogHistory() -> where('sku_storage_id', $storageSku -> id) -> get();
+
+        return view('receiving.storage_sku_log', ['skuStorageLog' => $skuStorageLog, 'storageSku' => $storageSku]);
+    }
   
+    public function storage_sku_update(Request $request, ManufacturingStorage $storageSku)
+    {   
+        $skuStorage = ManufacturingStorage::findOrFail($storageSku -> id);
+
+        $skuStorageQuantity = $skuStorage -> quantity;
+
+        $request -> validate([
+            'action' => 'string|required',
+            'quantity' => 'integer|required',
+        ]);
+
+        $action = $request -> input('action');
+
+        $quantity = $request -> input('quantity');
+
+        if($action === 'Add'){
+            $theQuantity = $skuStorageQuantity + $quantity;
+
+            $skuStorage  -> update([
+                'quantity' => $theQuantity,
+            ]);
+
+            $skuStorage -> storageLogHistory() -> create([
+                'sku_storage_id' => $skuStorage -> id,
+                'quantity' => $quantity,
+                'action' => $action,
+            ]);
+        }elseif($action === 'Subtract') {
+            $theQuantity = $skuStorageQuantity - $quantity;
+
+            $skuStorage  -> update([
+                'quantity' => $theQuantity,
+            ]);
+
+            $skuStorage -> storageLogHistory() -> create([
+                'sku_storage_id' => $skuStorage -> id,
+                'quantity' => $quantity,
+                'action' => $action,
+            ]);
+        }
+
+        $skuStorage -> save();
+
+        return view('receiving.receiving_home') -> with('success', 'Quantity has been updated successfully!');
+    }
+
 }
 

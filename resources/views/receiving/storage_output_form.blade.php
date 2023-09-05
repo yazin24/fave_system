@@ -4,8 +4,9 @@
 
         <h2 class="font-bold md:text-xl mt-2">Update Sku Storage</h2>
         <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
-                <form method="POST" action="{{route('addproductsku')}}">
+                <form method="POST" action="{{route('storageskuupdate', ['storageSku' => $storageSku -> id])}}">
                     @csrf
+                    @method('PUT')
                 <div class="bg-gray-200 px-4 py-4">
                     <div class="flex flex-wrap justify-between md:mx-8">
                    
@@ -32,7 +33,7 @@
                         </select>
                     </div>
                     <div>
-                        <input type="number" name="sku_quantity" class="h-8 w-full">
+                        <input type="number" name="quantity" class="h-8 w-full text-xs" placeholder="Insert Quantity here">
                     </div>
                     <div class="mt-4">
                         <button type="submit" class="p-1 bg-teal-500 text-gray-200 font-bold hover:bg-teal-600 rounded-md shadow-md">Submit</button>
