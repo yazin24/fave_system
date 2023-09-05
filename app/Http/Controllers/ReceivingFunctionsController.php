@@ -278,7 +278,8 @@ class ReceivingFunctionsController extends Controller
 
         $skuStorage -> save();
 
-        return view('receiving.receiving_home') -> with('success', 'Quantity has been updated successfully!');
+        Session::flash('success', 'Sku Storage Quantity Has Been Updated Successfully!');
+        return view('receiving.receiving_home');
     }
 
 }
