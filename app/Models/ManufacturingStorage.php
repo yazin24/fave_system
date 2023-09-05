@@ -14,6 +14,11 @@ class ManufacturingStorage extends Model
         return $this -> belongsTo(ProductSku::class, 'sku_id');
     }
 
+    public function storageLogHistory()
+    {
+        return $this -> hasMany(StorageLogHistory::class, 'sku_storage_id');
+    }
+
 
     protected $fillable = [
 

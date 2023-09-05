@@ -27,7 +27,7 @@
                 <th class="text-sm text-center w-1/6">VARIANT</th>
                 <th class="text-sm text-center w-1/6">SIZE</th>
                 <th class="text-sm text-center w-1/6">QUANTITY/DRUMS</th>
-                <th class="text-sm text-center w-1/6">ACTION</th>
+                <th class="text-sm text-center w-1/6">DETAILS</th>
             </tr>
         </thead>
         <tbody>
