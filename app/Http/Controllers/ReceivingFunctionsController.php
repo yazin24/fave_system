@@ -230,9 +230,9 @@ class ReceivingFunctionsController extends Controller
     {
         // $storage = ManufacturingStorage::all();
 
-        $skuStorageLog = $storageSku -> storageLogHistory() -> where('sku_storage_id', $storageSku -> id) -> get();
+        // $skuStorageLog = $storageSku -> storageLogHistory() -> where('sku_storage_id', $storageSku -> id) -> get();
 
-        return view('receiving.storage_sku_log', ['skuStorageLog' => $skuStorageLog, 'storageSku' => $storageSku]);
+        return view('receiving.storage_sku_log', ['storageSku' => $storageSku]);
     }
   
     public function storage_sku_update(Request $request, ManufacturingStorage $storageSku)
