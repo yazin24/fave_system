@@ -4,6 +4,16 @@
 
 <h2 class="font-bold md:text-xl mt-2">Input Product</h2>
 
+@if($errors -> any())
+<div class="text-red-600 font-bold">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="mt-2 md:mt-4">
     
     <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
@@ -22,10 +32,12 @@
             <div>
                 <label>Barcode</label>
                 <input type="text" name="barcode" class="h-8 w-full" required>
+               
             </div>
             <div>
                 <label>Full Name</label>
                 <input type="text" name="full_name" class="h-8 w-full" required>
+               
             </div>
             <div>
                 <label>Choose SKU Size</label>
@@ -35,12 +47,13 @@
                     <option value="900">900 grams</option>
                     <option value="1000">1L</option>
                     <option value=3785.41>1Gallon</option>
-                    
                 </select>
+               
             </div>
             <div>
                 <label>SKU Quantity</label>
                 <input type="number" name="sku_quantity" class="h-8 w-full">
+               
             </div>
             <div class="mt-4">
                 <button type="submit" class="p-1 bg-teal-500 text-gray-200 font-bold hover:bg-teal-600 rounded-md shadow-md">Submit</button>

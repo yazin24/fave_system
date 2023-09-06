@@ -44,14 +44,18 @@ class ReceivingFunctionsController extends Controller
 
     public function add_product_sku(Request $request)
     {
-        $request -> validate([
-
+        $request->validate([
             'variant_name' => 'required|numeric',
             'barcode' => 'required',
             'full_name' => 'required',
             'sku_size' => 'required|in:180,900,1000,3785.41',
             'sku_quantity' => 'numeric',
-
+        ], [
+            'variant_name.required' => 'Variant is required.',
+            'barcode.required' => 'Barcode is required.',
+            'full_name.required' => 'Full name is required.',
+            'sku_size.required' => 'SKU size is required.',
+            'sku_quantity.numeric' => 'SKU quantity must be numbers.',
         ]);
 
         $newProductSku = ProductSku::create([
