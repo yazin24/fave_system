@@ -34,9 +34,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-4 font-bold">
-                    {{-- {{$allPurchaseOrders->links()}} --}}
-                </div>
+                {{-- <div class="mt-1 ml-2">
+                    <x-shopee-pagination :paginator="$pullOutItems" />
+                </div> --}}
             </div>
         
                 

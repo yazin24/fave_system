@@ -35,7 +35,7 @@
             </tbody>
         </table>
     </div>
-    <div class="flex justify-end ml-2">
+    <div class="ml-2 mt-1">
         <x-shopee-pagination :paginator="$allShopeeSales" />
     </div>
     {{-- {{$agent -> created_at -> format('Y-m-d h:s:i A')}} --}}
@@ -72,7 +72,7 @@
             </tbody>
         </table>
     </div>
-    <div class="flex justify-end ml-2">
+    <div class="mt-1 ml-2">
         <x-shopee-pagination :paginator="$allLazadaSales" />
     </div>
     {{-- {{$agent -> created_at -> format('Y-m-d h:s:i A')}} --}}

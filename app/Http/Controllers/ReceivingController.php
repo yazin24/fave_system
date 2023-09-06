@@ -24,7 +24,7 @@ class ReceivingController extends Controller
                   ->orWhere('del_status', 6);
         })
         ->orderBy('created_at', 'desc')
-        ->get();
+        ->paginate(10);
 
         return view('receiving.receiving_monitoring', ['toReceivePurchaseOrders' => $toReceivePurchaseOrders]);
     }
@@ -33,14 +33,14 @@ class ReceivingController extends Controller
     {
         $receivedPurchaseOrders = PurchaseOrder::where('del_status', 4)
                                 ->orderBy('created_at', 'desc')
-                                ->get();
+                                ->paginate(10);
 
         return view('receiving.receive_po', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
     }
 
     public function pull_out_monitoring()
     {
-        $pullOuts = PullOutItemsCredentials::orderBy('created_at', 'desc') -> get();
+        $pullOuts = PullOutItemsCredentials::orderBy('created_at', 'desc') -> paginate(10);
 
         return view('receiving.pull_out_monitoring', ['pullOuts' => $pullOuts]);
     }
