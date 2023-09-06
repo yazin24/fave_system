@@ -66,7 +66,6 @@
                 {{-- <input type="text" id="approved_by" name="approved_by" placeholder="Approved By" class="w-1/2 text-xs" required> --}}
                 <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs mb-1" required>
                     <option value="" disabled selected>Payment Term</option>
-                    <option value=1>sample Days</option>
                 <option value=3>3 Days</option>
                 <option value=7>7 Days</option>
                 <option value=15>15 Days</option>
