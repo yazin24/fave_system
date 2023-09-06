@@ -30,6 +30,12 @@ class ReceivingFunctionsController extends Controller
 
     public function add_stock(Request $request, $allProduct)
     {
+        $request -> validate([
+            'quantity' => 'required|numeric',
+        ],[
+            'quantity.required' => 'Quantity must be number',
+        ]);
+
         $theStock = ProductSku::findOrFail($allProduct);
 
         $quantityToAdd = $request -> input('quantity');
@@ -85,6 +91,10 @@ class ReceivingFunctionsController extends Controller
 
     public function save_and_receive_po(Request $request, $id)
     {
+
+        // $request -> validate([
+
+        // ]);
         
         $toReceivePurchaseOrder = PurchaseOrder::findOrFail($id);
 
@@ -164,6 +174,18 @@ class ReceivingFunctionsController extends Controller
    
     public function pull_out_items(Request $request)
     {
+        $request -> validate([
+            'prepared_by' => 'required',
+            'requested_by' => 'required',
+            'approved_by' => 'required',
+            'quantity' => 'required|numeric|gt:0',
+        ],[
+            'prepared_by.required' => 'Please put name in Prepared By',
+            'requested_by.required' => 'Please put name in Requested By',
+            'approved_by.required' => 'Please put name in Approved By',
+            'quantity.required' => 'Quantity must be numbers or greater than zero',
+        ]);
+
         $lastPullOut = PullOutItemsCredentials::latest('id') -> first();
 
         $lastPullOutNumber = $lastPullOut ? $lastPullOut -> pull_out_number : null;
@@ -247,7 +269,10 @@ class ReceivingFunctionsController extends Controller
 
         $request -> validate([
             'action' => 'string|required',
-            'quantity' => 'integer|required',
+            'quantity' => 'numeric|required',
+        ],[
+            'action.required' => 'Choosing Action is needed to proceed',
+            'quantity.required' => 'Quantity must be number'
         ]);
 
         $action = $request -> input('action');

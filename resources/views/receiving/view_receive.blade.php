@@ -3,6 +3,15 @@
 @section('receiving-body')
 
 <h2 class="font-bold md:text-xl mt-2">View P.O</h2>
+@if($errors -> any())
+<div class="text-red-600 font-bold text-xs">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
 <div class="mt-2 md:mt-4">
     <form method="POST" action="{{route('saveandreceivepo', ['id' => $toReceivePurchaseOrder -> id])}}">

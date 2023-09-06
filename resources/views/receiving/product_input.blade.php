@@ -5,7 +5,7 @@
 <h2 class="font-bold md:text-xl mt-2">Input Product</h2>
 
 @if($errors -> any())
-<div class="text-red-600 font-bold">
+<div class="text-red-600 font-bold text-xs">
     <ul>
         @foreach($errors -> all() as $error)
         <li>{{$error}}</li>
@@ -14,9 +14,9 @@
 </div>
 @endif
 
-<div class="mt-2 md:mt-4">
+<div class="mt-2">
     
-    <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
+    <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-2">
         <form method="POST" action="{{route('addproductsku')}}">
             @csrf
         <div class="bg-gray-200 px-4 py-4">

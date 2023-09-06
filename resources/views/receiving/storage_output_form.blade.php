@@ -3,6 +3,15 @@
 @section('receiving-body')
 
         <h2 class="font-bold md:text-xl mt-2">Update Sku Storage</h2>
+        @if($errors -> any())
+            <div class="text-red-600 font-bold text-xs">
+                <ul>
+                    @foreach($errors -> all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
                 <form method="POST" action="{{route('storageskuupdate', ['storageSku' => $storageSku -> id])}}">
                     @csrf

@@ -3,12 +3,21 @@
 @section('receiving-body')
 
 <h2 class="font-bold md:text-xl mt-2">Add Stock</h2>
+@if($errors -> any())
+<div class="text-red-600 font-bold text-xs">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
-<div class="mt-2 md:mt-4">
+<div class="mt-2">
     <form method="POST" action="{{route('addstock', ['allProduct' => $allProduct])}}">
         @csrf
         @method('PUT')
-    <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm mt-4">
+    <div class="bg-gray-900 rounded-md p-2 md:px-4 md:py-4 max-w-screen-sm">
         <div class="bg-gray-200 px-4 py-4"> 
 
             <div class="flex flex-col mb-4"> 

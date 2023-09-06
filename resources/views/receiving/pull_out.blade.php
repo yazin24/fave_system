@@ -3,7 +3,15 @@
 @section('receiving-body')
 
 <h2 class="font-bold md:text-xl mt-2">Pull Out Form</h2>
-
+@if($errors -> any())
+<div class="text-red-600 font-bold text-xs">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="w-full lg:w-1/2 mt-4">
     
          <div class="font-bold font-2xl bg-gray-900 rounded-md p-2">
