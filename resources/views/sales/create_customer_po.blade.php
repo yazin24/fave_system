@@ -2,9 +2,7 @@
 
 @section('sales-body')
 
-<div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
-
-    @if($errors -> any())
+@if($errors -> any())
 <div class="text-red-600 font-bold text-xs">
     <ul>
         @foreach($errors -> all() as $error)
@@ -13,6 +11,8 @@
     </ul>
 </div>
 @endif
+
+<div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
 
     <h2 class="text-center text-gray-200 font-bold md:text-2xl mb-2"> * Customer Purchase Order * </h2>
 
