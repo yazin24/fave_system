@@ -78,6 +78,32 @@ class SalesFunctionsController extends Controller
 
     public function create_customer_po(Request $request)
     {
+        $request->validate([
+        
+            'customers_name' => 'required',
+            'contact_number' => 'required',
+            'address' => 'required',
+            'selected_product' => 'array',
+            'selected_product.*' => 'exists:product_sku,id', // Validate selected products
+        
+            // Validation rules for price and quantity, but only for selected products
+            'price.*' => 'required_if:selected_product.*,1|numeric', // Price is required if the product is selected
+            'quantity.*' => [
+                'nullable', // Quantity can be null if not selected
+                'numeric',  // Quantity must be numeric if selected
+                'required_if:selected_product.*,1', // Quantity is required if the product is selected
+            ], // Quantity is required if the product is selected
+        ],[
+            'customers_name.required' => 'Customer Name is required',
+            'contact_number.required' => 'Phone Number is required',
+            'address.required' => 'Customer Address is required',
+            'selected_product.required' => 'Please hit the checkbox to choose the product',
+            'price.required_if' => 'Price is required for selected products',
+            'price.numeric' => 'Price must be a number',
+            'quantity.required_if' => 'Quantity is required for selected products',
+            'quantity.numeric' => 'Quantity must be a number',
+        ]);
+
         $customerName = $request -> input('customers_name');
 
         $contactNumber = $request -> input('contact_number');

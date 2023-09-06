@@ -4,6 +4,16 @@
 
 <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
 
+    @if($errors -> any())
+<div class="text-red-600 font-bold text-xs">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
     <h2 class="text-center text-gray-200 font-bold md:text-2xl mb-2"> * Customer Purchase Order * </h2>
 
     {{-- <p class="text-gray-300 flex flex-col text-[10px] mb-1">
@@ -32,7 +42,7 @@
         </div>
 
         <div class="mb-1 font-bold text-gray-500">
-            <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type">
+            <select class="h-8 w-full text-xs" name="purchase_type" id="purchase_type" required>
                 <option value="" disabled selected>Purchase Type</option>
                 <option value="Retail">Retail</option>
                 <option value="Wholesale">Wholesale</option>
