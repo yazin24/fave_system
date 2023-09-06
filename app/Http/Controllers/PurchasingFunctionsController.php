@@ -45,15 +45,24 @@ class PurchasingFunctionsController extends Controller
     public function purchase_order_store(Request $request, $id)
     {
         // $request->validate([
-        //     'supplier_name' => 'required',
-        //     'po_number' => 'required|unique:purchase_orders',
-        //     'requested_by' => 'required',
-        //     'prepared_by' => 'required',
-        //     'approved_by' => 'required',
-        //     'item_name.*' => 'required',
-        //     'quantity.*' => 'required|numeric|min:1',
-        //     'unit_price.*' => 'required|numeric|min:0',
-        //     'amount.*' => 'required|numeric|min:0',
+        
+        //     'selected_items' => 'array',
+        //     'item_id.*' => 'exists:product_sku,id', // Validate selected products
+        
+        //     // Validation rules for price and quantity, but only for selected products
+        //     'price.*' => 'required_if:selected_product.*,1|numeric', // Price is required if the product is selected
+        //     'quantity.*' => [
+        //         'nullable', // Quantity can be null if not selected
+        //         'numeric',  // Quantity must be numeric if selected
+        //         'required_if:selected_product.*,1', // Quantity is required if the product is selected
+        //     ], // Quantity is required if the product is selected
+        // ],[
+           
+        //     'selected_items.required' => 'Please hit the checkbox to choose the items',
+        //     'price.required_if' => 'Price is required for selected products',
+        //     'price.numeric' => 'Price must be a number',
+        //     'quantity.required_if' => 'Quantity is required for selected products',
+        //     'quantity.numeric' => 'Quantity must be a number',
         // ]);
 
         
