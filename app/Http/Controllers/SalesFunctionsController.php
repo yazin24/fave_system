@@ -532,6 +532,30 @@ class SalesFunctionsController extends Controller
 
     public  function add_shopee_sales(Request $request)
     {
+        $request -> validate([
+            'order_id' => 'required',
+            'full_name' => 'required',
+            'customers_address' => 'required',
+            'phone_number' => 'required',
+            'charges_and_fees' => 'required|numeric',
+            // 'selected_product' => 'array',
+            // 'price' => 'array',
+            // 'quantity' => 'array',
+            // 'selected_product.*' => 'numeric',
+            // 'product_id.*' => 'numeric', 
+            // 'price.*' => 'numeric|regex:/^\d+(\.\d{1,2})?$/',
+            // 'quantity.*' => 'numeric', 
+        ],[
+            'order_id.required' => 'Order ID is required',
+            'full_name.required' => 'Customer Name is required',
+            'customers_address.required' => 'Customer Address is required',
+            'phone_number.required' => 'Phone Number is required',
+            'charges_and_fees.required' => 'Please input the charges and fees total amount',
+            // 'selected_product.required' => 'Please hit the checkbox to choose the product',
+            // 'price.required' => 'Price is required and must be numbers or decimal',
+            // 'quantity.required' => 'Quantity must be number',
+        ]);
+
         $shopeeOrderId = $request -> input('order_id');
 
         $shopeeCustomerName = $request -> input('full_name');
@@ -594,6 +618,30 @@ class SalesFunctionsController extends Controller
 
     public  function add_lazada_sales(Request $request)
     {
+        $request -> validate([
+            'order_number' => 'required',
+            'full_name' => 'required',
+            'customers_address' => 'required',
+            'phone_number' => 'required',
+            'charges_and_fees' => 'required|numeric',
+            // 'selected_product' => 'array',
+            // 'price' => 'array',
+            // 'quantity' => 'array',
+            // 'selected_product.*' => 'numeric', 
+            // 'product_id.*' => 'numeric', 
+            // 'price.*' => 'numeric|regex:/^\d+(\.\d{1,2})?$/', 
+            // 'quantity.*' => 'numeric', 
+        ],[
+            'order_number.required' => 'Order Number is required',
+            'full_name.required' => 'Customer Name is required',
+            'customers_address.required' => 'Customer Address is required',
+            'phone_number.required' => 'Phone Number is required',
+            'charges_and_fees.required' => 'Please input the charges and fees total amount',
+            // 'selected_product.required' => 'Please hit the checkbox to choose the product',
+            // 'price.required' => 'Price is required and must be numbers or decimal',
+            // 'quantity.required' => 'Quantity must be number',
+        ]);
+
         $lazadaOrderId = $request -> input('order_number');
 
         $lazadaCustomerName = $request -> input('full_name');
