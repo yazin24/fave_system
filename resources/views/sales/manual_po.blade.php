@@ -36,8 +36,8 @@
     </table>
 </div>
 
-<div class="mt-4 font-bold">
-    {{$allManualPurchaseOrders -> links()}}
+<div class="ml-2 mt-1">
+    <x-shopee-pagination :paginator="$allManualPurchaseOrders" />
 </div>
 
 

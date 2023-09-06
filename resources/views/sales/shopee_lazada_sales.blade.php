@@ -35,11 +35,10 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-4 font-bold">
-        {{$allShopeeSales -> links()}}
+    <div class="flex justify-end ml-2">
+        <x-shopee-pagination :paginator="$allShopeeSales" />
     </div>
     {{-- {{$agent -> created_at -> format('Y-m-d h:s:i A')}} --}}
-
 
     <div class="bg-white-900 text-gray-900 mt-2">
         <div class="flex flex-row justify-between">
@@ -73,8 +72,8 @@
             </tbody>
         </table>
     </div>
-    <div class="mt-4 font-bold">
-        {{$allLazadaSales -> links()}}
+    <div class="flex justify-end ml-2">
+        <x-shopee-pagination :paginator="$allLazadaSales" />
     </div>
     {{-- {{$agent -> created_at -> format('Y-m-d h:s:i A')}} --}}
 
