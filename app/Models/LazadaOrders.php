@@ -32,6 +32,7 @@ class LazadaOrders extends Model
         'order_number',
         'charges_and_fees',
         'status',
+        'encoded_by',
 
     ];
 }

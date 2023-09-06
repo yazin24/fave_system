@@ -22,5 +22,6 @@ class ManualPurchaseOrder extends Model
         'purchase_type',
         'isApproved',
         'status',
+        'encoded_by',
     ];
 }

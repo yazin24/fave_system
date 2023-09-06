@@ -12,6 +12,7 @@ use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use App\Models\ShopeeOrders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -141,6 +142,8 @@ class SalesFunctionsController extends Controller
 
         $realPoNumber = $prefix . $poPart;
 
+        $encoderName = Auth::user() -> name;
+
         $newManualPurchaseOrder = ManualPurchaseOrder::create([
 
             'po_number' => $realPoNumber,
@@ -149,6 +152,7 @@ class SalesFunctionsController extends Controller
             'address' => $customerAddress,
             'purchase_type' => $purchaseType,
             'isApproved' => 3,
+            'encoded_by' => $encoderName,
 
         ]);
 

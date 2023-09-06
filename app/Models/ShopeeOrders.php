@@ -32,6 +32,7 @@ class ShopeeOrders extends Model
         'order_id',
         'charges_and_fees',
         'status',
+        'encoded_by',
 
     ];
 
