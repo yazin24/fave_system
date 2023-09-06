@@ -17,12 +17,25 @@
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Address: <span class="text-blue-600 font-bold">{{$manualPurchase -> address}}</span></h2>
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Purchase Type: <span class="text-blue-600 font-bold">{{$manualPurchase -> purchase_type}}</span></h2>
                 @if($manualPurchase -> status == 7 && $manualPurchase -> isApproved == 1)
-                <select class="text-xs h-8 mt-1 mb-2" name="del_status">
-                    <option value="" disabled selected>Update Status</option>
-                    <option value=4>Completed</option>
-                    <option value=7>Undelivered</option>
-                    <option value=8>Cancelled</option>
-                </select>
+                <div class="flex flex-row">
+                    <div>
+                        <select class="text-xs h-8 mt-1 mb-2" name="del_status">
+                            <option value="" disabled selected>Update Status</option>
+                            <option value=4>Completed</option>
+                            <option value=7>Undelivered</option>
+                            <option value=8>Cancelled</option>
+                        </select>
+                    </div>
+                        <div class="text-xs mt-1 ml-1">
+                            @if($manualPurchase -> status == 7)
+                            <button type="submit" class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Update</button>
+                            @elseif($manualPurchase -> status == 4)
+                            <h2 class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Completed</h2>
+                            @else
+                            <h2 class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Cancelled</h2>
+                            @endif
+                        </div>
+                </div>
                 @elseif($manualPurchase -> status == 4)
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Completed</span></h2>
                 @else
@@ -65,16 +78,6 @@
 
 
                 <div class="flex">
-                    <div class="mt-12 text-xs">
-
-                        @if($manualPurchase -> status == 7)
-                        <button type="submit" class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Update</button>
-                        @elseif($manualPurchase -> status == 4)
-                        <h2 class="w-full bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Completed</h2>
-                        @else
-                        <h2 class="w-full bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 mt-2">Cancelled</h2>
-                        @endif
-                    </div>
                     
                     <div class="ml-auto mt-4 font-bold mr-4">
                         <th><span class="text-xs">Total Amount</span>:</th>
