@@ -316,7 +316,7 @@ class ReceivingFunctionsController extends Controller
 
     public function storage_sku_details(ManufacturingStorage $storageSku)
     {
-        // $storageSku = ManufacturingStorage::findOrFail($storageSku -> id);
+        // $storageSku = ManufacturingStorage::paginate(10);
 
         return view('receiving.sku_storage_details', ['storageSku' => $storageSku]);
     }
@@ -328,11 +328,11 @@ class ReceivingFunctionsController extends Controller
 
     public function storage_sku_log(ManufacturingStorage $storageSku)
     {
-        // $storage = ManufacturingStorage::all();
+        $logs = $storageSku->storageLogHistory()
+        ->orderByDesc('created_at')
+        ->paginate(10);
 
-        // $skuStorageLog = $storageSku -> storageLogHistory() -> where('sku_storage_id', $storageSku -> id) -> get();
-
-        return view('receiving.storage_sku_log', ['storageSku' => $storageSku]);
+        return view('receiving.storage_sku_log', ['storageSku' => $storageSku, 'logs' => $logs]);
     }
   
     public function storage_sku_update(Request $request, ManufacturingStorage $storageSku)

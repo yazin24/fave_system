@@ -16,12 +16,14 @@
                  @endif
              </h2>
              <h2 class="font-bold mb-2">Total Quantity(Drums): {{$storageSku -> quantity}}</h2>
-             
+             <div class="flex justify-end ml-2">
+                <x-shopee-pagination :paginator="$logs" />
+            </div>
          </div>
          <div class="bg-white-900 text-gray-900 mt-1 items-center">
             <table class="bg-gray-300 shadow-lg w-full">
                 <thead class="">
-                    <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 md:h-12">
+                    <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 h-8">
                         <th class="text-sm text-center w-1/6">QUANTITY</th>
                         <th class="text-sm text-center w-1/6">ACTION</th>
                         <th class="text-sm text-center w-1/6">DATE</th>
@@ -30,23 +32,23 @@
                 </thead>
                 <tbody>
                    
-                    <tr class="h-10">
-                       @foreach ($storageSku -> storageLogHistory -> sortByDesc('created_at') as $log)
+                    <tr class="h-8">
+                       @foreach ($logs as $log)
                            
-                        <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$log -> quantity}}</td>
-                        <td class="border-b-2 text-xs text-center w-1/6 h-10">
+                        <td class="border-b-2 text-xs text-center w-1/6 capitalize h-8">{{$log -> quantity}}</td>
+                        <td class="border-b-2 text-xs text-center w-1/6 h-8">
                             @if($log -> action === 'Add') Input
                             @else Output
                             @endif
                         </td>
                         
-                        <td class="border-b-2 text-xs text-center w-1/6 h-10">{{date('Y-m-d', strtotime($log -> created_at))}}</td>
+                        <td class="border-b-2 text-xs text-center w-1/6 h-8">{{date('Y-m-d', strtotime($log -> created_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        
+
     </div>
  </div>
 
