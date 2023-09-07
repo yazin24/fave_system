@@ -237,13 +237,9 @@ class AdminFunctionsController extends Controller
         return view('admin.admin_home') -> with('success', 'Unpurchase Order has been deleted!');
     }
 
-    public function admin_delete_supplier(Request $request, $id)
+    public function view_stock_history()
     {
-        $supplier = Suppliers::findOrFail($id);
-
-        $supplier -> delete();
-
-        return redirect(route('adminpurchasingmonitoring')) -> with('success', 'Purchase Order has been deleted successfully!');
+        return view('admin.admin_view_stock_history');
     }
 
     public function admin_pull_out_items(PullOutItemsCredentials $pullOutItem)
