@@ -61,14 +61,26 @@ class ReceivingFunctionsController extends Controller
 
     // Retrieve manual purchase order transaction details
     $manualPurchaseOrderDetails = $allProduct->manualPurchaseOrderProducts()
-        ->select('created_at', 'quantity')
+        ->select('created_at', 'quantity', 'isBox')
         ->get();
 
     foreach ($manualPurchaseOrderDetails as $manualPurchaseOrder) {
+        $quantity = $manualPurchaseOrder->quantity;
+
+        if ($manualPurchaseOrder->isBox == 1) {
+            // Check the box size and convert the quantity accordingly
+            if ($allProduct->sku_size == 3785.41) {
+                // 1 Gallon Box = 12 individual units
+                $quantity *= 4;
+            } elseif ($allProduct->sku_size == 1000) {
+                // 1 Liter Box = 4 individual units
+                $quantity *= 12;
+            }
+        }
         $productLogs[] = [
             'date' => $manualPurchaseOrder->created_at,
-            'action' => 'Manual Purchase Order',
-            'quantity' => -$manualPurchaseOrder->quantity, // Deduction
+            'action' => 'Manual Purchase',
+            'quantity' => $quantity,
         ];
     }
 
