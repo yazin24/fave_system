@@ -27,9 +27,9 @@
     </table>
 </div>
 
-{{-- <div class="mt-1 ml-2">
-    <x-shopee-pagination :paginator="$transactionDetails" />
-</div> --}}
+<div class="mt-1 ml-2">
+    <x-shopee-pagination :paginator="$rawMaterialsTransactions" />
+</div>
 
 
 @endsection
