@@ -68,14 +68,20 @@ class ReceivingFunctionsController extends Controller
         $quantity = $manualPurchaseOrder->quantity;
 
         if ($manualPurchaseOrder->isBox == 1) {
-            // Check the box size and convert the quantity accordingly
+            
             if ($allProduct->sku_size == 3785.41) {
-                // 1 Gallon Box = 12 individual units
                 $quantity *= 4;
+
             } elseif ($allProduct->sku_size == 1000) {
-                // 1 Liter Box = 4 individual units
                 $quantity *= 12;
+
+            }elseif ($allProduct->sku_size == 900) { 
+                $quantity *= 40;
+                
+            }elseif ($allProduct->sku_size == 180) {   
+                $quantity *= 40;
             }
+            
         }
         $productLogs[] = [
             'date' => $manualPurchaseOrder->created_at,
