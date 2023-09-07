@@ -30,7 +30,7 @@ class ReceivingFunctionsController extends Controller
     }
 
     public function view_product_logs(ProductSku $allProduct)
-{
+    {
     $productLogs = [];
 
     // Retrieve Shopee order transaction details
@@ -77,7 +77,7 @@ class ReceivingFunctionsController extends Controller
 
             }elseif ($allProduct->sku_size == 900) { 
                 $quantity *= 40;
-                
+
             }elseif ($allProduct->sku_size == 180) {   
                 $quantity *= 40;
             }
@@ -102,7 +102,7 @@ class ReceivingFunctionsController extends Controller
     $productLogs->setPath(route('viewproductlogs', ['allProduct' => $allProduct->id]));
 
     return view('receiving.view_product_logs', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
-}
+    }
 
     public function add_stock(Request $request, $allProduct)
     {

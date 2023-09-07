@@ -15,11 +15,12 @@
                 <table class="bg-gray-300 shadow-lg w-full">
                     <thead class="">
                         <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 md:h-12">
-                            <th class="text-xs md:text-sm text-center w-1/5">BARCODE</th>
-                            <th class="text-xs md:text-sm text-center w-1/5">VARIANT</th>
-                            <th class="text-xs md:text-sm text-center w-1/5">SKU NAME</th>
-                            <th class="text-xs md:text-sm text-center w-1/5">SIZE</th>
-                            <th class="text-xs md:text-sm text-center w-1/5">QUANTITY</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">BARCODE</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">VARIANT</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">SKU NAME</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">SIZE</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">QUANTITY</th>
+                            <th class="text-xs md:text-sm text-center w-1/6">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,7 @@
                                 @endif
                             </td>
                             <td class="border-b-2 text-xs text-center w-1/6 font-bold">{{$allProduct -> sku_quantity}}</td>
+                            <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="{{route('adminviewproductlogs', ['allProduct' => $allProduct])}}">View</a></td>
                         </tr>
                             @endforeach
                     </tbody>
