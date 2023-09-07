@@ -179,12 +179,10 @@ class ReceivingFunctionsController extends Controller
             'prepared_by' => 'required',
             'requested_by' => 'required',
             'approved_by' => 'required',
-            'quantity' => 'required|numeric|gt:0',
         ],[
             'prepared_by.required' => 'Please put name in Prepared By',
             'requested_by.required' => 'Please put name in Requested By',
             'approved_by.required' => 'Please put name in Approved By',
-            'quantity.required' => 'Quantity must be numbers or greater than zero',
         ]);
 
         $lastPullOut = PullOutItemsCredentials::latest('id') -> first();
@@ -341,7 +339,7 @@ class ReceivingFunctionsController extends Controller
         }
 
         $receivingDetails = $rawMaterial -> receivedItems()
-            -> select('created_at', 'quantity')
+            -> select('created_at', 'quantity_received')
             -> get();
 
         foreach($receivingDetails as $receiving){
@@ -353,7 +351,7 @@ class ReceivingFunctionsController extends Controller
         }
 
         usort($rawMaterialsTransactions, function ($a, $b) {
-            return $b['DATE'] <=> $a['DATE'];
+            return $b['date'] <=> $a['date'];
         });
     
         $perPage = 14;

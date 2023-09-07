@@ -288,7 +288,7 @@ class AdminFunctionsController extends Controller
         return $b['DATE'] <=> $a['DATE'];
     });
 
-    $perPage = 14;
+    $perPage = 1;
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
     $currentItems = array_slice($transactionDetails, ($currentPage - 1) * $perPage, $perPage);
     $transactionDetails = new LengthAwarePaginator($currentItems, count($transactionDetails), $perPage);

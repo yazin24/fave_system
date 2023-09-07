@@ -16,13 +16,13 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach($transactionDetails as $transaction) --}}
+            @foreach($rawMaterialsTransactions as $transaction)
                 <tr class="h-6 md:h-8">
-                    <td class="border-b-2 text-xs text-center"></td>
-                    <td class="border-b-2 text-xs text-center"></td>
-                    <td class="border-b-2 text-xs text-center"></td>
+                    <td class="border-b-2 text-xs text-center">{{$transaction['date']}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$transaction['action']}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$transaction['quantity']}}</td>
                 </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>
