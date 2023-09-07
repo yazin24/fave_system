@@ -11,6 +11,7 @@ use App\Models\ProductVariants;
 use App\Models\PullOutItems;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -309,6 +310,59 @@ class ReceivingFunctionsController extends Controller
 
         Session::flash('success', 'Sku Storage Quantity Has Been Updated Successfully!');
         return view('receiving.receiving_home');
+    }
+
+    public function raw_materials_view_details(AllItems $rawMaterial)
+    {
+        $rawMaterialsTransactions = [];
+
+        $purchaseOrderDetails = $rawMaterial -> purchaseOrderItems()
+            -> select('created_at', 'quantity')
+            -> get();
+
+        foreach($purchaseOrderDetails as $purchaseOrder){
+            $rawMaterialsTransactions[] = [
+                'date' => $purchaseOrder -> created_at,
+                'action' => 'Purchasing',
+                'quantity' => $purchaseOrder -> quantity,
+            ];
+        }
+
+        $pullOutDetails = $rawMaterial -> pullOutItems()
+            -> select('created_at', 'quantity')
+            -> get();
+
+        foreach($pullOutDetails as $pullOut){
+            $rawMaterialsTransactions[] = [
+                'date' => $pullOut -> created_at,
+                'action' => 'Pull-Out',
+                'quantity' => $pullOut -> quantity,
+            ];
+        }
+
+        $receivingDetails = $rawMaterial -> receivedItems()
+            -> select('created_at', 'quantity')
+            -> get();
+
+        foreach($receivingDetails as $receiving){
+            $rawMaterialsTransactions[] = [
+                'date' => $receiving -> created_at,
+                'action' => 'Receiving',
+                'quantity' => $receiving -> quantity_received,
+            ];
+        }
+
+        usort($rawMaterialsTransactions, function ($a, $b) {
+            return $b['DATE'] <=> $a['DATE'];
+        });
+    
+        $perPage = 14;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = array_slice($rawMaterialsTransactions, ($currentPage - 1) * $perPage, $perPage);
+        $rawMaterialsTransactions = new LengthAwarePaginator($currentItems, count($rawMaterialsTransactions), $perPage);
+        $rawMaterialsTransactions -> setPath(route('rawmaterialsviewdetails', ['rawMaterial' => $rawMaterial->id]));
+
+        return view('receiving.raw_materials_details', ['rawMaterial' => $rawMaterial, 'rawMaterialsTransactions' => $rawMaterialsTransactions]);
     }
 
 }

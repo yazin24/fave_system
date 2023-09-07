@@ -194,6 +194,8 @@ Route::put('/receiving/manufacturing-storage/output-form/view/{storageSku}/updat
 
 Route::get('/receiving/manufacturing-storage/view-storage-details/view-log-history/{storageSku}', [ReceivingFunctionsController::class, 'storage_sku_log']) -> name('storageskulog');
 
+Route::get('receiving/raw-materials/view/history/{rawMaterial}', [ReceivingFunctionsController::class, 'raw_materials_view_details']) -> name('rawmaterialsviewdetails');
+
 });
 
 

@@ -24,7 +24,7 @@
                     <td class="border-b-2 text-xs text-center font-bold w-1/5">{{$rawMaterial -> item_unit}}</td>
                     <td class="border-b-2 text-xs text-center font-bold w-1/5">{{$rawMaterial -> quantity}}</td>
                     <td class="border-b-2 text-xs text-center font-bold w-1/5">₱{{$rawMaterial -> default_price}}</td>
-                    <td class="border-b-2 text-xs text-center font-bold w-1/5 text-red-500 hover:text-red-600 hover:underline"><a href="">View</a></td>
+                    <td class="border-b-2 text-xs text-center font-bold w-1/5 text-red-500 hover:text-red-600 hover:underline"><a href="{{route('rawmaterialsviewdetails', ['rawMaterial' => $rawMaterial -> id])}}">View</a></td>
                    
                 </tr>
             @endforeach
