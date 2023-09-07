@@ -51,6 +51,13 @@
           </div>
         </a>
         </li>
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('rawmaterials')}}'>
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-cubes text-xl"></i>
+            <div class="text-xs">Raw Materials</div>
+          </div>
+        </a>
+        </li>
       </ul>
     </nav>
   </div>

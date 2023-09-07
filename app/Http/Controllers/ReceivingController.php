@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\ManufacturingStorage;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
@@ -63,5 +64,12 @@ class ReceivingController extends Controller
         $allProducts = ProductSku::all();
 
         return view('receiving.receiving_all_products', ['allProducts' => $allProducts]);
+    }
+
+    public function raw_materials()
+    {
+        $rawMaterials = AllItems::all();
+
+        return view('receiving.raw_materials', ['rawMaterials' => $rawMaterials]);
     }
 }

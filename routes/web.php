@@ -159,6 +159,8 @@ Route::get('receiving/manufacturing-storage', [ReceivingController::class, 'manu
 
 Route::get('receiving/all-products', [ReceivingController::class, 'all_products']) -> name('allproducts');
 
+Route::get('receiving/raw-materials', [ReceivingController::class, 'raw_materials']) -> name('rawmaterials');
+
 
 //Receiving Functionalities
 

@@ -126,6 +126,9 @@
             <x-responsive-nav-link :href="route('allproducts')" :active="request()->routeIs('allproducts')">
                 <i class="fa-solid fa-cubes-stacked text-xl"></i>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('rawmaterials')" :active="request()->routeIs('allproducts')">
+                <i class="fa-solid fa-cubes text-xl"></i>
+            </x-responsive-nav-link>
 
             @elseif(Auth::user()->usertype === 'sales')
             <x-responsive-nav-link :href="route('salesmonitoring')" :active="request()->routeIs('salesmonitoring')">
