@@ -142,7 +142,7 @@ class AdminController extends Controller
 
     public function admin_stock_monitoring()
     {
-        $allStocks = AllItems::all();
+        $allStocks = AllItems::paginate(10);
 
         return view('admin.admin_stock_monitoring', ['allStocks' => $allStocks]);
     }

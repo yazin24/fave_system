@@ -32,5 +32,9 @@
     </table>
 </div>
 
+<div class="mt-1 ml-2">
+    <x-shopee-pagination :paginator="$rawMaterials" />
+</div>
+
 
 @endsection

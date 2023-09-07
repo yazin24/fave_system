@@ -23,12 +23,12 @@
         </thead>
         <tbody>
            
-            <tr class="h-10">
+            <tr class="h-8">
                 @foreach($allProducts as $allProduct)
                 {{-- <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$allProduct -> barcode}}</td> --}}
-                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$allProduct -> productVariants -> variant_name}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$allProduct -> full_name}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 h-10">
+                <td class="border-b-2 text-xs text-center w-1/6 capitalize h-8">{{$allProduct -> productVariants -> variant_name}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 h-8">{{$allProduct -> full_name}}</td>
+                <td class="border-b-2 text-xs text-center w-1/6 h-8">
                     @if($allProduct -> sku_size == 3785.41)
                     1 Gallon
                     @elseif($allProduct -> sku_size == 1000)

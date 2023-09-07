@@ -68,7 +68,7 @@ class ReceivingController extends Controller
 
     public function raw_materials()
     {
-        $rawMaterials = AllItems::all();
+        $rawMaterials = AllItems::paginate(10);
 
         return view('receiving.raw_materials', ['rawMaterials' => $rawMaterials]);
     }

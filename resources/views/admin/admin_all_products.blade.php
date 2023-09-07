@@ -14,7 +14,7 @@
             <div class="bg-white-900 text-gray-900 mt-1">
                 <table class="bg-gray-300 shadow-lg w-full">
                     <thead class="">
-                        <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 md:h-12">
+                        <tr class="bg-gray-900 border-b-1 text-gray-300 w-96 md:h-6">
                             <th class="text-xs md:text-sm text-center w-1/6">BARCODE</th>
                             <th class="text-xs md:text-sm text-center w-1/6">VARIANT</th>
                             <th class="text-xs md:text-sm text-center w-1/6">SKU NAME</th>
@@ -25,12 +25,12 @@
                     </thead>
                     <tbody>
                        
-                        <tr class="h-10">
+                        <tr class="h-8">
                             @foreach($allProducts as $allProduct)
-                            <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$allProduct -> barcode}}</td>
-                            <td class="border-b-2 text-xs text-center w-1/6 capitalize h-10">{{$allProduct -> productVariants -> variant_name}}</td>
-                            <td class="border-b-2 text-xs text-center w-1/6 h-10">{{$allProduct -> full_name}}</td>
-                            <td class="border-b-2 text-xs text-center w-1/6 h-10">
+                            <td class="border-b-2 text-xs text-center w-1/6 capitalize h-8">{{$allProduct -> barcode}}</td>
+                            <td class="border-b-2 text-xs text-center w-1/6 capitalize h-8">{{$allProduct -> productVariants -> variant_name}}</td>
+                            <td class="border-b-2 text-xs text-center w-1/6 h-8">{{$allProduct -> full_name}}</td>
+                            <td class="border-b-2 text-xs text-center w-1/6 h-8">
                                 @if($allProduct -> sku_size == 3785.41)
                                 1 Gallon
                                 @elseif($allProduct -> sku_size == 1000)
