@@ -4,7 +4,7 @@
 
 <div class="w-full lg:w-1/2">
     
-        <h2 class="font-bold md:text-xl mb-4">Add Supplier</h2>
+        <h2 class="font-bold md:text-xl">Add Supplier</h2>
         
              <div class=" font-bold font-2xl bg-gray-900 rounded-md p-2">
                     <form  method="POST" action="{{route('addsupplierstore')}}" >
@@ -12,42 +12,55 @@
                          @method('POST')
                          <div class="">
                         <div>
-                         <div class="">
-                            <input type="text" name="supplier_name" placeholder="Supplier Name" class="w-full text-xs" required>
-                         </div>
 
-                         <div class="mt-1">
-                            <input type="text" name="supplier_address" placeholder="Address" class="w-full text-xs" required>
-                         </div>
+                           <div class="flex flex-col md:flex-row">
+                              <div class="md:w-1/2">
+                                 <input type="text" name="supplier_name" placeholder="Supplier Name" class="w-full text-xs h-6" required>
+                              </div>
+     
+                              <div class="md:w-1/2">
+                                 <input type="text" name="supplier_address" placeholder="Address" class="w-full text-xs h-6" required>
+                              </div>
+                           </div>
+                        
 
-                         <div class="mt-1">
-                            <input type="text" name="contact_number" placeholder="Contact Number" class="w-full text-xs" required>
-                         </div>
-                         <div class="mt-1">
-                            <input type="text" name="tel_number" placeholder="Telephone Number" class="w-full text-xs" required>
-                         </div>
-                         <div class="mt-1">
-                            <input type="text" name="contact_person" placeholder="Contact Person" class="w-full text-xs" required>
-                         </div>
-                         <div class="mt-1">
-                            <input type="text" name="viber_account" placeholder="Viber" class="w-full text-xs" required>
-                         </div>
-                         <div class="mt-1">
-                            <input type="text" name="supplier_email" placeholder="Email" class="w-full text-xs" required>
-                         </div>
-                         <div class="mt-1">
-                            <input type="text" name="supplier_credit_limit" placeholder="Credit Limit" class="w-full text-xs" required>
-                         </div>
+                           <div class="flex flex-col md:flex-row">
+                              <div class="md:w-1/2">
+                                 <input type="text" name="contact_number" placeholder="Contact Number" class="w-full text-xs h-6" required>
+                              </div>
+                              <div class="md:w-1/2">
+                                 <input type="text" name="tel_number" placeholder="Telephone Number" class="w-full text-xs h-6" required>
+                              </div>
+                           </div>
+                  
+                           <div class="flex flex-col md:flex-row">
+                              <div class="md:w-1/2">
+                                 <input type="text" name="contact_person" placeholder="Contact Person" class="w-full text-xs h-6" required>
+                              </div>
+                              <div class="md:w-1/2">
+                                 <input type="text" name="viber_account" placeholder="Viber" class="w-full text-xs h-6" required>
+                              </div>
+                           </div>
+                           
+                           <div class="flex flex-col md:flex-row">
+                              <div class="md:w-1/2">
+                                 <input type="text" name="supplier_email" placeholder="Email" class="w-full text-xs h-6" required>
+                              </div>
+                              <div class="md:w-1/2">
+                                 <input type="text" name="supplier_credit_limit" placeholder="Credit Limit" class="w-full text-xs h-6" required>
+                              </div>
+                           </div>
+                         
             
                         <div class="flex flex-row">
                             <div class="w-full">
-                            <input type="text" name="item_name[]" placeholder="Item Name" class="mt-1 w-full text-xs" required>
+                            <input type="text" name="item_name[]" placeholder="Item Name" class=" w-full text-xs h-6" required>
                             </div>
                             <div class="w-full">
-                              <input type="text" name="default_price[]" placeholder="Default Price" class="mt-1 w-full text-xs" required>
+                              <input type="text" name="default_price[]" placeholder="Default Price" class=" w-full text-xs h-6" required>
                               </div>
-                            <div class="mt-1 w-1/2">
-                                <select id="" name="item_unit[]" class="w-full text-gray-500 text-xs">
+                            <div class=" w-1/2">
+                                <select id="" name="item_unit[]" class="py-0 w-full text-gray-500 text-xs h-6">
                                     <option value="" disabled selected>Unit Measurement</option>
                                     <option value="kg">kg</option>
                                     <option value="liters">liters</option>
@@ -63,21 +76,21 @@
                                     </div>
                                          <div class="mt-2 flex flex-col gap-4">
                                             <div>
-                                                <button type="button" id="add-item-button" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md text-xs">Add Item</button>
+                                                <button type="button" id="add-item-button" class="bg-teal-400 hover:bg-teal-600 p-0.5 text-gray-200 font-bold text-sm rounded-md text-xs">Add Item</button>
                                             </div>
 
-                                            <p class="font-bold text-gray-200">Select Items:</p>
+                                            <p class="font-bold text-gray-200 text-xs">Select Items:</p>
                                             <div class="flex flex-wrap">
                                               @foreach($allItems -> sortBy('item_name') as $item)
-                                              <div class="flex items-center w-1/4">
-                                                  <input type="checkbox" name="item_ids[]" value="{{ $item -> id }}" class="mr-1"> 
+                                              <div class="flex items-center w-1/6 text-xs">
+                                                  <input type="checkbox" name="item_ids[]" value="{{ $item -> id }}" class="mr-0.2"> 
                                                   <label class="text-gray-200">{{ $item -> item_name }}</label>
                                               </div>
                                               @endforeach
                                            </div>
 
                                                 <div>
-                                                    <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-1 text-gray-200 font-bold text-sm rounded-md text-xs">Submit</button>
+                                                    <button type="submit" id="add-supplier" class="bg-teal-400 hover:bg-teal-600 p-0.5 text-gray-200 font-bold text-sm rounded-md text-xs">Submit</button>
                                                 </div> 
                                          </div>
                                     </div>
@@ -99,13 +112,13 @@
      
                      '<div class="flex flex-row">' +
                         '<div class="w-full">' + 
-                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-xs" placeholder="Item Name" required>' + 
+                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-xs h-6" placeholder="Item Name" required>' + 
                          '</div>' +
                          '<div class="w-full">' +
-                              '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs" required>' +
+                              '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs h-6" required>' +
                               '</div>' +
                          '<div class=" w-1/2">' + 
-                           ' <select id="" name="item_unit[]" class="w-full text-xs">' +
+                           ' <select id="" name="item_unit[]" class="w-full text-xs h-6 py-0">' +
                                    '<option value="" disabled selected>Unit Measurement</option>' +
                                     '<option value="kg">kg</option>' +
                                     '<option value="liters">liters</option>' +
