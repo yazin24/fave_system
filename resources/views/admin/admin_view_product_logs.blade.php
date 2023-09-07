@@ -20,7 +20,7 @@
         <tbody>
             @foreach($productLogs as $log)
                 <tr class="h-6 md:h-8">
-                    <td class="border-b-2 text-xs text-center">{{$log['date']}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$log['date'] -> format('Y-m-d')}}</td>
                     <td class="border-b-2 text-xs text-center">{{$log['action']}}</td>
                     <td class="border-b-2 text-xs text-center">{{abs($log['quantity'])}}</td>
                     

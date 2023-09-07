@@ -4,7 +4,7 @@
 
 <h2 class="font-bold md:text-xl mb-2">Item Log and Transaction History</h2>
 
-<h3 class="font-bold">Item: </h3>
+<h3 class="font-bold">Item: {{$rawMaterial -> item_name}}</h3>
 
 <div class="">
     <table class="bg-gray-300 shadow-lg w-full">
@@ -18,7 +18,7 @@
         <tbody>
             @foreach($rawMaterialsTransactions as $transaction)
                 <tr class="h-6 md:h-8">
-                    <td class="border-b-2 text-xs text-center">{{$transaction['date']}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$transaction['date'] -> format('Y-m-d')}}</td>
                     <td class="border-b-2 text-xs text-center">{{$transaction['action']}}</td>
                     <td class="border-b-2 text-xs text-center">{{$transaction['quantity']}}</td>
                 </tr>

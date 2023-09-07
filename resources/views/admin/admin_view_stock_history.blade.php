@@ -18,7 +18,7 @@
         <tbody>
             @foreach($transactionDetails as $transaction)
                 <tr class="h-6 md:h-8">
-                    <td class="border-b-2 text-xs text-center">{{ $transaction['DATE'] }}</td>
+                    <td class="border-b-2 text-xs text-center">{{ $transaction['DATE'] -> format('Y-m-d')}}</td>
                     <td class="border-b-2 text-xs text-center">{{ $transaction['ACTION'] }}</td>
                     <td class="border-b-2 text-xs text-center">{{ $transaction['QUANTITY'] }}</td>
                 </tr>
