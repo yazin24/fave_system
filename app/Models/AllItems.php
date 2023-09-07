@@ -16,7 +16,7 @@ class AllItems extends Model
 
     public function purchaseOrderItems()
     {
-        return $this -> hasMany(PurchaseOrderItems::class, 'itemd_id');
+        return $this -> hasMany(PurchaseOrderItems::class, 'item_id');
     }
 
     public function receivedItems()

@@ -359,7 +359,7 @@ Route::get('/admin/purchasing-monitoring/generate-receipt/{allPurchaseOrder}', [
 
 Route::delete('admin/unpurchase-order/{id}', [AdminFunctionsController::class, 'admin_delete_unpurchase']) -> name('admindeleteunpurchase');
 
-Route::get('/admin/stock-monitoring/view/log/history/', [AdminFunctionsController::class, 'view_stock_history']) -> name('viewstockhistory');
+Route::get('/admin/stock-monitoring/view/log/history/{stock}', [AdminFunctionsController::class, 'view_stock_history']) -> name('viewstockhistory');
 
 Route::get('admin/outgoing-stocks/pull-out-items/details/{pullOutItem}', [AdminFunctionsController::class, 'admin_pull_out_items']) -> name('adminpulloutitems');
 

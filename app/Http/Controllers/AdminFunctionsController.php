@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
@@ -14,6 +15,7 @@ use App\Models\SupplierItems;
 use App\Models\Suppliers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -237,9 +239,62 @@ class AdminFunctionsController extends Controller
         return view('admin.admin_home') -> with('success', 'Unpurchase Order has been deleted!');
     }
 
-    public function view_stock_history()
+    public function view_stock_history(AllItems $stock)
     {
-        return view('admin.admin_view_stock_history');
+         
+    $transactionDetails = [];
+
+    
+    $purchaseOrderDetails = $stock->purchaseOrderItems()
+        ->select('created_at', 'quantity')
+        ->get();
+    
+    foreach ($purchaseOrderDetails as $purchaseOrder) {
+        $transactionDetails[] = [
+            'DATE' => $purchaseOrder->created_at,
+            'ACTION' => 'Purchasing',
+            'QUANTITY' => $purchaseOrder->quantity,
+        ];
+    }
+
+    
+    $pulloutDetails = $stock->pullOutItems()
+        ->select('created_at', 'quantity')
+        ->get();
+
+    foreach ($pulloutDetails as $pullout) {
+        $transactionDetails[] = [
+            'DATE' => $pullout->created_at,
+            'ACTION' => 'Pull-out',
+            'QUANTITY' => $pullout->quantity,
+        ];
+    }
+
+    
+    $receivingDetails = $stock->receivedItems()
+        ->select('created_at', 'quantity_received')
+        ->get();
+
+    foreach ($receivingDetails as $receiving) {
+        $transactionDetails[] = [
+            'DATE' => $receiving->created_at,
+            'ACTION' => 'Receiving',
+            'QUANTITY' => $receiving->quantity_received,
+        ];
+    }
+
+    
+    usort($transactionDetails, function ($a, $b) {
+        return $b['DATE'] <=> $a['DATE'];
+    });
+
+    $perPage = 14;
+    $currentPage = LengthAwarePaginator::resolveCurrentPage();
+    $currentItems = array_slice($transactionDetails, ($currentPage - 1) * $perPage, $perPage);
+    $transactionDetails = new LengthAwarePaginator($currentItems, count($transactionDetails), $perPage);
+    $transactionDetails->setPath(route('viewstockhistory', ['stock' => $stock->id]));
+
+        return view('admin.admin_view_stock_history', ['stock' => $stock, 'transactionDetails' => $transactionDetails,]);
     }
 
     public function admin_pull_out_items(PullOutItemsCredentials $pullOutItem)
