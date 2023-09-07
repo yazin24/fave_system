@@ -244,20 +244,18 @@ class AdminFunctionsController extends Controller
          
     $transactionDetails = [];
 
+    // $purchaseOrderDetails = $stock->purchaseOrderItems()
+    //     ->select('created_at', 'quantity')
+    //     ->get();
     
-    $purchaseOrderDetails = $stock->purchaseOrderItems()
-        ->select('created_at', 'quantity')
-        ->get();
-    
-    foreach ($purchaseOrderDetails as $purchaseOrder) {
-        $transactionDetails[] = [
-            'DATE' => $purchaseOrder->created_at,
-            'ACTION' => 'Purchasing',
-            'QUANTITY' => $purchaseOrder->quantity,
-        ];
-    }
+    // foreach ($purchaseOrderDetails as $purchaseOrder) {
+    //     $transactionDetails[] = [
+    //         'DATE' => $purchaseOrder->created_at,
+    //         'ACTION' => 'Purchasing',
+    //         'QUANTITY' => $purchaseOrder->quantity,
+    //     ];
+    // }
 
-    
     $pulloutDetails = $stock->pullOutItems()
         ->select('created_at', 'quantity')
         ->get();
@@ -265,7 +263,7 @@ class AdminFunctionsController extends Controller
     foreach ($pulloutDetails as $pullout) {
         $transactionDetails[] = [
             'DATE' => $pullout->created_at,
-            'ACTION' => 'Pull-out',
+            'ACTION' => 'Subracted',
             'QUANTITY' => $pullout->quantity,
         ];
     }
@@ -278,7 +276,7 @@ class AdminFunctionsController extends Controller
     foreach ($receivingDetails as $receiving) {
         $transactionDetails[] = [
             'DATE' => $receiving->created_at,
-            'ACTION' => 'Receiving',
+            'ACTION' => 'Added',
             'QUANTITY' => $receiving->quantity_received,
         ];
     }

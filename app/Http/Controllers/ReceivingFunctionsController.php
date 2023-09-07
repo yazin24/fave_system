@@ -314,17 +314,17 @@ class ReceivingFunctionsController extends Controller
     {
         $rawMaterialsTransactions = [];
 
-        $purchaseOrderDetails = $rawMaterial -> purchaseOrderItems()
-            -> select('created_at', 'quantity')
-            -> get();
+        // $purchaseOrderDetails = $rawMaterial -> purchaseOrderItems()
+        //     -> select('created_at', 'quantity')
+        //     -> get();
 
-        foreach($purchaseOrderDetails as $purchaseOrder){
-            $rawMaterialsTransactions[] = [
-                'date' => $purchaseOrder -> created_at,
-                'action' => 'Purchasing',
-                'quantity' => $purchaseOrder -> quantity,
-            ];
-        }
+        // foreach($purchaseOrderDetails as $purchaseOrder){
+        //     $rawMaterialsTransactions[] = [
+        //         'date' => $purchaseOrder -> created_at,
+        //         'action' => 'Purchasing',
+        //         'quantity' => $purchaseOrder -> quantity,
+        //     ];
+        // }
 
         $pullOutDetails = $rawMaterial -> pullOutItems()
             -> select('created_at', 'quantity')
