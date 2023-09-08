@@ -16,6 +16,7 @@
                  @endif
              </h2>
              <h2 class="font-bold mb-2">Total Quantity(Drums): {{$storageSku -> quantity}}</h2>
+             
              <div class="flex justify-end ml-2">
                 <x-shopee-pagination :paginator="$logs" />
             </div>
