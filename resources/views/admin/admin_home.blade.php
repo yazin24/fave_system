@@ -54,7 +54,7 @@
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminstockmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-layer-group text-xl"></i>
-              <div class="text-sm">Stock Monitoring</div>
+              <div class="text-sm">Raw Materials</div>
             </div>
             </a>
           </li>

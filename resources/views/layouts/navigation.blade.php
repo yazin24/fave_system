@@ -8,7 +8,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="text-white hover:text-blue-500 text-xl font-extrabold">
-                        <img src="{{ asset('images/newfavelogo.png') }}" alt="Example Image" class="w-16 ml-4 mr-1"> 
+                        <img src="{{ asset('images/newfavelogo.png') }}" alt="Example Image" class="w-16 ml-14 mr-1"> 
                     </x-nav-link>
                 </div>
             </div>
