@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('shopee_orders', function (Blueprint $table) {
-            $table -> decimal('Voucher',8,2) -> default(0) -> after('charges_and_fees');
+            $table -> decimal('voucher',8,2) -> default(0) -> after('charges_and_fees');
         });
     }
 
