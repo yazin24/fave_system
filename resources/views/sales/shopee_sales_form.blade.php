@@ -37,7 +37,7 @@
             <div class="mb-2">
                 <select class="h-6 text-xs py-0" name="status">
                     <option value="" disabled selected>Choose Status</option>
-                    <option value=4>Delivered</option>
+                    <option value=4 disabled selected>Delivered</option>
                     <option value=7>Undelivered</option>
                 </select>
             </div>
