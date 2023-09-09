@@ -614,6 +614,7 @@ class SalesFunctionsController extends Controller
             'charges_and_fees' => $shopeeChargesAndFees,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
+            'encoded_by' => Auth::user() -> name,
 
         ]);
 
@@ -700,6 +701,7 @@ class SalesFunctionsController extends Controller
             'charges_and_fees' => $lazadaChargesAndFees,
             'order_number' => $lazadaOrderId,
             'status' => $lazadaCustomerStatus,
+            'encoded_by' => Auth::user() -> name,
 
         ]);
 
