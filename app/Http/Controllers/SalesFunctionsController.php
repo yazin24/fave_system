@@ -794,9 +794,13 @@ class SalesFunctionsController extends Controller
 
             $shopeeChargeAndFees = $shopeeOrders -> charges_and_fees;
 
+            $shopeeVoucher = $shopeeOrders -> voucher;
+
+            $totalShopeeDeduction = $shopeeChargeAndFees + $shopeeVoucher;
+
             $shopeeOrderTotalAmount = $shopeeOrders -> shopeeOrderProducts() -> sum('amount');
 
-            $realTotalAmount = $shopeeOrderTotalAmount - $shopeeChargeAndFees;
+            $realTotalAmount = $shopeeOrderTotalAmount - $totalShopeeDeduction;
 
             $shopeeOrders -> shopeeSales() -> create([
                 'shopee_order_id' => $shopeeOrders -> id,
@@ -846,9 +850,13 @@ class SalesFunctionsController extends Controller
 
             $lazadaChargeAndFees = $lazadaOrders -> charges_and_fees;
 
+            $lazadaVoucher = $lazadaOrders -> voucher;
+
+            $totalLazadaDeduction = $lazadaChargeAndFees + $lazadaVoucher;
+
             $lazadaOrderTotalAmount = $lazadaOrders -> lazadaOrderProducts() -> sum('amount');
 
-            $realTotalAmount = $lazadaOrderTotalAmount - $lazadaChargeAndFees;
+            $realTotalAmount = $lazadaOrderTotalAmount - $totalLazadaDeduction;
 
             $lazadaOrders -> lazadaSales() -> create([
                 'lazada_order_id' => $lazadaOrders -> id,
