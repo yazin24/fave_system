@@ -35,9 +35,9 @@
                 <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full mb-0.5 text-xs">
             </div>
             <div class="mb-2">
-                <select class="h-6 text-xs py-0" name="status">
+                <select class="h-8 text-xs py-0" name="status">
                     <option value="" disabled selected>Choose Status</option>
-                    <option value=4 disabled selected>Delivered</option>
+                    <option value="" disabled selected>Delivered</option>
                     <option value=7>Undelivered</option>
                 </select>
             </div>
