@@ -560,58 +560,56 @@ class SalesFunctionsController extends Controller
         return view('sales.lazada_sales_form', ['allProducts' => $allProducts]);
     }
 
-    public  function add_shopee_sales(Request $request)
+    public function add_shopee_sales(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'order_id' => 'required',
             'full_name' => 'required',
             'customers_address' => 'required',
             'phone_number' => 'required',
             'charges_and_fees' => 'required|numeric',
             'voucher' => 'required|numeric',
-            // 'selected_product' => 'array',
-            // 'price' => 'array',
-            // 'quantity' => 'array',
-            // 'selected_product.*' => 'numeric',
-            // 'product_id.*' => 'numeric', 
-            // 'price.*' => 'numeric|regex:/^\d+(\.\d{1,2})?$/',
-            // 'quantity.*' => 'numeric', 
-        ],[
+        ], [
             'order_id.required' => 'Order ID is required',
             'full_name.required' => 'Customer Name is required',
             'customers_address.required' => 'Customer Address is required',
             'phone_number.required' => 'Phone Number is required',
             'charges_and_fees.required' => 'Please input the charges and fees total amount',
             'voucher.required' => "Please input voucher amount or put 0 if there's none",
-            // 'selected_product.required' => 'Please hit the checkbox to choose the product',
-            // 'price.required' => 'Price is required and must be numbers or decimal',
-            // 'quantity.required' => 'Quantity must be number',
         ]);
-
-        $shopeeOrderId = $request -> input('order_id');
-
-        $shopeeCustomerName = $request -> input('full_name');
-
-        $shopeeCustomerAddress = $request -> input('customers_address');
-
-        $shopeeCustomerNumber = $request -> input('phone_number');
-
-        $shopeeChargesAndFees = $request -> input('charges_and_fees');
-
-        $shopeeVouchers = $request -> input('voucher');
-
-        $shopeeCustomerStatus = $request -> input('status');
-
-        $shopeeCustomerChosenProducts = $request -> input('selected_product', []);
-
-        $shopeeCustomerProducts = $request -> input('product_id', []);
-
-        $shopeeProductPrice = $request -> input('price', []);
-
-        $shopeeProductQuantity = $request -> input('quantity',[]);
-
+    
+        $shopeeOrderId = $request->input('order_id');
+        $shopeeCustomerName = $request->input('full_name');
+        $shopeeCustomerAddress = $request->input('customers_address');
+        $shopeeCustomerNumber = $request->input('phone_number');
+        $shopeeChargesAndFees = $request->input('charges_and_fees');
+        $shopeeVouchers = $request->input('voucher');
+        $shopeeCustomerStatus = $request->input('status');
+        $shopeeCustomerChosenProducts = $request->input('selected_product', []);
+        $shopeeCustomerProducts = $request->input('product_id', []);
+        $shopeeProductPrice = $request->input('price', []);
+        $shopeeProductQuantity = $request->input('quantity', []);
+    
+        // Check if there are any products with insufficient quantity
+        foreach ($shopeeCustomerProducts as $index) {
+            if (in_array($index, $shopeeCustomerChosenProducts)) {
+                $theShopeePrice = $shopeeProductPrice[$index] ?? null;
+                $theShopeeQuantity = $shopeeProductQuantity[$index] ?? null;
+    
+                if ($theShopeePrice && $theShopeeQuantity) {
+                    $sku = ProductSku::findOrFail($index);
+                    $quantityOfSku = $sku->sku_quantity;
+    
+                    if ($quantityOfSku < $theShopeeQuantity) {
+                        $errorMessage = "Ordered quantity for SKU '{$sku->full_name}' exceeds available stock!";
+                        return redirect()->back()->with('error', $errorMessage);
+                    }
+                }
+            }
+        }
+    
+        // Create the Shopee order if all products have sufficient quantity
         $newShopeeCustomerOrders = ShopeeOrders::create([
-
             'customers_name' => $shopeeCustomerName,
             'customers_address' => $shopeeCustomerAddress,
             'phone_number' => $shopeeCustomerNumber,
@@ -619,37 +617,36 @@ class SalesFunctionsController extends Controller
             'voucher' => $shopeeVouchers,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
-            'encoded_by' => Auth::user() -> name,
-
+            'encoded_by' => Auth::user()->name,
         ]);
-
-        $shopeeId = $newShopeeCustomerOrders -> id;
-
-        foreach($shopeeCustomerProducts as $index){
-            if(in_array($index, $shopeeCustomerChosenProducts)){
+    
+        $shopeeId = $newShopeeCustomerOrders->id;
+    
+        foreach ($shopeeCustomerProducts as $index) {
+            if (in_array($index, $shopeeCustomerChosenProducts)) {
                 $theShopeePrice = $shopeeProductPrice[$index] ?? null;
                 $theShopeeQuantity = $shopeeProductQuantity[$index] ?? null;
-
-                if($theShopeePrice && $theShopeeQuantity){
-
+    
+                if ($theShopeePrice && $theShopeeQuantity) {
                     $amount = $theShopeePrice * $theShopeeQuantity;
-
-                    $newShopeeCustomerOrders -> shopeeOrderProducts() -> create([
-
+                    $sku = ProductSku::findOrFail($index);
+    
+                    $newShopeeCustomerOrders->shopeeOrderProducts()->create([
                         'shopee_order_id' => $shopeeId,
                         'sku_id' => $index,
                         'quantity' => $theShopeeQuantity,
                         'price' => $theShopeePrice,
                         'amount' => $amount,
-
                     ]);
-
+    
+                    $newSkuQuantity = $quantityOfSku - $theShopeeQuantity;
+                    $sku->sku_quantity = $newSkuQuantity;
+                    $sku->save();
                 }
             }
         }
-
-        return redirect() -> back() -> with('success', 'Shopee sales Order('. $shopeeOrderId .') has been added!');
-
+    
+        return redirect()->back()->with('success', 'Shopee sales Order(' . $shopeeOrderId . ') has been added!');
     }
 
     public  function add_lazada_sales(Request $request)
@@ -738,18 +735,21 @@ class SalesFunctionsController extends Controller
 
                     $sku = ProductSku::findOrFail($index);
 
-            $newSkuQuantity = $sku -> sku_quantity - $thelazadaQuantity;
+                    $quantityOfSku = $sku -> sku_quantity;
 
-            if($newSkuQuantity >= 0){
-                $sku -> sku_quantity = $newSkuQuantity;
-                $sku -> save();
+                    $newSkuQuantity = $quantityOfSku - $thelazadaQuantity;
 
-            }else{
+                    if($quantityOfSku > $thelazadaQuantity){
+                        $newSkuQuantity = $quantityOfSku - $thelazadaQuantity;
+                        $sku -> sku_quantity = $newSkuQuantity;
+                        $sku -> save();
 
-                $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
-                return redirect() -> back() -> with('error', $errorMessage);
+                    }else{
 
-                }
+                        $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
+                        return redirect() -> back() -> with('error', $errorMessage);
+
+                        }
 
                 }
             }
@@ -783,23 +783,15 @@ class SalesFunctionsController extends Controller
             'status' => $status,
         ]);
 
-        if($status == 4){
+        if($status == 8){
 
             foreach($shopeeOrders -> shopeeOrderProducts as $shopeeProduct){
 
                 $sku = ProductSku::findOrFail($shopeeProduct -> sku_id);
 
-                if($sku -> sku_quantity >= $shopeeProduct -> quantity){
-
-                    $sku -> sku_quantity -= $shopeeProduct -> quantity;
-                    
+                    $sku -> sku_quantity += $shopeeProduct -> quantity;
 
                     $sku -> save();
-
-                }else {
-
-                   return redirect() -> back() -> with('error', 'Insufficient Stocks!');
-                }
             }
 
             $shopeeChargeAndFees = $shopeeOrders -> charges_and_fees;
@@ -840,22 +832,16 @@ class SalesFunctionsController extends Controller
             'status' => $status,
         ]);
 
-        if($status == 4){
+        if($status == 8){
 
             foreach($lazadaOrders -> lazadaOrderProducts as $lazadaProduct){
 
                 $sku = ProductSku::findOrFail($lazadaProduct -> sku_id);
 
-                if($sku -> sku_quantity >= $lazadaProduct -> quantity){
-
-                    $sku -> sku_quantity -= $lazadaProduct -> quantity;
+                    $sku -> sku_quantity += $lazadaProduct -> quantity;
 
                     $sku -> save();
 
-                }else {
-
-                   return redirect() -> back() -> with('error', 'Insufficient Stocks!');
-                }
             }
 
             $lazadaChargeAndFees = $lazadaOrders -> charges_and_fees;

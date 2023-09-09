@@ -3,6 +3,15 @@
 @section('sales-body')
 
 <h2 class="font-bold md:text-xl text-blue-900">Lazada Order Details</h2>
+@if($errors -> any())
+<div class="text-red-600 font-bold text-xs">
+    <ul>
+        @foreach($errors -> all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
 <div class="mt-2">
     <form method="POST" action="{{route('deliveredlazadastatus', ['lazadaSale' => $lazadaSale -> id])}}">
