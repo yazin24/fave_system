@@ -3,12 +3,12 @@
 
 <div class="w-full">
 
-        <h2 class="font-bold md:text-xl mb-4 ml-1">Supplier's Details</h2>
+        <h2 class="font-bold ml-1">Supplier's Details</h2>
        
 
-        <div class="mt-4">
+        <div class="">
         
-            <div class="bg-gray-900 rounded-md px-2 py-2 max-w-screen-sm mt-4">
+            <div class="bg-gray-900 rounded-md px-2 py-2 max-w-screen-sm mt-1">
                 <div class="bg-gray-200 px-4 py-4"> 
 
                     <div class="md:flex flex-row justify-between">
