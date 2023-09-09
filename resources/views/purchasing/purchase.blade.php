@@ -4,13 +4,13 @@
 
 <div class="w-full mx-auto">
     
-         <h2 class="font-bold md:text-xl ml-1">Choose a supplier</h2>
+         <h2 class="font-bold ml-1">Choose a supplier</h2>
              <form method="POST" action="{{route('purchaseshowsupplieritems')}}" class="mb-1">
                     @csrf
                     @method('POST')
                     <div class="flex flex-row">
                         <div class="mr-2">
-                            <select id="supplier_id" name="supplier_id" class="h-6 text-[10px] py-0" required>
+                            <select id="supplier_id" name="supplier_id" class="h-10 text-xs" required>
                                 <option value="" disabled selected>Supplier Name</option>
                                 @foreach($suppliers as $supplier)
                                 <option value="{{$supplier -> id}}">{{$supplier -> supplier_name}}</option>
@@ -26,14 +26,12 @@
 </div>
 
     @if(isset($supplierItems))
-    <div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 w-full lg:w-1/2 justify-center font-bold">
-
-        <h2 class="text-center text-gray-200 font-bold"> * Purchase Order * </h2>
-
+    <div class="border border-gray-900 rounded-sm shadow-lg bg-gray-900 p-1 w-full lg:w-3/4 justify-center font-bold">
+        <h2 class="flex justify-center text-gray-200 text-sm">Purchase Order</h2>
         <form method="POST" action="{{route('purchaseorderstore', ['id' => $supplierNameForPurchase -> id] )}}">
         @csrf
         @method('POST')
-            <div class="flex flex-row mt-2">
+            <div class="flex flex-row mt-1">
                 {{-- <input type="text" id="supplier_name" name="supplier_name" placeholder="Supplier Name" class="w-1/2" required> --}}
 
                 <input type="number" id="supplier_credit" name="po_number" placeholder="PO Number (auto)" class="w-1/2 h-6 text-xs"  required readonly>
@@ -43,13 +41,13 @@
 
             <div class="flex flex-row">
 
-                <select id="supplier_name" name="supplier_name" class="w-1/2 h-6 text-xs py-0" required>
+                <select id="supplier_name" name="supplier_name" class="w-1/2 h-8 text-xs" required>
     
                     <option value="{{$supplierNameForPurchase -> id}}">{{$supplierNameForPurchase -> supplier_name}}</option>
     
                     </select>
 
-                    <input type="text" id="requested_by" name="requested_by" placeholder="Requested By" class="h-6 w-1/2 text-xs" required>
+                    <input type="text" id="requested_by" name="requested_by" placeholder="Requested By" class="h-8 w-1/2 text-xs" required>
                 {{-- <select id="requested_by" name="requested_by" class="w-1/2 h-8 text-xs mb-1" required>
                     <option value="" disabled selected>Requested By</option>
                     <option value="Fave">Fave</option>
@@ -64,7 +62,7 @@
 
             <div class="flex flex-row mb-1">
                 {{-- <input type="text" id="approved_by" name="approved_by" placeholder="Approved By" class="w-1/2 text-xs" required> --}}
-                <select id="payment_term" name="payment_term" class="w-1/2 h-6 text-xs py-0 mb-1" required>
+                <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs mb-1" required>
                     <option value="" disabled selected>Payment Term</option>
                 <option value=3>3 Days</option>
                 <option value=7>7 Days</option>
@@ -76,7 +74,7 @@
                 
                 </select>
 
-                <select id="mode_of_payment" name="mode_of_payment" class="w-1/2 h-6 text-xs py-0" required>
+                <select id="mode_of_payment" name="mode_of_payment" class="w-1/2 h-8 text-xs" required>
                     <option value="" disabled selected>Mode of Payment</option>
                     <option value="cash">Cash</option>
                     <option value="bank transfer">Bank Transfer</option>
