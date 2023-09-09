@@ -568,6 +568,7 @@ class SalesFunctionsController extends Controller
             'customers_address' => 'required',
             'phone_number' => 'required',
             'charges_and_fees' => 'required|numeric',
+            'voucher' => 'required|numeric',
             // 'selected_product' => 'array',
             // 'price' => 'array',
             // 'quantity' => 'array',
@@ -581,6 +582,7 @@ class SalesFunctionsController extends Controller
             'customers_address.required' => 'Customer Address is required',
             'phone_number.required' => 'Phone Number is required',
             'charges_and_fees.required' => 'Please input the charges and fees total amount',
+            'voucher.required' => "Please input voucher amount or put 0 if there's none",
             // 'selected_product.required' => 'Please hit the checkbox to choose the product',
             // 'price.required' => 'Price is required and must be numbers or decimal',
             // 'quantity.required' => 'Quantity must be number',
@@ -595,6 +597,8 @@ class SalesFunctionsController extends Controller
         $shopeeCustomerNumber = $request -> input('phone_number');
 
         $shopeeChargesAndFees = $request -> input('charges_and_fees');
+
+        $shopeeVouchers = $request -> input('voucher');
 
         $shopeeCustomerStatus = $request -> input('status');
 
@@ -612,6 +616,7 @@ class SalesFunctionsController extends Controller
             'customers_address' => $shopeeCustomerAddress,
             'phone_number' => $shopeeCustomerNumber,
             'charges_and_fees' => $shopeeChargesAndFees,
+            'voucher' => $shopeeVouchers,
             'order_id' => $shopeeOrderId,
             'status' => $shopeeCustomerStatus,
             'encoded_by' => Auth::user() -> name,
@@ -655,6 +660,7 @@ class SalesFunctionsController extends Controller
             'customers_address' => 'required',
             'phone_number' => 'required',
             'charges_and_fees' => 'required|numeric',
+            'voucher' => 'required|numeric',
             // 'selected_product' => 'array',
             // 'price' => 'array',
             // 'quantity' => 'array',
@@ -668,6 +674,7 @@ class SalesFunctionsController extends Controller
             'customers_address.required' => 'Customer Address is required',
             'phone_number.required' => 'Phone Number is required',
             'charges_and_fees.required' => 'Please input the charges and fees total amount',
+            'voucher.required' => "Please input voucher amount or put 0 if there's none",
             // 'selected_product.required' => 'Please hit the checkbox to choose the product',
             // 'price.required' => 'Price is required and must be numbers or decimal',
             // 'quantity.required' => 'Quantity must be number',
@@ -682,6 +689,8 @@ class SalesFunctionsController extends Controller
         $lazadaCustomerNumber = $request -> input('phone_number');
 
         $lazadaChargesAndFees = $request -> input('charges_and_fees');
+
+        $lazadaVouchers = $request -> input('voucher');
 
         $lazadaCustomerStatus = $request -> input('status');
 
@@ -699,6 +708,7 @@ class SalesFunctionsController extends Controller
             'customers_address' => $lazadaCustomerAddress,
             'phone_number' => $lazadaCustomerNumber,
             'charges_and_fees' => $lazadaChargesAndFees,
+            'voucher' => $lazadaVouchers,
             'order_number' => $lazadaOrderId,
             'status' => $lazadaCustomerStatus,
             'encoded_by' => Auth::user() -> name,

@@ -33,6 +33,7 @@
             </div>
             <div>
                 <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full mb-0.5 text-xs">
+                <input type="number" name="voucher" placeholder="Voucher" class="h-6 w-full mb-0.5 text-xs">
             </div>
             <div class="mb-2">
                 <select class="h-8 text-xs py-0" name="status" required>

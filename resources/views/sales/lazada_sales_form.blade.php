@@ -13,7 +13,7 @@
 </div>
 @endif
 
-<div class="rounded-md shadow-lg bg-blue-900 p-2 lg:w-1/2 justify-center">
+<div class="rounded-md shadow-lg bg-blue-900 p-2 lg:w-1/2 justify-center font-bold">
 
     <div class="bg-gray-200 px-2 py-2">
         
@@ -31,8 +31,9 @@
             <div>
                 <input type="text" name="phone_number" placeholder="Phone Number" class="h-6 w-full mb-0.5 text-xs" required>
             </div>
-            <div>
-                <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full mb-0.5 text-xs" required>
+            <div class="flex flex-row mb-1">
+                <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full text-xs" required>
+                <input type="number" name="voucher" placeholder="Voucher" class="h-6 w-full mb-0.5 text-xs" required>
             </div>
             <div class="mb-0.5">
                 <select class="h-8 text-xs py-0" name="status" required>
