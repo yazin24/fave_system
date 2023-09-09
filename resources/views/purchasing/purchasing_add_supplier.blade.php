@@ -7,7 +7,7 @@
         <h2 class="font-bold md:text-xl">Add Supplier</h2>
         
              <div class=" font-bold font-2xl bg-gray-900 rounded-md p-2">
-                    <form  method="POST" action="{{route('addsupplierstore')}}" >
+                    <form  method="POST" action="{{route('addsupplierstore')}}">
                          @csrf
                          @method('POST')
                          <div class="">
