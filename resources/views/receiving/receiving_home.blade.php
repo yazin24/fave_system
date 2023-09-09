@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex w-auto h-screen">
+<div class="flex w-auto min-h-screen overflow-y-auto">
 
   <div class="flex bg-gray-900 text-gray-300 shadow-lg">
     <nav class='hidden md:block'>

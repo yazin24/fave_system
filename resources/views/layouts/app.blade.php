@@ -41,7 +41,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="flex-gorw bg-gradient-to-r from-slate-50 to-slate-500">
+            <main class="flex-gorw bg-gradient-to-r from-slate-50 to-slate-500 overflow-y-auto">
                 @yield('content')
             </main>
         </div>

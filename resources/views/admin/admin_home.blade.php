@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex flex-row w-auto h-screen">
+<div class="flex flex-row w-auto min-h-screen overflow-y-auto">
     <div class="hidden md:block flex bg-gray-900 h-screen text-gray-300 shadow-lg">
       <nav class=''>
         <h2 class='h-8 w-52 p-8 font-bold text-xl mb-4'>
