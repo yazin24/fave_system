@@ -649,114 +649,100 @@ class SalesFunctionsController extends Controller
         return redirect()->back()->with('success', 'Shopee sales Order(' . $shopeeOrderId . ') has been added!');
     }
 
-    public  function add_lazada_sales(Request $request)
-    {
-        $request -> validate([
-            'order_number' => 'required',
-            'full_name' => 'required',
-            'customers_address' => 'required',
-            'phone_number' => 'required',
-            'charges_and_fees' => 'required|numeric',
-            'voucher' => 'required|numeric',
-            // 'selected_product' => 'array',
-            // 'price' => 'array',
-            // 'quantity' => 'array',
-            // 'selected_product.*' => 'numeric', 
-            // 'product_id.*' => 'numeric', 
-            // 'price.*' => 'numeric|regex:/^\d+(\.\d{1,2})?$/', 
-            // 'quantity.*' => 'numeric', 
-        ],[
-            'order_number.required' => 'Order Number is required',
-            'full_name.required' => 'Customer Name is required',
-            'customers_address.required' => 'Customer Address is required',
-            'phone_number.required' => 'Phone Number is required',
-            'charges_and_fees.required' => 'Please input the charges and fees total amount',
-            'voucher.required' => "Please input voucher amount or put 0 if there's none",
-            // 'selected_product.required' => 'Please hit the checkbox to choose the product',
-            // 'price.required' => 'Price is required and must be numbers or decimal',
-            // 'quantity.required' => 'Quantity must be number',
-        ]);
+    public function add_lazada_sales(Request $request)
+{
+    $request->validate([
+        'order_number' => 'required',
+        'full_name' => 'required',
+        'customers_address' => 'required',
+        'phone_number' => 'required',
+        'charges_and_fees' => 'required|numeric',
+        'voucher' => 'required|numeric',
+    ], [
+        'order_number.required' => 'Order Number is required',
+        'full_name.required' => 'Customer Name is required',
+        'customers_address.required' => 'Customer Address is required',
+        'phone_number.required' => 'Phone Number is required',
+        'charges_and_fees.required' => 'Please input the charges and fees total amount',
+        'voucher.required' => "Please input voucher amount or put 0 if there's none",
+    ]);
 
-        $lazadaOrderId = $request -> input('order_number');
+    $lazadaOrderId = $request->input('order_number');
+    $lazadaCustomerName = $request->input('full_name');
+    $lazadaCustomerAddress = $request->input('customers_address');
+    $lazadaCustomerNumber = $request->input('phone_number');
+    $lazadaChargesAndFees = $request->input('charges_and_fees');
+    $lazadaVouchers = $request->input('voucher');
+    $lazadaCustomerStatus = $request->input('status');
+    $lazadaCustomerChosenProducts = $request->input('selected_product', []);
+    $lazadaCustomerProducts = $request->input('product_id', []);
+    $lazadaProductPrice = $request->input('price', []);
+    $lazadaProductQuantity = $request->input('quantity', []);
 
-        $lazadaCustomerName = $request -> input('full_name');
+    // Check if there are any products with insufficient quantity
+    foreach ($lazadaCustomerProducts as $index) {
+        if (in_array($index, $lazadaCustomerChosenProducts)) {
+            $thelazadaPrice = $lazadaProductPrice[$index] ?? null;
+            $thelazadaQuantity = $lazadaProductQuantity[$index] ?? null;
 
-        $lazadaCustomerAddress = $request -> input('customers_address');
+            if ($thelazadaPrice && $thelazadaQuantity) {
+                $sku = ProductSku::findOrFail($index);
+                $quantityOfSku = $sku->sku_quantity;
 
-        $lazadaCustomerNumber = $request -> input('phone_number');
-
-        $lazadaChargesAndFees = $request -> input('charges_and_fees');
-
-        $lazadaVouchers = $request -> input('voucher');
-
-        $lazadaCustomerStatus = $request -> input('status');
-
-        $lazadaCustomerChosenProducts = $request -> input('selected_product', []);
-
-        $lazadaCustomerProducts = $request -> input('product_id', []);
-
-        $lazadaProductPrice = $request -> input('price', []);
-
-        $lazadaProductQuantity = $request -> input('quantity',[]);
-
-        $newlazadaCustomerOrders = LazadaOrders::create([
-
-            'customers_name' => $lazadaCustomerName,
-            'customers_address' => $lazadaCustomerAddress,
-            'phone_number' => $lazadaCustomerNumber,
-            'charges_and_fees' => $lazadaChargesAndFees,
-            'voucher' => $lazadaVouchers,
-            'order_number' => $lazadaOrderId,
-            'status' => $lazadaCustomerStatus,
-            'encoded_by' => Auth::user() -> name,
-
-        ]);
-
-        $lazadaId = $newlazadaCustomerOrders -> id;
-
-        foreach($lazadaCustomerProducts as $index){
-            if(in_array($index, $lazadaCustomerChosenProducts)){
-                $thelazadaPrice = $lazadaProductPrice[$index] ?? null;
-                $thelazadaQuantity = $lazadaProductQuantity[$index] ?? null;
-
-                if($thelazadaPrice && $thelazadaQuantity){
-
-                    $amount = $thelazadaPrice * $thelazadaQuantity;
-
-                    $newlazadaCustomerOrders -> lazadaOrderProducts() -> create([
-
-                        'lazada_order_id' => $lazadaId,
-                        'sku_id' => $index,
-                        'quantity' => $thelazadaQuantity,
-                        'price' => $thelazadaPrice,
-                        'amount' => $amount,
-
-                    ]);
-
-                    $sku = ProductSku::findOrFail($index);
-
-                    $quantityOfSku = $sku -> sku_quantity;
-
-                    $newSkuQuantity = $quantityOfSku - $thelazadaQuantity;
-
-                    if($quantityOfSku > $thelazadaQuantity){
-                        $newSkuQuantity = $quantityOfSku - $thelazadaQuantity;
-                        $sku -> sku_quantity = $newSkuQuantity;
-                        $sku -> save();
-
-                    }else{
-
-                        $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
-                        return redirect() -> back() -> with('error', $errorMessage);
-
-                        }
-
+                if ($quantityOfSku < $thelazadaQuantity) {
+                    $errorMessage = "Ordered quantity for SKU '{$sku->full_name}' exceeds available stock!";
+                    return redirect()->back()->with('error', $errorMessage);
                 }
             }
         }
-
-        return redirect() -> back() -> with('success', 'Lazada sales Order('. $lazadaOrderId .') has been added!');
     }
+
+    // Create the Lazada order if all products have sufficient quantity
+    $newlazadaCustomerOrders = LazadaOrders::create([
+        'customers_name' => $lazadaCustomerName,
+        'customers_address' => $lazadaCustomerAddress,
+        'phone_number' => $lazadaCustomerNumber,
+        'charges_and_fees' => $lazadaChargesAndFees,
+        'voucher' => $lazadaVouchers,
+        'order_number' => $lazadaOrderId,
+        'status' => $lazadaCustomerStatus,
+        'encoded_by' => Auth::user()->name,
+    ]);
+
+    $lazadaId = $newlazadaCustomerOrders->id;
+
+    foreach ($lazadaCustomerProducts as $index) {
+        if (in_array($index, $lazadaCustomerChosenProducts)) {
+            $thelazadaPrice = $lazadaProductPrice[$index] ?? null;
+            $thelazadaQuantity = $lazadaProductQuantity[$index] ?? null;
+
+            if ($thelazadaPrice && $thelazadaQuantity) {
+                $amount = $thelazadaPrice * $thelazadaQuantity;
+                $sku = ProductSku::findOrFail($index);
+
+                $newlazadaCustomerOrders->lazadaOrderProducts()->create([
+                    'lazada_order_id' => $lazadaId,
+                    'sku_id' => $index,
+                    'quantity' => $thelazadaQuantity,
+                    'price' => $thelazadaPrice,
+                    'amount' => $amount,
+                ]);
+
+                $newSkuQuantity = $quantityOfSku - $thelazadaQuantity;
+
+                if ($quantityOfSku > $thelazadaQuantity) {
+                    $sku->sku_quantity = $newSkuQuantity;
+                    $sku->save();
+                } else {
+                    $errorMessage = "Ordered quantity for SKU '{$sku->full_name}' exceeds available stock!";
+                    return redirect()->back()->with('error', $errorMessage);
+                }
+            }
+        }
+    }
+
+    return redirect()->back()->with('success', 'Lazada sales Order(' . $lazadaOrderId . ') has been added!');
+}
 
     public function shopee_order_details(ShopeeOrders $shopeeSale)
     {
