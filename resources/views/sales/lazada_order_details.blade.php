@@ -63,9 +63,12 @@
 
            <div class="flex justify-end mt-2">
             <div class="flex flex-col gap-4 mt-2">
+                @if($lazadaSale -> status == 4)
                 <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
-            <h2 class="text-xs font-bold">Total charges and fees: ₱{{$lazadaSale -> charges_and_fees}}</h2>
-            <h2 class="text-xs font-bold">Total Sales Amount: ₱{{$orderTotalAmount - $lazadaSale -> charges_and_fees}}.00</h2>
+            <h2 class="text-xs font-bold">Total charges and fees: ₱{{$shopeeSale -> charges_and_fees}}</h2>
+            <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount - $shopeeSale -> charges_and_fees}}.00</h2>
+          
+            @endif
             </div>
            </div>
 
