@@ -14,11 +14,17 @@
             <h2 class="font-bold text-sm mb-1">Full Name: {{$lazadaSale -> customers_name}}</h2>
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$lazadaSale -> customers_address}}</h2>
             <h2 class="font-bold text-sm mb-1">Status:
+                @if($lazadaSale -> status == 7)
                 <select class="text-xs" name="status">
                     <option value="" selected disabled>Undelivered</option>
                     <option value=4>Delivered</option>
                     <option value=8>Cancelled</option>
                 </select>
+                @elseif($lazadaSale -> status == 4)
+                Completed
+                @elseif($lazadaSale -> status == 8)
+                Cancelled
+                @endif
             </h2>
 
             <div class="bg-white-900 text-gray-900 mt-4"> 
@@ -56,7 +62,11 @@
            </div>
 
            <div class="flex justify-end mt-2">
-            <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}</h2>
+            <div class="flex flex-col gap-4 mt-2">
+                <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
+            <h2 class="text-xs font-bold">Total charges and fees: ₱{{$lazadaSale -> charges_and_fees}}</h2>
+            <h2 class="text-xs font-bold">Total Sales Amount: ₱{{$orderTotalAmount - $lazadaSale -> charges_and_fees}}.00</h2>
+            </div>
            </div>
 
            <div class="mt-4 w-full">

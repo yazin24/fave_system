@@ -13,12 +13,18 @@
             <h2 class="font-bold text-sm mb-1">Order ID: {{$shopeeSale -> order_id}}</h2>
             <h2 class="font-bold text-sm mb-1">Full Name: {{$shopeeSale -> customers_name}}</h2>
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$shopeeSale -> customers_address}}</h2>
-            <h2 class="font-bold text-sm mb-1">Status:
+            <h2 class="font-bold text-sm mb-1 ">Status:
+                @if($shopeeSale -> status == 7)
                 <select class="text-xs" name="status">
                     <option value="" selected disabled>Undelivered</option>
                     <option value=4>Delivered</option>
                     <option value=8>Cancelled</option>
                 </select>
+                @elseif($shopeeSale -> status == 4)
+                Completed
+                @elseif($shopeeSale -> status == 8)
+                Cancelled
+                @endif
             </h2>
 
             <div class="bg-white-900 text-gray-900 mt-4"> 
@@ -31,7 +37,6 @@
                             <th class="text-xs w-1/6 font-bold">Quantity</th>
                             <th class="text-xs w-1/6 font-bold">Price</th>
                             <th class="text-xs w-1/6 font-bold">Amount</th>
-                            
                         </tr>
                     </thead>    
     
@@ -56,7 +61,11 @@
            </div>
 
            <div class="flex justify-end mt-2">
-            <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}</h2>
+            <div class="flex flex-col gap-4 mt-2">
+                <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
+            <h2 class="text-xs font-bold">Total charges and fees: ₱{{$shopeeSale -> charges_and_fees}}</h2>
+            <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount - $shopeeSale -> charges_and_fees}}.00</h2>
+            </div>
            </div>
 
            <div class="mt-4 w-full">

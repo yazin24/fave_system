@@ -748,6 +748,7 @@ class SalesFunctionsController extends Controller
 
     public function shopee_order_details(ShopeeOrders $shopeeSale)
     {
+
         $orderTotalAmount = $shopeeSale -> shopeeOrderProducts() -> sum('amount');
 
         return view('sales.shopee_order_details', ['shopeeSale' => $shopeeSale, 'orderTotalAmount' => $orderTotalAmount]);
