@@ -52,15 +52,15 @@
                            </div>
                          
             
-                        <div class="flex flex-row">
+                        <div class="flex flex-row mt-0.5">
                             <div class="w-full">
-                            <input type="text" name="item_name[]" placeholder="Item Name" class=" w-full text-xs h-6" required>
+                            <input type="text" name="item_name[]" placeholder="Item Name" class="w-full text-xs h-8" required>
                             </div>
                             <div class="w-full">
-                              <input type="text" name="default_price[]" placeholder="Default Price" class=" w-full text-xs h-6" required>
+                              <input type="text" name="default_price[]" placeholder="Default Price" class=" w-full text-xs h-8" required>
                               </div>
-                            <div class=" w-1/2">
-                                <select id="" name="item_unit[]" class="py-0 w-full text-gray-500 text-xs h-6">
+                            <div class="h-6 w-1/2">
+                                <select id="" name="item_unit[]" class="py-0 w-full text-gray-500 text-xs h-8">
                                     <option value="" disabled selected>Unit Measurement</option>
                                     <option value="kg">kg</option>
                                     <option value="liters">liters</option>
@@ -72,7 +72,7 @@
                             </div>
                          </div>
 
-                                    <div id="item-container" class="text-gray-500 text-xs">
+                                    <div id="item-container" class="text-xs">
                                     </div>
                                          <div class="mt-2 flex flex-col gap-4">
                                             <div>
@@ -112,13 +112,13 @@
      
                      '<div class="flex flex-row">' +
                         '<div class="w-full">' + 
-                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-xs h-6" placeholder="Item Name" required>' + 
+                         '<input type="text" id="item_name_' + itemCount + '" name="item_name[]" class="w-full text-xs h-8" placeholder="Item Name" required>' + 
                          '</div>' +
                          '<div class="w-full">' +
-                              '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs h-6" required>' +
+                              '<input type="text" name="default_price[]" placeholder="Default Price" class="w-full text-xs h-8" required>' +
                               '</div>' +
                          '<div class=" w-1/2">' + 
-                           ' <select id="" name="item_unit[]" class="w-full text-xs h-6 py-0">' +
+                           ' <select id="" name="item_unit[]" class="text-gray-500 w-full text-xs h-8 py-0">' +
                                    '<option value="" disabled selected>Unit Measurement</option>' +
                                     '<option value="kg">kg</option>' +
                                     '<option value="liters">liters</option>' +

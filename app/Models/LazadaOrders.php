@@ -31,6 +31,7 @@ class LazadaOrders extends Model
         'phone_number',
         'order_number',
         'charges_and_fees',
+        'voucher',
         'status',
         'encoded_by',
 

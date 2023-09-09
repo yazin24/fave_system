@@ -31,6 +31,7 @@ class ShopeeOrders extends Model
         'phone_number',
         'order_id',
         'charges_and_fees',
+        'voucher',
         'status',
         'encoded_by',
 
