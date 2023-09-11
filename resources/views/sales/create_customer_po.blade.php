@@ -14,8 +14,6 @@
 
 <div class="border border-gray-900 rounded-sm shadow-lg bg-gray-900 p-1 lg:w-1/2 justify-center">
 
-    <h2 class="text-center text-gray-200 font-bold"> * Customer Purchase Order * </h2>
-
     {{-- <p class="text-gray-300 flex flex-col text-[10px] mb-1">
         <span>**Retail Price: 1L = 35.00 1Gal = 129.00</span>
         <span>**Wholesale Price: 1L = 29.00 1Gal = 115.00</span>
@@ -25,7 +23,9 @@
     <form method="POST" action="{{route('createcustomerpo')}}">
     @csrf
     @method('POST')
-    <div class="bg-gray-200 px-4 py-4 font-bold"> 
+    <div class="bg-gray-200 px-4 pb-1 pt-0.5 font-bold"> 
+
+        <h2 class="text-center text-gray-800 font-bold"> * Customer Purchase Order * </h2>
 
         <div class="flex flex-col">
         
