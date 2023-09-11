@@ -315,8 +315,8 @@ class SalesFunctionsController extends Controller
             if ($isBox) {
                 // Adjust quantity based on the box size
                 if ($sku->sku_size == 3785.41) {
-                    // 1 Gallon Box = 12 individual units
-                    $manualQuantity *= 12;
+                    // 1 Gallon Box = 4 individual units
+                    $manualQuantity *= 4;
                 } elseif ($sku->sku_size == 1000) {
                     // 1 Liter Box = 12 individual units
                     $manualQuantity *= 12;
@@ -325,9 +325,11 @@ class SalesFunctionsController extends Controller
                 }
             }
 
-            // Increase the SKU quantity when canceling the order
-            $sku->sku_quantity += $manualQuantity;
-            $sku->save();
+            $updatedSku = ProductSku::findOrFail($manualPoProduct->sku_id);
+
+            $updatedSku->sku_quantity += $manualQuantity;
+
+            $updatedSku->save();
         }
 
         $manualPurchaseOrders->save();
@@ -337,35 +339,20 @@ class SalesFunctionsController extends Controller
 
 
     //     $status = $request -> input('del_status');
-
     //     if($status == 4){
-
     //         $manualPurchase -> update([
-
-    //             'status' => $status,
-    
+    //             'status' => $status, 
     //         ]);
-
     //         $manualPurchase -> save();
-
     //         return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
-
     //    }elseif($status == 8){
-
     //     $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
-
     //     $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
-
     //     foreach($manualPoProducts as $manualPoProduct){
-
     //         $skuId = $manualPoProduct -> sku_id;
-
     //         $manualQuantity = $manualPoProduct -> quantity;
-
     //         $sku = ProductSku::findOrFail($skuId);
-
     //         $isBox = $manualPoProduct->isBox;
-
     //         if ($isBox) {
     //             // Adjust quantity based on the box size
     //             if ($sku->sku_size == 3785.41) {
@@ -378,34 +365,20 @@ class SalesFunctionsController extends Controller
     //                 // Handle other sizes accordingly
     //             }
     //         }
-
     //         $newSkuQuantity = $sku -> sku_quantity += $manualQuantity;
-
     //         if($newSkuQuantity >= 0){
-
     //             $sku -> sku_quantity = $newSkuQuantity;
-
     //             $sku -> save();
-
     //         }else{
-
     //             $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
-
     //             Session::flash('error', $errorMessage);
-
     //             return view('sales.sales_home');
-
     //         }
     //     }
-
     //         $manualPo ->update([
-
-    //             'status' => $status,
-
+    //            'status' => $status,
     //         ]);
-
     //     $manualPo -> save();
-
     //        return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
     //    }
     }
