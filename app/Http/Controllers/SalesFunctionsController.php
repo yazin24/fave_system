@@ -303,13 +303,28 @@ class SalesFunctionsController extends Controller
     ]);
 
     if ($status == 4) {
-        // Handle delivery status
+
+        $manualPoTotalAmount = $manualPurchaseOrders -> manualPurchaseOrderProducts() -> sum('amount');
+
+        $manualPurchaseOrders -> manualPurchaseOrderSales() -> create([
+
+            'manual_order_id' => $manualPurchaseOrders -> id,
+            'total_amount' => $manualPoTotalAmount,
+
+        ]);
+        
         $manualPurchaseOrders->save();
+
         return redirect()->back()->with('success', 'Purchase Order Has Been Completed!');
+
     } elseif ($status == 8) {
+
         foreach ($manualPurchaseOrders->manualPurchaseOrderProducts as $manualPoProduct) {
+
             $sku = ProductSku::findOrFail($manualPoProduct->sku_id);
+
             $manualQuantity = $manualPoProduct->quantity;
+
             $isBox = $manualPoProduct->isBox;
 
             if ($isBox) {
@@ -852,6 +867,7 @@ class SalesFunctionsController extends Controller
             $realTotalAmount = $shopeeOrderTotalAmount - $totalShopeeDeduction;
 
             $shopeeOrders -> shopeeSales() -> create([
+                
                 'shopee_order_id' => $shopeeOrders -> id,
                 'total_amount' => $realTotalAmount,
     
