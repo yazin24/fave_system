@@ -41,8 +41,8 @@
             <input type="text" placeholder="Address" class="h-6 w-full text-xs" name="address">
         </div>
 
-        <div class="mb-0.5 font-bold text-gray-500">
-            <select class="h-7 w-full text-xs py-0" name="purchase_type" id="purchase_type" required>
+        <div class="my-1.5 font-bold text-gray-500">
+            <select class="h-6 w-full text-xs py-0" name="purchase_type" id="purchase_type" required>
                 <option value="" disabled selected>Purchase Type</option>
                 <option value="Retail">Retail</option>
                 <option value="Wholesale">Wholesale</option>
