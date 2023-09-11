@@ -64,10 +64,8 @@ class SalesController extends Controller
             return $group->sum('total_quantity');
         });
 
-    // Sort the best selling products data in descending order
     $sortedBestSellingProducts = $allSkuQuantities->sortDesc();
 
-    // Prepare data for the line chart
     $bestSellingLabels = ProductSku::whereIn('id', $sortedBestSellingProducts -> keys()) -> pluck('full_name') -> toArray();
     $bestSellingData = $sortedBestSellingProducts->values()->toArray();
     

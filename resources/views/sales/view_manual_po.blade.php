@@ -8,7 +8,7 @@
     <form method="POST" action="{{route('updatedelstatusmanual', ['manualPurchase' => $manualPurchase -> id])}}">
         @csrf
         @method('PUT')
-        <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4 font-bold">
+        <div class="bg-gray-900 rounded-sm p-1 max-w-screen-sm mt-4 font-bold">
         <div class="bg-gray-200 px-4 py-4"> 
 
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">P.O Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> po_number}}</span></h2>
@@ -38,7 +38,7 @@
                 </div>
                 @elseif($manualPurchase -> status == 4)
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Completed</span></h2>
-                @else
+                @elseif($manualPurchase -> status == 8)
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-red-600 font-bold">Cancelled</span></h2>
                 @endif
             
@@ -87,19 +87,19 @@
          </div>
         </form>
          @if($manualPurchase -> isApproved == 3)
-         <div class="flex gap-1">
+         <div class="flex gap-1 mt-1">
              <div>
              <form method="POST" action="{{route('approvemanual', ['manualPurchase' => $manualPurchase -> id])}}">
                  @csrf
                  
-                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
+                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1 rounded-sm shadow-md text-gray-200 text-xs"><i class="fa-regular fa-circle-check mr-0.5"></i>Approve</button>
              </form>
          </div> 
          <div>
              <form method="POST" action="{{route('disapprovemanual', ['manualPurchase' => $manualPurchase -> id])}}">
                  @csrf
                  
-                 <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
+                 <button type="submit" class="bg-red-500 hover:bg-red-600 font-bold p-1 rounded-sm shadow-md text-gray-200 text-xs"><i class="fa-regular fa-circle-xmark mr-0.5"></i>Disapprove</button>
              </form>
          </div>
          </div>

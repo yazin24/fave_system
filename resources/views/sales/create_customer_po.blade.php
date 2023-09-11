@@ -12,7 +12,7 @@
 </div>
 @endif
 
-<div class="border border-gray-900 rounded-md shadow-lg bg-gray-900 p-2 lg:w-1/2 justify-center">
+<div class="border border-gray-900 rounded-sm shadow-lg bg-gray-900 p-1 lg:w-1/2 justify-center">
 
     <h2 class="text-center text-gray-200 font-bold"> * Customer Purchase Order * </h2>
 
@@ -25,24 +25,24 @@
     <form method="POST" action="{{route('createcustomerpo')}}">
     @csrf
     @method('POST')
-    <div class="bg-gray-200 px-4 py-4"> 
+    <div class="bg-gray-200 px-4 py-4 font-bold"> 
 
         <div class="flex flex-col">
         
         <div class="mb-0.5 font-bold">
-            <input type="text" placeholder="Full Name" class="h-6 w-full" name="customers_name">
+            <input type="text" placeholder="Full Name" class="h-6 w-full text-xs" name="customers_name">
         </div>
 
         <div class="mb-0.5 font-bold">
-            <input type="text" placeholder="Contact Number" class="h-6 w-full" name="contact_number">
+            <input type="text" placeholder="Contact Number" class="h-6 w-full text-xs" name="contact_number">
         </div>
 
         <div class="mb-0.5 font-bold">
-            <input type="text" placeholder="Address" class="h-6 w-full" name="address">
+            <input type="text" placeholder="Address" class="h-6 w-full text-xs" name="address">
         </div>
 
         <div class="mb-0.5 font-bold text-gray-500">
-            <select class="h-6 w-full text-xs py-0" name="purchase_type" id="purchase_type" required>
+            <select class="h-7 w-full text-xs py-0" name="purchase_type" id="purchase_type" required>
                 <option value="" disabled selected>Purchase Type</option>
                 <option value="Retail">Retail</option>
                 <option value="Wholesale">Wholesale</option>
@@ -108,7 +108,7 @@
 
         <div>
            
-    <button type="submit" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 rounded-md hover:bg-teal-600 my-2 text-xs">Submit</button>
+    <button type="submit" class="flex items-center justify-center bg-teal-400 text-gray-100 p-1 shadow-md rounded-sm hover:bg-teal-600 my-2 text-xs">Submit</button>
     </div>
 
 </form>
