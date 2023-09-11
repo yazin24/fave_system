@@ -29,7 +29,7 @@
                 <input type="text" name="customers_address" placeholder="Full Address" class="h-6 w-full mb-0.5 text-xs" required>
             </div>
             <div>
-                <input type="text" name="phone_number" placeholder="Phone Number" class="h-6 w-full mb-0.5 text-xs" required>
+                <input type="text" name="phone_number" placeholder="Phone Number" class="h-6 w-full mb-1 text-xs" required>
             </div>
             <div class="flex flex-row mb-1">
                 <input type="number" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full text-xs" required>
