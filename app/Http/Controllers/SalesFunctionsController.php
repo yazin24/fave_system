@@ -294,47 +294,29 @@ class SalesFunctionsController extends Controller
 
     public function update_del_status_manual(Request $request, ManualPurchaseOrder $manualPurchase)
     {
-        $status = $request -> input('del_status');
+    $manualPurchaseOrders = ManualPurchaseOrder::findOrFail($manualPurchase->id);
 
-        if($status == 4){
+    $status = $request->input('del_status');
 
-            $manualPurchase -> update([
+    $manualPurchaseOrders->update([
+        'status' => $status,
+    ]);
 
-                'status' => $status,
-    
-            ]);
-
-            $manualPurchase -> save();
-
-            return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
-
-       }elseif($status == 8){
-
-        $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
-
-        $manualPo ->update([
-
-            'status' => $status,
-
-        ]);
-
-        $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
-
-        foreach($manualPoProducts as $manualPoProduct){
-
-            $skuId = $manualPoProduct -> sku_id;
-
-            $manualQuantity = $manualPoProduct -> quantity;
-
-            $sku = ProductSku::findOrFail($skuId);
-
+    if ($status == 4) {
+        // Handle delivery status
+        $manualPurchaseOrders->save();
+        return redirect()->back()->with('success', 'Purchase Order Has Been Completed!');
+    } elseif ($status == 8) {
+        foreach ($manualPurchaseOrders->manualPurchaseOrderProducts as $manualPoProduct) {
+            $sku = ProductSku::findOrFail($manualPoProduct->sku_id);
+            $manualQuantity = $manualPoProduct->quantity;
             $isBox = $manualPoProduct->isBox;
 
             if ($isBox) {
                 // Adjust quantity based on the box size
                 if ($sku->sku_size == 3785.41) {
                     // 1 Gallon Box = 12 individual units
-                    $manualQuantity *= 4;
+                    $manualQuantity *= 12;
                 } elseif ($sku->sku_size == 1000) {
                     // 1 Liter Box = 12 individual units
                     $manualQuantity *= 12;
@@ -343,29 +325,89 @@ class SalesFunctionsController extends Controller
                 }
             }
 
-            $newSkuQuantity = $sku -> sku_quantity + $manualQuantity;
-
-            if($newSkuQuantity >= 0){
-
-                $sku -> sku_quantity = $newSkuQuantity;
-
-                $sku -> save();
-
-            }else{
-
-                $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
-
-                Session::flash('error', $errorMessage);
-
-                return view('sales.sales_home');
-
-            }
+            // Increase the SKU quantity when canceling the order
+            $sku->sku_quantity += $manualQuantity;
+            $sku->save();
         }
 
-        $manualPo -> save();
+        $manualPurchaseOrders->save();
 
-           return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
-       }
+        return redirect()->back()->with('success', 'Purchase Order Has Been Cancelled!');
+        }
+
+
+    //     $status = $request -> input('del_status');
+
+    //     if($status == 4){
+
+    //         $manualPurchase -> update([
+
+    //             'status' => $status,
+    
+    //         ]);
+
+    //         $manualPurchase -> save();
+
+    //         return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
+
+    //    }elseif($status == 8){
+
+    //     $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
+
+    //     $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
+
+    //     foreach($manualPoProducts as $manualPoProduct){
+
+    //         $skuId = $manualPoProduct -> sku_id;
+
+    //         $manualQuantity = $manualPoProduct -> quantity;
+
+    //         $sku = ProductSku::findOrFail($skuId);
+
+    //         $isBox = $manualPoProduct->isBox;
+
+    //         if ($isBox) {
+    //             // Adjust quantity based on the box size
+    //             if ($sku->sku_size == 3785.41) {
+    //                 // 1 Gallon Box = 12 individual units
+    //                 $manualQuantity *= 4;
+    //             } elseif ($sku->sku_size == 1000) {
+    //                 // 1 Liter Box = 12 individual units
+    //                 $manualQuantity *= 12;
+    //             } else {
+    //                 // Handle other sizes accordingly
+    //             }
+    //         }
+
+    //         $newSkuQuantity = $sku -> sku_quantity += $manualQuantity;
+
+    //         if($newSkuQuantity >= 0){
+
+    //             $sku -> sku_quantity = $newSkuQuantity;
+
+    //             $sku -> save();
+
+    //         }else{
+
+    //             $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
+
+    //             Session::flash('error', $errorMessage);
+
+    //             return view('sales.sales_home');
+
+    //         }
+    //     }
+
+    //         $manualPo ->update([
+
+    //             'status' => $status,
+
+    //         ]);
+
+    //     $manualPo -> save();
+
+    //        return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
+    //    }
     }
 
     public function approve_purchase_order(Request $request, $purchaseOrder)
