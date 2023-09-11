@@ -590,7 +590,7 @@ class SalesFunctionsController extends Controller
         $shopeeProductPrice = $request->input('price', []);
         $shopeeProductQuantity = $request->input('quantity', []);
     
-        // Check if there are any products with insufficient quantity
+    
         foreach ($shopeeCustomerProducts as $index) {
             if (in_array($index, $shopeeCustomerChosenProducts)) {
                 $theShopeePrice = $shopeeProductPrice[$index] ?? null;
@@ -608,7 +608,7 @@ class SalesFunctionsController extends Controller
             }
         }
     
-        // Create the Shopee order if all products have sufficient quantity
+       
         $newShopeeCustomerOrders = ShopeeOrders::create([
             'customers_name' => $shopeeCustomerName,
             'customers_address' => $shopeeCustomerAddress,
@@ -630,6 +630,7 @@ class SalesFunctionsController extends Controller
                 if ($theShopeePrice && $theShopeeQuantity) {
                     $amount = $theShopeePrice * $theShopeeQuantity;
                     $sku = ProductSku::findOrFail($index);
+                    $quantityOfSku = $sku->sku_quantity;
     
                     $newShopeeCustomerOrders->shopeeOrderProducts()->create([
                         'shopee_order_id' => $shopeeId,
@@ -719,6 +720,7 @@ class SalesFunctionsController extends Controller
             if ($thelazadaPrice && $thelazadaQuantity) {
                 $amount = $thelazadaPrice * $thelazadaQuantity;
                 $sku = ProductSku::findOrFail($index);
+                $quantityOfSku = $sku->sku_quantity;
 
                 $newlazadaCustomerOrders->lazadaOrderProducts()->create([
                     'lazada_order_id' => $lazadaId,
