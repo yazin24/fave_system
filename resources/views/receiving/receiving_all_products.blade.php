@@ -33,8 +33,10 @@
                     1 Gallon
                     @elseif($allProduct -> sku_size == 1000)
                     1 Liter
+                    @elseif($allProduct -> sku_size == 900)
+                    900 Grams
                     @else
-                    450 ml
+                    180 Grams
                     @endif
                 </td>
                 <td class="border-b-2 text-xs text-center w-1/6 font-bold">{{$allProduct -> sku_quantity}}</td>
