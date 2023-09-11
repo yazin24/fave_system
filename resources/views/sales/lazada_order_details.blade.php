@@ -76,7 +76,7 @@
                 <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
                 <h2 class="text-xs font-bold">Total charges and fees: ₱{{$lazadaSale -> charges_and_fees}}</h2>
                 <h2 class="text-xs font-bold">Voucher: ₱{{$lazadaSale -> voucher}}</h2>
-                <h2 class="text-xs font-bold">Sales Amount: ₱{{$orderTotalAmount - $lazadaSale -> charges_and_fees}}.00</h2>
+                <h2 class="text-xs font-bold">Sales Amount: ₱{{$orderTotalAmount - $lazadaSale -> charges_and_fees - $lazadaSale -> voucher}}.00</h2>
           
             @endif
             </div>

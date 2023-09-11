@@ -771,15 +771,6 @@ class SalesFunctionsController extends Controller
 
         if($status == 4){
 
-            foreach($shopeeOrders -> shopeeOrderProducts as $shopeeProduct){
-
-                $sku = ProductSku::findOrFail($shopeeProduct -> sku_id);
-
-                    $sku -> sku_quantity += $shopeeProduct -> quantity;
-
-                    $sku -> save();
-            }
-
             $shopeeChargeAndFees = $shopeeOrders -> charges_and_fees;
 
             $shopeeVoucher = $shopeeOrders -> voucher;
@@ -799,7 +790,17 @@ class SalesFunctionsController extends Controller
         $shopeeOrders -> save();
         
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+
         }else{
+            
+            foreach($shopeeOrders -> shopeeOrderProducts as $shopeeProduct){
+
+                $sku = ProductSku::findOrFail($shopeeProduct -> sku_id);
+
+                    $sku -> sku_quantity += $shopeeProduct -> quantity;
+
+                    $sku -> save();
+            }
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
         }
     }
@@ -816,16 +817,6 @@ class SalesFunctionsController extends Controller
 
         if($status == 4){
 
-            foreach($lazadaOrders -> lazadaOrderProducts as $lazadaProduct){
-
-                $sku = ProductSku::findOrFail($lazadaProduct -> sku_id);
-
-                    $sku -> sku_quantity += $lazadaProduct -> quantity;
-
-                    $sku -> save();
-
-            }
-
             $lazadaChargeAndFees = $lazadaOrders -> charges_and_fees;
 
             $lazadaVoucher = $lazadaOrders -> voucher;
@@ -841,11 +832,23 @@ class SalesFunctionsController extends Controller
                 'total_amount' => $realTotalAmount,
     
             ]);
-
-        $lazadaOrders -> save();
-       
+        
+            $lazadaOrders -> save();
+        
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+
         }else{
+
+            foreach($lazadaOrders -> lazadaOrderProducts as $lazadaProduct){
+
+                $sku = ProductSku::findOrFail($lazadaProduct -> sku_id);
+
+                    $sku -> sku_quantity += $lazadaProduct -> quantity;
+
+                    $sku -> save();
+
+            }
+
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
         }
         
