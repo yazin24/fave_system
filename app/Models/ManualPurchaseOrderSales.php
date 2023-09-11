@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ManualPurchaseOrderSales extends Model
 {
-    use HasFactory;
+    protected $table = 'manual_po_sales';
+
+    public function manualPurchaseOrders()
+    {
+        return $this -> belongsTo(ManualPurchaseOrder::class, 'manual_order_id');
+    }
+
+    protected $fillable = [
+
+        'manual_order_id',
+        'total_amount',
+
+    ];
 }

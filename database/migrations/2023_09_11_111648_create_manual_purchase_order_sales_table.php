@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manual_purchase_order_sales', function (Blueprint $table) {
+        Schema::create('manual_po_sales', function (Blueprint $table) {
             $table->id();
+            $table -> unsignedBigInteger('manual_order_id');
+            $table -> decimal('total_amount', 8, 2) -> default(0);
             $table->timestamps();
+
+            $table -> foreign('manual_order_id') -> references('id') -> on('manual_customer_purchase_orders');
         });
     }
 
