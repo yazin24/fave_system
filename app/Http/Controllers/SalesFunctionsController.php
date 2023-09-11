@@ -680,7 +680,6 @@ class SalesFunctionsController extends Controller
     $lazadaProductPrice = $request->input('price', []);
     $lazadaProductQuantity = $request->input('quantity', []);
 
-    // Check if there are any products with insufficient quantity
     foreach ($lazadaCustomerProducts as $index) {
         if (in_array($index, $lazadaCustomerChosenProducts)) {
             $thelazadaPrice = $lazadaProductPrice[$index] ?? null;
@@ -698,7 +697,6 @@ class SalesFunctionsController extends Controller
         }
     }
 
-    // Create the Lazada order if all products have sufficient quantity
     $newlazadaCustomerOrders = LazadaOrders::create([
         'customers_name' => $lazadaCustomerName,
         'customers_address' => $lazadaCustomerAddress,
