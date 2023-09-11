@@ -296,17 +296,20 @@ class SalesFunctionsController extends Controller
     {
         $status = $request -> input('del_status');
 
-        $manualPurchase -> update([
-
-            'status' => $status,
-
-        ]);
-
-        $manualPurchase -> save();
-
         if($status == 4){
+
+            $manualPurchase -> update([
+
+                'status' => $status,
+    
+            ]);
+
+            $manualPurchase -> save();
+
             return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
+
        }elseif($status == 8){
+
            return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
        }
     }
@@ -362,9 +365,7 @@ class SalesFunctionsController extends Controller
 
         $disapprovePurchaseOrder -> save();
 
-
-        Session::flash('success', 'Purchase Order has been approved!');
-        return view('sales.sales_home');
+        return redirect() -> back() -> with('success', 'Purchase Order has been dissapproved!');
 
     }
 
