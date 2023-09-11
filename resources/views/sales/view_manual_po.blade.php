@@ -4,11 +4,11 @@
 
 <h2 class="font-bold md:text-xl">Manual Purchase Order Details</h2>
 
-<div class="mt-4">
-<form method="POST" action="{{route('updatedelstatusmanual', ['manualPurchase' => $manualPurchase -> id])}}">
-    @csrf
-    @method('PUT')
-    <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4">
+<div class="mt-4 font-bold">
+    <form method="POST" action="{{route('updatedelstatusmanual', ['manualPurchase' => $manualPurchase -> id])}}">
+        @csrf
+        @method('PUT')
+        <div class="bg-gray-900 rounded-md px-4 py-4 max-w-screen-sm mt-4 font-bold">
         <div class="bg-gray-200 px-4 py-4"> 
 
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">P.O Number: <span class="text-blue-600 font-bold">{{$manualPurchase -> po_number}}</span></h2>
@@ -39,7 +39,7 @@
                 @elseif($manualPurchase -> status == 4)
                 <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Completed</span></h2>
                 @else
-                <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-blue-600 font-bold">Cancelled</span></h2>
+                <h2 class="text-xs text-gray-800 mb-4 font-bold">Del Status: <span class="text-red-600 font-bold">Cancelled</span></h2>
                 @endif
             
                <div class="bg-white-900 text-gray-900 mt-1"> 
