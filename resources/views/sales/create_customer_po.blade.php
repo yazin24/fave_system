@@ -55,21 +55,21 @@
             @foreach($allProducts as $allProduct)
             <div class="flex flex-row justify-center">
 
-                <div class="mt-1">
+                <div class="mt-2.5">
                     <input type="checkbox" name="selected_product[]" value="{{$allProduct -> id}}" class="">
                 </div>
 
                 <div class="w-full">
-                    <input type="text" class="w-full h-6 text-xs mb-0.5" value="{{$allProduct -> full_name}}" readonly>
+                    <input type="text" class="w-full h-8 text-xs" value="{{$allProduct -> full_name}}" readonly>
                     <input type="hidden" name="product_id[{{$allProduct -> id}}]" value="{{$allProduct -> id}}">
                 </div>
 
                 <div class="w-full">
-                    <input type="text" class="w-full h-6 text-xs mb-0.5" value="@if($allProduct -> productVariants -> variant_name === 'Calamansi') C @elseif($allProduct -> productVariants -> variant_name === 'Honey Lemon') HL @elseif($allProduct -> productVariants -> variant_name === 'Fresh Antibac') FA @endif" readonly>
+                    <input type="text" class="w-full h-8 text-xs" value="@if($allProduct -> productVariants -> variant_name === 'Calamansi') C @elseif($allProduct -> productVariants -> variant_name === 'Honey Lemon') HL @elseif($allProduct -> productVariants -> variant_name === 'Fresh Antibac') FA @endif" readonly>
                 </div>
 
                 <div class="w-full">
-                    <select name="product_size[{{$allProduct->id}}]" class="w-full h-6 text-xs mb-0.5 py-0">
+                    <select name="product_size[{{$allProduct->id}}]" class="w-full h-8 text-xs py-0">
                         <option value="0">
 
                         @if($allProduct -> sku_size == 3785.41) 1Gal 
@@ -96,11 +96,11 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-6 text-xs mb-1" placeholder="0">
+                    <input type="number" name="price[{{$allProduct -> id}}]" class="w-full h-8 text-xs" placeholder="0">
                 </div>
 
                 <div class="w-full">
-                    <input type="number" name="quantity[{{$allProduct -> id}}]" class="w-full h-6 text-xs" placeholder="quantity">
+                    <input type="number" name="quantity[{{$allProduct -> id}}]" class="w-full h-8 text-xs" placeholder="quantity">
                 </div> 
             </div>
             @endforeach
