@@ -769,7 +769,7 @@ class SalesFunctionsController extends Controller
             'status' => $status,
         ]);
 
-        if($status == 8){
+        if($status == 4){
 
             foreach($shopeeOrders -> shopeeOrderProducts as $shopeeProduct){
 
@@ -795,13 +795,9 @@ class SalesFunctionsController extends Controller
                 'total_amount' => $realTotalAmount,
     
             ]);
-        }
-
 
         $shopeeOrders -> save();
         
-       
-        if($status == 4){
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
         }else{
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
@@ -818,7 +814,7 @@ class SalesFunctionsController extends Controller
             'status' => $status,
         ]);
 
-        if($status == 8){
+        if($status == 4){
 
             foreach($lazadaOrders -> lazadaOrderProducts as $lazadaProduct){
 
@@ -845,11 +841,9 @@ class SalesFunctionsController extends Controller
                 'total_amount' => $realTotalAmount,
     
             ]);
-        }
 
         $lazadaOrders -> save();
-        
-        if($status == 4){
+       
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
         }else{
             return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
