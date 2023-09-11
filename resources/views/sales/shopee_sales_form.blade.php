@@ -13,7 +13,7 @@
 </div>
 @endif
 
-<div class="rounded-md shadow-lg bg-orange-600 p-2 lg:w-1/2 justify-center font-bold">
+<div class="rounded-sm shadow-lg bg-orange-600 p-1 lg:w-1/2 justify-center font-bold">
 
     <div class="bg-gray-200 px-2 py-2 flex flex-col">
         
