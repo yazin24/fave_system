@@ -10,6 +10,7 @@ use App\Models\LazadaOrders;
 use App\Models\LazadaSales;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ManualPurchaseOrderProducts;
+use App\Models\ManualPurchaseOrderSales;
 use App\Models\ProductSku;
 use App\Models\ShopeeOrderProducts;
 use App\Models\ShopeeOrders;
@@ -35,7 +36,7 @@ class SalesController extends Controller
         $lazadaDates = $lazadaSalesData->pluck('date');
         $lazadaAmounts = $lazadaSalesData->pluck('total_amount');
 
-        $manualSalesData = ManualPurchaseOrderProducts::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
+        $manualSalesData = ManualPurchaseOrderSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')
         ->paginate(10);
 
