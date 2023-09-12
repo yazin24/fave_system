@@ -66,7 +66,7 @@
                 <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
                 <h2 class="text-xs font-bold">Total charges and fees: ₱{{$shopeeSale -> charges_and_fees}}</h2>
                 <h2 class="text-xs font-bold">Voucher: ₱{{$shopeeSale -> voucher}}</h2>
-                <h2 class="text-xs font-bold">Sales Amount: ₱{{$orderTotalAmount - $shopeeSale -> charges_and_fees - $shopeeSale -> voucher}}.00</h2>
+                <h2 class="text-xs font-bold">Sales Amount: ₱{{$orderTotalAmount - $shopeeSale -> charges_and_fees - $shopeeSale -> voucher}}</h2>
            
             @endif
             </div>

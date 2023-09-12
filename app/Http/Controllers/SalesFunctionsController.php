@@ -351,51 +351,6 @@ class SalesFunctionsController extends Controller
 
         return redirect()->back()->with('success', 'Purchase Order Has Been Cancelled!');
         }
-
-
-    //     $status = $request -> input('del_status');
-    //     if($status == 4){
-    //         $manualPurchase -> update([
-    //             'status' => $status, 
-    //         ]);
-    //         $manualPurchase -> save();
-    //         return redirect() -> back() -> with('success', 'Manual Purchase Order has been Delivered!');
-    //    }elseif($status == 8){
-    //     $manualPo = ManualPurchaseOrder::findOrFail($manualPurchase -> id);
-    //     $manualPoProducts = $manualPo -> manualPurchaseOrderProducts;
-    //     foreach($manualPoProducts as $manualPoProduct){
-    //         $skuId = $manualPoProduct -> sku_id;
-    //         $manualQuantity = $manualPoProduct -> quantity;
-    //         $sku = ProductSku::findOrFail($skuId);
-    //         $isBox = $manualPoProduct->isBox;
-    //         if ($isBox) {
-    //             // Adjust quantity based on the box size
-    //             if ($sku->sku_size == 3785.41) {
-    //                 // 1 Gallon Box = 12 individual units
-    //                 $manualQuantity *= 4;
-    //             } elseif ($sku->sku_size == 1000) {
-    //                 // 1 Liter Box = 12 individual units
-    //                 $manualQuantity *= 12;
-    //             } else {
-    //                 // Handle other sizes accordingly
-    //             }
-    //         }
-    //         $newSkuQuantity = $sku -> sku_quantity += $manualQuantity;
-    //         if($newSkuQuantity >= 0){
-    //             $sku -> sku_quantity = $newSkuQuantity;
-    //             $sku -> save();
-    //         }else{
-    //             $errorMessage = "Ordered quantity for SKU '{$sku -> full_name}' exceeds available stock!";
-    //             Session::flash('error', $errorMessage);
-    //             return view('sales.sales_home');
-    //         }
-    //     }
-    //         $manualPo ->update([
-    //            'status' => $status,
-    //         ]);
-    //     $manualPo -> save();
-    //        return redirect() -> back() -> with('success', 'Manual Purchase Order has been Cancelled!');
-    //    }
     }
 
     public function approve_purchase_order(Request $request, $purchaseOrder)
@@ -652,8 +607,8 @@ class SalesFunctionsController extends Controller
             'full_name' => 'required',
             'customers_address' => 'required',
             'phone_number' => 'required',
-            'charges_and_fees' => 'required|numeric',
-            'voucher' => 'required|numeric',
+            'charges_and_fees' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+            'voucher' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
         ], [
             'order_id.required' => 'Order ID is required',
             'full_name.required' => 'Customer Name is required',
@@ -742,8 +697,8 @@ class SalesFunctionsController extends Controller
         'full_name' => 'required',
         'customers_address' => 'required',
         'phone_number' => 'required',
-        'charges_and_fees' => 'required|numeric',
-        'voucher' => 'required|numeric',
+        'charges_and_fees' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+        'voucher' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
     ], [
         'order_number.required' => 'Order Number is required',
         'full_name.required' => 'Customer Name is required',
