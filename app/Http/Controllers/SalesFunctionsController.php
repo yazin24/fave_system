@@ -11,6 +11,7 @@ use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use App\Models\ShopeeOrders;
+use App\Models\TiktokOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -907,6 +908,96 @@ class SalesFunctionsController extends Controller
         $allProducts = ProductSku::all();
 
         return view('sales.carousel_sales_form', ['allProducts' => $allProducts]);
+    }
+
+    public function add_tiktok_sales(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required',
+            'full_name' => 'required',
+            'customers_address' => 'required',
+            'phone_number' => 'required',
+            'charges_and_fees' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+            'voucher' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+        ], [
+            'order_id.required' => 'Order ID is required',
+            'full_name.required' => 'Customer Name is required',
+            'customers_address.required' => 'Customer Address is required',
+            'phone_number.required' => 'Phone Number is required',
+            'charges_and_fees.required' => 'Please input the charges and fees total amount',
+            'voucher.required' => "Please input voucher amount or put 0 if there's none",
+        ]);
+    
+        $tiktokOrderId = $request->input('order_id');
+        $tiktokCustomerName = $request->input('full_name');
+        $tiktokCustomerAddress = $request->input('customers_address');
+        $tiktokCustomerNumber = $request->input('phone_number');
+        $tiktokChargesAndFees = $request->input('charges_and_fees');
+        $tiktokVouchers = $request->input('voucher');
+        $tiktokCustomerStatus = $request->input('status');
+        $tiktokCustomerChosenProducts = $request->input('selected_product', []);
+        $tiktokCustomerProducts = $request->input('product_id', []);
+        $tiktokProductPrice = $request->input('price', []);
+        $tiktokProductQuantity = $request->input('quantity', []);
+    
+    
+        foreach ($tiktokCustomerProducts as $index) {
+            if (in_array($index, $tiktokCustomerChosenProducts)) {
+                $theTiktokPrice = $tiktokProductPrice[$index] ?? null;
+                $theTiktokQuantity = $tiktokProductQuantity[$index] ?? null;
+    
+                if ($theTiktokPrice && $theTiktokQuantity) {
+                    $sku = ProductSku::findOrFail($index);
+                    $quantityOfSku = $sku->sku_quantity;
+    
+                    if ($quantityOfSku < $theTiktokQuantity) {
+                        $errorMessage = "Ordered quantity for SKU '{$sku->full_name}' exceeds available stock!";
+                        return redirect()->back()->with('error', $errorMessage);
+                    }
+                }
+            }
+        }
+    
+       
+        $newTiktokCustomerOrders = TiktokOrders::create([
+            'customers_name' => $tiktokCustomerName,
+            'customers_address' => $tiktokCustomerAddress,
+            'phone_number' => $tiktokCustomerNumber,
+            'charges_and_fees' => $tiktokChargesAndFees,
+            'voucher' => $tiktokVouchers,
+            'order_id' => $tiktokOrderId,
+            'status' => $tiktokCustomerStatus,
+            'encoded_by' => Auth::user()->name,
+        ]);
+    
+        $tiktokId = $newTiktokCustomerOrders->id;
+    
+        foreach ($tiktokCustomerProducts as $index) {
+            if (in_array($index, $tiktokCustomerChosenProducts)) {
+                $theTiktokPrice = $TiktokProductPrice[$index] ?? null;
+                $theTiktokQuantity = $shopeeTiktokQuantity[$index] ?? null;
+    
+                if ($theTiktokPrice && $theTiktokQuantity) {
+                    $amount = $theTiktokPrice * $theTiktokQuantity;
+                    $sku = ProductSku::findOrFail($index);
+                    $quantityOfSku = $sku->sku_quantity;
+    
+                    $newTiktokCustomerOrders->tiktokOrderProducts()->create([
+                        'tiktok_order_id' => $tiktokId,
+                        'sku_id' => $index,
+                        'quantity' => $theTiktokQuantity,
+                        'price' => $theTiktokPrice,
+                        'amount' => $amount,
+                    ]);
+    
+                    $newSkuQuantity = $quantityOfSku - $theTiktokQuantity;
+                    $sku->sku_quantity = $newSkuQuantity;
+                    $sku->save();
+                }
+            }
+        }
+    
+        return redirect()->back()->with('success', 'Shopee sales Order(' . $tiktokOrderId . ') has been added!');
     }
 
     

@@ -138,7 +138,7 @@
                 <i class="fa-solid fa-money-bills text-xl"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('tiktokcarouselsales')" :active="request()->routeIs('tiktokcarouselsales')">
-                <i class="fa-solid fa-money-bills text-xl"></i>
+                <i class="fa-solid fa-globe text-xl"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('salespurchaseorders')" :active="request()->routeIs('salespurchaseorders')">
                 <i class="fa-solid fa-cart-shopping text-xl"></i>

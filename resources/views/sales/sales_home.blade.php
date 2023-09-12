@@ -25,8 +25,8 @@
         </li>
         <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('tiktokcarouselsales')}}">
           <div class='flex items-center gap-1'>
-            <i class="fa-solid fa-money-bills text-xl"></i>
-            <div>Carousel/Shopify</div>
+            <i class="fa-solid fa-globe text-xl"></i>
+            <div>Tiktok/Carousel</div>
           </div>
         </a>
         </li>
