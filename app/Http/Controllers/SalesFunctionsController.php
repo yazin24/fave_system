@@ -975,7 +975,7 @@ class SalesFunctionsController extends Controller
     
         foreach ($tiktokCustomerProducts as $index) {
             if (in_array($index, $tiktokCustomerChosenProducts)) {
-                $theTiktokPrice = $TiktokProductPrice[$index] ?? null;
+                $theTiktokPrice = $tiktokProductPrice[$index] ?? null;
                 $theTiktokQuantity = $tiktokProductQuantity[$index] ?? null;
     
                 if ($theTiktokPrice && $theTiktokQuantity) {
@@ -1003,8 +1003,6 @@ class SalesFunctionsController extends Controller
 
     public function tiktok_order_details(TiktokOrders $tiktokSale)
     {
-
-
         return view('sales.tiktok_order_details', ['tiktokSale' => $tiktokSale]);
     }
 
