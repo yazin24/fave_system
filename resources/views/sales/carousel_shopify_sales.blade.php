@@ -8,7 +8,7 @@
                     <h2 class="font-bold text-red-600">Carousel Orders</h2>
             </div>
             <div class="mb-1">
-                    <button class="bg-red-600 hover:bg-red-700 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="">Carousel</a></button>
+                    <button class="bg-red-600 hover:bg-red-700 font-bold text-gray-200 p-1 rounded-sm text-xs shadow-md"><a href="{{route('carouselsalesform')}}">Carousel</a></button>
             </div>
     </div>
 

@@ -895,5 +895,12 @@ class SalesFunctionsController extends Controller
         
     }
 
+    public function carousel_sales_form()
+    {
+        $allProducts = ProductSku::all();
+
+        return view('sales.carousel_sales_form', ['allProducts' => $allProducts]);
+    }
+
     
 }
