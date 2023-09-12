@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shopee_sales', function (Blueprint $table) {
+        Schema::create('tiktok_sales', function (Blueprint $table) {
             $table->id();
 
-            $table -> unsignedBigInteger('shopee_order_id');
+            $table -> unsignedBigInteger('tiktok_order_id');
 
             $table -> decimal('total_amount', 8, 2) -> default(0);
 
-            $table -> foreign('shopee_order_id') -> references('id') -> on('shopee_orders');
+            $table -> foreign('tiktok_order_id') -> references('id') -> on('tiktok_orders');
             
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shopee_sales');
+        Schema::dropIfExists('tiktok_sales');
     }
 };
