@@ -15,6 +15,8 @@ use App\Models\ProductSku;
 use App\Models\ShopeeOrderProducts;
 use App\Models\ShopeeOrders;
 use App\Models\ShopeeSales;
+use App\Models\TiktokOrders;
+use App\Models\TiktokSales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -96,7 +98,9 @@ class SalesController extends Controller
 
     public function tiktok_carousel_sales()
     {
-        return view('sales.tiktok_carousel_sales');
+        $allTiktokSales = TiktokOrders::orderBy('created_at', 'desc') -> paginate(10);
+
+        return view('sales.tiktok_carousel_sales', ['allTiktokSales' => $allTiktokSales]);
     }
 
 

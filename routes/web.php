@@ -244,9 +244,11 @@ Route::get('sales/shopee/lazada/view-lazada-order/{lazadaSale}',[SalesFunctionsC
 
 Route::put('sales/shopee/lazada/view-lazada-order/{lazadaSale}/delivered-status', [SalesFunctionsController::class, 'delivered_lazada_status']) -> name('deliveredlazadastatus');
 
-Route::get('sales/carousel/shopify/carousel-form', [SalesFunctionsController::class, 'carousel_sales_form']) -> name('carouselsalesform');
+Route::get('sales/tiktok/carousel/carousel-form', [SalesFunctionsController::class, 'carousel_sales_form']) -> name('carouselsalesform');
 
-Route::get('sales/carousel/tiktok/tiktok-form', [SalesFunctionsController::class, 'tiktok_sales_form']) -> name('tiktoksalesform');
+Route::get('sales/tiktok/carousel/tiktok-form', [SalesFunctionsController::class, 'tiktok_sales_form']) -> name('tiktoksalesform');
+
+Route::post('sales/tiktok/carousel/tiktok-form/add-tiktok-sales', [SalesFunctionsController::class, 'add_tiktok_sales']) -> name('addtiktoksales');
 
 Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 

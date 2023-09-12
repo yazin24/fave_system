@@ -17,10 +17,10 @@
 
     <div class="bg-gray-200 px-2 py-2">
         
-        <form method="POST" action="{{route('addlazadasales')}}">
+        <form method="POST" action="{{route('addtiktoksales')}}">
             @csrf
             <div>
-                <input type="text" name="order_number" placeholder="Order Number" class="h-6 w-full mb-0.5 text-xs" required>
+                <input type="text" name="order_id" placeholder="Order ID" class="h-6 w-full mb-0.5 text-xs" required>
             </div>
             <div>
                 <input type="text" name="full_name" placeholder="Full Name" class="h-6 w-full mb-0.5 text-xs" required>

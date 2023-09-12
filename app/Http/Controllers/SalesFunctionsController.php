@@ -997,7 +997,7 @@ class SalesFunctionsController extends Controller
             }
         }
     
-        return redirect()->back()->with('success', 'Shopee sales Order(' . $tiktokOrderId . ') has been added!');
+        return redirect()->back()->with('success', 'Tiktok sales Order(' . $tiktokOrderId . ') has been added!');
     }
 
     

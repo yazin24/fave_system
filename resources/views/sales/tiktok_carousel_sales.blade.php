@@ -14,7 +14,7 @@
     <table class="bg-gray-300 shadow-lg w-full">
         <thead>
             <tr class="bg-gray-900 border-b-2 text-gray-300 w-96 h-6">
-                    <th class="text-xs text-center w-1/5">ORDER NUMBER</th>
+                    <th class="text-xs text-center w-1/5">ORDER ID</th>
                     <th class="text-xs text-center w-1/5">FULL NAME</th>
                     <th class="text-xs text-center w-1/5">ADDRESS</th>
                     <th class="text-xs text-center w-1/5">NUMBER</th>
@@ -22,15 +22,15 @@
             </tr>
         </thead>
         <tbody>
-           {{-- @foreach($allLazadaSales as $lazadaSale) --}}
+           @foreach($allTiktokSales as $tiktokSale)
             <tr class="h-6">
-                    <td class="border-b-2 text-xs text-center"></td>
-                    <td class="border-b-2 text-xs text-center"></td>
-                    <td class="border-b-2 text-xs text-center whitespace-nowrap"></td>
-                    <td class="border-b-2 text-xs text-center"></td>
+                    <td class="border-b-2 text-xs text-center">{{$tiktokSale -> order_id}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$tiktokSale -> customers_name}}</td>
+                    <td class="border-b-2 text-xs text-center whitespace-nowrap">{{$tiktokSale -> customers_address}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$tiktokSale -> phone_number}}</td>
                     <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
             </tr>
-           {{-- @endforeach   --}}
+           @endforeach  
         </tbody>
     </table>
 </div>
