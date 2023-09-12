@@ -28,7 +28,7 @@
                     <td class="border-b-2 text-xs text-center">{{$tiktokSale -> customers_name}}</td>
                     <td class="border-b-2 text-xs text-center whitespace-nowrap">{{$tiktokSale -> customers_address}}</td>
                     <td class="border-b-2 text-xs text-center">{{$tiktokSale -> phone_number}}</td>
-                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="">View</a></td>
+                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('tiktokorderdetails', ['tiktokSale' => $tiktokSale -> id])}}">View</a></td>
             </tr>
            @endforeach  
         </tbody>

@@ -250,6 +250,8 @@ Route::get('sales/tiktok/carousel/tiktok-form', [SalesFunctionsController::class
 
 Route::post('sales/tiktok/carousel/tiktok-form/add-tiktok-sales', [SalesFunctionsController::class, 'add_tiktok_sales']) -> name('addtiktoksales');
 
+Route::get('sales/tiktok/carousel/view-tiktok-order/{tiktokSale}', [SalesFunctionsController::class, 'tiktok_order_details']) -> name('tiktokorderdetails');
+
 Route::get('sales/manual-po/new-purchase-order', [SalesFunctionsController::class, 'manual_purchase_order']) -> name('manualpurchaseorder');
 
 Route::get('sales/manual-po/view-details/{manualPurchase}', [SalesFunctionsController::class, 'view_manual_po']) -> name('viewmanualpo');

@@ -12,6 +12,7 @@ use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use App\Models\ShopeeOrders;
 use App\Models\TiktokOrders;
+use App\Models\TiktokSales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -998,6 +999,13 @@ class SalesFunctionsController extends Controller
         }
     
         return redirect()->back()->with('success', 'Tiktok sales Order(' . $tiktokOrderId . ') has been added!');
+    }
+
+    public function tiktok_order_details(TiktokOrders $tiktokSale)
+    {
+
+
+        return view('sales.tiktok_order_details', ['tiktokSale' => $tiktokSale]);
     }
 
     
