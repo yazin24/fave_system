@@ -9,49 +9,49 @@
         <i class="fa-solid fa-wallet fa-xl"></i>
         Sales Staff</h2>
       <ul>
-        <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('salesmonitoring')}}">
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('salesmonitoring')}}">
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-coins text-xl"></i>
             <div>Sales Monitoring</div>
           </div>
         </a>
         </li>
-        <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('shopeelazadasales')}}">
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('shopeelazadasales')}}">
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-money-bills text-xl"></i>
             <div>Shopee/Lazada</div>
           </div>
         </a>
         </li>
-        <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('tiktokcarouselsales')}}">
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('tiktokcarouselsales')}}">
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-globe text-xl"></i>
             <div>Tiktok/Carousel</div>
           </div>
         </a>
         </li>
-        <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('salespurchaseorders')}}">
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('salespurchaseorders')}}">
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-cart-shopping text-xl"></i>
               <div>Purchase Order</div>
             </div>
           </a>
           </li>
-          <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('salesmanualpo')}}">
+          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('salesmanualpo')}}">
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-cart-plus text-xl"></i>
               <div>Manual P.O</div>
             </div>
           </a>
           </li>
-          <li class='h-7 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('forapproval')}}">
+          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('forapproval')}}">
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-file-circle-check text-xl"></i>
               <div>For Approval</div>
             </div>
           </a>
           </li>
-          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-2 text-xs'><a href="{{route('agentmonitoring')}}">
+          <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('agentmonitoring')}}">
             <div class='flex items-center gap-1'>
                 <i class="fa-brands fa-redhat text-xl"></i>
               <div>Agent Monitoring</div>
