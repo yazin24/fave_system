@@ -8,7 +8,7 @@
     <form method="POST" action="{{route('deliveredshopeestatus', ['shopeeSale' => $shopeeSale -> id])}}">
         @csrf
         @method('PUT')
-    <div class="bg-orange-600 rounded-md px-2 py-2 max-w-screen-sm mt-4">
+    <div class="bg-orange-600 rounded-sm p-1 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
             <h2 class="font-bold text-sm mb-1">Order ID: {{$shopeeSale -> order_id}}</h2>
             <h2 class="font-bold text-sm mb-1">Full Name: {{$shopeeSale -> customers_name}}</h2>
@@ -78,7 +78,7 @@
             @elseif($shopeeSale -> status == 8)
             <h2 class="w-full text-gray-200 bg-red-600 hover:bg-red-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Cancelled</h2>
             @elseif($shopeeSale -> status == 4)
-            <h2 class="w-full text-gray-200 bg-orange-600 hover:bg-orange-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Completed</h2>
+            <h2 class="w-full text-gray-200 bg-orange-600 hover:bg-orange-700 font-bold text-sm p-1 rounded-sm shadow-md text-center">Completed</h2>
             @endif
            </div>
     
