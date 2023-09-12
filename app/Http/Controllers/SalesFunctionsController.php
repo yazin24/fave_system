@@ -832,7 +832,7 @@ class SalesFunctionsController extends Controller
 
         $shopeeOrders -> save();
         
-            return redirect() -> back() -> with('success', 'Purchase Order Has Been Completed!');
+            return redirect() -> back() -> with('success', 'Shopee Order Has Been Completed!');
 
         }else{
             
@@ -844,7 +844,7 @@ class SalesFunctionsController extends Controller
 
                     $sku -> save();
             }
-            return redirect() -> back() -> with('success', 'Purchase Order Has Been Cancelled!');
+            return redirect() -> back() -> with('success', 'Shopee Order Has Been Cancelled!');
         }
     }
 
