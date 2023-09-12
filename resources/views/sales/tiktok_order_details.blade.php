@@ -63,7 +63,7 @@
            <div class="flex justify-end mt-2">
             <div class="flex flex-col gap-4 mt-2">
                 @if($tiktokSale -> status == 4)
-                <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}.00</h2>
+                <h2 class="text-xs font-bold">Total Amount: ₱{{$orderTotalAmount}}</h2>
                 <h2 class="text-xs font-bold">Total charges and fees: ₱{{$tiktokSale -> charges_and_fees}}</h2>
                 <h2 class="text-xs font-bold">Voucher: ₱{{$tiktokSale -> voucher}}</h2>
                 <h2 class="text-xs font-bold">Sales Amount: ₱{{$orderTotalAmount - $tiktokSale -> charges_and_fees - $tiktokSale -> voucher}}</h2>
@@ -78,7 +78,7 @@
             @elseif($tiktokSale -> status == 8)
             <h2 class="w-full text-gray-200 bg-red-600 hover:bg-red-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Cancelled</h2>
             @elseif($tiktokSale -> status == 4)
-            <h2 class="w-full text-gray-200 bg-orange-600 hover:bg-orange-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Completed</h2>
+            <h2 class="w-full text-gray-200 bg-gray-900 hover:bg-gray-700 font-bold text-sm p-1 rounded-md shadow-md text-center">Completed</h2>
             @endif
            </div>
     
