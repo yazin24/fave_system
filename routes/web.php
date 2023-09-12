@@ -212,7 +212,7 @@ Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring'
 
 Route::get('sales/shopee/lazada', [SalesController::class, 'shopee_lazada_sales']) -> name('shopeelazadasales');
 
-Route::get('sales/carousel/shopify', [SalesController::class, 'carousel_shopify_sales']) -> name('carouselshopifysales');
+Route::get('sales/tiktok/carousel', [SalesController::class, 'tiktok_carousel_sales']) -> name('tiktokcarouselsales');
 
 Route::get('sales/purchase-orders', [SalesController::class, 'sales_purchase_orders']) -> name('salespurchaseorders');
 

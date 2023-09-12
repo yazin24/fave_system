@@ -94,9 +94,9 @@ class SalesController extends Controller
         return view('sales.shopee_lazada_sales', ['allShopeeSales' => $allShopeeSales, 'allLazadaSales' => $allLazadaSales]);
     }
 
-    public function carousel_shopify_sales()
+    public function tiktok_carousel_sales()
     {
-        return view('sales.carousel_shopify_sales');
+        return view('sales.tiktok_carousel_sales');
     }
 
 
