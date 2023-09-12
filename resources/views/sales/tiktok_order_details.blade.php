@@ -40,23 +40,23 @@
                         </tr>
                     </thead>    
     
-                    {{-- <tbody class="bg-gray-300">
-                        @foreach($tiktokSale -> shopeeOrderProducts as $index => $shopeeItem)
+                    <tbody class="bg-gray-300">
+                        @foreach($tiktokSale -> tiktokOrderProducts as $index => $tiktokItem)
                         <tr class="h-10">   
-                            <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> productSku -> full_name}}</td>
-                            <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> productSku -> productVariants -> variant_name}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold">{{$tiktokItem -> productSku -> full_name}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold">{{$tiktokItem -> productSku -> productVariants -> variant_name}}</td>
                             <td class="text-xs text-center border-b-2 font-bold">
-                                @if($shopeeItem -> productSku -> sku_size == 3785.41) 1 Gallon
-                                @elseif($shopeeItem -> productSku -> sku_size == 1000) 1 Liter
+                                @if($tiktokItem -> productSku -> sku_size == 3785.41) 1 Gallon
+                                @elseif($tiktokItem -> productSku -> sku_size == 1000) 1 Liter
                                 @else 500 ml
                                 @endif
                             </td>
-                            <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> quantity}}</td>
-                            <td class="text-xs text-center border-b-2 font-bold">₱{{$shopeeItem -> price}}</td>
-                            <td class="text-xs text-center border-b-2 font-bold">₱{{$shopeeItem-> amount}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold">{{$tiktokItem -> quantity}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold">₱{{$tiktokItem -> price}}</td>
+                            <td class="text-xs text-center border-b-2 font-bold">₱{{$tiktokItem-> amount}}</td>
                         </tr>
                         @endforeach    
-                    </tbody> --}}
+                    </tbody>
                 </table>
            </div>
 

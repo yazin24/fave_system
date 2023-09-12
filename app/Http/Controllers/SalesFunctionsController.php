@@ -1003,7 +1003,9 @@ class SalesFunctionsController extends Controller
 
     public function tiktok_order_details(TiktokOrders $tiktokSale)
     {
-        return view('sales.tiktok_order_details', ['tiktokSale' => $tiktokSale]);
+        $orderTotalAmount = $tiktokSale -> tiktokOrderProducts() -> sum('amount');
+
+        return view('sales.tiktok_order_details', ['tiktokSale' => $tiktokSale, 'orderTotalAmount' => $orderTotalAmount]);
     }
 
     
