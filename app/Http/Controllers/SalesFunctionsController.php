@@ -1008,5 +1008,55 @@ class SalesFunctionsController extends Controller
         return view('sales.tiktok_order_details', ['tiktokSale' => $tiktokSale, 'orderTotalAmount' => $orderTotalAmount]);
     }
 
+    public function delivered_tiktok_status(Request $request, TiktokOrders $tiktokSale)
+    {
+        $tiktokOrders = TiktokOrders::findOrFail($tiktokSale -> id);
+
+        $status = $request -> input('status');
+
+        $tiktokOrders -> update([
+
+            'status' => $status,
+
+        ]);
+
+        if($status == 4){
+
+            $tiktokChargesAndFees = $tiktokOrders -> charges_and_fees;
+
+            $tiktokVoucher = $tiktokOrders -> voucher;
+
+            $totalTiktokDeduction = $tiktokChargesAndFees + $tiktokVoucher;
+
+            $tiktokOrderTotalAmount = $tiktokOrders -> tiktokOrderProducts() -> sum('amount');
+
+            $realTotalAmount = $tiktokOrderTotalAmount - $totalTiktokDeduction;
+
+            $tiktokOrders -> tiktokSales() -> create([
+
+                'tiktok_order_id' => $tiktokOrders -> id,
+                'total_amount' => $realTotalAmount,
+
+            ]);
+
+            $tiktokOrders -> save();
+
+            return redirect() -> back() -> with('success', 'Tiktok Order has been Completed!');
+    
+        }else {
+            foreach($tiktokOrders -> tiktokOrderProducts as $tiktokProduct){
+
+                $sku = ProductSku::findOrFail($tiktokProduct -> sku_id);
+
+                $sku -> sku_quantity += $tiktokProduct -> quantity;
+
+                $sku -> save();
+            }
+
+            return redirect() -> back() -> with('success', 'Tiktok Order has been Cancelled!');
+        }
+
+    }
+
     
 }

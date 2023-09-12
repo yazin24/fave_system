@@ -5,7 +5,7 @@
 <h2 class="font-bold md:text-xl text-gray-900">Tiktok Order Details</h2>
 
 <div class="mt-2">
-    <form method="POST" >
+    <form method="POST" action="{{route('deliveredtiktokstatus', ['tiktokSale' => $tiktokSale -> id])}}">
         @csrf
         @method('PUT')
     <div class="bg-gray-900 rounded-sm p-1 max-w-screen-sm mt-4">
