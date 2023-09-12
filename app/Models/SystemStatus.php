@@ -28,6 +28,10 @@ class SystemStatus extends Model
     {
         return $this -> belongsTo(LazadaOrders::class, 'status');
     }
+    public function tiktokOrders()
+    {
+        return $this -> belongsTo(TiktokOrders::class, 'status');
+    }
 
     protected $fillable = [
         'status',

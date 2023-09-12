@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class TiktokSales extends Model
 {
-    use HasFactory;
+    protected $table = 'tiktok_sales';
+
+    public function tiktokOrders()
+    {
+        return $this -> belongsTo(TiktokOrders::class, 'tiktok_order_id');
+    }
+
+    protected $fillable = [
+
+        'tiktok_order_id',
+        'total_amount',
+
+    ];
 }

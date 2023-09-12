@@ -39,6 +39,11 @@ class ProductSku extends Model
         return $this -> hasMany(LazadaOrderProducts::class, 'sku_id');
     }
 
+    public function tiktokOrderProducts()
+    {
+        return $this -> hasMany(TiktokOrderProducts::class, 'sku_id');
+    }
+
     public function manufacturingStorage()
     {
         return $this -> hasMany(ManufacturingStorage::class, 'sku_id');
