@@ -895,6 +895,13 @@ class SalesFunctionsController extends Controller
         
     }
 
+    public function tiktok_sales_form()
+    {
+        $allProducts = ProductSku::all();
+
+        return view('sales.tiktok_sales_form', ['allProducts' => $allProducts]);
+    }
+
     public function carousel_sales_form()
     {
         $allProducts = ProductSku::all();
