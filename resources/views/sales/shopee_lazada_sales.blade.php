@@ -64,7 +64,7 @@
                 <tr class="h-6">
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> order_number}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
-                        <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_address}}</td>
+                        <td class="border-b-2 text-xs text-center whitespace-nowrap">{{$lazadaSale -> customers_address}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> phone_number}}</td>
                         <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('lazadaorderdetails', ['lazadaSale' => $lazadaSale])}}">View</a></td>
                 </tr>
