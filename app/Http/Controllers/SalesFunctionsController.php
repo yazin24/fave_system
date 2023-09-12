@@ -976,7 +976,7 @@ class SalesFunctionsController extends Controller
         foreach ($tiktokCustomerProducts as $index) {
             if (in_array($index, $tiktokCustomerChosenProducts)) {
                 $theTiktokPrice = $TiktokProductPrice[$index] ?? null;
-                $theTiktokQuantity = $shopeeTiktokQuantity[$index] ?? null;
+                $theTiktokQuantity = $tiktokProductQuantity[$index] ?? null;
     
                 if ($theTiktokPrice && $theTiktokQuantity) {
                     $amount = $theTiktokPrice * $theTiktokQuantity;
