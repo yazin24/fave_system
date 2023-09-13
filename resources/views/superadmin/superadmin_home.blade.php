@@ -12,53 +12,21 @@
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-coins text-xl"></i>
-              <div class="text-sm">Sales Monitoring</div>
+              <div class="text-sm">Sales</div>
             </div>
             </a>
           </li>
-          <!-- Add a dropdown for Sales Monitoring -->
-          <li class='relative group h-8 w-60 hover:bg-teal-600 hover:font-bold'>
-            <div class='flex items-center gap-1 cursor-pointer'>
-                
-              <div class="text-sm">Sales Dropdown</div>
-              <button class="transition-transform transform"><i class="fa-solid fa-caret-down text-xl"></i></button>
-            </div>
-            <ul class="absolute hidden mt-2 space-y-2 text-gray-800 group-hover:block max-h-0 overflow-hidden transition-max-h">
-                <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
-                    <div class='flex items-center gap-1'>
-                      <i class="fa-solid fa-coins text-xl"></i>
-                      <div class="text-sm">Sales Monitoring</div>
-                    </div>
-                    </a>
-                  </li>
-                  <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
-                    <div class='flex items-center gap-1'>
-                      <i class="fa-solid fa-coins text-xl"></i>
-                      <div class="text-sm">Sales Monitoring</div>
-                    </div>
-                    </a>
-                  </li>
-                  <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
-                    <div class='flex items-center gap-1'>
-                      <i class="fa-solid fa-coins text-xl"></i>
-                      <div class="text-sm">Sales Monitoring</div>
-                    </div>
-                    </a>
-                  </li>
-            </ul>
-          </li>
-
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{ route('adminpurchasingmonitoring')}}'>
             <div class='flex flex-row items-center gap-1'>
               <div><i class="fa-solid fa-rectangle-list text-xl"></i></div>
-              <div class="text-sm">Purchasing Monitoring</div>
+              <div class="text-sm">Purchasing</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminpurchaseapproval')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-clipboard-question text-xl"></i>
-              <div class="text-sm">Purchase Approval</div>
+              <div class="text-sm">Receiving</div>
             </div>
             </a>
           </li>
@@ -69,7 +37,41 @@
             </div>
             </a>
           </li>
-          <!-- Continue with the rest of your list items -->
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Products</div>
+            </div>
+            </a>
+          </li>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Raw Materials</div>
+            </div>
+            </a>
+          </li>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Manufacturing Storage</div>
+            </div>
+            </a>
+          </li>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Agents</div>
+            </div>
+            </a>
+          </li>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
+            <div class='flex items-center gap-1'>
+              <i class="fa-solid fa-address-book 2xl"></i>
+              <div class="text-sm">Agent Customer</div>
+            </div>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -85,22 +87,5 @@
     </div>
   </div>
 
-  <script>
-    document.querySelectorAll('.relative').forEach((item) => {
-      const button = item.querySelector('button');
-      const dropdown = item.querySelector('ul');
-
-      button.addEventListener('click', () => {
-        dropdown.classList.toggle('hidden');
-        // Adjust the position of content below the dropdown
-        const contentBelowDropdown = item.nextElementSibling;
-        if (!dropdown.classList.contains('hidden')) {
-          contentBelowDropdown.style.marginTop = dropdown.offsetHeight + 'px';
-        } else {
-          contentBelowDropdown.style.marginTop = '0';
-        }
-      });
-    });
-  </script>
 
 @endsection
