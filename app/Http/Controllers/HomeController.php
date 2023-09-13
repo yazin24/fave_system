@@ -15,14 +15,14 @@ class HomeController extends Controller
             $usertype = Auth()->user()->usertype;
 
             //this line will check if the user that login is inventory or admin or others
-            if($usertype == 'inventory'){
-                return view('inventory.inventory_home');
-            }
-            elseif($usertype == 'staff'){
-                return view('staff.staff_home');
+            if($usertype == 'superadmin'){
+                return view('superadmin.superadmin_home');
             }
             elseif($usertype == 'admin'){
                 return view('admin.admin_home');
+            }
+            elseif($usertype == 'staff'){
+                return view('staff.staff_home');
             }
             elseif($usertype == 'purchasing'){
                 return view('purchasing.purchasing_home');
