@@ -16,6 +16,7 @@ use App\Http\Controllers\SalesFunctionsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\SuperAdminFunctionsController;
 use App\Http\Middleware\Sales;
 use Illuminate\Support\Facades\Route;
 
@@ -416,6 +417,12 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
     Route::get('super-admin/agents-monitoring', [SuperAdminController::class, 'agents_monitoring']) -> name('agentsmonitoring');
 
     Route::get('super-admin/agent-customer-monitoring', [SuperAdminController::class, 'agent_customer_monitoring']) -> name('agentcustomermonitoring');
+
+    //Super Admin Functionalities
+
+    Route::get('super-admin/sales-monitoring/shopee-monitoring', [SuperAdminFunctionsController::class, 'sales_shopee_monitoring']) -> name('salesshopeemonitoring');
+
+    Route::get('super-admin/sales-monitoring/lazada-monitoring', [SuperAdminFunctionsController::class, 'sales_lazada_monitoring']) -> name('saleslazadamonitoring');
 
 
 });
