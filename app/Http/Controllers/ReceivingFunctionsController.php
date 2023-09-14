@@ -104,6 +104,57 @@ class ReceivingFunctionsController extends Controller
     return view('receiving.view_product_logs', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
     }
 
+    public function new_raw_materials()
+    {
+        return view('receiving.add_raw_materials');
+    }
+
+    public function add_new_raw_materials(Request $request)
+    {
+
+        $request -> validate([
+
+            'item_name' => 'required',
+            'default_price' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+            'quantity' => 'required|numeric',
+            'item_unit' => 'required',
+
+        ],[
+            'item_name.required' => 'Item Name is empty. Please input item name correctly',
+            'default_price.required' => 'Default price is empty. Please input a correct default price.',
+            'quantity.required' => 'Quantity is missing. Please input 0 if the item has no quantity.',
+            'item_unit.required' => 'Please select item unit.',
+        ]);
+
+        
+
+        $itemName = $request -> input('item_name');
+
+        $itemPrice = $request -> input('default_price');
+
+        $itemQuantity = $request -> input('quantity');
+
+        $itemUnit = $request -> input('item_unit');
+
+        $existingItem = AllItems::where('item_name', $itemName) -> first();
+
+        if($existingItem)
+        {
+            return redirect() -> back() -> with('success', 'Item already exist!');
+        }
+
+        $newrRawMaterials = AllItems::create([
+
+            'item_name' => $itemName,
+            'default_price' => $itemPrice,
+            'quantity' => $itemQuantity,
+            'item_unit' => $itemUnit,
+
+        ]);
+
+        return redirect() -> back() -> with('success', 'New Raw Materials has been added!');
+    }
+
     public function add_stock(Request $request, $allProduct)
     {
         $request -> validate([

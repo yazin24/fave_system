@@ -2,10 +2,12 @@
 
 @section('receiving-body')
 
-<h2 class="font-bold md:text-xl mt-2">Raw Materials</h2>
 
-
-<div class="mt-4">
+<div class="">
+    <div class="flex flex-row justify-between mb-1">
+        <h2 class="font-bold mt-2">Raw Materials</h2>
+        <button class="bg-teal-500 hover:bg-teal-600 p-1 text-xs font-bold text-gray-200 rounded-sm items-center"><a href="{{route('newrawmaterials')}}">Add New</a></button>
+    </div>
     <table class="bg-gray-300 shadow-lg w-full">
         <thead>
             <tr class="md:h-8 bg-gray-900 border-b-2 text-gray-300 w-full">

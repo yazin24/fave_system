@@ -168,6 +168,10 @@ Route::get('receiving/all-products/input-products', [ReceivingFunctionsControlle
 
 Route::post('/receiving/products/add-products', [ReceivingFunctionsController::class, 'add_product_sku']) -> name('addproductsku');
 
+Route::get('receiving/raw-materials/add-new-raw', [ReceivingFunctionsController::class, 'new_raw_materials']) -> name('newrawmaterials');
+
+Route::post('receiving/raw-materials/add-new-raw/add', [ReceivingFunctionsController::class, 'add_new_raw_materials']) -> name('addnewrawmaterials');
+
 Route::get('receiving/all-products/view/log/history/{allProduct}', [ReceivingFunctionsController::class, 'view_product_logs']) -> name('viewproductlogs');
 
 Route::get('receiving/all-products/update-stock/{allProduct}', [ReceivingFunctionsController::class, 'update_stock']) -> name('updatestock');
