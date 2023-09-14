@@ -45,7 +45,7 @@
     </div>
     {{-- {{$agent -> created_at -> format('Y-m-d h:s:i A')}} --}}
 
-    <div class="bg-white-900 text-gray-900 mt-2">
+    <div class="bg-white-900 text-gray-900 mt-2 font-bold">
         <div class="flex flex-row justify-between">
                 <div>
                         <h2 class="font-bold text-blue-900">Lazada Orders</h2>
