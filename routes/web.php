@@ -403,6 +403,21 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/purchasing-monitoring', [SuperAdminController::class, 'purchasing_monitoring']) -> name('purchasingmonitoring');
 
+    Route::get('super-admin/receiving-monitoring', [SuperAdminController::class, 'receiving_monitoring']) -> name('receivingmonitoring');
+
+    Route::get('super-admin/suppliers-monitoring', [SuperAdminController::class, 'suppliers_monitoring']) -> name('suppliersmonitoring');
+
+    Route::get('super-admin/products-monitoring', [SuperAdminController::class, 'products_monitoring']) -> name('productsmonitoring');
+
+    Route::get('super-admin/raw-materials-monitoring', [SuperAdminController::class, 'raw_materials_monitoring']) -> name('rawmaterialsmonitoring');
+
+    Route::get('super-admin/manufacturing-storage-monitoring', [SuperAdminController::class, 'manufacturing_storage_monitoring']) -> name('manufacturingstoragemonitoring');
+
+    Route::get('super-admin/agents-monitoring', [SuperAdminController::class, 'agents_monitoring']) -> name('agentsmonitoring');
+
+    Route::get('super-admin/agent-customer-monitoring', [SuperAdminController::class, 'agent_customer_monitoring']) -> name('agentcustomermonitoring');
+
+
 });
 
 

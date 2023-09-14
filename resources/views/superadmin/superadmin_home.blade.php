@@ -30,49 +30,49 @@
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminpurchaseapproval')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('receivingmonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-hands-holding-circle text-xl"></i>
               <div class="text-sm">Receiving</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('suppliersmonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-truck-field text-xl"></i>
               <div class="text-sm">Suppliers</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('productsmonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-cubes-stacked text-xl"></i>
               <div class="text-sm">Products</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('rawmaterialsmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-address-book 2xl"></i>
               <div class="text-sm">Raw Materials</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('manufacturingstoragemonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-cubes text-xl"></i>
               <div class="text-sm">Manufacturing Storage</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{route('agentsmonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-hat-cowboy text-xl"></i>
               <div class="text-sm">Agents</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2 border-b-2'><a href='{{route('adminsupplierlist')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2 border-b-2'><a href='{{route('agentcustomermonitoring')}}'>
             <div class='flex items-center gap-1'>
                 <i class="fa-solid fa-people-group text-xl"></i>
               <div class="text-sm">Agent Customer</div>
