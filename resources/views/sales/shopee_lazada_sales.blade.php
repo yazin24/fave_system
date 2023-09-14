@@ -15,7 +15,6 @@
         <table class="bg-gray-300 shadow-lg w-full">
             <thead>
                 <tr class="bg-gray-900 border-b-2 text-gray-300 w-96 h-6">
-                    
                     <th class="text-xs text-center w-1/5">ORDER ID</th>
                     <th class="text-xs text-center w-1/5">FULL NAME</th>
                     <th class="text-xs text-center w-1/5">ADDRESS</th>
@@ -57,7 +56,6 @@
         <table class="bg-gray-300 shadow-lg w-full">
             <thead>
                 <tr class="bg-gray-900 border-b-2 text-gray-300 w-96 h-6">
-                    
                         <th class="text-xs text-center w-1/5">ORDER NUMBER</th>
                         <th class="text-xs text-center w-1/5">FULL NAME</th>
                         <th class="text-xs text-center w-1/5">ADDRESS</th>
@@ -69,7 +67,6 @@
             <tbody>
                @foreach($allLazadaSales as $lazadaSale)
                 <tr class="h-6">
-                    
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> order_number}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
                         <td class="border-b-2 text-xs text-center text-[9px]">{{$lazadaSale -> customers_address}}</td>
