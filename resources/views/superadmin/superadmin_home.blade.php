@@ -16,14 +16,14 @@
            
            </h2>
         <ul class="border-t-2 ml-4">
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('salesmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-coins text-xl"></i>
               <div class="text-xs">Sales</div>
             </div>
             </a>
           </li>
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{ route('adminpurchasingmonitoring')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 border-t-2'><a href='{{ route('purchasingmonitoring')}}'>
             <div class='flex flex-row items-center gap-1'>
               <div><i class="fa-solid fa-rectangle-list text-xl"></i></div>
               <div class="text-sm">Purchasing</div>
@@ -89,7 +89,7 @@
             {{ session('success')}}
         @endif
     </div>
-      @yield('admin-body')
+      @yield('superadmin-body')
 
     </div>
   </div>

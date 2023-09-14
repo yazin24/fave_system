@@ -15,6 +15,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesFunctionsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Sales;
 use Illuminate\Support\Facades\Route;
 
@@ -389,6 +390,20 @@ Route::get('admin/outgoing-stocks/pull-out-items/details/{pullOutItem}', [AdminF
 
 });
 
+
+//----------------------------------------------------------SUPER ADMIN-----------------------------------------------------------------
+//----------------------------------------------------------SUPER ADMIN-----------------------------------------------------------------
+
+Route::middleware(['auth', 'superadmin']) -> group(function(){
+
+
+    //Super Admin Routes Sidebar
+
+    Route::get('super-admin/sales-monitoring', [SuperAdminController::class, 'sales_monitoring']) -> name('salesmonitoring');
+
+    Route::get('super-admin/purchasing-monitoring', [SuperAdminController::class, 'purchasing_monitoring']) -> name('purchasingmonitoring');
+
+});
 
 
 
