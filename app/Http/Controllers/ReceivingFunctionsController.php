@@ -136,7 +136,7 @@ class ReceivingFunctionsController extends Controller
 
         $itemUnit = $request -> input('item_unit');
 
-        $existingItem = AllItems::where('item_name', $itemName) -> first();
+        $existingItem = AllItems::whereRaw('LOWER(item_name) = ?', [strtolower($itemName)])->orWhere('item_name', 'LIKE', "%$itemName%")->first();
 
         if($existingItem)
         {
