@@ -18,7 +18,7 @@
                             </select>
                             </div>
                             <div class="flex items-center">
-                                <button type="submit" id="show-item-button" class="font-bold bg-teal-400 text-gray-100 p-0.5 rounded-md hover:bg-teal-600 text-[10px] shadow-md mt-1">Enter</button>
+                                <button type="submit" id="show-item-button" class="font-bold bg-teal-400 text-gray-100 p-0.5 rounded-sm hover:bg-teal-600 text-[10px] shadow-md mt-1">Enter</button>
                             </div>
                         </div>
              </form>

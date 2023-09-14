@@ -5,7 +5,7 @@
 <h2 class="font-bold md:text-xl mt-2">Purchase Monitoring</h2>
 
 
-<div class="mt-1">
+<div class="mt-1 font-bold">
 
     <div class="flex flex-row w-full">
 
@@ -63,20 +63,25 @@
                     @endif
                     <td class="border-b-2 text-xs text-center 
                     @if($purchase -> payment_status == 0)
+                        @if($purchase-> purchaseOrderTerms -> payment_term == 1)
+                            bg-green-500 text-gray-200
+                        @endif
+                
                     @php
                     $dueDate = strtotime($purchase->purchaseOrderTerms->due_date);
                     $today = strtotime('today');
                     $threeDaysAhead = strtotime('+3 days');
                     
                     if ($dueDate < $today) {
-                        echo 'bg-red-500'; // Overdue
+                        echo 'bg-red-500 text-gray-200'; // Overdue
                     } elseif ($dueDate <= $threeDaysAhead) {
-                        echo 'bg-yellow-500'; // Within 3 days
+                        echo 'bg-yellow-500 text-gray-200'; // Within 3 days
                     }
                 @endphp
+               
                 @endif
                     ">
-                        {{date('Y-m-d', strtotime($purchase->purchaseOrderTerms->due_date))}}
+                        {{date('m-d-y', strtotime($purchase->purchaseOrderTerms->due_date))}}
                     </td>
                     <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchase', ['purchase' => $purchase])}}">View</a></td>
                 </tr>

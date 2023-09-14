@@ -10,7 +10,7 @@
 
             <div class="font-bold">
             <h2>PO Number: {{$purchase -> po_number}}</h2>
-            <h2>Due Date: </h2>
+            <h2>Due Date: {{date('m-d-y', strtotime($purchase -> purchaseOrderTerms -> due_date))}}</h2>
             <h2>Expected Amount: ₱{{$totalAmount}}.00</h2>
             </div>
 
@@ -22,7 +22,7 @@
                 <h2 class="mr-1 font-bold">Enter Amount: </h2>
             <div class="flex flex-row items-center text-sm font-bold"> 
                     <input type="number" class="text-xs h-6" name="amountPaid">
-                    <button type="submit" class="ml-1 bg-teal-400 text-gray-200 hover:bg-teal-600 font-bold p-0.5 rounded-md">Submit</button>   
+                    <button type="submit" class="ml-1 bg-teal-400 text-gray-200 hover:bg-teal-600 font-bold p-0.5 rounded-sm">Submit</button>   
             </div>
             </form>
         </div>

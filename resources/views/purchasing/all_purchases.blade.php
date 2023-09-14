@@ -12,12 +12,12 @@
               @csrf 
                     <label class="text-xs" for="date">Select Date:</label>
                     <input type="date" name="date" class="shadow-lg text-xs">
-                    <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 rounded-md shadow-lg text-gray-200 text-xs ml-1">Submit</button>
+                    <button type="submit" class="bg-teal-400 hover:bg-teal-600 p-1 rounded-sm shadow-lg text-gray-200 text-xs ml-1">Submit</button>
                 </form>
             </div>
                      <div class="flex justify-center items-center mt-1.5">  
                          <form method="GET" action="{{route('allpurchaseorder')}}">                           
-                            <button class="bg-teal-400 hover:bg-teal-600 p-1 rounded-md shadow-lg text-gray-200 ml-1 text-xs">See All</button>
+                            <button class="bg-teal-400 hover:bg-teal-600 p-1 rounded-sm shadow-lg text-gray-200 ml-1 text-xs">See All</button>
                          </form>
                         </div>       
          </div>           
