@@ -400,7 +400,7 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     //Super Admin Routes Sidebar
 
-    Route::get('super-admin/sales-monitoring', [SuperAdminController::class, 'sales_monitoring']) -> name('salesmonitoring');
+    Route::get('super-admin/sales-monitoring', [SuperAdminController::class, 'superadmin_sales_monitoring']) -> name('superadminsalesmonitoring');
 
     Route::get('super-admin/purchasing-monitoring', [SuperAdminController::class, 'purchasing_monitoring']) -> name('purchasingmonitoring');
 

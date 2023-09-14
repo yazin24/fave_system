@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 class SuperAdminController extends Controller
 {
-    public function sales_monitoring()
+    public function superadmin_sales_monitoring()
     {
         $shopeeSalesData = ShopeeSales::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_amount')
         ->groupByRaw('DATE(created_at)')

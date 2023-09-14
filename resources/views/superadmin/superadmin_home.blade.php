@@ -16,7 +16,7 @@
            
            </h2>
         <ul class="border-t-2 ml-4">
-          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('salesmonitoring')}}'>
+          <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('superadminsalesmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-coins text-xl"></i>
               <div class="text-xs">Sales</div>
