@@ -31,7 +31,7 @@
                         <div>
                             <a href="{{route('shopeeorderdetailstoedit', ['shopeeOrder' => $shopeeSale -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
-                       
+                       /
                         <div>  
                             <form method="POST" action="{{route('shopeeorderdelete', ['shopeeOrder' => $shopeeSale -> id])}}">
                                 @csrf

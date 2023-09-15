@@ -25,11 +25,11 @@
                     <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
                     <td class="border-b-2 text-xs text-center text-[9px]">{{$lazadaSale -> customers_address}}</td>
                     <td class="border-b-2 text-xs text-center">{{$lazadaSale -> phone_number}}</td>
-                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><div class="flex flex-row justify-center gap-2">
+                    <td class="border-b-2 text-xs text-center"><div class="flex flex-row justify-center gap-2">
                         <div>
                             <a href="{{route('lazadaorderdetailstoedit', ['lazadaOrder' => $lazadaSale -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
-                       
+                       /
                         <div>  
                             <form method="POST" action="{{route('lazadaorderdelete', ['lazadaOrder' => $lazadaSale -> id])}}">
                                 @csrf
