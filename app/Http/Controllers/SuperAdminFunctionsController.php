@@ -24,6 +24,27 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.manual_order_details_to_edit', ['manualOrder' => $manualOrder, 'totalOrderAmount' => $totalOrderAmount]);
     }
 
+    public function manual_order_delete(ManualPurchaseOrder $manualOrder)
+    {
+        $deleteManualOrder = ManualPurchaseOrder::findOrFail($manualOrder -> id);
+
+        if($deleteManualOrder){
+
+            $deleteManualOrder -> manualPurchaseOrderSales() -> delete();
+
+            $deleteManualOrder -> manualPurchaseOrderProducts() -> delete();
+
+            $deleteManualOrder -> delete();
+
+            return redirect() -> back() -> with('success', 'Manual purchase order has been deleted!');
+
+        }else {
+            return redirect() -> back() -> with('success', 'An error occured. Please try again.');
+        }
+
+       
+    }
+
     public function sales_shopee_monitoring()
     {
         $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(10);

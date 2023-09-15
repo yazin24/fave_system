@@ -2,7 +2,7 @@
 
 @section('superadmin-body')
 
-<h2>Manual Order Sales Monitoring</h2>
+<h2 class="font-bold">Manual Order Sales Monitoring</h2>
 
 <div class="bg-white-900 text-gray-900 mt-1">
     <div class="flex justify-end">
@@ -35,12 +35,12 @@
                             <a href="{{route('manualorderdetailstoedit', ['manualOrder' => $manualPurchase -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
                        /
-                        {{-- <div>  
-                            <form method="POST" action="{{route('shopeeorderdelete', ['manualOrder' => $manualPurchase -> id])}}">
+                        <div>  
+                            <form method="POST" action="{{route('manualorderdelete', ['manualOrder' => $manualPurchase -> id])}}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this shopee order?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
-                            </form>  --}}
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this manual purchase order?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
+                            </form> 
                         </div>
                     </div>
                    
