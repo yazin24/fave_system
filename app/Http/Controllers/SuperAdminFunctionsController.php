@@ -52,4 +52,11 @@ class SuperAdminFunctionsController extends Controller
 
         return view('superadmin.sales_lazada_monitoring', ['allLazadaSales' => $allLazadaSales]);
     }
+
+    public function lazada_order_details_to_edit(LazadaOrders $lazadaOrder)
+    {
+        $totalOrderAmount = $lazadaOrder -> lazadaOrderProducts() -> sum('amount');
+
+        return view('superadmin.lazada_orders_details_to_edit', ['lazadaOrder' => $lazadaOrder, 'totalOrderAmount' => $totalOrderAmount]);
+    }
 }

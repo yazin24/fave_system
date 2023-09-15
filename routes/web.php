@@ -428,6 +428,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/sales-monitoring/lazada-monitoring', [SuperAdminFunctionsController::class, 'sales_lazada_monitoring']) -> name('saleslazadamonitoring');
 
+    Route::get('super-admin/sales-monitoring/lazada-monitoring/{lazadaOrder}', [SuperAdminFunctionsController::class, 'lazada_order_details_to_edit']) -> name('lazadaorderdetailstoedit');
+
 
 });
 
