@@ -16,6 +16,13 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.sales_shopee_monitoring', ['allShopeeSales' => $allShopeeSales]);
     }
 
+    public function shopee_order_details_to_edit(ShopeeOrders $shopeeOrder)
+    {
+        $totalOrderAmount = $shopeeOrder -> shopeeOrderProducts() -> sum('amount');
+
+        return view('superadmin.shopee_order_details_to_edit', ['shopeeOrder' => $shopeeOrder, 'totalOrderAmount' => $totalOrderAmount]);
+    }
+
     public function sales_lazada_monitoring()
     {
         $allLazadaSales = LazadaOrders::orderBy('created_at', 'desc') -> paginate(10);
