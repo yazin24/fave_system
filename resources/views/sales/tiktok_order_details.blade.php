@@ -48,7 +48,8 @@
                             <td class="text-xs text-center border-b-2 font-bold">
                                 @if($tiktokItem -> productSku -> sku_size == 3785.41) 1 Gallon
                                 @elseif($tiktokItem -> productSku -> sku_size == 1000) 1 Liter
-                                @else 500 ml
+                                @elseif($tiktokItem -> productSku -> sku_size == 900) 900g
+                                @elseif($tiktokItem -> productSku -> sku_size == 180) 180g
                                 @endif
                             </td>
                             <td class="text-xs text-center border-b-2 font-bold">{{$tiktokItem -> quantity}}</td>
