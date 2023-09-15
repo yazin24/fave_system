@@ -442,6 +442,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/sales-monitoring/tiktok-monitoring/{tiktokOrder}', [SuperAdminFunctionsController::class, 'tiktok_order_details_to_edit']) -> name('tiktokorderdetailstoedit');
 
+    Route::get('user-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
+
 });
 
 

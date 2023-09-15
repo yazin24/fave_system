@@ -9,6 +9,7 @@ use App\Models\ProductSku;
 use App\Models\ShopeeOrders;
 use App\Models\TiktokOrders;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SuperAdminFunctionsController extends Controller
 {
@@ -133,5 +134,80 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.tiktok_order_details_to_edit', ['tiktokOrder' => $tiktokOrder, 'totalOrderAmount' => $totalOrderAmount]);
     }
 
+    public function product_logs_view(ProductSku $allProduct)
+    {
+        $productLogs = [];
+
+        // Retrieve Shopee order transaction details
+        $shopeeOrderDetails = $allProduct->shopeeOrderProducts()
+            ->select('created_at', 'quantity')
+            ->get();
     
+        foreach ($shopeeOrderDetails as $shopeeOrder) {
+            $productLogs[] = [
+                'date' => $shopeeOrder->created_at,
+                'action' => 'Shopee Order',
+                'quantity' => -$shopeeOrder->quantity, // Deduction
+            ];
+        }
+    
+        // Retrieve Lazada order transaction details
+        $lazadaOrderDetails = $allProduct->lazadaOrderProducts()
+            ->select('created_at', 'quantity')
+            ->get();
+    
+        foreach ($lazadaOrderDetails as $lazadaOrder) {
+            $productLogs[] = [
+                'date' => $lazadaOrder->created_at,
+                'action' => 'Lazada Order',
+                'quantity' => -$lazadaOrder->quantity, // Deduction
+            ];
+        }
+    
+        // Retrieve manual purchase order transaction details
+        $manualPurchaseOrderDetails = $allProduct->manualPurchaseOrderProducts()
+            ->select('created_at', 'quantity', 'isBox')
+            ->get();
+    
+        foreach ($manualPurchaseOrderDetails as $manualPurchaseOrder) {
+            $quantity = $manualPurchaseOrder->quantity;
+    
+            if ($manualPurchaseOrder->isBox == 1) {
+                
+                if ($allProduct->sku_size == 3785.41) {
+                    $quantity *= 4;
+    
+                } elseif ($allProduct->sku_size == 1000) {
+                    $quantity *= 12;
+    
+                }elseif ($allProduct->sku_size == 900) { 
+                    $quantity *= 40;
+    
+                }elseif ($allProduct->sku_size == 180) {   
+                    $quantity *= 40;
+                }
+                
+            }
+            $productLogs[] = [
+                'date' => $manualPurchaseOrder->created_at,
+                'action' => 'Manual Purchase',
+                'quantity' => $quantity,
+            ];
+        }
+    
+        // Sort the productLogs by date in descending order
+        usort($productLogs, function ($a, $b) {
+            return $b['date'] <=> $a['date'];
+        });
+    
+        $perPage = 10; // Set the number of items per page
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = array_slice($productLogs, ($currentPage - 1) * $perPage, $perPage);
+        $productLogs = new LengthAwarePaginator($currentItems, count($productLogs), $perPage);
+        $productLogs->setPath(route('viewproductlogs', ['allProduct' => $allProduct->id]));
+
+        return view('superadmin.product_logs_view', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
+    }
+
+   
 }

@@ -2,12 +2,11 @@
 
 @section('superadmin-body')
 
-    <h2>Products Monitoring</h2>
+    <div class="flex flex-row justify-between">
+        <h2 class="font-bold">Products Monitoring</h2>
 
-<div class="flex justify-end">
     <button class="bg-teal-500 hover:bg-teal-600 font-bold p-1 text-xs rounded-sm shadow-md text-gray-200"><a href="{{route('productinput')}}"> Add Products</a></button>
-</div>
-
+    </div>
 
 <div class="bg-white-900 text-gray-900 mt-1">
     <table class="bg-gray-300 shadow-lg w-full">
@@ -40,7 +39,7 @@
                     @endif
                 </td>
                 <td class="border-b-2 text-xs text-center w-1/6 font-bold">{{$allProduct -> sku_quantity}}</td>
-                <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="{{route('viewproductlogs', ['allProduct' => $allProduct])}}">View</a></td>
+                <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="{{route('productlogsview', ['allProduct' => $allProduct])}}">View</a></td>
             </tr>
                 @endforeach
         </tbody>
