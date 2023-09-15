@@ -67,7 +67,7 @@ class SuperAdminFunctionsController extends Controller
 
         if($deleteLazadaOrder){
 
-            $deleteLazadaOrder -> lazadaSale() -> delete();
+            $deleteLazadaOrder -> lazadaSales() -> delete();
 
             $deleteLazadaOrder -> lazadaOrderProducts() -> delete();
 

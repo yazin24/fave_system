@@ -430,6 +430,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/sales-monitoring/lazada-monitoring/{lazadaOrder}', [SuperAdminFunctionsController::class, 'lazada_order_details_to_edit']) -> name('lazadaorderdetailstoedit');
 
+    Route::delete('super-admin/sales-monitoring/lazada-monitoring/delete/{lazadaOrder}', [SuperAdminFunctionsController::class, 'lazada_order_delete']) -> name('lazadaorderdelete');
+
 
 });
 

@@ -29,13 +29,13 @@
                         <div>
                             <a href="{{route('lazadaorderdetailstoedit', ['lazadaOrder' => $lazadaSale -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
-                       |
+                       
                         <div>  
-                            {{-- <form method="POST" action="{{route('lazadaorderdelete', ['lazadaOrder' => $lazadaSale -> id])}}">
+                            <form method="POST" action="{{route('lazadaorderdelete', ['lazadaOrder' => $lazadaSale -> id])}}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
-                            </form>  --}}
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this lazada order?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
+                            </form> 
                         </div>
                     </div>
                 </td>
