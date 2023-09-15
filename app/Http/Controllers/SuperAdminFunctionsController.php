@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ShopeeOrders;
+use App\Models\TiktokOrders;
 use Illuminate\Http\Request;
 
 class SuperAdminFunctionsController extends Controller
@@ -115,5 +116,19 @@ class SuperAdminFunctionsController extends Controller
             return redirect() -> back() -> with('success', 'An error occured! Please try again.');
         }
 
+    }
+
+    public function sales_tiktok_monitoring()
+    {
+        $allTiktokOrders = TiktokOrders::orderBy('created_at', 'desc') -> paginate(10);
+
+        return view('superadmin.sales_tiktok_monitoring', ['allTiktokOrders' => $allTiktokOrders]);
+    }
+
+    public function tiktok_order_details_to_edit(TiktokOrders $tiktokOrder)
+    {
+        $totalOrderAmount = $tiktokOrder -> tiktokOrderProducts() -> sum('amount');
+
+        return view('superadmin.tiktok_order_details_to_edit', ['tiktokOrder' => $tiktokOrder, 'totalOrderAmount' => $totalOrderAmount]);
     }
 }

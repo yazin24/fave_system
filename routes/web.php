@@ -438,6 +438,9 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::delete('super-admin/sales-monitoring/lazada-monitoring/delete/{lazadaOrder}', [SuperAdminFunctionsController::class, 'lazada_order_delete']) -> name('lazadaorderdelete');
 
+    Route::get('super-admin/sales-monitoring/tiktok-monitoring', [SuperAdminFunctionsController::class, 'sales_tiktok_monitoring']) -> name('salestiktokmonitoring');
+
+    Route::get('super-admin/sales-monitoring/tiktok-monitoring/{tiktokOrder}', [SuperAdminFunctionsController::class, 'tiktok_order_details_to_edit']) -> name('tiktokorderdetailstoedit');
 
 });
 
