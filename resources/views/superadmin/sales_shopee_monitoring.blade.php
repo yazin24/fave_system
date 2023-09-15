@@ -32,8 +32,12 @@
                             <a href="{{route('shopeeorderdetailstoedit', ['shopeeOrder' => $shopeeSale -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
                        |
-                        <div>   
-                            <a href="{{route('shopeeorderdetails', ['shopeeSale' => $shopeeSale -> id])}}"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a>
+                        <div>  
+                            <form method="POST" action="{{route('shopeeorderdelete', ['shopeeOrder' => $shopeeSale -> id])}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
+                            </form> 
                         </div>
                     </div>
                    

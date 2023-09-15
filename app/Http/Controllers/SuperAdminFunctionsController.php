@@ -23,6 +23,29 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.shopee_order_details_to_edit', ['shopeeOrder' => $shopeeOrder, 'totalOrderAmount' => $totalOrderAmount]);
     }
 
+    public function shopee_order_delete(ShopeeOrders $shopeeOrder)
+    {
+        $deleteShopeeOrder = ShopeeOrders::findOrFail($shopeeOrder -> id);
+
+        if($deleteShopeeOrder){
+
+            $deleteShopeeOrder -> shopeeSales() -> delete();
+
+            $deleteShopeeOrder -> shopeeOrderProducts() -> delete();
+
+            $deleteShopeeOrder -> delete();
+
+            return redirect() -> back() ->with('success', 'Shopee Order has been deleted!');
+
+        }else {
+
+            return redirect() -> back() ->with('success', 'An error occured. Please try again.');
+
+        }
+
+        
+    }
+
     public function sales_lazada_monitoring()
     {
         $allLazadaSales = LazadaOrders::orderBy('created_at', 'desc') -> paginate(10);

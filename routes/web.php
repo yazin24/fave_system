@@ -424,6 +424,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/sales-monitoring/shopee-monitoring/{shopeeOrder}', [SuperAdminFunctionsController::class, 'shopee_order_details_to_edit']) -> name('shopeeorderdetailstoedit');
 
+    Route::delete('super-admin/sales-monitoring/shopee-monitoring/delete/{shopeeOrder}', [SuperAdminFunctionsController::class, 'shopee_order_delete']) -> name('shopeeorderdelete');
+
     Route::get('super-admin/sales-monitoring/lazada-monitoring', [SuperAdminFunctionsController::class, 'sales_lazada_monitoring']) -> name('saleslazadamonitoring');
 
 

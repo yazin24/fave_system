@@ -5,23 +5,13 @@
 <h2 class="font-bold md:text-xl text-orange-600">Shopee Order Details</h2>
 
 <div class="mt-2">
-    <form method="POST" action="">
+    {{-- <form method="POST" action="{{route('deliveredshopeestatus', ['shopeeSale' => $shopeeSale -> id])}}">
         @csrf
-        @method('PUT')
+        @method('PUT') --}}
     <div class="bg-orange-600 rounded-sm p-1 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
-            <div class="flex flex-row justify-between items-center">
-                <div>
-                    <h2 class="font-bold text-sm mb-1">Order ID: {{$shopeeOrder -> order_id}}</h2>
-                </div>
-                <div class="text-sm underline font-bold text-orange-500 hover:text-orange-600 text-center pb-1">
-                    <a href="">Edit</i></a>
-                </div>
-            </div>
-            
-            
+            <h2 class="font-bold text-sm mb-1">Order ID: {{$shopeeOrder -> order_id}}</h2>
             <h2 class="font-bold text-sm mb-1">Full Name: {{$shopeeOrder -> customers_name}}</h2>
-            
             <h2 class="font-bold text-sm mb-1">Complete Address: {{$shopeeOrder -> customers_address}}</h2>
             <h2 class="font-bold text-sm mb-1 ">Status:
                 @if($shopeeOrder -> status == 7)
@@ -53,9 +43,7 @@
                     <tbody class="bg-gray-300">
                         @foreach($shopeeOrder -> shopeeOrderProducts as $index => $shopeeItem)
                         <tr class="h-10">   
-                            <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> productSku -> full_name}}
-
-                            </td>
+                            <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> productSku -> full_name}}</td>
                             <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> productSku -> productVariants -> variant_name}}</td>
                             <td class="text-xs text-center border-b-2 font-bold">
                                 @if($shopeeItem -> productSku -> sku_size == 3785.41) 1 Gallon
@@ -98,7 +86,7 @@
         </div>
 
     </div>
-    </form>
+    {{-- </form> --}}
 </div>
 
 
