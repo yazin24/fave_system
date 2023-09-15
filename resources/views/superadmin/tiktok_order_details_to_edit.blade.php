@@ -2,7 +2,7 @@
 
 @section('superadmin-body')
 
-<h2>Tiktok Sales Monitoring</h2>
+<h2 class="font-bold">Tiktok Order Details</h2>
 
 <div class="mt-2">
     {{-- <form method="POST" action="{{route('deliveredtiktokstatus', ['tiktokSale' => $tiktokSale -> id])}}">

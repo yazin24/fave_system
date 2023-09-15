@@ -99,7 +99,9 @@ class SuperAdminController extends Controller
 
     public function products_monitoring()
     {
-        return view('superadmin.products_monitoring');
+        $allProducts = ProductSku::all();
+
+        return view('superadmin.products_monitoring', ['allProducts' => $allProducts]);
     }
 
     public function raw_materials_monitoring()
