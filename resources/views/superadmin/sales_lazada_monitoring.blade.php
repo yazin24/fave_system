@@ -31,11 +31,11 @@
                         </div>
                        |
                         <div>  
-                            <form method="POST" action="{{route('lazadaorderdelete', ['lazadaOrder' => $lazadaSale -> id])}}">
+                            {{-- <form method="POST" action="{{route('lazadaorderdelete', ['lazadaOrder' => $lazadaSale -> id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
-                            </form> 
+                            </form>  --}}
                         </div>
                     </div>
                 </td>
