@@ -61,7 +61,7 @@
                     </div>
     
                     <div class="w-full">
-                        <input type="text" class="w-full h-6 text-xs mb-0.5" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 500) 500ml @endif " readonly>
+                        <input type="text" class="w-full h-6 text-xs mb-0.5" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 900) 900g @elseif($allProduct -> sku_size == 180) 180g @endif " readonly>
                         
                     </div>
     
