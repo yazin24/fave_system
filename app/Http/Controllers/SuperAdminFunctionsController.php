@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\LazadaOrders;
+use App\Models\ManualPurchaseOrder;
 use App\Models\ShopeeOrders;
 use Illuminate\Http\Request;
 
 class SuperAdminFunctionsController extends Controller
 {
+    public function sales_manual_monitoring()
+    {
+        $allManualPurchaseOrders = ManualPurchaseOrder::orderBy('created_at', 'desc') -> paginate(10);
+
+        return view('superadmin.sales_manual_monitoring', ['allManualPurchaseOrders' => $allManualPurchaseOrders]);
+    }
+
     public function sales_shopee_monitoring()
     {
         $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(10);

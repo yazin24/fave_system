@@ -8,6 +8,7 @@
             <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Monitoring</h2>
         </div>
         <div class="ml-4">
+            <button class="bg-teal-600 hover:bg-teal-700 px-1 py0.3 rounded-sm font-bold text-gray-200 text-sm ml-2"><a href="{{route('salesmanualmonitoring')}}">Manual</a></button>
             <button class="bg-orange-600 hover:bg-orange-700 px-1 py-0.3 rounded-sm font-bold text-gray-200 text-sm ml-2"><a href="{{route('salesshopeemonitoring')}}">Shopee</a></button>
             <button class="bg-blue-800 hover:bg-blue-900 px-1 py0.3 rounded-sm font-bold text-gray-200 text-sm ml-2"><a href="{{route('saleslazadamonitoring')}}">Lazada</a></button>
             <button class="bg-gray-900 hover:bg-gray-800 px-1 py0.3 rounded-sm font-bold text-gray-200 text-sm ml-2"><a>Tiktok</a></button>
