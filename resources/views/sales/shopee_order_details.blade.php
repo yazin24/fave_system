@@ -48,7 +48,8 @@
                             <td class="text-xs text-center border-b-2 font-bold">
                                 @if($shopeeItem -> productSku -> sku_size == 3785.41) 1 Gallon
                                 @elseif($shopeeItem -> productSku -> sku_size == 1000) 1 Liter
-                                @else 500 ml
+                                @elseif($shopeeItem -> productSku -> sku_size == 900) 900g
+                                @elseif($shopeeItem -> productSku -> sku_size == 180) 180g
                                 @endif
                             </td>
                             <td class="text-xs text-center border-b-2 font-bold">{{$shopeeItem -> quantity}}</td>
