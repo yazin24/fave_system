@@ -17,6 +17,13 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.sales_manual_monitoring', ['allManualPurchaseOrders' => $allManualPurchaseOrders]);
     }
 
+    public function manual_order_details_to_edit(ManualPurchaseOrder $manualOrder)
+    {
+        $totalOrderAmount = $manualOrder -> manualPurchaseOrderProducts() -> sum('amount');
+
+        return view('superadmin.manual_order_details_to_edit', ['manualOrder' => $manualOrder, 'totalOrderAmount' => $totalOrderAmount]);
+    }
+
     public function sales_shopee_monitoring()
     {
         $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(10);

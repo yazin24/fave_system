@@ -29,18 +29,18 @@
                 <td class="border-b-2 text-xs text-center">{{$manualPurchase ->  customers_name}}</td>
                 <td class="border-b-2 text-xs text-center">{{$manualPurchase -> contact_number}}</td>
                 <td class="border-b-2 text-xs text-center">{{$manualPurchase -> address}}</td>
-                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold">
+                <td class="border-b-2 text-xs text-center">
                     <div class="flex flex-row justify-center gap-2">
                         <div>
-                            <a href="{{route('shopeeorderdetailstoedit', ['manualOrder' => $manualPurchase -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
+                            <a href="{{route('manualorderdetailstoedit', ['manualOrder' => $manualPurchase -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 rounded-sm hover:text-teal-700"></i></a>
                         </div>
                        /
-                        <div>  
+                        {{-- <div>  
                             <form method="POST" action="{{route('shopeeorderdelete', ['manualOrder' => $manualPurchase -> id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure you want to delete this shopee order?')"><i class="fa-solid fa-trash text-red-600 rounded-sm  hover:text-red-700"></i></a></button>
-                            </form> 
+                            </form>  --}}
                         </div>
                     </div>
                    
