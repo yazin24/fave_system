@@ -13,6 +13,7 @@ use App\Models\ProductSku;
 use App\Models\PurchaseOrder;
 use App\Models\ShopeeOrderProducts;
 use App\Models\ShopeeSales;
+use App\Models\Suppliers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -152,12 +153,18 @@ class SuperAdminController extends Controller
 
     public function receiving_monitoring()
     {
-        return view('superadmin.receiving_monitoring');
+        $receivedPurchaseOrders = PurchaseOrder::where('del_status', 4)
+                                ->orderBy('created_at', 'desc')
+                                ->paginate(10);
+
+        return view('superadmin.receiving_monitoring', ['receivedPurchaseOrders' => $receivedPurchaseOrders]);
     }
 
     public function suppliers_monitoring()
     {
-        return view('superadmin.suppliers_monitoring');
+        $allSuppliers = Suppliers::all();
+
+        return view('superadmin.suppliers_monitoring', ['allSuppliers' => $allSuppliers]);
     }
 
     public function products_monitoring()
