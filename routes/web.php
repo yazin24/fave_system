@@ -448,7 +448,13 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::delete('super-admin/purchasing-monitoring/delete/{purchase}', [SuperAdminFunctionsController::class, 'purchasing_order_delete']) -> name('purchasingorderdelete');
 
-    Route::get('user-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
+    Route::get('super-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
+
+    Route::get('super-admin/products-monitoring/view/{allProduct}/add-stock-form', [SuperAdminFunctionsController::class, 'add_stock_form']) -> name('addstockform');
+
+    Route::put('super-admin/products-monitoring/view/{allProduct}/add-stock-form/add-now', [SuperAdminFunctionsController::class, 'add_stock_store']) -> name('addstockstore');
+
+    Route::get('super-admin/raw-materials-monitoring/view/raw-details/{rawMaterial}', [SuperAdminFunctionsController::class, 'view_raw_materials_info']) -> name('viewrawmaterialsinfo');
 
 });
 

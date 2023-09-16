@@ -3,7 +3,7 @@
 @section('superadmin-body')
 
 
-   <h3 class="font-bold">Product: {{$allProduct -> full_name}}<a class="ml-2 border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline" href="{{route('updatestock', ['allProduct' => $allProduct])}}">Update</a></h3>
+   <h3 class="font-bold">Product: {{$allProduct -> full_name}}<a class="ml-2 border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline" href="{{route('addstockform', ['allProduct' => $allProduct])}}">Update</a></h3>
 
 <div class="">
     <table class="bg-gray-300 shadow-lg w-full">

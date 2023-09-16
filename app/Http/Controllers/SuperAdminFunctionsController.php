@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllItems;
 use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
@@ -169,6 +170,39 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.purchasing_monitoring');
     }
 
+    public function add_stock_form(ProductSku $allProduct)
+    {
+        return view('superadmin.add_stock_form', ['allProduct' => $allProduct]);
+    }
+
+    public function add_stock_store(Request $request, ProductSku $allProduct)
+    {
+        $request -> validate([
+
+            'quantity' => 'required|numeric',
+        ],[
+            'quantity.required' => 'Quantity must be a number.',
+        ]);
+
+        $theStock = ProductSku::findOrFail($allProduct -> id);
+
+        $quantityToAdd = $request -> input('quantity');
+
+        $totalQuantity = $theStock -> sku_quantity + $quantityToAdd;
+
+        $theStock -> update(['sku_quantity' => $totalQuantity]);
+
+        $theStock -> addStockProductHistory() -> create([
+
+            'product_sku_id' => $theStock -> id,
+            'quantity' => $quantityToAdd,
+
+        ]);
+        $theStock -> save();
+
+        return redirect() -> back() -> with('success', 'Stock added successfully!');
+    }
+
     public function product_logs_view(ProductSku $allProduct)
     {
         $productLogs = [];
@@ -248,13 +282,21 @@ class SuperAdminFunctionsController extends Controller
         });
     
         $perPage = 10; // Set the number of items per page
+
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
         $currentItems = array_slice($productLogs, ($currentPage - 1) * $perPage, $perPage);
+
         $productLogs = new LengthAwarePaginator($currentItems, count($productLogs), $perPage);
+
         $productLogs->setPath(route('viewproductlogs', ['allProduct' => $allProduct->id]));
 
         return view('superadmin.product_logs_view', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
     }
 
-   
+    public function view_raw_materials_info(AllItems $rawMaterial)
+    {
+        return view('superadmin.view_raw_materials_info', ['rawMaterial' => $rawMaterial]);
+    }
+
 }
