@@ -33,6 +33,18 @@ class ReceivingFunctionsController extends Controller
     {
     $productLogs = [];
 
+    $addStockQuantity = $allProduct -> addStockProductHistory()
+        -> select('created_at', 'quantity')
+        -> get();
+
+        foreach($addStockQuantity as $addStock){
+            $productLogs[] = [
+                'date' => $addStock -> created_at,
+                'action' => 'Added Stock',
+                'quantity' => $addStock -> quantity,
+            ];
+        }
+
     // Retrieve Shopee order transaction details
     $shopeeOrderDetails = $allProduct->shopeeOrderProducts()
         ->select('created_at', 'quantity')
@@ -42,7 +54,7 @@ class ReceivingFunctionsController extends Controller
         $productLogs[] = [
             'date' => $shopeeOrder->created_at,
             'action' => 'Shopee Order',
-            'quantity' => -$shopeeOrder->quantity, // Deduction
+            'quantity' => $shopeeOrder->quantity, // Deduction
         ];
     }
 
@@ -55,7 +67,7 @@ class ReceivingFunctionsController extends Controller
         $productLogs[] = [
             'date' => $lazadaOrder->created_at,
             'action' => 'Lazada Order',
-            'quantity' => -$lazadaOrder->quantity, // Deduction
+            'quantity' => $lazadaOrder->quantity, // Deduction
         ];
     }
 
@@ -170,6 +182,15 @@ class ReceivingFunctionsController extends Controller
         $totalQuantity = $theStock -> sku_quantity + $quantityToAdd;
 
         $theStock -> update(['sku_quantity' => $totalQuantity]);
+
+        $theStock -> addStockProductHistory() -> create([
+
+            'product_sku_id' => $theStock -> id,
+            'quantity' => $quantityToAdd,
+
+        ]);
+
+        $theStock -> save();
 
         return redirect()->back()->with('success', 'Stock added successfully.');
 
