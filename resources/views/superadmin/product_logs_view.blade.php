@@ -20,7 +20,7 @@
                 <tr class="h-6 md:h-8">
                     <td class="border-b-2 text-xs text-center">{{$log['date'] -> format('Y-m-d')}}</td>
                     <td class="border-b-2 text-xs text-center">{{$log['action']}}</td>
-                    <td class="border-b-2 text-xs text-center">{{abs($log['quantity'])}}</td>
+                    <td class="border-b-2 text-xs text-center">{{$log['quantity']}}</td>
                     {{-- <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:text-red-600 hover:font-bold hover:underline"><a href="{{route('updatestock', ['allProduct' => $allProduct])}}">Update</a></td> --}}
                 </tr>
             @endforeach

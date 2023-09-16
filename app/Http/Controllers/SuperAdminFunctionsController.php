@@ -173,6 +173,18 @@ class SuperAdminFunctionsController extends Controller
     {
         $productLogs = [];
 
+        $addStockQuantity = $allProduct -> addStockProductHistory()
+         -> select('created_at', 'quantity')
+         -> get();
+
+         foreach($addStockQuantity as $addStock){
+            $productLogs[] = [
+                'date' => $addStock -> created_at,
+                'action' => 'Added Stock',
+                'quantity' => $addStock -> quantity,
+            ];
+         }
+
         // Retrieve Shopee order transaction details
         $shopeeOrderDetails = $allProduct->shopeeOrderProducts()
             ->select('created_at', 'quantity')
@@ -226,7 +238,7 @@ class SuperAdminFunctionsController extends Controller
             $productLogs[] = [
                 'date' => $manualPurchaseOrder->created_at,
                 'action' => 'Manual Purchase',
-                'quantity' => $quantity,
+                'quantity' => -$quantity,
             ];
         }
     
