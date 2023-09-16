@@ -427,5 +427,59 @@ class SuperAdminFunctionsController extends Controller
 
         return view('superadmin.storage_sku_view_logs', ['storageSku' => $storageSku, 'logs' => $logs]);
     }
+
+    public function storage_sku_update_form(ManufacturingStorage $storageSku)
+    {
+        return view('superadmin.storage_sku_update', ['storageSku' => $storageSku]);
+    }
+
+    public function storage_sku_update_store(Request $request, ManufacturingStorage $storageSku)
+    {
+        $skuStorage = ManufacturingStorage::findOrFail($storageSku -> id);
+
+        $skuStorageQuantity = $skuStorage -> quantity;
+
+        $request -> validate([
+            'action' => 'string|required',
+            'quantity' => 'numeric|required',
+        ],[
+            'action.required' => 'Choosing Action is needed to proceed',
+            'quantity.required' => 'Quantity must be number'
+        ]);
+
+        $action = $request -> input('action');
+
+        $quantity = $request -> input('quantity');
+
+        if($action === 'Add'){
+            $theQuantity = $skuStorageQuantity + $quantity;
+
+            $skuStorage  -> update([
+                'quantity' => $theQuantity,
+            ]);
+
+            $skuStorage -> storageLogHistory() -> create([
+                'sku_storage_id' => $skuStorage -> id,
+                'quantity' => $quantity,
+                'action' => $action,
+            ]);
+        }elseif($action === 'Subtract') {
+            $theQuantity = $skuStorageQuantity - $quantity;
+
+            $skuStorage  -> update([
+                'quantity' => $theQuantity,
+            ]);
+
+            $skuStorage -> storageLogHistory() -> create([
+                'sku_storage_id' => $skuStorage -> id,
+                'quantity' => $quantity,
+                'action' => $action,
+            ]);
+        }
+
+        $skuStorage -> save();
+
+        return redirect() -> back() -> with('success', 'Sku Storage has been updated!');
+    }
     
 }

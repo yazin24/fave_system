@@ -470,6 +470,10 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/manufacturing-storage-monitoring/{storageSku}/view/log/history', [SuperAdminFunctionsController::class, 'storage_sku_view_logs']) -> name('storageskuviewlogs');
 
+    Route::get('super-admin/manufacturing-storage-monitoring/view/{storageSku}/update-form', [SuperAdminFunctionsController::class, 'storage_sku_update_form']) -> name('storageskuupdateform');
+
+    Route::put('super-admin/manufacturing-storage-monitoring/view/{storageSku}/update-form/update-now', [SuperAdminFunctionsController::class, 'storage_sku_update_store']) -> name('storageskuupdatestore');
+
 });
 
 

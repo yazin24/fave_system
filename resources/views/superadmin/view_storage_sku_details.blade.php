@@ -24,7 +24,7 @@
             
                 <div class="flex flex-row items-center mt-2">
                     <div>
-                        <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><a href="{{route('storageoutputform', ['storageSku' => $storageSku -> id])}}"><i class="fa-solid fa-pen-to-square mr-1"></i>Update</a></button>
+                        <button class="bg-teal-500 p-1 text-xs rounded-md font-bold text-gray-200 shadow-md"><a href="{{route('storageskuupdateform', ['storageSku' => $storageSku -> id])}}"><i class="fa-solid fa-pen-to-square mr-1"></i>Update</a></button>
                     </div>
                 </div>
                
