@@ -418,6 +418,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/agent-customer-monitoring', [SuperAdminController::class, 'agent_customer_monitoring']) -> name('agentcustomermonitoring');
 
+
+
     //Super Admin Functionalities
 
     Route::get('super-admin/sales-monitoring/manual-monitoring', [SuperAdminFunctionsController::class, 'sales_manual_monitoring']) -> name('salesmanualmonitoring');
@@ -463,6 +465,10 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
     Route::post('super-admin/raw-materials/add-new/add-now', [SuperAdminFunctionsController::class, 'add_new_raw_materials_store']) -> name('addnewrawmaterialsstore');
 
     Route::get('super-admin/raw-materials-monitoring/view/raw-details/{rawMaterial}', [SuperAdminFunctionsController::class, 'view_raw_materials_info']) -> name('viewrawmaterialsinfo');
+
+    Route::get('super-admin/manufacturing-storage-monitoring/{storageSku}/view', [SuperAdminFunctionsController::class, 'view_storage_sku_details']) -> name('viewstorageskudetails');
+
+    Route::get('super-admin/manufacturing-storage-monitoring/{storageSku}/view/log/history', [SuperAdminFunctionsController::class, 'storage_sku_view_logs']) -> name('storageskuviewlogs');
 
 });
 

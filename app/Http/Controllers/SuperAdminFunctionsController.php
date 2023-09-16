@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AllItems;
 use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
+use App\Models\ManufacturingStorage;
 use App\Models\ProductSku;
 use App\Models\PurchaseOrder;
 use App\Models\ShopeeOrders;
@@ -410,6 +411,21 @@ class SuperAdminFunctionsController extends Controller
         $rawMaterialsTransactions -> setPath(route('rawmaterialsviewdetails', ['rawMaterial' => $rawMaterial->id]));
 
         return view('superadmin.view_raw_materials_info', ['rawMaterial' => $rawMaterial, 'rawMaterialsTransactions' => $rawMaterialsTransactions]);
+    }
+
+    public function view_storage_sku_details(ManufacturingStorage $storageSku)
+    {
+
+        return view('superadmin.view_storage_sku_details', ['storageSku' => $storageSku]);
+    }
+
+    public function storage_sku_view_logs(ManufacturingStorage $storageSku)
+    {
+        $logs = $storageSku->storageLogHistory()
+        ->orderByDesc('created_at')
+        ->paginate(10);
+
+        return view('superadmin.storage_sku_view_logs', ['storageSku' => $storageSku, 'logs' => $logs]);
     }
     
 }
