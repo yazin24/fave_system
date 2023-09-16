@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
+use App\Models\PurchaseOrder;
 use App\Models\ShopeeOrders;
 use App\Models\TiktokOrders;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SuperAdminFunctionsController extends Controller
 {
@@ -81,7 +84,6 @@ class SuperAdminFunctionsController extends Controller
             return redirect() -> back() ->with('success', 'An error occured. Please try again.');
 
         }
-
         
     }
 
@@ -132,6 +134,30 @@ class SuperAdminFunctionsController extends Controller
         $totalOrderAmount = $tiktokOrder -> tiktokOrderProducts() -> sum('amount');
 
         return view('superadmin.tiktok_order_details_to_edit', ['tiktokOrder' => $tiktokOrder, 'totalOrderAmount' => $totalOrderAmount]);
+    }
+
+    public function view_details_purchasing_order(PurchaseOrder $purchase)
+    {   
+        $totalOrderAmount = $purchase -> purchaseOrderItems() -> sum('amount');
+
+        return view('superadmin.view_details_purchasing_order', ['purchase' => $purchase, 'totalOrderAmount' => $totalOrderAmount]);
+    }
+
+    public function superadmin_approve_po(PurchaseOrder $purchase)
+    {
+        $status = 1;
+
+        $name = Auth::user() -> name;
+
+        $purchase -> update([
+            'status' => $status,
+            'approved_by' => $name,
+        ]);
+
+        $purchase -> save();
+
+        Session::flash('success', 'Purchase order has been approved!');
+        return view('superadmin.purchasing_monitoring');
     }
 
     public function product_logs_view(ProductSku $allProduct)

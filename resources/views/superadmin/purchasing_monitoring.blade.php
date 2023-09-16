@@ -83,7 +83,7 @@
                     ">
                         {{date('m-d-y', strtotime($purchase->purchaseOrderTerms->due_date))}}
                     </td>
-                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewpurchase', ['purchase' => $purchase])}}">View</a></td>
+                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewdetailspurchasingorder', ['purchase' => $purchase -> id])}}">View</a></td>
                 </tr>
                 @endforeach
             </tbody>

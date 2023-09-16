@@ -442,6 +442,10 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/sales-monitoring/tiktok-monitoring/{tiktokOrder}', [SuperAdminFunctionsController::class, 'tiktok_order_details_to_edit']) -> name('tiktokorderdetailstoedit');
 
+    Route::get('super-admin/purchasing-monitoring/view-purchasing-order/{purchase}', [SuperAdminFunctionsController::class, 'view_details_purchasing_order']) -> name('viewdetailspurchasingorder');
+
+    Route::put('super-admin/purchasing-monitoring/view-purchasing-order/{purchase}/approve', [SuperAdminFunctionsController::class, 'superadmin_approve_po']) -> name('superadminapprovepo');
+
     Route::get('user-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
 
 });
