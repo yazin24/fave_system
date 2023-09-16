@@ -49,6 +49,11 @@ class ProductSku extends Model
         return $this -> hasMany(ManufacturingStorage::class, 'sku_id');
     }
 
+    public function addStockProductHistory()
+    {
+        return $this -> hasOne(AddStockProductHistory::class, 'product_sku_id');
+    }
+
     protected $fillable = [
         'barcode',
         'variant_id', 
