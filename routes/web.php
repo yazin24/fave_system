@@ -448,6 +448,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/receiving-monitoring/view/{receivedPurchaseOrder}', [SuperAdminFunctionsController::class, 'view_details_receive_po']) -> name('viewdetailsreceivepo');
 
+    Route::get('super-admin/supplier-monitoring/view/{supplier}', [SuperAdminFunctionsController::class, 'supplier_details_view']) -> name('supplierdetailsview');
+
     Route::delete('super-admin/purchasing-monitoring/delete/{purchase}', [SuperAdminFunctionsController::class, 'purchasing_order_delete']) -> name('purchasingorderdelete');
 
     Route::get('super-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');

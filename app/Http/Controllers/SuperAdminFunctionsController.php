@@ -9,6 +9,7 @@ use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
 use App\Models\PurchaseOrder;
 use App\Models\ShopeeOrders;
+use App\Models\Suppliers;
 use App\Models\TiktokOrders;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -153,9 +154,11 @@ class SuperAdminFunctionsController extends Controller
         return redirect(route('purchasingmonitoring')) -> with('success', 'Purchase order has been deleted!');
     }
 
-    public function supplier_details_view()
+    public function supplier_details_view(Suppliers $supplier)
     {
-        return view('superadmin');
+        $supplier -> load('supplierItems.purchaseOrderItems.allItems');
+
+        return view('superadmin.supplier_details_view', ['supplier' => $supplier]);
     }
 
     public function superadmin_approve_po(PurchaseOrder $purchase)

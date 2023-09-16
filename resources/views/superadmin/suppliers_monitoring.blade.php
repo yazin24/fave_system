@@ -25,7 +25,7 @@
                                 <td class="border-b-2 text-xs text-center">{{$supplier -> supplier_name}}</td>
                                 <td class="border-b-2 text-xs text-center">{{$supplier -> contact_number}}</td>
                                 <td class="border-b-2 text-xs text-center">{{$supplier -> supplier_address}}</td>
-                                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('adminsupplierdetails', ['supplier' => $supplier])}}">View</a></td>
+                                <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('supplierdetailsview', ['supplier' => $supplier])}}">View</a></td>
                             </tr>
                             @endforeach
                         </tbody>
