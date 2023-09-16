@@ -153,6 +153,11 @@ class SuperAdminFunctionsController extends Controller
         return redirect(route('purchasingmonitoring')) -> with('success', 'Purchase order has been deleted!');
     }
 
+    public function supplier_details_view()
+    {
+        return view('superadmin');
+    }
+
     public function superadmin_approve_po(PurchaseOrder $purchase)
     {
         $status = 1;
@@ -294,43 +299,61 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.product_logs_view', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
     }
 
+    public function view_details_receive_po(PurchaseOrder $receivedPurchaseOrder)
+    {
+        $totalAmount = $receivedPurchaseOrder -> purchaseOrderItems() -> sum('amount');
+
+        return view('superadmin.view_receive_po_details', ['receivedPurchaseOrder' => $receivedPurchaseOrder, 'totalAmount' => $totalAmount]);
+    }
+
     public function add_new_raw_materials()
     {
         return view('superadmin.add_new_raw_materials');
     }
 
-    public function add_new_materials_store(Request $request)
+    public function add_new_raw_materials_store(Request $request)
     {
-        $request->validate([
-            'variant_name' => 'required|numeric',
-            'barcode' => 'required',
-            'full_name' => 'required',
-            'sku_size' => 'required|in:180,900,1000,3785.41',
-            'sku_quantity' => 'numeric',
-        ], [
-            'variant_name.required' => 'Variant is required.',
-            'barcode.required' => 'Barcode is required.',
-            'full_name.required' => 'Full name is required.',
-            'sku_size.required' => 'SKU size is required.',
-            'sku_quantity.numeric' => 'SKU quantity must be numbers.',
+        $request -> validate([
+
+            'item_name' => 'required',
+            'default_price' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+            'quantity' => 'required|numeric',
+            'item_unit' => 'required',
+
+        ],[
+            'item_name.required' => 'Item Name is empty. Please input item name correctly',
+            'default_price.required' => 'Default price is empty. Please input a correct default price.',
+            'quantity.required' => 'Quantity is missing. Please input 0 if the item has no quantity.',
+            'item_unit.required' => 'Please select item unit.',
         ]);
 
-        $newProductSku = ProductSku::create([
-            'variant_id' => $request -> variant_name,
-            'barcode' => $request -> barcode,
-            'full_name' => $request -> full_name,
-            'sku_size' => $request -> sku_size,
-            'sku_quantity' => $request -> sku_quantity,
+        
+
+        $itemName = $request -> input('item_name');
+
+        $itemPrice = $request -> input('default_price');
+
+        $itemQuantity = $request -> input('quantity');
+
+        $itemUnit = $request -> input('item_unit');
+
+        $existingItem = AllItems::whereRaw('LOWER(item_name) = ?', [strtolower($itemName)])->orWhere('item_name', 'LIKE', "%$itemName%")->first();
+
+        if($existingItem)
+        {
+            return redirect() -> back() -> with('success', 'Item already exist!');
+        }
+
+        $newrRawMaterials = AllItems::create([
+
+            'item_name' => $itemName,
+            'default_price' => $itemPrice,
+            'quantity' => $itemQuantity,
+            'item_unit' => $itemUnit,
+
         ]);
 
-        $newProductSku -> manufacturingStorage() -> create([
-
-            'sku_id' => $newProductSku -> id,
-            'quantity' => 0,
-
-        ]);
-
-        return redirect() -> back() -> with('success', 'Product Sku has been added!');
+        return redirect() -> back() -> with('success', 'New Raw Materials has been added!');
     }
 
     public function view_raw_materials_info(AllItems $rawMaterial)

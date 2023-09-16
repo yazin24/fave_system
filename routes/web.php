@@ -446,6 +446,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::put('super-admin/purchasing-monitoring/view-purchasing-order/{purchase}/approve', [SuperAdminFunctionsController::class, 'superadmin_approve_po']) -> name('superadminapprovepo');
 
+    Route::get('super-admin/receiving-monitoring/view/{receivedPurchaseOrder}', [SuperAdminFunctionsController::class, 'view_details_receive_po']) -> name('viewdetailsreceivepo');
+
     Route::delete('super-admin/purchasing-monitoring/delete/{purchase}', [SuperAdminFunctionsController::class, 'purchasing_order_delete']) -> name('purchasingorderdelete');
 
     Route::get('super-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
@@ -456,7 +458,7 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/raw-materials-monitoring/add-new', [SuperAdminFunctionsController::class, 'add_new_raw_materials']) -> name('addnewrawmaterials');
 
-    Route::post('super-admin/raw-materials/add-new/add-now', [SuperAdminFunctionsController::class, 'add_new_materials_store']) -> name('addnewmaterialsstore');
+    Route::post('super-admin/raw-materials/add-new/add-now', [SuperAdminFunctionsController::class, 'add_new_raw_materials_store']) -> name('addnewrawmaterialsstore');
 
     Route::get('super-admin/raw-materials-monitoring/view/raw-details/{rawMaterial}', [SuperAdminFunctionsController::class, 'view_raw_materials_info']) -> name('viewrawmaterialsinfo');
 

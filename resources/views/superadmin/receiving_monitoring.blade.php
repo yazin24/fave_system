@@ -29,7 +29,7 @@
                     @endif
                     </td>
                     <td class="border-b-2 text-xs text-center w-1/6 text-red-500 hover:underline hover:font-bold">
-                        <a href="{{route('viewreceived', ['receivedPurchaseOrder' => $receivedPurchaseOrder -> id])}}">View</a>
+                        <a href="{{route('viewdetailsreceivepo', ['receivedPurchaseOrder' => $receivedPurchaseOrder -> id])}}">View</a>
                     </td>
                 </tr>
                 @endforeach
