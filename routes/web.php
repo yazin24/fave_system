@@ -456,6 +456,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::get('super-admin/raw-materials-monitoring/add-new', [SuperAdminFunctionsController::class, 'add_new_raw_materials']) -> name('addnewrawmaterials');
 
+    Route::post('super-admin/raw-materials/add-new/add-now', [SuperAdminFunctionsController::class, 'add_new_materials_store']) -> name('addnewmaterialsstore');
+
     Route::get('super-admin/raw-materials-monitoring/view/raw-details/{rawMaterial}', [SuperAdminFunctionsController::class, 'view_raw_materials_info']) -> name('viewrawmaterialsinfo');
 
 });

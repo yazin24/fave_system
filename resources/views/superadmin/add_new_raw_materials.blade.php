@@ -16,7 +16,7 @@
   <h2>Add New Raw Materials</h2>
   <div class="bg-gray-900 p-1 rounded-sm w-full md:w-1/2 lg:w-1/3">
     <div class="bg-gray-200 p-1">
-        <form method="POST" action="{{route('addnewrawmaterials')}}">
+        <form method="POST" action="{{route('addnewrawmaterialsstore')}}">
             @csrf
             <input type="text" class="rounded-sm w-full text-xs mb-1 h-8" placeholder="Item Name" name="item_name">
             <input type="number" step="0.01" class="rounded-sm w-full text-xs mb-1 h-8" placeholder="Default Price" name="default_price">
