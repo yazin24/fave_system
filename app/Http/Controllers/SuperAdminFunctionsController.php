@@ -296,7 +296,58 @@ class SuperAdminFunctionsController extends Controller
 
     public function view_raw_materials_info(AllItems $rawMaterial)
     {
-        return view('superadmin.view_raw_materials_info', ['rawMaterial' => $rawMaterial]);
+
+
+        $rawMaterialsTransactions = [];
+
+        // $purchaseOrderDetails = $rawMaterial -> purchaseOrderItems()
+        //     -> select('created_at', 'quantity')
+        //     -> get();
+
+        // foreach($purchaseOrderDetails as $purchaseOrder){
+        //     $rawMaterialsTransactions[] = [
+        //         'date' => $purchaseOrder -> created_at,
+        //         'action' => 'Purchasing',
+        //         'quantity' => $purchaseOrder -> quantity,
+        //     ];
+        // }
+
+        $pullOutDetails = $rawMaterial -> pullOutItems()
+            -> select('created_at', 'quantity')
+            -> get();
+
+        foreach($pullOutDetails as $pullOut){
+            $rawMaterialsTransactions[] = [
+                'date' => $pullOut -> created_at,
+                'action' => 'Pull-Out',
+                'quantity' => $pullOut -> quantity,
+            ];
+        }
+
+        $receivingDetails = $rawMaterial -> receivedItems()
+            -> select('created_at', 'quantity_received')
+            -> get();
+
+        foreach($receivingDetails as $receiving){
+            $rawMaterialsTransactions[] = [
+                'date' => $receiving -> created_at,
+                'action' => 'Receiving',
+                'quantity' => $receiving -> quantity_received,
+            ];
+        }
+
+        usort($rawMaterialsTransactions, function ($a, $b) {
+            return $b['date'] <=> $a['date'];
+        });
+    
+        $perPage = 14;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = array_slice($rawMaterialsTransactions, ($currentPage - 1) * $perPage, $perPage);
+        $rawMaterialsTransactions = new LengthAwarePaginator($currentItems, count($rawMaterialsTransactions), $perPage);
+        $rawMaterialsTransactions -> setPath(route('rawmaterialsviewdetails', ['rawMaterial' => $rawMaterial->id]));
+
+        return view('superadmin.view_raw_materials_info', ['rawMaterial' => $rawMaterial, 'rawMaterialsTransactions' => $rawMaterialsTransactions]);
     }
+    
 
 }
