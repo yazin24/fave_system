@@ -294,10 +294,47 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.product_logs_view', ['allProduct' => $allProduct, 'productLogs' => $productLogs]);
     }
 
+    public function add_new_raw_materials()
+    {
+        return view('superadmin.add_new_raw_materials');
+    }
+
+    public function add_new_materials_store(Request $request)
+    {
+        $request->validate([
+            'variant_name' => 'required|numeric',
+            'barcode' => 'required',
+            'full_name' => 'required',
+            'sku_size' => 'required|in:180,900,1000,3785.41',
+            'sku_quantity' => 'numeric',
+        ], [
+            'variant_name.required' => 'Variant is required.',
+            'barcode.required' => 'Barcode is required.',
+            'full_name.required' => 'Full name is required.',
+            'sku_size.required' => 'SKU size is required.',
+            'sku_quantity.numeric' => 'SKU quantity must be numbers.',
+        ]);
+
+        $newProductSku = ProductSku::create([
+            'variant_id' => $request -> variant_name,
+            'barcode' => $request -> barcode,
+            'full_name' => $request -> full_name,
+            'sku_size' => $request -> sku_size,
+            'sku_quantity' => $request -> sku_quantity,
+        ]);
+
+        $newProductSku -> manufacturingStorage() -> create([
+
+            'sku_id' => $newProductSku -> id,
+            'quantity' => 0,
+
+        ]);
+
+        return redirect() -> back() -> with('success', 'Product Sku has been added!');
+    }
+
     public function view_raw_materials_info(AllItems $rawMaterial)
     {
-
-
         $rawMaterialsTransactions = [];
 
         // $purchaseOrderDetails = $rawMaterial -> purchaseOrderItems()
@@ -320,7 +357,7 @@ class SuperAdminFunctionsController extends Controller
             $rawMaterialsTransactions[] = [
                 'date' => $pullOut -> created_at,
                 'action' => 'Pull-Out',
-                'quantity' => $pullOut -> quantity,
+                'quantity' => -$pullOut -> quantity,
             ];
         }
 
@@ -349,5 +386,4 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.view_raw_materials_info', ['rawMaterial' => $rawMaterial, 'rawMaterialsTransactions' => $rawMaterialsTransactions]);
     }
     
-
 }

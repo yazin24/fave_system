@@ -4,8 +4,12 @@
 
 <div class="">
     <div class="flex flex-row justify-between mb-1">
-        <h2 class="font-bold mt-2">Raw Materials Monitoring</h2>
-        <button class="bg-teal-500 hover:bg-teal-600 p-1 text-xs font-bold text-gray-200 rounded-sm items-center"><a href="{{route('newrawmaterials')}}">Add New</a></button>
+            <div>
+                <h2 class="font-bold mt-2">Raw Materials Monitoring</h2>
+            </div>
+            <div class="mt-1.5">
+                <button class="bg-teal-500 hover:bg-teal-600 p-1 text-xs font-bold text-gray-200 rounded-sm items-center"><a href="{{route('addnewrawmaterials')}}">Add New</a></button>
+            </div>    
     </div>
     <table class="bg-gray-300 shadow-lg w-full">
         <thead>
