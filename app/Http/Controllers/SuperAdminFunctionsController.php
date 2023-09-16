@@ -143,6 +143,15 @@ class SuperAdminFunctionsController extends Controller
         return view('superadmin.view_details_purchasing_order', ['purchase' => $purchase, 'totalOrderAmount' => $totalOrderAmount]);
     }
 
+    public function purchasing_order_delete(PurchaseOrder $purchase)
+    {
+        $deletePurchase = PurchaseOrder::findOrFail($purchase -> id);
+
+        $deletePurchase -> delete();
+
+        return redirect(route('purchasingmonitoring')) -> with('success', 'Purchase order has been deleted!');
+    }
+
     public function superadmin_approve_po(PurchaseOrder $purchase)
     {
         $status = 1;

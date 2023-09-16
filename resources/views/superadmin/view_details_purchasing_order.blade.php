@@ -59,21 +59,21 @@
                  </div>
          </div>
 
-         <div>
+         {{-- <div>
             <form method="POST" action="{{route('superadminapprovepo', ['purchase' => $purchase -> id])}}">
                 @csrf
                 @method('PUT')
                 <button class="bg-blue-400 p-1 text-xs rounded-md text-gray-300 hover:bg-blue-700 mr-2 font-bold">Approve</button>
             </form>
-        </div>
+        </div> --}}
 
         <div>
-            <form method="POST" action="{{route('superadminapprovepo', ['purchase' => $purchase -> id])}}">
+            {{-- <form method="POST" action="{{route('superadminapprovepo', ['purchase' => $purchase -> id])}}">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="poAmount" id="poAmount" value="{{$totalAmount}}">
                 <button class="bg-red-400 text-xs p-1 rounded-md text-gray-300 hover:bg-red-600 font-bold">Disapprove</button>
-            </form>
+            </form> --}}
         </div>
 
          @if($purchase -> systemStatus -> status === 'queued')
@@ -82,7 +82,7 @@
         </button>
         @else
         <button class="bg-teal-500 p-1 mt-2 rounded-md text-gray-200 hover:bg-teal-600 text-sm">
-            {{-- <a href="{{route('admingeneratereceipt', ['purchase' => $purchase -> id])}}" > Generate Receipt</a> --}}
+            <a href="{{route('admingeneratereceipt', ['allPurchaseOrder' => $purchase -> id])}}" > Generate Receipt</a>
         </button>
         @endif
     </div>

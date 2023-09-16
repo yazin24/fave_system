@@ -83,7 +83,22 @@
                     ">
                         {{date('m-d-y', strtotime($purchase->purchaseOrderTerms->due_date))}}
                     </td>
-                    <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('viewdetailspurchasingorder', ['purchase' => $purchase -> id])}}">View</a></td>
+                    <td class="border-b-2 text-xs text-center">
+                        <div class="flex flex-row justify-center gap-2">
+                            <div>
+                                <a href="{{route('viewdetailspurchasingorder', ['purchase' => $purchase -> id])}}"><i class="fa-solid fa-pen-to-square text-teal-600 hover:text-teal-700"></i></a>
+                            </div>
+                            /
+                             <div>
+                                <form method="POST" action="{{route('purchasingorderdelete', ['purchase' => $purchase -> id])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="" onclick="return confirm('Do you really want to delete this purchase order?')"><i class="fa-solid fa-trash text-red-600 hover:text-red-700"></i></button>
+                                 </form>
+                             </div>
+                        </div>
+                        
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

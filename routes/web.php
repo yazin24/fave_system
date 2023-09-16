@@ -446,6 +446,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
     Route::put('super-admin/purchasing-monitoring/view-purchasing-order/{purchase}/approve', [SuperAdminFunctionsController::class, 'superadmin_approve_po']) -> name('superadminapprovepo');
 
+    Route::delete('super-admin/purchasing-monitoring/delete/{purchase}', [SuperAdminFunctionsController::class, 'purchasing_order_delete']) -> name('purchasingorderdelete');
+
     Route::get('user-admin/products-monitoring/view/{allProduct}', [SuperAdminFunctionsController::class, 'product_logs_view']) -> name('productlogsview');
 
 });
