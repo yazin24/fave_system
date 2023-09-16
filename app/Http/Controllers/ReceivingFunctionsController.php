@@ -54,7 +54,7 @@ class ReceivingFunctionsController extends Controller
         $productLogs[] = [
             'date' => $shopeeOrder->created_at,
             'action' => 'Shopee Order',
-            'quantity' => $shopeeOrder->quantity, // Deduction
+            'quantity' => -$shopeeOrder->quantity, // Deduction
         ];
     }
 
@@ -67,7 +67,7 @@ class ReceivingFunctionsController extends Controller
         $productLogs[] = [
             'date' => $lazadaOrder->created_at,
             'action' => 'Lazada Order',
-            'quantity' => $lazadaOrder->quantity, // Deduction
+            'quantity' => -$lazadaOrder->quantity, // Deduction
         ];
     }
 
@@ -98,7 +98,7 @@ class ReceivingFunctionsController extends Controller
         $productLogs[] = [
             'date' => $manualPurchaseOrder->created_at,
             'action' => 'Manual Purchase',
-            'quantity' => $quantity,
+            'quantity' => -$quantity,
         ];
     }
 
