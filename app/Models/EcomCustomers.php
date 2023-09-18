@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class EcomCustomers extends Model
 {
-    use HasFactory;
+    protected $table = 'ecom_customers';
+
+    
+
+    protected $fillable = [
+
+        'name',
+        'email',
+        'email_verfied_at',
+        'phone_number',
+        'password',
+        'usertype',
+        'remember_token',
+
+    ];
 }

@@ -14,8 +14,14 @@ return new class extends Migration
         Schema::create('ecom_customer_carts', function (Blueprint $table) {
             $table->id();
             $table -> unsignedBigInteger('ecom_cs_id');
+            $table -> unsignedBigInteger('sku_id');
+            $table -> integer('quantity') -> default(0);
+            $table -> decimal('price', 8, 2) -> default(0);
             $table -> boolean('isPurchase') -> default(0);
             $table->timestamps();
+
+            $table -> foreign('ecom_cs_id') -> references('id') -> on('ecom_customers');
+            $table -> foreign('sku_id') -> references('id') -> on('product_sku');
         });
     }
 

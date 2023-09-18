@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class EcomCustomerCart extends Model
 {
-    use HasFactory;
+    protected $table = 'ecom_customer_carts';
+
+    protected $fillable = [
+
+        'ecom_cs_id',
+        'sku_id',
+        'quantity',
+        'price',
+        'isPurchase',
+
+
+    ];
 }
