@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class EcomCustomerCartItems extends Model
 {
-    protected $table = 'ecom_customer_items';
+    protected $table = 'ecom_customer_cart_items';
+
+    public function ecomCustomerCarts()
+    {
+        return $this -> belongsTo(EcomCustomerCart::class, 'cart_id');
+    }
 
     protected $fillable = [
 
-        'order_id',
+        'cart_id',
         'sku_id',
         'quantity',
         'price'

@@ -19,6 +19,11 @@ class EcomCustomers extends Authenticatable
         return $this -> hasMany(EcomCustomerOrders::class, 'ecom_cs_id');
     }
 
+    public function ecomCustomerCart()
+    {
+        return $this -> hasMany(EcomCustomerCart::class, 'ecom_cs_id');
+    }
+
     protected $fillable = [
 
         'name',

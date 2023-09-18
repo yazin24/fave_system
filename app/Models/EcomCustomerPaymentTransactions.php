@@ -9,7 +9,10 @@ class EcomCustomerPaymentTransactions extends Model
 {
     protected $table = 'ecom_customer_payment_transactions';
 
-    
+    public function ecomCustomerOrders()
+    {
+        return $this -> belongsTo(EcomCustomerOrders::class, 'order_id');
+    }
 
     protected $fillable = [
 
