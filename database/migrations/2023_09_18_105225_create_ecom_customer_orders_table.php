@@ -14,8 +14,15 @@ return new class extends Migration
         Schema::create('ecom_customer_orders', function (Blueprint $table) {
             $table->id();
             $table -> unsignedBigInteger('ecom_cs_id');
-            $table -> 
+            $table -> unsignedBigInteger('status') -> default(3);
+            $table -> string('shipping_address') -> default('');
+            $table -> string('billing_address') -> default('');
+            $table -> string('phone_number') -> default('');
             $table->timestamps();
+
+            $table -> foreign('ecom_cs_id') -> references('id') -> on('ecom_customers');
+            $table -> foreign('status') -> references('id') -> on('system_status');
+            
         });
     }
 
