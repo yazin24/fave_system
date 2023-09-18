@@ -19,7 +19,7 @@ return new class extends Migration
             $table -> decimal('price', 8, 2) -> default(0);
             $table->timestamps();
 
-            $table -> foreign('cart_id') -> references('id') -> on('ecom_customers_carts');
+            $table -> foreign('cart_id') -> references('id') -> on('ecom_customer_carts');
             $table -> foreign('sku_id') -> references('id') -> on('product_sku');
         });
     }
