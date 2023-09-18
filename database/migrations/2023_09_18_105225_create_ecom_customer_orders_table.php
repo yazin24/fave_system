@@ -17,6 +17,7 @@ return new class extends Migration
             $table -> unsignedBigInteger('status') -> default(3);
             $table -> string('shipping_address') -> default('');
             $table -> string('billing_address') -> default('');
+            $table -> string('tracking_number') -> default('');
             $table->timestamps();
 
             $table -> foreign('ecom_cs_id') -> references('id') -> on('ecom_customers');
