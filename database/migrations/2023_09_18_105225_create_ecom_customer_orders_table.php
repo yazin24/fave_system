@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('ecom_customer_orders', function (Blueprint $table) {
             $table->id();
+            $table -> unsignedBigInteger('ecom_cs_id');
+            $table -> 
             $table->timestamps();
         });
     }
