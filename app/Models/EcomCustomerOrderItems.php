@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class EcomCustomerOrderItems extends Model
 {
-    use HasFactory;
+    protected $table = 'ecom_customer_order_items';
+
+    
+
+    protected $fillable = [
+
+        'order_id',
+        'sku_id',
+        'quantity',
+        'price'
+
+    ];
 }
