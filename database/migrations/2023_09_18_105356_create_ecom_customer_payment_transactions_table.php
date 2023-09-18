@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('ecom_customer_payment_transactions', function (Blueprint $table) {
             $table->id();
             $table -> unsignedBigInteger('order_id');
-            // $table -> unsignedBigInteger('transaction_id');
             $table -> string('payment_method');
             $table -> decimal('amount', 8, 2) -> default(0);
-            // $table -> unsignedBigInteger('status');
+            $table -> string('ref_number') -> default('');
             $table->timestamps();
 
             $table -> foreign('order_id') -> references('id') -> on('ecom_customer_orders');
