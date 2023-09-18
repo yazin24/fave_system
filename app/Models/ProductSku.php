@@ -54,6 +54,16 @@ class ProductSku extends Model
         return $this -> hasOne(AddStockProductHistory::class, 'product_sku_id');
     }
 
+    public function ecomCustomerOrderItems()
+    {
+        return $this -> hasMany(EcomCustomerOrderItems::class, 'sku_id');
+    }
+
+    public function ecomCustomerCartItems()
+    {
+        return $this -> hasMany(EcomCustomerCartItems::class, 'sku_id');
+    }
+
     protected $fillable = [
         'barcode',
         'variant_id', 
