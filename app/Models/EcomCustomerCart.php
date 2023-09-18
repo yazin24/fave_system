@@ -17,6 +17,5 @@ class EcomCustomerCart extends Model
         'price',
         'isPurchase',
 
-
     ];
 }
