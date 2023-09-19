@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminFunctionsController;
+use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
@@ -72,6 +73,12 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
 });
 
+
+//----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
+//----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
+
+
+Route::get('/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

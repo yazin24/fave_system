@@ -29,7 +29,34 @@
     </head>
     <body class="font-sans antialiased">
        
-
+        <nav class='p-5 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 shadow md:flex md:items-center md:justify-between'>
+            <div>
+                <span class='text-2xl font-[Poppins]cursor-pointer'></span>
+                <img class='h-14 inline ml-10' src="../images/newlogo.png" alt=""/>   
+            </div>
+  
+              <ul class='md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100'>
+  
+                <li class='mx-4 my-6 md:my-0'>
+                    <a href="{{route('homepage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Home</a>
+                 </li>
+  
+                 <li class='mx-4 my-6 md:my-0'>  
+                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Products</a>
+                 </li> 
+  
+                 <li class='mx-4 my-6 md:my-0'>
+                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>About Us</a>
+                 </li>
+  
+                 <li class='mx-4 my-6 md:my-0'>
+                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Services</a>
+                 </li>
+  
+               
+                
+              </ul>
+          </nav>
 
             <!-- Page Content -->
             <main class="">
