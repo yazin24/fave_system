@@ -24,7 +24,7 @@
     </head>
     <body class="font-sans antialiased">
        
-        <nav class='p-5 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 md:flex md:items-center md:justify-between'>
+        <nav class='p-2 bg-violet-700 md:flex md:items-center md:justify-between'>
             <div>
                 <span class='text-2xl font-[Poppins]cursor-pointer'></span>
                 <img class='h-14 inline ml-10' src="../images/newlogo.png" alt=""/>   
@@ -61,21 +61,21 @@
             </main>
         </div>
     </body>
-    <footer class="bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100">
-        <div class="mb-8 px-8 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 ">
-          <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-  
+    <footer class="">  
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220"><path fill="rgb(153, 51, 255)" fill-opacity="1" d="M0,160L80,154.7C160,149,320,139,480,144C640,149,800,171,960,154.7C1120,139,1280,85,1360,58.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        </svg>
+        <div class="px-8 md:pb-6 bord ">
           <div class="flex md:space-x-14 md:flex-row justify-between mx-8 grid grid-cols-1 md:grid-cols-3">
             <div class="mb-4 md:mb-0">
               <a href="/">
                 <img
-                  src="newlogo.png"
+                  src="../images/newlogo.png"
                   alt=""
                   class="h-24 w-22 cursor-pointer"
                 />
               </a>
             </div>
-  
+
             <div class="flex flex-col">
               <p class="font-semibold text-white">Fave Ecommerce Inc.</p>
               <p class="font-semibold text-white">
@@ -85,43 +85,32 @@
               <p class="font-semibold text-white">0998-887-3878</p>
               <p class="font-semibold text-white">faveecommerce@gmail.com</p>
             </div>
-  
-            <div class="mt-8 md:mt-12 flex flex-row sm:flex-row py-4 mx-auto items-center justify-end space-x-4">
+
+            <div class="mt-8 md:mt-12 flex flex-row sm:flex-row py-4 mx-auto items-center justify-end space-x-1">
               <div class="">
                 <a href="https://www.facebook.com/people/Fave-Ecommerce-Inc/100094725815233/">
-                  <FaFacebookSquare class="h-5 w-5 text-white cursor-pointer" />
+                  <i class="fa-brands fa-facebook h-10 w-10 text-white cursor-pointer"></i>
                 </a>
               </div>
-  
+
               <div class="">
                 <a href="https://www.tiktok.com/@fave.ecommerce?_t=8fGbcYaYbIX&_r=1">
-                  <FaTiktok class="h-5 w-5 text-white cursor-pointer" />
+                  <i class="fa-brands fa-tiktok h-10 w-10 text-white cursor-pointer"></i>
                 </a>
               </div>
-  
+
               <div class="">
                 <a href="https://youtube.com/@Faveecommerce?si=BkbtUjGwI7v4fLfP">
-                  <FaYoutube class="h-5 w-5 text-white cursor-pointer" />
+                  <i class="fa-brands fa-youtube h-10 w-10 text-white cursor-pointer"></i>
                 </a>
               </div>
-  
+
               <div class="">
-                <FaEnvelope class="h-5 w-5 text-white cursor-pointer" />
+                <i class="fa-solid fa-envelope h-10 w-10 text-white cursor-pointer"></i>
               </div>
-  
-              <button
-                class={`fixed bottom-4 right-4 p-2 bg-violet-700  text-black ${
-                  isVisible ? "block" : "hidden"
-                }`}
-                onClick={scrollToTop}
-              >
-                <IoIosArrowDropupCircle
-                  icon={IoIosArrowDropupCircle}
-                  class="text-2xl"
-                />
-              </button>
             </div>
           </div>
-        </div>
-      </footer>
+      </div>
+        
+    </footer>
 </html>

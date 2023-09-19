@@ -16,6 +16,9 @@
     background-image: url("{{ asset('images/washing.jpg') }}");
     background-size: cover;
 }
+.bord {
+    background-color: rgb(153, 51, 255);
+}
 
 .wrapper section {
     z-index: 10;
