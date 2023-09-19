@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'receiving' => \App\Http\Middleware\Receiving::class,
         'sales' => \App\Http\Middleware\Sales::class,
         'sales_agent' => \App\Http\Middleware\SalesAgent::class,
+        'customers' => \App\Http\Middleware\Customers::class,
     ];
 }
