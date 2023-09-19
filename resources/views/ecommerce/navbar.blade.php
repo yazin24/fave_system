@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Fave System</title>
+        <title>Fave Ecommerce Inc</title>
         <link rel="icon" href="{{ asset('images/newfavelogo.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
         <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
@@ -24,7 +24,7 @@
     </head>
     <body class="font-sans antialiased">
        
-        <nav class='p-5 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 shadow md:flex md:items-center md:justify-between'>
+        <nav class='p-5 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 md:flex md:items-center md:justify-between'>
             <div>
                 <span class='text-2xl font-[Poppins]cursor-pointer'></span>
                 <img class='h-14 inline ml-10' src="../images/newlogo.png" alt=""/>   
@@ -48,7 +48,7 @@
                     <a href="{{route('aboutuspage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>About Us</a>
                  </li>
                  <li class='mx-4 my-6 md:my-0'>
-                    <a href="{{route('aboutuspage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
+                    <a href="{{route('loginpage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
                  </li>
                
                 

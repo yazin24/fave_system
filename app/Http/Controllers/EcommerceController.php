@@ -26,4 +26,9 @@ class EcommerceController extends Controller
     {
         return view('ecommerce.about_us_page');
     }
+
+    public function login_page()
+    {
+        return view('ecommerce.login');
+    }
 }

@@ -86,6 +86,8 @@ Route::get('/services', [EcommerceController::class, 'service_page']) -> name('s
 
 Route::get('/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
 
+Route::get('/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
+
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

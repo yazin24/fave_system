@@ -14,7 +14,7 @@
       data-aos-easing="ease-out-cubic"
       data-aos-duration="4000"
     >
-      <h2 class="font-bold text-xl text-yellow-500 mt-2">Honey Lemon</h2> 
+      
       <img src="../images/HONEYLEMON.png" alt="" class="h-32 w-1/10 pb-2 " />
     </div>
     <div class="flex items-center flex-col md:flex-row justify-center md:justify-center gap-16 md:gap-24 mt-10">
@@ -438,7 +438,7 @@
       data-aos-easing="ease-out-cubic"
       data-aos-duration="4000"
     >
-      <h2 class="font-bold text-lime-500 text-xl mt-1">Calamansi</h2>
+      
       <img src="../images/CALAMANSI.png" alt="" class="h-32 w-1/10  pb-2" />
     </div>
 
@@ -863,7 +863,7 @@
       data-aos-easing="ease-out-cubic"
       data-aos-duration="4000"
     >
-     <h2 class="font-bold text-blue-700 text-xl mt-1">Fresh Antibac</h2>
+     
       <img src="../images/ANTIBAC.png" alt="" class="h-32 w-1/10  pb-2" />
     </div>
 
