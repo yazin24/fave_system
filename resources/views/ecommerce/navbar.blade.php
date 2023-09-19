@@ -42,17 +42,16 @@
                  </li>
   
                  <li class='mx-4 my-6 md:my-0'>  
-                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Products</a>
+                    <a href="{{route('productpage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Products</a>
                  </li> 
   
                  <li class='mx-4 my-6 md:my-0'>
-                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>About Us</a>
+                    <a href="{{route('servicepage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Services</a>
                  </li>
-  
+                 
                  <li class='mx-4 my-6 md:my-0'>
-                    <a href="#" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Services</a>
+                    <a href="{{route('aboutuspage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>About Us</a>
                  </li>
-  
                
                 
               </ul>

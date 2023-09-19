@@ -80,6 +80,12 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
 Route::get('/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
+Route::get('/products', [EcommerceController::class, 'product_page']) -> name('productpage');
+
+Route::get('/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
+
+Route::get('/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
+
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

@@ -11,4 +11,19 @@ class EcommerceController extends Controller
     {
         return view('ecommerce.home_page');
     }
+
+    public function product_page()
+    {
+        return view('ecommerce.product_page');
+    }
+
+    public function service_page()
+    {
+        return view('ecommerce.services_page');
+    }
+
+    public function about_us_page()
+    {
+        return view('ecommerce.about_us_page');
+    }
 }
