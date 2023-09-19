@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="overflow-x-hidden">
-    <div class="wrapper flex justify-center items-start">
+    <div class="wrapper flex justify-center items-start z-10">
       <span class="colorlay w-full">
         <section class="flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 rounded-lg mx-8 lg:mx-96 mt-24 md:mt-44">
           <h2 class="text-lg md:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
