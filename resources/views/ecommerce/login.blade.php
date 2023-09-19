@@ -14,7 +14,7 @@
             <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-md text-white cursor mt-2 hover:bg-amber-500">Login</button>
             <div class="flex flex-col md:flex-row gap-2">
             <p class="">Don't have an account?</p> 
-            <p class="underline cursor-pointer"><a href="register">Sign Up</a></p>
+            <p class="underline cursor-pointer"><a href="{{route('registerpage')}}">Sign Up</a></p>
             </div>
         </form>  
     </div>

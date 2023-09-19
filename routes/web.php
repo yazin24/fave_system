@@ -88,6 +88,8 @@ Route::get('/about-us', [EcommerceController::class, 'about_us_page']) -> name('
 
 Route::get('/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
 
+Route::get('/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
+
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

@@ -31,4 +31,9 @@ class EcommerceController extends Controller
     {
         return view('ecommerce.login');
     }
+
+    public function register_page()
+    {
+        return view('ecommerce.register');
+    }
 }
