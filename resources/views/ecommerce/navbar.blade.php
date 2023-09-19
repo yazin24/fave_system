@@ -20,11 +20,6 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         {{-- <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet"> --}}
 
-        <style>
-            .paginator {
-                font-size: 1px !important;
-            }
-        </style>
        
     </head>
     <body class="font-sans antialiased">
