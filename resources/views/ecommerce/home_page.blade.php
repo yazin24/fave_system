@@ -148,7 +148,7 @@
           <div class="bg-violet-700 p-4 rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <FaCheckCircle class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-user-shield text-xl text-gray-200 mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">Safety</span>
             </span>
@@ -172,7 +172,7 @@
           <div class="bg-violet-700 p-4 rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <FaExchangeAlt class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-arrow-right-arrow-left text-xl text-gray-200 mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">
                 Versatility
@@ -198,7 +198,7 @@
           <div class="bg-violet-700 p-4 rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <FaMagic class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-wand-magic-sparkles text-gray-200 text-xl mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">
                 Effectiveness
@@ -226,7 +226,7 @@
           <div class="bg-violet-700 p-4 rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <FaHandsWash class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-hands-bubbles text-gray-200 text-xl mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">
                 Ease Of Use
@@ -252,7 +252,7 @@
           <div class="bg-violet-700 p-4 rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <GiFragrance class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-spray-can-sparkles text-gray-200 text-xl mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">
                 Fragrance And Residue
@@ -278,7 +278,7 @@
           <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4">
             <span class="flex flex-row items-center">
               <span>
-                <FaTree class="text-2xl text-gray-100 mr-1" />
+                <i class="fa-solid fa-seedling text-gray-200 text-xl mr-1"></i>
               </span>
               <span class=" text-lg text-gray-200 font-bold">
                 Environment Friendly

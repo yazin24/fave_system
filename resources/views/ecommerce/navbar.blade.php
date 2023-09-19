@@ -52,6 +52,9 @@
                  <li class='mx-4 my-6 md:my-0'>
                     <a href="{{route('aboutuspage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>About Us</a>
                  </li>
+                 <li class='mx-4 my-6 md:my-0'>
+                    <a href="{{route('aboutuspage')}}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
+                 </li>
                
                 
               </ul>
