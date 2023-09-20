@@ -13,12 +13,21 @@ class CustomerAuthentictedSessionController extends Controller
     {
        $credentials = $request -> only('email', 'password');
 
-       if(Auth::attempt($credentials)){
+       if(Auth::guard('customers') -> attempt($credentials)){
 
         return view('ecommerce.home_page');
+        
        }else{
+
         return redirect() -> back() -> with('success', 'Invalid login credentials');
        }
        
+    }
+
+    public function logout_customer()
+    {
+        Auth::guard('customers') -> logout();
+
+        return redirect() -> route('homepage');
     }
 }

@@ -70,7 +70,7 @@ return [
         ],
         'customers' => [
             'driver' => 'eloquent',
-            'model' => \App\Customers::class,
+            'model' => \App\Models\EcomCustomers::class,
         ],
        
 
