@@ -8,10 +8,11 @@
         <img src="../images/newlogo.png" alt="" class="w-20 h-18 mt-12">
         </div>
         <form action="login-form" class="w-full block mb-10 p-8 border border-solid border-gray-800 rounded-md flex flex-col space-y-2"> 
-            <input type="text" id="fullname" placeholder="Fullname" class="rounded-md p-2 w-72">
-            <input type="text" id="email" placeholder="Email" class="rounded-md p-2 w-72">
-            <input type="text" id="phone" placeholder="Phone Number" class="rounded-md p-2 w-72">
-            <input type="text" id="password" placeholder="Password" class="rounded-md p-2 w-72">
+            <input type="text" id="full_name" id="full_name" placeholder="Fullname" class="rounded-md p-2 w-72">
+            <input type="email" id="email" id="email" placeholder="Email" class="rounded-md p-2 w-72">
+            <input type="text" id="phone" id="phone" placeholder="Phone Number" class="rounded-md p-2 w-72">
+            <input type="password" id="password" id="password" placeholder="Password" class="rounded-md p-2 w-72">
+            <input type="password" id="confirm_password" id="confirm_password" placeholder="Confirm Password" class="rounded-md p-2 w-72">
             <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-md text-white cursor mt-2 hover:bg-amber-500">Sign up</button>
             <div class="flex flex-col md:flex-row gap-2">
             <p class="">Don't have an account?</p> 
