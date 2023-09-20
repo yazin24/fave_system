@@ -32,7 +32,7 @@ class RegisteredCustomerController extends Controller
 
             'name' => $request -> full_name,
             'email' => $request -> email,
-            'phone' => $request -> phone,
+            'phone_number' => $request -> phone,
             'password' => Hash::make($request -> password),
 
         ]);

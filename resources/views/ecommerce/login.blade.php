@@ -3,7 +3,11 @@
 @section('content')
 
  
- 
+<div class="font-bold text-red-500 font-2xl">
+    @if (session('success'))
+        {{ session('success')}}
+    @endif
+</div>
 <div class="container flex justify-center items-center h-screen">
     <div class="form-container p-4 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 shadow backdrop-blur-sm drop-shadow-lg shadow-md h-3/4">
         <div class="flex justify-center">
@@ -26,6 +30,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection
