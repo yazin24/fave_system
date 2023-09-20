@@ -96,7 +96,7 @@ Route::post('fave/register/new', [RegisteredCustomerController::class, 'register
 
 Route::post('fave/login/now', [CustomerAuthentictedSessionController::class, 'login_customer']) -> name('logincustomer');
 
-Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logoutcustomer']) -> name('logoutcustomer');
+Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logout_customer']) -> name('logoutcustomer');
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

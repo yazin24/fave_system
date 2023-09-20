@@ -74,7 +74,7 @@
                                  </x-dropdown-link>
              
                                  <!-- Authentication -->
-                                 <form method="POST" action="{{ route('logout') }}">
+                                 <form method="POST" action="{{ route('logoutcustomer') }}">
                                      @csrf
              
                                      <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">

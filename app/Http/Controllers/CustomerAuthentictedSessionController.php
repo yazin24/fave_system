@@ -15,7 +15,7 @@ class CustomerAuthentictedSessionController extends Controller
 
        if(Auth::guard('customers') -> attempt($credentials)){
 
-        return view('ecommerce.home_page');
+        return redirect() -> route('homepage');
         
        }else{
 
