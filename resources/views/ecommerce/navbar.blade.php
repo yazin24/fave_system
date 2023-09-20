@@ -57,6 +57,11 @@
 
             <!-- Page Content -->
             <main class="">
+              <div class="font-bold text-red-500 font-2xl">
+                @if (session('success'))
+                    {{ session('success')}}
+                @endif
+            </div>
                 @yield('content')
             </main>
         </div>

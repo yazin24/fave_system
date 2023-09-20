@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customers;
+use App\Models\EcomCustomers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
@@ -15,7 +15,7 @@ class RegisteredCustomerController extends Controller
         $request -> validate([
 
             'full_name' => 'required',
-            'email' => ['required', 'email', 'unique:'.Customers::class],
+            'email' => ['required', 'email', 'unique:'.EcomCustomers::class],
             'phone' => 'required',
             'password' =>['required', 'confirmed', Rules\Password::defaults()]
 
@@ -27,7 +27,7 @@ class RegisteredCustomerController extends Controller
             'password.confirm' => 'Password do not match'
         ]);
 
-        $customer = Customers::create([
+        $customer = EcomCustomers::create([
 
             'full_name' => $request -> full_name,
             'email' => $request -> email,
