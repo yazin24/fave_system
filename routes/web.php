@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminFunctionsController;
+use App\Http\Controllers\CustomerAuthentictedSessionController;
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
@@ -92,6 +93,8 @@ Route::get('/fave/login', [EcommerceController::class, 'login_page']) -> name('l
 Route::get('/fave/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
 
 Route::post('fave/register/new', [RegisteredCustomerController::class, 'register_customer']) -> name('registercustomer');
+
+Route::post('fave/login/now', [CustomerAuthentictedSessionController::class, 'login_customer']) -> name('logincustomer');
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
