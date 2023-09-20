@@ -29,6 +29,7 @@ class EcomCustomers extends Authenticatable
         'name',
         'email',
         'phone_number',
+        'password',
         'usertype',
 
     ];

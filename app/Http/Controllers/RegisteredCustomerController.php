@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EcomCustomers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class RegisteredCustomerController extends Controller
@@ -32,7 +33,7 @@ class RegisteredCustomerController extends Controller
             'name' => $request -> full_name,
             'email' => $request -> email,
             'phone' => $request -> phone,
-            'password' => $request -> password,
+            'password' => Hash::make($request -> password),
 
         ]);
 
