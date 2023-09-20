@@ -14,6 +14,7 @@
         <img src="../images/newlogo.png" alt="" class="w-20 h-18 mt-20">
         </div>
         <form method="POST" action="{{route('logincustomer')}}" class="w-full block mb-10 p-8 border border-solid border-gray-800 rounded-md flex flex-col space-y-2"> 
+            @csrf
             <input type="email" name="email" placeholder="Email" class="rounded-md p-2 w-72">
             <input type="password" name="password" placeholder="Password" class="rounded-md p-2 w-72">
             <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-md text-white cursor mt-2 hover:bg-amber-500">Login</button>

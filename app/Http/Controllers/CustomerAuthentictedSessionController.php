@@ -16,9 +16,9 @@ class CustomerAuthentictedSessionController extends Controller
        if(Auth::attempt($credentials)){
 
         return view('ecommerce.home_page');
+       }else{
+        return redirect() -> back() -> with('success', 'Invalid login credentials');
        }
-
-       return redirect() -> back() -> with('success', 'Invalid login credentials');
        
     }
 }
