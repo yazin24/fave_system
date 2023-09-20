@@ -78,17 +78,17 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 
 
-Route::get('/home', [EcommerceController::class, 'home_page']) -> name('homepage');
+Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
-Route::get('/products', [EcommerceController::class, 'product_page']) -> name('productpage');
+Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
 
-Route::get('/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
+Route::get('/fave/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
 
-Route::get('/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
+Route::get('/fave/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
 
-Route::get('/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
+Route::get('/fave/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
 
-Route::get('/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
+Route::get('/fave/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
