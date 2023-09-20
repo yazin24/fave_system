@@ -29,7 +29,7 @@ class RegisteredCustomerController extends Controller
 
         $customer = EcomCustomers::create([
 
-            'full_name' => $request -> full_name,
+            'name' => $request -> full_name,
             'email' => $request -> email,
             'phone' => $request -> phone,
             'password' => $request -> password,

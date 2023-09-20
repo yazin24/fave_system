@@ -10,7 +10,7 @@ use App\Http\Controllers\PurchasingController;
 use App\Http\Controllers\PurchasingFunctionsController;
 use App\Http\Controllers\ReceivingController;
 use App\Http\Controllers\ReceivingFunctionsController;
-use App\Http\Controllers\AuthCustomer\RegisteredCustomerController;
+use App\Http\Controllers\RegisteredCustomerController;
 use App\Http\Controllers\SalesAgentController;
 use App\Http\Controllers\SalesAgentFunctionsController;
 use App\Http\Controllers\SalesController;
