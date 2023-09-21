@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 
 class EcommerceController extends Controller
@@ -14,7 +15,9 @@ class EcommerceController extends Controller
 
     public function product_page()
     {
-        return view('ecommerce.product_page');
+        $allProducts = ProductSku::all();
+
+        return view('ecommerce.product_page', ['allProducts' => $allProducts]);
     }
 
     public function service_page()
