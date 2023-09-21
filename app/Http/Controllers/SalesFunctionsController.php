@@ -29,6 +29,11 @@ class SalesFunctionsController extends Controller
         return view('sales.ecommerce_customers', ['allEcomCustomers' => $allEcomCustomers]);
     }
 
+    public function ecommerce_customers_details(EcomCustomers $customer)
+    {
+        return view('sales.ecommerce_customers_details', ['customer' => $customer]);
+    }
+
     public function ecommerce_products()
     {
         $allProducts = ProductSku::paginate(10);
