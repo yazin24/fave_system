@@ -7,6 +7,7 @@ use App\Models\Agents;
 use App\Models\Areas;
 use App\Models\Customers;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\EcomCustomers;
 use App\Models\LazadaOrders;
 use App\Models\ManualPurchaseOrder;
 use App\Models\ProductSku;
@@ -23,7 +24,9 @@ class SalesFunctionsController extends Controller
 {
     public function ecommerce_customers()
     {
-        return view('sales.ecommerce_customers');
+        $allEcomCustomers = EcomCustomers::paginate(10);
+
+        return view('sales.ecommerce_customers', ['allEcomCustomers' => $allEcomCustomers]);
     }
 
     public function ecommerce_products()

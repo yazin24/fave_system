@@ -21,7 +21,6 @@
     <div class="">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Sales</button>
     </div> --}}
-    
 </div>
 <div class="bg-white-900 text-gray-900 mt-1"> 
     <table class="w-full shadow-md bg-gray-400">

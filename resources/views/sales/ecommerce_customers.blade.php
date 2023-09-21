@@ -30,7 +30,7 @@
                 {{-- <th class="text-xs w-1/6 font-bold">ORDER ID</th> --}}
                 <th class="text-xs w-1/6 font-bold">CUSTOMERS NAME</th>
                 <th class="text-xs w-1/6 font-bold">PHONE NUMBER</th>
-                <th class="text-xs w-1/6 font-bold">ADDRESS</th>
+                <th class="text-xs w-1/6 font-bold">EMAIL ADDRESS</th>
                 {{-- <th class="text-xs w-1/6 font-bold">TOTAL AMOUNT</th> --}}
                 <th class="text-xs w-1/6 font-bold">ACTION</th>
                 
