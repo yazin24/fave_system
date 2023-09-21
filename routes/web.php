@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminFunctionsController;
 use App\Http\Controllers\CustomerAuthentictedSessionController;
 use App\Http\Controllers\EcommerceController;
+use App\Http\Controllers\EcommerceFunctionsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
@@ -97,6 +98,14 @@ Route::post('fave/register/new', [RegisteredCustomerController::class, 'register
 Route::post('fave/login/now', [CustomerAuthentictedSessionController::class, 'login_customer']) -> name('logincustomer');
 
 Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logout_customer']) -> name('logoutcustomer');
+
+
+
+Route::middleware(['auth', 'customers']) -> group(function(){
+
+    Route::get('fave/products/add-to-cart', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
+
+});
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------

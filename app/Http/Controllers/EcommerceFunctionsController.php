@@ -9,6 +9,6 @@ class EcommerceFunctionsController extends Controller
 {
     public function add_to_cart()
     {
-        return view();
+        return view('ecommerce.shopping_cart');
     }
 }
