@@ -23,12 +23,12 @@ class SalesFunctionsController extends Controller
 {
     public function ecommerce_customers()
     {
-        return view('ecommerce.ecommerce_customers');
+        return view('sales.ecommerce_customers');
     }
 
     public function ecommerce_products()
     {
-        return view('ecommerce.ecommerce_products');
+        return view('sales.ecommerce_products');
     }
 
     public function new_agent()
