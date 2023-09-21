@@ -6,7 +6,7 @@
 
 <div class="flex flex-row justify-end">
     <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Customers</button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
     </div>
     <div class="mr-2">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Products</button>

@@ -257,6 +257,10 @@ Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring'
 
 //Sales Functionalities
 
+Route::get('sales/ecommerce-dashboard/customers-list', [SalesFunctionsController::class, 'ecommerce_customers']) -> name('ecommercecustomers');
+
+Route::get('sales/ecommerce-dashboard/products', [SalesFunctionsController::class, 'ecommerce_products']) -> name('ecommerceproducts');
+
 Route::get('sales/agent-monitoring/new-agent', [SalesFunctionsController::class, 'new_agent']) -> name('newagent');
 
 Route::post('sales/agent-monitoring/new-agent/add', [SalesFunctionsController::class, 'add_agent']) -> name('addagent');

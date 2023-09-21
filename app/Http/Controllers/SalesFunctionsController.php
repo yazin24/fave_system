@@ -21,6 +21,16 @@ use PhpOffice\PhpWord\TemplateProcessor;
 
 class SalesFunctionsController extends Controller
 {
+    public function ecommerce_customers()
+    {
+        return view('ecommerce.ecommerce_customers');
+    }
+
+    public function ecommerce_products()
+    {
+        return view('ecommerce.ecommerce_products');
+    }
+
     public function new_agent()
     {
         $allAreas = Areas::all();
