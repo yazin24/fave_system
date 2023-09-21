@@ -52,6 +52,9 @@
                      <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
                  </li>
                  @else
+                 <li class=''>
+                  <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Cart</a>
+              </li>
                  <li class='mx-4 my-6 md:my-0'>
                  
                      <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -72,6 +75,10 @@
                                  <x-dropdown-link :href="route('profile.edit')">
                                      {{ __('Profile') }}
                                  </x-dropdown-link>
+
+                                 <x-dropdown-link :href="route('addtocart')">
+                                  {{ __('Shopping Cart') }}
+                              </x-dropdown-link>
              
                                  <!-- Authentication -->
                                  <form method="POST" action="{{ route('logoutcustomer') }}">

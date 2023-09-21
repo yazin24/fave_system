@@ -49,7 +49,7 @@
                                             <button><a href="{{route('adminviewpurchase', ['allPurchaseOrder' => $allPurchaseOrder])}}"><i class="fa-solid fa-eye"></i></a></button>
                                             
                                         </div>
-                                        <div class="bg-red-500 p-1 rounded-md shadow-md">
+                                        {{-- <div class="bg-red-500 p-1 rounded-md shadow-md">
                                             <form method="POST" action="{{route('adminpurchaseorderdelete', ['allPurchaseOrder' => $allPurchaseOrder, 'id' => $allPurchaseOrder->id])}}">
                                                 @csrf
                                                 @method('DELETE')
@@ -57,7 +57,7 @@
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </td>
                             </tr>
