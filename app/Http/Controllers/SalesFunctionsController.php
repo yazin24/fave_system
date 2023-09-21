@@ -31,7 +31,9 @@ class SalesFunctionsController extends Controller
 
     public function ecommerce_products()
     {
-        return view('sales.ecommerce_products');
+        $allProducts = ProductSku::paginate(10);
+
+        return view('sales.ecommerce_products', ['allProducts' => $allProducts]);
     }
 
     public function new_agent()

@@ -38,18 +38,16 @@
         </thead>    
 
         <tbody class="bg-gray-300">
-            
+            @foreach($allEcomCustomers as $customer)
             <tr class="h-10">   
                 {{-- <td class="text-xs text-center border-b-2 font-bold"></td>
                 <td class="text-xs text-center border-b-2 font-bold"></td> --}}
-                <td class="text-xs text-center border-b-2 font-bold">
-                   
-                </td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$customer -> name}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$customer -> phone_number}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$customer -> email}}</td>
                 <td class="text-xs text-center border-b-2 font-bold"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></td>
             </tr>
-              
+              @endforeach
         </tbody>
     </table>
 </div>

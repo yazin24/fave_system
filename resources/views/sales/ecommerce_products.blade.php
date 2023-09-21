@@ -37,18 +37,22 @@
         </thead>    
 
         <tbody class="bg-gray-300">
-            
+            @foreach($allProducts as $product)
             <tr class="h-10">   
-                <td class="text-xs text-center border-b-2 font-bold"></td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$product -> barcode}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$product -> full_name}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$product -> productVariants -> variant_name}}</td>
                 <td class="text-xs text-center border-b-2 font-bold">
-                   
+                    @if($product -> sku_size == 3785.41) 1 Gallon
+                    @elseif($product -> sku_size == 1000) 1 Liter
+                    @elseif($product -> sku_size == 900) 900g
+                    @else 180g
+                    @endif
                 </td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$product -> sku_quantity}}</td>
                 <td class="text-xs text-center border-b-2 font-bold"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></td>
             </tr>
-              
+              @endforeach
         </tbody>
     </table>
 </div>
