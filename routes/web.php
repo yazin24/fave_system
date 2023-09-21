@@ -241,6 +241,8 @@ Route::middleware(['auth', 'sales']) -> group(function(){
 
 Route::get('sales/sales-monitoring', [SalesController::class, 'sales_monitoring']) -> name('salesmonitoring');
 
+Route::get('sales/ecommerce-dashboard', [SalesController::class, 'ecommerce_dashboard']) -> name('ecommercedashboard');
+
 Route::get('sales/shopee/lazada', [SalesController::class, 'shopee_lazada_sales']) -> name('shopeelazadasales');
 
 Route::get('sales/tiktok/carousel', [SalesController::class, 'tiktok_carousel_sales']) -> name('tiktokcarouselsales');

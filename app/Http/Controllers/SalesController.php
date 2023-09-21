@@ -87,6 +87,11 @@ class SalesController extends Controller
     ]);
     }
 
+    public function ecommerce_dashboard()
+    {
+        return view('sales.ecommerce_dashboard');
+    }
+
     public function shopee_lazada_sales()
     {
         $allShopeeSales = ShopeeOrders::orderBy('created_at', 'desc') -> paginate(10);

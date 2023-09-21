@@ -16,6 +16,13 @@
           </div>
         </a>
         </li>
+        <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('ecommercedashboard')}}">
+          <div class='flex items-center gap-1'>
+            <i class="fa-solid fa-store text-xl"></i>
+            <div>Ecommerce Dashboard</div>
+          </div>
+        </a>
+        </li>
         <li class='h-8 w-56 hover:bg-teal-600 hover:font-bold p-8 mt-1 text-xs'><a href="{{route('shopeelazadasales')}}">
           <div class='flex items-center gap-1'>
             <i class="fa-solid fa-money-bills text-xl"></i>
