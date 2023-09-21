@@ -197,9 +197,9 @@
                       <p class="text-red-600 font-bold text-sm mt-1 md:pt-60 ">₱ 538.00</p>
                       <div class="md:ml-24">
                         <button class="col rounded-sm mb-2 text-xs text-white hover:bg-amber-500 p-2 md:mt-60">
-                          <a href="{{route('checkout_order')}}">
+                          {{-- <a href="{{route('checkout_order')}}">
                         Check Out
-                        </a>
+                        </a> --}}
                         </button>
                       </div>
                     </div>

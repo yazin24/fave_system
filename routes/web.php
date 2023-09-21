@@ -101,7 +101,7 @@ Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logou
 
 
 
-Route::middleware(['auth', 'customers']) -> group(function(){
+Route::middleware(['auth:customers']) -> group(function(){
 
     Route::get('fave/products/add-to-cart', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
 
