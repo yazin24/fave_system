@@ -10,8 +10,8 @@
   <div  class="w-72">
     <img src="{{asset($product -> image_path)}}">
     <h2 class="mt-8">₱{{$product -> retail_price}}</h2>
-    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full mb-1"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full">Buy Now</button>
+    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full mb-1"><a><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a></button>
+    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full"><a>Buy Now</a></button>
   </div>
 </div>
 @endforeach
