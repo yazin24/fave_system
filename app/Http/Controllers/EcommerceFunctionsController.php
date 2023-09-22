@@ -17,12 +17,26 @@ class EcommerceFunctionsController extends Controller
     public function add_to_cart(ProductSku $product)
     {
         if(auth('customers') -> check()){
+
             $ecomCustomers = auth('customers') ->user() -> id;
            
             $cartItem = $ecomCustomers -> ecomCustomerCart()
                     -> where('sku_id', $product -> id)
                     ->first();
+
+            if($cartItem){
+                $cartItem -> increment('quantity');
+            }else {
+                $ecomCustomers -> ecomCustomerCart() -> create([
+                    'sku_id' => $product -> id,
+                    'quantity' => 1,
+                    'price' => $product -> retail_price,
+                    'isPurchase' => false,
+                ]);
+            }
                     
+        }else {
+            return redirect() -> back();
         }
 
         
