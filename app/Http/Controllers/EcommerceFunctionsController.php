@@ -70,13 +70,17 @@ class EcommerceFunctionsController extends Controller
 
         $productOrders = $request -> input('order_products', []);
 
-        $productId = $request -> input('product_id', []);
+        $productIds = $request -> input('product_id', []);
 
         $productOrderQuantity = $request -> input('product_quantity', []);
 
         $productOrderPrice = $item -> price;
 
         $productOrderTotalAmount = $productOrderQuantity * $productOrderPrice;
+
+        $customerOrderShippingAddress = $request -> input('shipping_address');
+
+        $customerOrderBillingAddress = $request -> input('billing_address');
 
         $generateNumber = function() {
 
@@ -97,11 +101,31 @@ class EcommerceFunctionsController extends Controller
 
             'ecom_cs_id' => $customerId,
             'status' => 3,
-            'shipping_address' => '',
-            'billing_address' => '',
+            'shipping_address' => $customerOrderShippingAddress,
+            'billing_address' => $customerOrderBillingAddress,
             'tracking_number' => $trackingNumber,
 
         ]);
+
+        foreach($productIds as $productId){
+            if(in_array($productId, $productOrders)){
+                $quantityProduct = $productOrderQuantity[$productId] ?? null;
+                $priceProduct = $productOrderPrice[$productId] ?? null;
+
+                if($productId && $quantityProduct && $priceProduct){
+                    $totaOrderAmount = $quantityProduct * $priceProduct;
+
+                    $newCustomerOrder  -> ecomCustomerOrderProducts() -> create([
+
+                        'order_id' => $newCustomerOrder -> id,
+                        'sku_id' => $productId,
+                        'quantity' => $quantityProduct,
+                        'price' => $priceProduct,
+
+                    ]);
+                }
+            }
+        }
 
     }
 }
