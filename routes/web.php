@@ -103,7 +103,9 @@ Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logou
 
 Route::middleware(['auth:customers']) -> group(function(){
 
-    Route::get('fave/products/add-to-cart', [EcommerceFunctionsController::class, 'shopping_cart']) -> name('shoppingcart');
+    Route::get('fave/products/shopping-cart', [EcommerceFunctionsController::class, 'shopping_cart']) -> name('shoppingcart');
+
+    Route::get('fave/products/add-to-cart', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
 
 });
 

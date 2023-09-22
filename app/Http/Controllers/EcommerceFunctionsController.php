@@ -13,4 +13,20 @@ class EcommerceFunctionsController extends Controller
     {
         return view('ecommerce.shopping_cart');
     }
+
+    public function add_to_cart(ProductSku $product)
+    {
+        if(auth('customers') -> check()){
+            $ecomCustomers = auth('customers') ->user() -> id;
+           
+            $cartItem = $ecomCustomers -> ecomCustomerCart()
+                    -> where('sku_id', $product -> id)
+                    ->first();
+                    
+        }
+
+        
+
+        return redirect() -> back();
+    }
 }

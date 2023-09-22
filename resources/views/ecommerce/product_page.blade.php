@@ -11,7 +11,7 @@
     <img src="{{asset($product -> image_path)}}">
     <h2 class="mt-8 font-bold text-violet-700">₱{{$product -> retail_price}}</h2>
     @if(auth('customers') -> check())
-    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full mb-1"><a href="{{route('shoppingcart')}}"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a></button>
+    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full mb-1"><a href="{{route('addtocart')}}"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a></button>
 
     <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full"><a href="{{route('homepage')}}">Buy Now</a></button>
     @else
