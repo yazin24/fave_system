@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class EcommerceFunctionsController extends Controller
 {
-    public function add_to_cart()
+    public function shopping_cart()
     {
         return view('ecommerce.shopping_cart');
     }

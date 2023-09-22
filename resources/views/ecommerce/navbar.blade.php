@@ -76,7 +76,7 @@
                                      {{ __('Profile') }}
                                  </x-dropdown-link>
 
-                                 <x-dropdown-link :href="route('addtocart')">
+                                 <x-dropdown-link :href="route('shoppingcart')">
                                   {{ __('Shopping Cart') }}
                               </x-dropdown-link>
              
