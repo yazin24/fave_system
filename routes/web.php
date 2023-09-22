@@ -107,6 +107,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::post('fave/products/add-to-cart/{product}', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
 
+    Route::post('fave/product/shopping-cart/place-order', [EcommerceFunctionsController::class, 'place_order']) -> name('placeorder');
+
 });
 
 

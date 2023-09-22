@@ -64,7 +64,7 @@ class EcommerceFunctionsController extends Controller
         return redirect() -> back();
     }
 
-    public function place_order(Request $request, $item)
+    public function place_order(Request $request)
     {   
        $customerId = auth('customers') -> user() -> id;
 
@@ -74,9 +74,9 @@ class EcommerceFunctionsController extends Controller
 
         $productOrderQuantity = $request -> input('product_quantity', []);
 
-        $productOrderPrice = $item -> price;
+        $productOrderPrice = $request -> input('product_price');
 
-        $productOrderTotalAmount = $productOrderQuantity * $productOrderPrice;
+        // $productOrderTotalAmount = $productOrderQuantity * $productOrderPrice;
 
         $customerOrderShippingAddress = $request -> input('shipping_address');
 
@@ -113,7 +113,7 @@ class EcommerceFunctionsController extends Controller
                 $priceProduct = $productOrderPrice[$productId] ?? null;
 
                 if($productId && $quantityProduct && $priceProduct){
-                    $totaOrderAmount = $quantityProduct * $priceProduct;
+                    // $totaOrderAmount = $quantityProduct * $priceProduct;
 
                     $newCustomerOrder  -> ecomCustomerOrderProducts() -> create([
 
