@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\EcomCustomerCart;
 use App\Models\EcomCustomers;
 use App\Models\ProductSku;
 use Illuminate\Http\Request;
@@ -11,7 +12,9 @@ class EcommerceFunctionsController extends Controller
 {
     public function shopping_cart()
     {
-        return view('ecommerce.shopping_cart');
+        $customerCart = EcomCustomerCart::all();
+
+        return view('ecommerce.shopping_cart', ['customerCart' => $customerCart]);
     }
 
     public function add_to_cart(ProductSku $product)
