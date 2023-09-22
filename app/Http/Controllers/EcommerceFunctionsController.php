@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\EcomCustomerCart;
+use App\Models\EcomCustomerOrderItems;
 use App\Models\EcomCustomerOrders;
 use App\Models\EcomCustomers;
 use App\Models\ProductSku;
@@ -108,7 +109,7 @@ class EcommerceFunctionsController extends Controller
         ]);
 
         foreach($productIds as $productId){
-            dd($productId);
+            dd($productIds);
             if(in_array($productId, $productOrders)){
                 $quantityProduct = $productOrderQuantity[$productId] ?? null;
                 $priceProduct = $productOrderPrice[$productId] ?? null;
@@ -116,14 +117,16 @@ class EcommerceFunctionsController extends Controller
                 if($productId && $quantityProduct && $priceProduct){
                     // $totaOrderAmount = $quantityProduct * $priceProduct;
 
-                    $newCustomerOrder  -> ecomCustomerOrderItems() -> create([
+                    $newCustomerOrderItems  = new EcomCustomerOrderItems([
 
-                        'order_id' => $newCustomerOrder -> id,
+                        // 'order_id' => $newCustomerOrder -> id,
                         'sku_id' => $productId,
                         'quantity' => $quantityProduct,
                         'price' => $priceProduct,
 
                     ]);
+
+                    $newCustomerOrder -> ecomCustomerOrderItems() -> save($newCustomerOrderItems);
                 }
             }
         }
