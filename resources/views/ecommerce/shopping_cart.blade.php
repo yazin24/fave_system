@@ -4,8 +4,10 @@
 
 
 <div class="flex justify-center mt-10">
- 
+<form method="POST" action="">
+  @csrf
   <table class="bg-gray-200 shadow-lg w-3/4">
+    
       <thead>
           <tr class="md:h-12 bg-violet-700 border-b-2 text-gray-100 font-bold">
             <th class="text-sm text-center w-1/5">ACTION</th>
@@ -35,14 +37,14 @@
       </tbody>
   </table>
   <div class="">
-    <div class="border-gray-400 p-12 bg-gray-900 h-full font-bold text-gray-100">
+    <div class="border-gray-400 p-12 bg-gray-900 h-full font-bold">
         <h2>Total Amount: </h2>
         <input type="text" name="shipping_address" placeholder="shipping address">
         <input type="text" name="billing_address" placeholder="billing address">
         <button class="bg-red-600 hover:bg-red-700 p-1 rounded-sm">Place Order</button>
     </div>
   </div>
-
+</form>
 </div>
 
 @endsection
