@@ -23,14 +23,14 @@ class EcommerceFunctionsController extends Controller
 
             $ecomCustomers = auth('customers') ->user() -> id;
            
-            $cartItem = $ecomCustomers -> ecomCustomerCart()
+            $cartItem = EcomCustomerCart::where('ecom_cs_id', $ecomCustomers)
                     -> where('sku_id', $product -> id)
                     ->first();
 
             if($cartItem){
                 $cartItem -> increment('quantity');
             }else {
-                $ecomCustomers -> ecomCustomerCart() -> create([
+                EcomCustomerCart::create([
                     'sku_id' => $product -> id,
                     'quantity' => 1,
                     'price' => $product -> retail_price,
