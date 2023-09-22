@@ -4,7 +4,7 @@
 
 
 <div class="flex justify-center mt-10">
-<form method="POST" action="">
+<form method="POST" action="{{route('placeorder')}}">
   @csrf
   <table class="bg-gray-200 shadow-lg w-3/4">
     
@@ -41,9 +41,10 @@
         <h2>Total Amount: </h2>
         <input type="text" name="shipping_address" placeholder="shipping address">
         <input type="text" name="billing_address" placeholder="billing address">
-        <button class="bg-red-600 hover:bg-red-700 p-1 rounded-sm">Place Order</button>
+       
     </div>
   </div>
+  <button type="submit" class="bg-red-600 hover:bg-red-700 p-1 rounded-sm">Place Order</button>
 </form>
 </div>
 

@@ -108,6 +108,7 @@ class EcommerceFunctionsController extends Controller
         ]);
 
         foreach($productIds as $productId){
+            dd($productId);
             if(in_array($productId, $productOrders)){
                 $quantityProduct = $productOrderQuantity[$productId] ?? null;
                 $priceProduct = $productOrderPrice[$productId] ?? null;
@@ -115,7 +116,7 @@ class EcommerceFunctionsController extends Controller
                 if($productId && $quantityProduct && $priceProduct){
                     // $totaOrderAmount = $quantityProduct * $priceProduct;
 
-                    $newCustomerOrder  -> ecomCustomerOrderProducts() -> create([
+                    $newCustomerOrder  -> ecomCustomerOrderItems() -> create([
 
                         'order_id' => $newCustomerOrder -> id,
                         'sku_id' => $productId,
@@ -126,6 +127,8 @@ class EcommerceFunctionsController extends Controller
                 }
             }
         }
+
+        return redirect() -> route('homepage');
 
     }
 }
