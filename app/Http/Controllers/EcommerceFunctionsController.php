@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\EcomCustomerCart;
+use App\Models\EcomCustomerOrders;
 use App\Models\EcomCustomers;
 use App\Models\ProductSku;
 use Illuminate\Http\Request;
@@ -61,5 +62,46 @@ class EcommerceFunctionsController extends Controller
         }
 
         return redirect() -> back();
+    }
+
+    public function place_order(Request $request, $item)
+    {   
+       $customerId = auth('customers') -> user() -> id;
+
+        $productOrders = $request -> input('order_products', []);
+
+        $productId = $request -> input('product_id', []);
+
+        $productOrderQuantity = $request -> input('product_quantity', []);
+
+        $productOrderPrice = $item -> price;
+
+        $productOrderTotalAmount = $productOrderQuantity * $productOrderPrice;
+
+        $generateNumber = function() {
+
+            $generatedTrackingNumber = mt_rand(100000000000000, 999999999999999);
+
+            while (EcomCustomerOrders::where('tracking_number', $generatedTrackingNumber) -> exists()){
+
+                $generatedTrackingNumber = mt_rand(100000000000000, 999999999999999);
+            }
+
+            return $generatedTrackingNumber;
+
+        };
+
+        $trackingNumber = $generateNumber();
+
+        $newCustomerOrder = EcomCustomerOrders::create([
+
+            'ecom_cs_id' => $customerId,
+            'status' => 3,
+            'shipping_address' => '',
+            'billing_address' => '',
+            'tracking_number' => $trackingNumber,
+
+        ]);
+
     }
 }
