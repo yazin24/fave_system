@@ -7,10 +7,22 @@
         <h2 class="mb-2">Order Details</h2>
         <hr>
 
-        <div class="bg-white mt-1">
-            <img src="sdsd" alt="Image">
+        <div class="bg-white mt-1 flex flex-row">
+            <div>
+                <img src="sdsd" alt="Image">
+            </div>
+            <div>
+                <h2>Variant: </h2>
+                <h2>Size: </h2>
+                <h2>Quantity: </h2>
+                <h2>Amount: </h2>
+            </div>
+          
         </div>
-        
+        <hr class="my-2">
+        <div class="flex justify-end">
+            <h2>Total Amount:</h2>
+        </div>
 
 
         <div class="flex justify-between mx-2 mt-4">
