@@ -147,18 +147,27 @@ class EcommerceFunctionsController extends Controller
 
         $orderId = $newCustomerOrder -> id;
 
-        return view('ecommerce.order_details_to_confirm', ['orderId' => $orderId]);
+        return redirect() -> route('ecommerce.order_details_to_confirm', ['orderId' => $orderId]);
 
     }
 
     public function order_details_to_confirm($orderId)
     {
-        $customerOrder = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
+        $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
         ->where('id', $orderId)
         ->where('ecom_cs_id', auth('customers')->user()->id)
         ->firstOrFail();
 
-        return view('ecommerce.order_details_to_confirm');
+        $totalAmountOrder = 0; // Initialize the total amount
+
+        foreach ($customerOrders as $order) {
+            foreach ($order->ecomCustomerOrderItems as $orderItem) {
+                // Calculate the total amount for each order item and add it to the total
+                $totalAmountOrder += $orderItem->quantity * $orderItem->price;
+            }
+        }
+
+        return view('ecommerce.order_details_to_confirm', ['customerOrders' => $customerOrders, 'totalAmountOrder' => $totalAmountOrder]);
     }
 
 }

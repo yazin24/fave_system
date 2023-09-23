@@ -109,7 +109,7 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::post('fave/products/shopping-cart/place-order', [EcommerceFunctionsController::class, 'place_order']) -> name('placeorder');
 
-    Route::get('fave/order-details/', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
+    Route::get('fave/order-details/{orderId}', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
 
 });
 
