@@ -136,4 +136,9 @@ class EcommerceFunctionsController extends Controller
 
     }
 
+    public function order_details_to_confirm()
+    {
+        return view('ecommerce.order_details_to_confirm');
+    }
+
 }
