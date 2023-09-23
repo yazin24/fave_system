@@ -172,4 +172,39 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.order_details_to_confirm', ['customerOrders' => $customerOrders, 'totalAmountOrder' => $totalAmountOrder]);
     }
 
+    public function confirm_order($orderId)
+    {
+        $toConfirmCustomerOrder = EcomCustomerOrders::findOrFail($orderId);
+
+        $toConfirmCustomerOrder -> update([
+
+            'status' => 9,
+
+        ]);
+
+        $toConfirmCustomerOrder -> save();
+
+        return redirect() -> route('homepage');
+    }
+
+    public function cancel_order($orderId)
+    {
+        $toDeleteCustomerOrder = EcomCustomerOrders::findOrFail($orderId);
+
+        if($toDeleteCustomerOrder){
+
+            $toDeleteCustomerOrder -> ecomCustomerOrderItems() -> delete();
+
+            $toDeleteCustomerOrder -> delete();
+
+            return redirect() -> route('homepage');
+
+        }else {
+
+            return redirect() -> route('homepage');
+
+        }
+        
+    }
+
 }

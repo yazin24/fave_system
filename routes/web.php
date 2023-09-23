@@ -111,6 +111,10 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::get('fave/order-details/{orderId}', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
 
+    Route::put('fave/order-details/{orderId}/confirm-order', [EcommerceFunctionsController::class, 'confirm_order']) -> name('confirmorder');
+
+    Route::delete('fave/order-details/{orderId}/cancel', [EcommerceFunctionsController::class, 'cancel_order']) -> name('cancelorder');
+
 });
 
 

@@ -35,7 +35,7 @@
         </div>
 
     </div>
-    
+
         <hr class="my-2">
         <div class="flex justify-end">
             <h2 class="text-red-500">Total Amount: ₱{{number_format($totalAmountOrder, 2)}}</h2>
@@ -43,8 +43,17 @@
 
 
         <div class="flex justify-between mx-2 mt-4">
-            <button class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
-            <button class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Confirm Order</button>
+            <form method="POST" action="{{route('cancelorder', ['orderId' => $order -> id])}}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
+            </form>
+            <form method="POST" action="{{route('confirmorder', ['orderId' => $order -> id])}}">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Confirm Order</button>
+            </form>
+           
         </div>
         
     </div
