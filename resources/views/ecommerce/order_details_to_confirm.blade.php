@@ -29,7 +29,6 @@
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
             </div>
-
             @endforeach
           @endforeach
         </div>
@@ -46,12 +45,12 @@
             <form method="POST" action="{{route('cancelorder', ['orderId' => $order -> id])}}">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
+                <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm" onclick="return confirm('Are you sure you want to cancel?')"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
             </form>
             <form method="POST" action="{{route('confirmorder', ['orderId' => $order -> id])}}">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Confirm Order</button>
+                <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm" ><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Confirm Order</button>
             </form>
            
         </div>
