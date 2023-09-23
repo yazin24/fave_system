@@ -29,7 +29,7 @@
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/5"><input type="number" name="product_price[{{$item -> sku_id}}]" value="{{$item -> price}}"></td>
 
-                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5">P{{$item -> price * $item -> quantity}}.00</td>
+                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5">₱{{$item -> price * $item -> quantity}}.00</td>
                   
               </tr>
               @endforeach
