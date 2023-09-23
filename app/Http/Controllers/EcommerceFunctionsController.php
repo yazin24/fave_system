@@ -132,7 +132,7 @@ class EcommerceFunctionsController extends Controller
             }
         }
 
-        return redirect() -> route('homepage');
+        return redirect() -> route('orderdetailstoconfirm');
 
     }
 
