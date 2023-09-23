@@ -23,11 +23,11 @@
 
                 <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><input type="checkbox" name="order_products[]" value="{{$item -> sku_id}}" class="w-6 h-6"></td>
 
-                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><img src="{{asset($item -> productSku -> image_path)}}" class="w-24"></td>
+                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><img src="{{asset($item -> productSku -> image_path)}}" class="w-24"><input type="hidden" name="product_id[{{$item -> sku_id}}]" value="{{$item -> sku_id}}"></td>
 
-                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><input type="number" name="product_quantity[{{$item -> id}}]" value="{{$item -> quantity}}" class=" text-center w-24"></td>
+                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><input type="number" name="product_quantity[{{$item -> sku_id}}]" value="{{$item -> quantity}}" class=" text-center w-24"></td>
 
-                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5"><input type="number" name="product_price[{{$item -> id}}]" value="{{$item -> price}}"></td>
+                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5"><input type="number" name="product_price[{{$item -> sku_id}}]" value="{{$item -> price}}"></td>
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/5">P{{$item -> price * $item -> quantity}}.00</td>
                   

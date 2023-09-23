@@ -68,13 +68,13 @@ class EcommerceFunctionsController extends Controller
     public function place_order(Request $request)
     {   
        
-       
+       dd($request -> all());
 
        $customerId = auth('customers') -> user() -> id;
 
         $productOrders = $request -> input('order_products', []);
 
-        // $productIds = $request -> input('product_id', []);
+        $productIds = $request -> input('product_id', []);
 
         $productOrderQuantity = $request -> input('product_quantity', []);
 
@@ -111,9 +111,9 @@ class EcommerceFunctionsController extends Controller
 
         ]);
 
-        foreach($productOrders as $productId){
+        foreach($productIds as $productId){
             
-            // if(in_array($productId, $productOrders)){
+            if(in_array($productId, $productOrders)){
                 $quantityProduct = $productOrderQuantity[$productId] ?? null;
                 $priceProduct = $productOrderPrice[$productId] ?? null;
 
@@ -129,7 +129,7 @@ class EcommerceFunctionsController extends Controller
 
                     ]);
                 }
-            // }
+            }
         }
 
         return redirect() -> route('homepage');
