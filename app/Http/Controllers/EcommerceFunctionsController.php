@@ -23,6 +23,7 @@ class EcommerceFunctionsController extends Controller
         }
 
         return view('ecommerce.shopping_cart', ['allItemCart' => $allItemCart]);
+    
     }
 
     public function add_to_cart(ProductSku $product)
@@ -66,6 +67,8 @@ class EcommerceFunctionsController extends Controller
 
     public function place_order(Request $request)
     {   
+       
+
        $customerId = auth('customers') -> user() -> id;
 
         $productOrders = $request -> input('order_products', []);
@@ -131,4 +134,5 @@ class EcommerceFunctionsController extends Controller
         return redirect() -> route('homepage');
 
     }
+
 }
