@@ -68,7 +68,7 @@ class EcommerceFunctionsController extends Controller
     public function place_order(Request $request)
     {   
        
-       dd($request -> all());
+    //    dd($request -> all());
 
        $customerId = auth('customers') -> user() -> id;
 
