@@ -7,17 +7,19 @@
         <h2 class="mb-2">Order Details</h2>
         <hr>
         @foreach($customerOrders as $order)
+        @foreach($order -> ecomCustomerOrderItems as $item)
         <div class="bg-white mt-1 flex flex-col">
             <div>
-                <img src="{{asset($order -> ecomCustomerOrderItems -> first() -> productSku -> image_path)}}" alt="Image">
+                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image">
             </div>
             <div>
-                <h2>Variant: {{$order -> ecomCustomerOrderItems -> first() -> productSku -> productVariants -> variant_name}}</h2>
-                <h2>Size: {{$order -> ecomCustomerOrderItems -> first() -> productSku -> productVariants -> variant_name}}</h2>
-                <h2>Quantity: {{$order -> ecomCustomerOrderItems -> first() -> quantity}}</h2>
-                <h2>Price:₱{{$order -> ecomCustomerOrderItems -> first() -> price}}</h2>
-                <h2>Amount:₱{{number_format($order -> ecomCustomerOrderItems -> first() -> price * $order -> ecomCustomerOrderItems -> first() -> quantity, 2)}}</h2>
+                <h2>Variant: {{$item -> productSku -> productVariants -> variant_name}}</h2>
+                <h2>Size: {{$item -> productSku -> productVariants -> variant_name}}</h2>
+                <h2>Quantity: {{$item -> quantity}}</h2>
+                <h2>Price:₱{{$item -> price}}</h2>
+                <h2>Amount:₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
             </div>
+            @endforeach
           @endforeach
         </div>
         <hr class="my-2">
@@ -33,7 +35,5 @@
         
     </div
 </div>
-
-
 
 @endsection

@@ -132,26 +132,33 @@ class EcommerceFunctionsController extends Controller
             }
         }
 
-        $csId = auth('customers') -> user() -> id;
+        // $csId = auth('customers') -> user() -> id;
 
-        $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku') -> where('ecom_cs_id', $csId) -> get();
+        // $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku') -> where('ecom_cs_id', $csId) -> get();
 
-        $totalAmountOrder = 0; // Initialize the total amount
+        // $totalAmountOrder = 0; // Initialize the total amount
 
-        foreach ($customerOrders as $order) {
-            foreach ($order->ecomCustomerOrderItems as $orderItem) {
-                // Calculate the total amount for each order item and add it to the total
-                $totalAmountOrder += $orderItem->quantity * $orderItem->price;
-            }
-        }
+        // foreach ($customerOrders as $order) {
+        //     foreach ($order->ecomCustomerOrderItems as $orderItem) {
+        //         // Calculate the total amount for each order item and add it to the total
+        //         $totalAmountOrder += $orderItem->quantity * $orderItem->price;
+        //     }
+        // }
 
-        return view('ecommerce.order_details_to_confirm', ['customerOrders' => $customerOrders, 'totalAmountOrder' => $totalAmountOrder]);
+        $orderId = $newCustomerOrder -> id;
+
+        return view('ecommerce.order_details_to_confirm', ['orderId' => $orderId]);
 
     }
 
-    // public function order_details_to_confirm()
-    // {
-    //     return view('ecommerce.order_details_to_confirm');
-    // }
+    public function order_details_to_confirm($orderId)
+    {
+        $customerOrder = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
+        ->where('id', $orderId)
+        ->where('ecom_cs_id', auth('customers')->user()->id)
+        ->firstOrFail();
+
+        return view('ecommerce.order_details_to_confirm');
+    }
 
 }
