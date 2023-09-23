@@ -207,7 +207,7 @@ class EcommerceFunctionsController extends Controller
         
     }
 
-    public function buy_now_order_details($productId)
+    public function buy_now_order_details(ProductSku $productId)
     {
 
 
