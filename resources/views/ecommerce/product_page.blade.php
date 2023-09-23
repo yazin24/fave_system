@@ -18,10 +18,10 @@
     </form>
     
 
-    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full"><a href="{{route('homepage')}}">Buy Now</a></button>
+    <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full"><a href="{{route('buynoworderdetails', ['productId' => $product -> id])}}">Buy Now</a></button>
     @else
     <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full mb-1"><a href="{{route('loginpage')}}"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a></button>
-
+    
     <button class="bg-violet-700 hover:bg-violet-800 text-gray-200 p-1 rounded-sm font-bold w-full"><a href="{{route('loginpage')}}">Buy Now</a></button>
     @endif
   </div>

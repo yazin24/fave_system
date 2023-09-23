@@ -207,4 +207,11 @@ class EcommerceFunctionsController extends Controller
         
     }
 
+    public function buy_now_order_details($productId)
+    {
+
+
+        return view('ecommerce.buy_now_order_details', ['productId' => $productId]);
+    }
+
 }

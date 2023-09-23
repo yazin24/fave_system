@@ -115,6 +115,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::delete('fave/order-details/{orderId}/cancel', [EcommerceFunctionsController::class, 'cancel_order']) -> name('cancelorder');
 
+    Route::get('fave/products/buy-now/{productId}', [EcommerceFunctionsController::class, 'buy_now_order_details']) -> name('buynoworderdetails');
+
 });
 
 
