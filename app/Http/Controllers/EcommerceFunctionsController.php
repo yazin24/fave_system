@@ -147,16 +147,18 @@ class EcommerceFunctionsController extends Controller
 
         $orderId = $newCustomerOrder -> id;
 
-        return redirect() -> route('ecommerce.order_details_to_confirm', ['orderId' => $orderId]);
+        return redirect() -> route('orderdetailstoconfirm', ['orderId' => $orderId]);
 
     }
 
-    public function order_details_to_confirm($orderId)
+    public function order_details_to_confirm()
     {
+        $customerId = auth('customers')->user()->id;
+
         $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
-        ->where('id', $orderId)
-        ->where('ecom_cs_id', auth('customers')->user()->id)
-        ->firstOrFail();
+        // ->where('id', $orderId)
+        ->where('ecom_cs_id', $customerId)
+        ->get();
 
         $totalAmountOrder = 0; // Initialize the total amount
 

@@ -3,28 +3,42 @@
 @section('content')
 
 <div class="flex justify-center mt-8 font-bold">
-    <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2">
+    <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
         <h2 class="mb-2">Order Details</h2>
         <hr>
-        @foreach($customerOrders as $order)
-        @foreach($order -> ecomCustomerOrderItems as $item)
-        <div class="bg-white mt-1 flex flex-col">
+       <div class="flex flex-col">
+
+        <div class="bg-white mt-1 flex flex-row">
+
+            @foreach($customerOrders as $order)
+            @foreach($order -> ecomCustomerOrderItems as $item)
+
             <div>
-                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image">
+                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-24">
             </div>
+
             <div>
                 <h2>Variant: {{$item -> productSku -> productVariants -> variant_name}}</h2>
-                <h2>Size: {{$item -> productSku -> productVariants -> variant_name}}</h2>
+                <h2>Size: @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
+                        @elseif($item -> productSku -> sku_size == 1000) 1 Liter
+                        @elseif($item -> productSku -> sku_size == 900) 900g
+                        @else 180g
+                        @endif
+                </h2>
                 <h2>Quantity: {{$item -> quantity}}</h2>
-                <h2>Price:₱{{$item -> price}}</h2>
-                <h2>Amount:₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
+                <h2>Price: ₱{{$item -> price}}</h2>
+                <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
             </div>
+
             @endforeach
           @endforeach
         </div>
+
+    </div>
+    
         <hr class="my-2">
         <div class="flex justify-end">
-            <h2>Total Amount:₱{{number_format($totalAmountOrder, 2)}}</h2>
+            <h2 class="text-red-500">Total Amount: ₱{{number_format($totalAmountOrder, 2)}}</h2>
         </div>
 
 
