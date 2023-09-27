@@ -170,7 +170,7 @@
         
 
         <div>
-         @yield('global')
+         @yield('content')
         </div>
 
         <footer>  
