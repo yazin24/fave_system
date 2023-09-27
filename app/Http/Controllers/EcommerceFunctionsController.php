@@ -222,6 +222,8 @@ class EcommerceFunctionsController extends Controller
 
         ];
 
+        session(['orderInfo' => $orderInfo]);
+
         return view('ecommerce.buy_now_place_order_details', ['productId' => $productId, 'orderInfo' => $orderInfo]);
     }
 }

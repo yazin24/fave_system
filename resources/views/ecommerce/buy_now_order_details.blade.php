@@ -3,10 +3,14 @@
 @section('content')
 
 <div class="flex justify-center mt-8 font-bold">
+    
     <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
+        <form method="POST" action="{{route('buynowplaceorderdetails', ['productId' => $productId])}}">
+            @csrf
         <h2 class="mb-2">Order Details</h2>
         <hr>
        <div class="flex flex-col">
+       
             <img src="{{asset($productId -> image_path)}}" class="w-32">
             <h2>Variant: {{$productId -> productVariants -> variant_name}}</h2>
             <h2>Size: @if($productId -> sku_size == 3785.41) 1 Gallon
@@ -22,9 +26,10 @@
             <input type="number" name="shipping address" value="{{auth('customers') -> user() -> phone_number}}" required>
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
             @endif
+
         <div class="bg-white mt-1 flex flex-row">
 
-          
+         
         </div>
 
     </div>
@@ -32,17 +37,17 @@
         <hr class="my-2">
       
         <div class="flex justify-between mx-2 mt-4">
-           
-                <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm" onclick="return confirm('Are you sure you want to cancel?')"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
+{{--            
+                <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm" onclick="return confirm('Are you sure you want to cancel?')"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button> --}}
             
           
-                <button class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><a href="{{route('buynowplaceorderdetails', ['productId' => $productId -> id])}}"><i class="fa-regular fa-square-check fa-bounce mr-1"></i></a>Place Order</button>
+                <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Place Order</button>
             
         </div>
-        
+        </form>
     </div
+   
+    
 </div>
-
-
 
 @endsection

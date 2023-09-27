@@ -16,9 +16,9 @@
                 @endif
             </h2>
             <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
-           <h2>Quantity: {{$orderInfo -> quantity}}</h2>
+           <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
             
-           <h2>{{$orderInfo -> shipping_address}}</h2>
+           <h2>{{session('orderInfo.shipping_address')}}</h2>
 
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
             
