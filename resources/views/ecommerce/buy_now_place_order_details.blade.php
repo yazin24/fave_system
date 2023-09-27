@@ -19,7 +19,6 @@
            <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
            <h2>Shipping Address: {{session('orderInfo.shipping_address')}}</h2>
            <h2>Payment Method: {{session('orderInfo.payment_method')}}</h2>
-
     </div>
 
         <hr class="my-2">
