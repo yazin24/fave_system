@@ -16,8 +16,10 @@
                 @endif
             </h2>
             <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
-            <input type="number" name="quantity" placeholder="quantity" required>
-            <input type="text" name="shipping address" placeholder="shipping" required>
+           <h2>Quantity: {{$orderInfo -> quantity}}</h2>
+            
+           <h2>{{$orderInfo -> shipping_address}}</h2>
+
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
             
         <div class="bg-white mt-1 flex flex-row">

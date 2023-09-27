@@ -36,15 +36,13 @@
                 <button type="submit" class="bg-red-500 hover:bg-red-600 p-1 text-sm text-gray-100 rounded-sm" onclick="return confirm('Are you sure you want to cancel?')"><i class="fa-regular fa-rectangle-xmark mr-1"></i>Cancel</button>
             
           
-                <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><a href="{{route('buynowconfirmorderdetails', ['productId' => $productId -> id])}}"><i class="fa-regular fa-square-check fa-bounce mr-1"></i></a>Place Order</button>
+                <button class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><a href="{{route('buynowplaceorderdetails', ['productId' => $productId -> id])}}"><i class="fa-regular fa-square-check fa-bounce mr-1"></i></a>Place Order</button>
             
         </div>
         
     </div
 </div>
 
-<x-modal name="example-modal">
-    sdsds>
-</x-modal>
+
 
 @endsection
