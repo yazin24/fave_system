@@ -4,7 +4,7 @@
 
 <div class="flex justify-center mt-8 font-bold">
     <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
-        <h2 class="mb-2">Order Details</h2>
+        <h2 class="mb-2">Confirm Order Details/Payment Intent</h2>
         <hr>
        <div class="flex flex-col">
             <img src="{{asset($productId -> image_path)}}" class="w-32">
@@ -18,10 +18,8 @@
             <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
             <input type="number" name="quantity" placeholder="quantity" required>
             <input type="text" name="shipping address" placeholder="shipping" required>
-            @if(auth('customers') -> check())
-            <input type="number" name="shipping address" value="{{auth('customers') -> user() -> phone_number}}" required>
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
-            @endif
+            
         <div class="bg-white mt-1 flex flex-row">
 
           

@@ -117,6 +117,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::get('fave/products/buy-now/{productId}', [EcommerceFunctionsController::class, 'buy_now_order_details']) -> name('buynoworderdetails');
 
+    Route::geT('fave/producgts/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_confirm_order_details']) -> name('buynowconfirmorderdetails');
+
 });
 
 
