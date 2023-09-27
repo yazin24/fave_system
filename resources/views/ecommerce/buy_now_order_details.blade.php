@@ -26,6 +26,13 @@
             <input type="number" name="phone_number" value="{{auth('customers') -> user() -> phone_number}}" required>
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
             @endif
+            <select name="payment_method">
+                <option disabled selected>Choose Payment method</option>
+                <option value="cod">Cash On Delivery</option>
+                <option value="online_payment">Online Payment</option>
+                {{-- <option>Cash On Delivery</option>
+                <option>Cash On Delivery</option> --}}
+            </select>
 
         <div class="bg-white mt-1 flex flex-row">
 

@@ -219,6 +219,7 @@ class EcommerceFunctionsController extends Controller
 
             'quantity' => $request -> input('quantity'),
             'shipping_address' => $request -> input('shipping_address'),
+            'payment_method' => $request -> input('payment_method'),
 
         ];
 
