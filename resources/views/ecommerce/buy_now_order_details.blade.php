@@ -23,7 +23,7 @@
             <input type="number" name="quantity" placeholder="quantity" required>
             <input type="text" name="shipping address" placeholder="shipping" required>
             @if(auth('customers') -> check())
-            <input type="number" name="shipping address" value="{{auth('customers') -> user() -> phone_number}}" required>
+            <input type="number" name="phone_number" value="{{auth('customers') -> user() -> phone_number}}" required>
             {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
             @endif
 
