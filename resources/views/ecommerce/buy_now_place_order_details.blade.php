@@ -17,15 +17,8 @@
             </h2>
             <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
            <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
-            
-           <h2>{{session('orderInfo.shipping_address')}}</h2>
-
-            {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
-            
-        <div class="bg-white mt-1 flex flex-row">
-
-          
-        </div>
+           <h2>Shipping Address: {{session('orderInfo.shipping_address')}}</h2>
+           <h2>Payment Method: {{session('orderInfo.payment_method')}}</h2>
 
     </div>
 

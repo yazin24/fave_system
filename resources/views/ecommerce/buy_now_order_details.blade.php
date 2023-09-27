@@ -28,8 +28,8 @@
             @endif
             <select name="payment_method">
                 <option disabled selected>Choose Payment method</option>
-                <option value="cod">Cash On Delivery</option>
-                <option value="online_payment">Online Payment</option>
+                <option value="Cash On Delivery">Cash On Delivery</option>
+                <option value="Online Payment">Online Payment</option>
                 {{-- <option>Cash On Delivery</option>
                 <option>Cash On Delivery</option> --}}
             </select>
@@ -54,7 +54,6 @@
         </form>
     </div
    
-    
 </div>
 
 @endsection
