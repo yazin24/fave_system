@@ -215,6 +215,8 @@ class EcommerceFunctionsController extends Controller
 
     public function buy_now_confirm_order_details(ProductSku $productId)
     {
-        return view('ecommerce.buy_now_confirm_order_details', ['productId' => $productId]);
+        
+
+        return view('ecommerce.buy_now_place_order_details', ['productId' => $productId]);
     }
 }
