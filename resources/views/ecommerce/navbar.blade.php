@@ -12,7 +12,7 @@
 
 </head>
 
- <body class="bg-gray-100">
+ <body class="bg-gray-100 flex flex-col min-h-screen">
 
        <nav class="fixed top-0 left-0 bg-white w-full shadow z-10">
           <div class="mx-auto flex justify-between items-center text-gray-700 bg-violet-700 lg:p-0 p-4">
@@ -41,17 +41,17 @@
                   </a>
                 </li>
                 @guest('customers')
-<li class='mx-4 my-6 md:my-0'>
-    <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
-</li>
-@else
+                  <li class='mx-4 my-6 md:my-0'>
+                    <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
+                  </li>
+                @else
 
-<li class='mx-4 my-6 md:my-0'>
+                <li class='mx-4 my-6 md:my-0'>
 
-    <div class="hidden sm:flex sm:items-center sm:ml-6">
-        <x-dropdown align="right" width="48">
-            <x-slot name="trigger">
-                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                  <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                     {{-- <div class="capitalize text-xs">{{ Auth::customers()->name }}</div> --}}
 
                     <div class="ml-1">
@@ -80,11 +80,11 @@
                     </x-dropdown-link>
                 </form>
             </x-slot>
-        </x-dropdown>
-    </div>
+          </x-dropdown>
+          </div>
    
-</li>
-@endguest
+          </li>
+            @endguest
               </ul>
 
               <button class="block md:hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-amber-500 group">
@@ -164,16 +164,13 @@
           </div>
         </nav>
 
-          <body>
             <main>
               <div>
                 @yield('content')
                </div>
             </main>
-          </body>
         
-
-        <footer>  
+        <footer class="mt-auto">  
         <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220"><path fill="rgb(153, 51, 255)" fill-opacity="1" d="M0,160L80,154.7C160,149,320,139,480,144C640,149,800,171,960,154.7C1120,139,1280,85,1360,58.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
         </svg>
         <div class="px-16 lg:px-10 sm:px-0 md:pb-6 bord ">
