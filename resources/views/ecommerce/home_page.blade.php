@@ -392,16 +392,16 @@
         <div class="rounded-md bg-white md:w-full mt-2 lg:h-4/6 md:mx-10 border-2 mx-4 mt-2 animate__animated animate__fadeInRight">
           <form action="#">
             <div class="px-4 md:px-10 py-10 md:py-20">
-              <input class="p-3 w-full rounded-lg border bor der-gray-200 text-sm" type="text" placeholder="Name">
+              <input class="p-3 w-full rounded-lg border border-gray-200 text-sm" type="text" name="name" placeholder="Name">
               <div class="mt-2 flex flex-row gap-2">
-                <input class="p-3 w-3/6 rounded-lg border bor der-gray-200 text-sm" type="text" placeholder="Email Address">
-                <input class="p-3 w-3/6 rounded-lg border bor der-gray-200 text-sm" type="text" placeholder="Phone Number">
+                <input class="p-3 w-3/6 rounded-lg border border-gray-200 text-sm" type="text" name="email" placeholder="Email Address">
+                <input class="p-3 w-3/6 rounded-lg border border-gray-200 text-sm" type="text" name="phone" placeholder="Phone Number">
               </div>
               <div class="mt-2">
-                <textarea class="w-full rounded-lg pl-2 border bor der-gray-200 text-sm" name=""  rows="8" placeholder="Messege"></textarea>
+                <textarea class="w-full rounded-lg pl-2 border border-gray-200 text-sm" name="message"  rows="8" placeholder="Message"></textarea>
               </div>
               <div class="mt-4">
-                <button class="text-sm transition ease-in-out delay-150 over:-translate-y-1 hover:scale-110 inline-block font-medium rounded-lg bg-violet-700 hover:bg-yellow-500 px-5 py-3 text-white sm:w-auto duration-500">
+                <button type="submit" class="text-sm transition ease-in-out over:-translate-y-1 hover:scale-110 inline-block font-medium rounded-lg bg-violet-700 hover:bg-yellow-500 px-5 py-3 text-white sm:w-auto duration-500">
                   Set Appointment
                 </button>
               </div>
