@@ -20,7 +20,7 @@
 
         <input type="password" name="password" placeholder="Password" class="rounded-sm p-2 w-72">
 
-        <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-md text-white cursor mt-2 hover:bg-amber-500">Login</button>
+        <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-md text-white cursor mt-2 hover:bg-amber-500">LOGIN</button>
 
         <p class="mt-8 text-gray-100">Don't have an account?</p> 
 
