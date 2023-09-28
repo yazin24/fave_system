@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="overflow-x-hidden">
+<div class="overflow-x-hidden overflow-y-hidden">
   <div class="wrapper flex justify-center items-start">
     <span class="colorlay w-full">
       <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 rounded-lg mx-8 lg:mx-96 mt-24 md:mt-60">
