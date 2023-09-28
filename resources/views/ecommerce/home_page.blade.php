@@ -380,20 +380,20 @@
       <div class="h-screen items-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:px-32">
         <div class="animate__animated animate__fadeInLeft">
           <div class="mx-10 mt-8">
-            <p class="text-lg">
+            <p class="text-sm md:text-md">
               After setting your appointment, please wait for our cleaning
               expert to contact you. The maximum days of waiting is probably
               3 days.
             </p>
-            <p class="font-bold text-2xl text-pink-600 mt-8">0998-887-3878</p>
-            <p class="text-lg not-italic mt-2">Fave Ecommerce Inc</p>
+            <p class="font-bold text-2xl text-pink-600 mt-8 text-sm md:text-md">0998-887-3878</p>
+            <p class="text-lg not-italic mt-2 text-sm md:text-md">Fave Ecommerce Inc</p>
           </div>
         </div>
         
         
-        <div class="rounded-md bg-white md:w-full sm:max-w-[690px] lg:h-4/6 md:mx-10 border-2 mx-4 mt-10 animate__animated animate__fadeInRight">
+        <div class="rounded-md bg-white md:w-full mt-2 lg:h-4/6 md:mx-10 border-2 mx-4 mt-2 animate__animated animate__fadeInRight">
           <form action="#">
-            <div class="px-4 md:px-10 py-20">
+            <div class="px-4 md:px-10 py-10 md:py-20">
               <input class="p-3 w-full rounded-lg border bor der-gray-200 text-sm" type="text" placeholder="Name">
               <div class="mt-2 flex flex-row gap-2">
                 <input class="p-3 w-3/6 rounded-lg border bor der-gray-200 text-sm" type="text" placeholder="Email Address">

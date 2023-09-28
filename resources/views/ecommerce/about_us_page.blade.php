@@ -8,24 +8,24 @@
       About Us
     </h2>
     <div class="flex flex-col md:flex-row md:mx-44 animate__animated animate__bounceInDown">
-      <div class="p-8 md:p-12">
-        <h2 class="text-2xl text-violet-700 font-bold mb-2">Mission</h2>
-        <div>
-
+      <div class="p-8">
+        <h2 class="text-2xl text-violet-700 font-bold">Mission</h2>
+        <div class="flex items-center">
+          <div class="p-2 md:p-12 flex justify-center">
+            <i class="fa-solid fa-comment-dots text-8xl text-violet-700  lg:mt-8"></i>
+          </div>
+          <div class="mt-8">
+            <p class="font-bold text-gray-800">
+              TO PROVIDE HIGH QUALITY PRODUCTS AND UNCONDITIONAL CUSTOMER
+              SATISFACTION THAT PROMOTES A HEALTHIER, SAFER, CLEANER ENVIRONMENT
+              AND MEETING CUSTOMER DEMANDS AND EXPECTATIONS DRIVEN BY CONTINOUS
+              RESEARCH AND PRODUCT INNOVATIONS. WE ARE COMMITED TO DELIVERING
+              ECO-FRIENDLY AND EFFECTIVE SOLUTIONS WHILE MINIMIZING THE IMPACT
+              ON THE PLANET DEVELOPMENT.
+            </p>
+          </div>
         </div>
-        <div class="p-2 md:p-12 flex justify-center">
-          <i class="fa-solid fa-comment-dots text-8xl text-violet-700 md:mt-60 lg:mt-8"></i>
-        </div>
-        <div>
-          <p class="font-bold text-gray-800">
-            TO PROVIDE HIGH QUALITY PRODUCTS AND UNCONDITIONAL CUSTOMER
-            SATISFACTION THAT PROMOTES A HEALTHIER, SAFER, CLEANER ENVIRONMENT
-            AND MEETING CUSTOMER DEMANDS AND EXPECTATIONS DRIVEN BY CONTINOUS
-            RESEARCH AND PRODUCT INNOVATIONS. WE ARE COMMITED TO DELIVERING
-            ECO-FRIENDLY AND EFFECTIVE SOLUTIONS WHILE MINIMIZING THE IMPACT
-            ON THE PLANET DEVELOPMENT.
-          </p>
-        </div>
+        
       </div>
       
     </div>
