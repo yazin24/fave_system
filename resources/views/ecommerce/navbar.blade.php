@@ -12,12 +12,14 @@
 
     <style>
       .wrapper {
-        margin-top: 3rem;
-          height: 50rem;
+          margin-top: 3rem;
+          height: 60rem;
           width: 100%;
-          background-image: url('{{ asset('images/favephoto.jpg') }}');
-          background-size: cover;
+          background-image: url('{{ asset('images/photofavehero.jpg') }}');
+          background-size: contain;
+          background-repeat: no-repeat;
       }
+
   </style>
 
 </head>
