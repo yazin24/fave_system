@@ -403,7 +403,7 @@
                 <textarea class="w-full rounded-lg pl-2 border bor der-gray-200 text-sm" name=""  rows="8" placeholder="Messege"></textarea>
               </div>
               <div class="mt-4">
-                <button class="transition ease-in-out delay-150 over:-translate-y-1 hover:scale-110 inline-block font-medium rounded-lg bg-violet-700 hover:bg-yellow-500 px-5 py-3 text-white sm:w-auto duration-500">
+                <button class="text-sm transition ease-in-out delay-150 over:-translate-y-1 hover:scale-110 inline-block font-medium rounded-lg bg-violet-700 hover:bg-yellow-500 px-5 py-3 text-white sm:w-auto duration-500">
                   Set Appointment
                 </button>
               </div>
