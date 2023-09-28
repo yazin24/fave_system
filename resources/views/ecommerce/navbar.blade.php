@@ -15,7 +15,7 @@
  <body class="bg-gray-100">
 
        <nav class="fixed top-0 left-0 bg-white w-full shadow z-10">
-          <div class="mx-auto flex justify-between items-center text-gray-700 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 lg:p-0 p-4">
+          <div class="mx-auto flex justify-between items-center text-gray-700 bg-violet-700 lg:p-0 p-4">
             <a href="{{route('homepage')}}">
               <img class='h-12 inline ml-10 cursor-pointer' src="../images/newlogo.png" alt=""/>
             </a>
@@ -91,7 +91,7 @@
                   <div class="w-5 h-1 bg-blue-600 mb-1"></div>
                   <div class="w-5 h-1 bg-blue-600 mb-1"></div>
                   <div class="w-5 h-1 bg-blue-600"></div>
-                  <div class="absolute top-0 -right-full opacity-0 h-screen w-8/12 bg-gradient-to-l from-violet-900 via-violet-400 to-blue-100 border transform group-focus:right-0 group-focus:opacity-100 transition-all duration-300">
+                  <div class="absolute top-0 -right-full opacity-0 h-screen w-8/12 bg-violet-700 border transform group-focus:right-0 group-focus:opacity-100 transition-all duration-300">
                     <ul class="flex flex-col items-center w-full text-base text-white cursor-pointer pt-10">
                       <li class="hover:bg-amber-500 py-4 px-6 w-full">
                         <a href="{{route('homepage')}}">
@@ -115,12 +115,10 @@
                       </li>
                       @guest('customers')
 <li class='mx-4 my-6 md:my-0'>
-    <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
+    <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
 </li>
 @else
-<li class=''>
- <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Cart</a>
-</li>
+
 <li class='mx-4 my-6 md:my-0'>
 
     <div class="hidden sm:flex sm:items-center sm:ml-6">
