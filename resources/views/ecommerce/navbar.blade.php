@@ -45,9 +45,7 @@
                     <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
                   </li>
                 @else
-
                 <li class='mx-4 my-6 md:my-0'>
-
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                   <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
