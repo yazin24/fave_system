@@ -380,7 +380,7 @@
       <div class="h-screen items-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:px-32">
         <div class="animate__animated animate__fadeInLeft">
           <div class="mx-10 mt-8">
-            <p class="text-sm md:text-md">
+            <p class="text-sm md:text-lg">
               After setting your appointment, please wait for our cleaning
               expert to contact you. The maximum days of waiting is probably
               3 days.
