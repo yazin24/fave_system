@@ -105,7 +105,7 @@
     </div>
   </div>
 
-    <div class="px-2">
+    <div class="px-2 bg-violet-700 p-8">
       <h2 class=" flex justify-center text-center text-md md:text-2xl font-semibold text-amber-500 md:mt-8">
         Introducing Our Dishwashing Liquid
       </h2>

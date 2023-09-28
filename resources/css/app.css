@@ -202,7 +202,7 @@ div .dot {
 .cleaning {
     height: 10rem;
     width: 100%;
-    background-image: url('../public/teamcleaning\.jpeg');
+    background-image: url('../public/teamcleaning.jpeg');
     background-size: cover;
     background-position: center;
 
@@ -223,15 +223,12 @@ div .dot {
     /* height: -80vh;
     width: 60%; */
 
-
     height: 80vh;
     width: 100%;
 
-
-
 }
 
-@media (max-width: 768) {
+@media (max-width: 768px) {
     .video {
         height: auto;
         width: 100%;
