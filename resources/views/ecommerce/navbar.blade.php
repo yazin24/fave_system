@@ -10,6 +10,16 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+    <style>
+      .wrapper {
+        margin-top: 3rem;
+          height: 50rem;
+          width: 100%;
+          background-image: url('{{ asset('images/favephoto.jpg') }}');
+          background-size: cover;
+      }
+  </style>
+
 </head>
 
  <body class="bg-gray-100 flex flex-col min-h-screen">
