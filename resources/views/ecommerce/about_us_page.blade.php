@@ -5,8 +5,8 @@
     <div class="mt-24 font-bold p-12 text-violet-700">
       <div class="mb-10"><h2 class="text-2xl text-center">ABOUT US</h2></div>
       <div class="md:p-12">
-        <div><h2 class="underline text-violet-700 md:text-lg">MISSION<i class="fa-solid fa-scroll fa-beat-fade ml-1"></i></h2></div>
-        <div class="text-sm md:text-lg">
+        <div><h2 class="underline text-violet-700 md:text-lg">MISSION<i class="fa-solid fa-scroll fa-beat-fade ml-1 text-amber-500"></i></h2></div>
+        <div class="text-sm md:text-lg mt-2">
           TO PROVIDE HIGH QUALITY PRODUCTS AND UNCONDITIONAL CUSTOMER
           SATISFACTION THAT PROMOTES A HEALTHIER, SAFER, CLEANER ENVIRONMENT
           AND MEETING CUSTOMER DEMANDS AND EXPECTATIONS DRIVEN BY CONTINOUS
@@ -21,8 +21,8 @@
       <br>
 
       <div class="md:p-12">
-        <div><h2 class="underline text-violet-700 md:text-lg">VISION<i class="fa-solid fa-eye fa-shake ml-1"></i></h2></div>
-        <div class="text-sm md:text-lg">
+        <div><h2 class="underline text-violet-700 md:text-lg">VISION<i class="fa-solid fa-eye fa-shake ml-1 text-amber-500"></i></h2></div>
+        <div class="text-sm md:text-lg mt-2">
           DRIVEN BY OUR PASSION FOR CLEANLINESS AND ENVIRONMENTAL
           STEWARDSHIP, WE ARE AIMING TO BECOME THE MOST TRUSTED AND ADMIRED
           BRAND FOR HOMECARE PRODUCTS WORLDWIDE. WE ENVISION A FUTURE WHERE
