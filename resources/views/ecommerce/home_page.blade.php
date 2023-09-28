@@ -371,11 +371,10 @@
     </div>
   </div>
 
-  <div class="container w-full lg:mx-0">
-    <div class="color-overlay w-full">
+  <div class="image-container w-full lg:mx-0">
+    <div class="image-color-overlay w-full">
     </div>
   </div>
-  
 
   
       <div class="h-screen items-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:px-32">
@@ -414,6 +413,5 @@
       </div>
     
 </div>
-
 
 @endsection

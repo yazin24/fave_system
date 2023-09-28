@@ -24,12 +24,6 @@
             </div>
         </form>  
     </div>
-
-     <div class="flex md:justify-center items-center h-screen">
-        <div class="container p-4 bg-gray-300 h-3/4 w-96">
-            
-        </div>
-    </div>
 </div>
 
 @endsection
