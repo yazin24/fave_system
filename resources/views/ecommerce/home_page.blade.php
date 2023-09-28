@@ -106,15 +106,15 @@
   </div>
 
     <div class="px-2 bg-violet-700 p-8">
-      <h2 class=" flex justify-center text-center text-md md:text-2xl font-semibold text-amber-500 md:mt-8">
+      <h2 class=" flex justify-center text-center text-md md:text-2xl font-bold text-amber-500 md:mt-8">
         Introducing Our Dishwashing Liquid
       </h2>
-      <p class="text-amber-600 flex justify-center text-center mb-8">
+      <p class="text-amber-600 flex justify-center text-center mb-8 font-bold">
         Experience the cleaning power like never before!
       </p>
 
       <video src="../images/faveVideo.mp4"
-      class="video rounded-md shadow-md colorlay"
+      class="video rounded-sm shadow-md colorlay"
       autoplay
       muted
       controls
