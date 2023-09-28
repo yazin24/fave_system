@@ -17,6 +17,7 @@ use App\Http\Controllers\SalesAgentController;
 use App\Http\Controllers\SalesAgentFunctionsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesFunctionsController;
+use App\Http\Controllers\SetAppointmentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffFunctionsController;
 use App\Http\Controllers\SuperAdminController;
@@ -88,6 +89,11 @@ Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> na
 Route::get('/fave/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
 
 Route::get('/fave/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
+
+
+//for email appointment
+Route::post('fave/set-appointment', [SetAppointmentController::class, 'set_appointment']) -> name('setappointment');
+//-----------------------------------------------------------------------------------------------------------------
 
 Route::get('/fave/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
 

@@ -20,16 +20,16 @@ class AppointmentEmail extends Mailable
 
     public function __construct($name, $email, $phone, $message)
     {
-        $this -> name($name);
-        $this -> email($email);
-        $this -> phone($email);
-        $this -> message($message);
+        $this -> name = $name;
+        $this -> email = $email;
+        $this -> phone = $phone;
+        $this -> message = $message;
     }
 
     public function build()
     {
         return $this->subject('Appointment Request')
-            ->view('emails.appointment');
+            ->view('ecommerce.email_template');
     }
 
     // /**
