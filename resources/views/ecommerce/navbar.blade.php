@@ -20,6 +20,25 @@
           background-repeat: no-repeat;
       }
 
+      @media (max-width: 1050px) {
+      .wrapper {
+        margin-top: 3rem;
+          height: 30rem;
+          width: 100%;
+          /* Allow the height to adjust based on content */
+          background-size: contain; /* Use contain for smaller screens */
+      }
+    }
+      @media (max-width: 768px) {
+      .wrapper {
+        margin-top: 3rem;
+          height: 25rem;
+          width: 100%;
+          /* Allow the height to adjust based on content */
+          background-size: contain; /* Use contain for smaller screens */
+      }
+  }
+
   </style>
 
 </head>
@@ -27,7 +46,7 @@
  <body class="bg-gray-100 flex flex-col min-h-screen">
 
        <nav class="fixed top-0 left-0 bg-white w-full shadow z-10">
-          <div class="mx-auto flex justify-between items-center text-gray-700 bg-violet-700 lg:p-0 p-4">
+          <div class="mx-auto flex justify-between items-center text-gray-700 bg-violet-700 lg:p-0">
             <a href="{{route('homepage')}}">
               <img class='h-12 inline ml-10 cursor-pointer' src="../images/newlogo.png" alt=""/>
             </a>
@@ -54,11 +73,7 @@
                   ABOUT US
                   </a>
                 </li>
-                <li class="hover:bg-amber-500 py-6 px-6">
-                  <a href="{{route('aboutuspage')}}">
-                  ABOUT US
-                  </a>
-                </li>
+               
                 @guest('customers')
                     <li class='mx-4 my-6 md:my-0'>
                       <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
@@ -122,7 +137,7 @@
                       </li>
                       <li class="hover:bg-amber-500 py-4 px-6 w-full"">
                         <a href="{{route('aboutuspage')}}">
-                        ABOUT US
+                        ABOUTUS
                         </a>
                       </li>
 

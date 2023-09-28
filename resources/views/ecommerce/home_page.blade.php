@@ -3,20 +3,21 @@
 @section('content')
 
 <div class="overflow-x-hidden overflow-y-hidden">
-  <div class="wrapper flex justify-center items-start">
-    <span class=" w-full">
-      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 rounded-lg mx-8 lg:mx-96 mt-24 md:mt-60">
-        <h2 class="text-lg md:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
+  <div class="wrapper flex justify-start items-start">
+    <span class="flex justify-center md:justify-start w-fulld">
+
+      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 rounded-lg md:w-1/3 mt-8 sm:mt-20 sm:mx-12 md:mt-24 md:ml-20 lg:mt-40 lg:ml-32">
+        <h2 class="text-sm lg:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
           DISCOVER THE POWER OF PROFESSIONAL-GRADE CLEANING AT YOUR HOME
         </h2>
-        <h4 class="text-center text-lg mb-6 text-gray-200">
+        <h4 class="text-center text-sm lg:text-lg mb-6 text-gray-500 font-bold">
           Elevate your cleaning game with our industry-leading products that
           deliver unmatched performance. Don't wait, take action and elevate
           your cleaning standards today.
         </h4>
         <a
           href="https://www.facebook.com/profile.php?id=100094725815233"
-          class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-2 rounded-md w-full md:w-3/4 lg:w-1/2 transition-all duration-200 text-center"
+          class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-2 rounded-md w-full md:w-3/4 lg:w-1/2 transition-all duration-200 text-center text-xs lg:text-sm"
           data-aos="fade-up"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="4000"
@@ -24,6 +25,7 @@
           CHAT WITH OUR CLEANING EXPERTS
         </a>
       </section>
+
     </span>
 
     <div class="bubble">
@@ -103,8 +105,8 @@
     </div>
   </div>
 
-    <div class="md:py-24 py-10 px-2">
-      <h2 class=" flex justify-center text-center text-md md:text-2xl font-semibold text-amber-500 md:mt-24">
+    <div class="px-2">
+      <h2 class=" flex justify-center text-center text-md md:text-2xl font-semibold text-amber-500 md:mt-8">
         Introducing Our Dishwashing Liquid
       </h2>
       <p class="text-amber-600 flex justify-center text-center mb-8">
@@ -335,8 +337,7 @@
         <h3 class="text-lg ml-2">Talk with us</h3>
       </span>
       <p class="mt-2 md: mt-4">
-        Our cleaning experts and agents will talk to you about your
-        inquiries in starting a business with us
+        Our cleaning experts or agents will talk to you about you starting a business with us
       </p>
       <br />
       <hr />
@@ -348,9 +349,7 @@
         <h3 class="text-lg ml-2">Visit our office</h3>
       </span>
       <p class="mt-2 md: mt-4">
-       
-        Our cleaning experts and agents will talk to you about your
-        inquiries in starting a business with us
+        Visit our office for more information about the business opportunity
       </p>
       <br />
       <hr />
@@ -362,8 +361,7 @@
         <h3 class="text-lg ml-2">Run your business</h3>
       </span>
       <p class="mt-2 md: mt-4">
-        Our cleaning experts and agents will talk to you about your
-        inquiries in starting a business with us
+        Congrats on your business. Run wild and make money
       </p>
       <br />
       <hr />

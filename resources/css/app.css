@@ -19,9 +19,6 @@
     background-size: cover;
 }
 
-.wrapper section {
-    z-index: 10;
-}
 
 .wrapper div {
     height: 25px;
