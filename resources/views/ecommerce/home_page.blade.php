@@ -17,7 +17,7 @@
         </h4>
         <a
           href="https://www.facebook.com/profile.php?id=100094725815233"
-          class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-2 rounded-md w-full md:w-3/4 lg:w-1/2 transition-all duration-200 text-center text-xs lg:text-sm"
+          class="flex items-center justify-center bg-violet-700 hover:bg-blue-600 text-white font-semibold py-2 px-2 rounded-md w-full md:w-3/4 lg:w-1/2 transition-all duration-200 text-center text-xs lg:text-sm"
           data-aos="fade-up"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="4000"
@@ -390,8 +390,8 @@
         
         
         <div class="rounded-md bg-white md:w-full mt-2 lg:h-4/6 md:mx-10 border-2 mx-4 mt-2 animate__animated animate__fadeInRight">
-          <form method="POST" action="{{route('setappointment')}}">
-            @csrf
+          {{-- <form method="POST" action="{{route('setappointment')}}">
+            @csrf --}}
             <div class="px-4 md:px-10 py-10 md:py-20">
               <input class="p-3 w-full rounded-lg border border-gray-200 text-sm" type="text" name="name" placeholder="Name">
               <div class="mt-2 flex flex-row gap-2">
@@ -412,7 +412,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          {{-- </form> --}}
         </div>
       </div>
     
