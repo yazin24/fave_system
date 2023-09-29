@@ -79,7 +79,7 @@
 
         @guest('customers')
         <li class='mx-4 my-6 md:my-0'>
-            <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
+            <a href="{{ route('loginpage') }}" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200">LOGIN</a>
         </li>
         @else
         <li class='mx-4 my-6 md:my-0'>
