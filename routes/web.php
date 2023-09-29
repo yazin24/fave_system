@@ -125,6 +125,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::post('fave/producgts/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
 
+    Route::post('fave/order-success/message', [EcommerceFunctionsController::class, 'customer_confirm_order']) -> name('customerconfirmorder');
+
 });
 
 

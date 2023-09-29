@@ -227,4 +227,57 @@ class EcommerceFunctionsController extends Controller
 
         return view('ecommerce.buy_now_place_order_details', ['productId' => $productId, 'orderInfo' => $orderInfo]);
     }
+
+    public function customer_confirm_order(Request $request)
+    {
+        $productId = $request->input('productId');
+
+       $orderInfo = session('orderInfo');
+
+       $paymentMethod = $orderInfo['payment_method'];
+
+       $generateNumber = function() {
+
+        $generatedTrackingNumber = mt_rand(100000000000000, 999999999999999);
+
+        while (EcomCustomerOrders::where('tracking_number', $generatedTrackingNumber) -> exists()){
+
+            $generatedTrackingNumber = mt_rand(100000000000000, 999999999999999);
+        }
+
+        return $generatedTrackingNumber;
+
+    };
+
+    $trackingNumber = $generateNumber();
+
+       if($paymentMethod === 'Cash On Delivery'){
+
+        $customerId = auth('customers') -> user() -> id;
+
+        $order = new EcomCustomerOrders([
+
+            'ecom_cs_id' => $customerId,
+            'status' => 8,
+            'shipping_address' => $orderInfo['shipping_address'],
+            'billing_address' => '',
+            'tracking_number' => $trackingNumber,
+
+        ]);
+
+        $order -> ecomCustomerOrderItems() -> create([
+
+            'order_id' => $order -> id,
+            'sku_id' => $productId -> id,
+            'quantity' => $orderInfo['quantity'],
+            'price' => $productId -> retail_price,
+
+        ]);
+
+        $order -> save();
+
+       }
+
+       return view('ecommerce.order_success_message');
+    }
 }
