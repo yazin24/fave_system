@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class=" flex justify-center">
+<div class=" flex justify-center mt-24">
 
 <div class="grid grid-cols-1 gap-12 md:grid md:grid-cols-2 gap-12 lg:grid lg:grid-cols-4 gap-12 justify-center">
 @foreach ($allProducts as $product)

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="mt-24 font-bold p-12 text-violet-700">
+    <div class="mt-10 font-bold p-12 text-violet-700">
       <div class="mb-10"><h2 class="text-2xl text-center">ABOUT US</h2></div>
       <div class="md:p-12">
         <div><h2 class="underline text-violet-700 md:text-lg">MISSION<i class="fa-solid fa-scroll fa-beat-fade ml-1 text-amber-500"></i></h2></div>

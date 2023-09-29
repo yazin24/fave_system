@@ -64,22 +64,22 @@
   <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
     <nav>
       <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0 font-bold">
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="#">HOME</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="#">PRODUCTS</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="#">SERVICES</a></li>
-        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="#">ABOUT US</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="{{route('homepage')}}">HOME</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="{{route('productpage')}}">PRODUCTS</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="{{route('servicepage')}}">SERVICES</a></li>
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="{{route('aboutuspage')}}">ABOUT US</a></li>
         @guest('customers')
         <li class='mx-4 my-6 md:my-0'>
-            <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>Login</a>
+            <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
         </li>
         @else
         <li class='mx-4 my-6 md:my-0'>
         
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            {{-- <div class="capitalize text-xs">{{ Auth::customers()->name }}</div> --}}
+                            {{-- <div class="capitalize text-xs">{{ Auth::customers()->name }}</div> --}}Sample
     
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -89,7 +89,7 @@
                         </button>
                     </x-slot>
     
-                    <x-slot name="content">
+                    <x-slot name="content" class="hidden">
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -114,7 +114,6 @@
         @endguest
       </ul>
     </nav>
-    
 
   </div>
 
@@ -182,6 +181,21 @@
     </footer>
 
      </body>
+
+     <script>
+      const dropdownTrigger = document.getElementByName('trigger');
+      const dropdownContent = document.getElementByName('content');
+
+      dropTrigger.addEeventListener('click', () => {
+        dropdownContent.classList.toggle('hidden');
+      });
+
+      window.addEventListener('click', (event) => {
+  if (!dropdownTrigger.contains(event.target) && !dropdownContent.contains(event.target)) {
+    dropdownContent.classList.add('hidden');
+  }
+});
+     </script>
 
 
 </html>
