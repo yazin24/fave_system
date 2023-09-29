@@ -50,7 +50,6 @@
 
  <body class="bg-gray-100 flex flex-col min-h-screen">
 
-
   <header class="lg:px-16 px-6 bg-violet-700 flex flex-wrap items-center lg:py-0 py-2">
     <div class="flex-1 flex justify-between items-center my-4">
       <a href="#">
@@ -68,6 +67,7 @@
         <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="{{route('productpage')}}">PRODUCTS</a></li>
         <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 text-gray-200" href="{{route('servicepage')}}">SERVICES</a></li>
         <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="{{route('aboutuspage')}}">ABOUT US</a></li>
+
         @guest('customers')
         <li class='mx-4 my-6 md:my-0'>
             <a href="{{ route('loginpage') }}" class='text-yellow-600 md:text-gray-200 font-bold hover:bg-yellow-500 md:p-6 md:pt-10 duration-200'>LOGIN</a>
@@ -89,10 +89,10 @@
                         </button>
                     </x-slot>
     
-                    <x-slot name="content" class="hidden">
-                        <x-dropdown-link :href="route('profile.edit')">
+                    <x-slot name="content">
+                        {{-- <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
-                        </x-dropdown-link>
+                        </x-dropdown-link> --}}
 
                         <x-dropdown-link :href="route('shoppingcart')">
                          {{ __('Shopping Cart') }}
@@ -101,7 +101,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logoutcustomer') }}">
                             @csrf
-    
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -118,8 +117,6 @@
   </div>
 
   </header>
-
-
 
             <main>
               <div class="">
@@ -177,24 +174,15 @@
             </div>
           </div>
       </div>
+
+      
         
     </footer>
 
      </body>
 
      <script>
-      const dropdownTrigger = document.getElementByName('trigger');
-      const dropdownContent = document.getElementByName('content');
-
-      dropTrigger.addEeventListener('click', () => {
-        dropdownContent.classList.toggle('hidden');
-      });
-
-      window.addEventListener('click', (event) => {
-  if (!dropdownTrigger.contains(event.target) && !dropdownContent.contains(event.target)) {
-    dropdownContent.classList.add('hidden');
-  }
-});
+     
      </script>
 
 

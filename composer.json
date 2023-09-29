@@ -11,7 +11,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "phpoffice/phpword": "^1.1"
+        "paypal/rest-api-sdk-php": "*",
+        "phpoffice/phpword": "^1.1",
+        "srmklive/paypal": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
