@@ -3,13 +3,12 @@
 @section('content')
 
 <div class="flex justify-center mt-8 font-bold">
-    <form method="POST" action="{{route('customerconfirmorder')}}">
+    <form method="POST" action="{{route('customerconfirmorder', ['productId' => $productId -> id])}}">
         @csrf
-    <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
+        <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
         <h2 class="mb-2">Place Order Details/Payment Intent</h2>
         <hr>
        <div class="flex flex-col">
-        <input type="hidden" name="productId" value="{{ $productId->id }}">
             <img src="{{asset($productId -> image_path)}}" class="w-32">
             <h2>Variant: {{$productId -> productVariants -> variant_name}}</h2>
             <h2>Size: @if($productId -> sku_size == 3785.41) 1 Gallon
@@ -22,7 +21,7 @@
            <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
            <h2>Shipping Address: {{session('orderInfo.shipping_address')}}</h2>
            <h2>Payment Method: {{session('orderInfo.payment_method')}}</h2>
-    </div>
+        </div>
 
         <hr class="my-2">
       
@@ -32,7 +31,7 @@
             
         </div>
         
-    </div
+        </div
     </form> 
 </div>
 

@@ -228,9 +228,14 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.buy_now_place_order_details', ['productId' => $productId, 'orderInfo' => $orderInfo]);
     }
 
-    public function customer_confirm_order(Request $request)
+    public function order_success_message()
     {
-        $productId = $request->input('productId');
+        return view('ecommerce.order_success_message');
+    }
+
+    public function customer_confirm_order(Request $request, ProductSku $productId)
+    {
+        // $product = $request->input('productId');
 
        $orderInfo = session('orderInfo');
 
@@ -255,7 +260,7 @@ class EcommerceFunctionsController extends Controller
 
         $customerId = auth('customers') -> user() -> id;
 
-        $order = new EcomCustomerOrders([
+        $order = EcomCustomerOrders::create([
 
             'ecom_cs_id' => $customerId,
             'status' => 8,
@@ -278,6 +283,6 @@ class EcommerceFunctionsController extends Controller
 
        }
 
-       return view('ecommerce.order_success_message');
+       return redirect() -> route('ordersuccessmessage');
     }
 }
