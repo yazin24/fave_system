@@ -2,42 +2,52 @@
 
 @section('content')
 
-<div class="flex justify-center mt-8 font-bold">
+<div class="flex justify-center mt-8 font-semibold text-xs md:text-lg">
     
-    <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
+    <div class="bg-gray-100 w-3/4 md:w-1/4 rounded-sm shadow-md p-2">
         <form method="POST" action="{{route('buynowplaceorderdetails', ['productId' => $productId])}}">
             @csrf
         <h2 class="mb-2">Order Details</h2>
         <hr>
-       <div class="flex flex-col">
-       
-            <img src="{{asset($productId -> image_path)}}" class="w-32">
-            <h2>Variant: {{$productId -> productVariants -> variant_name}}</h2>
-            <h2>Size: @if($productId -> sku_size == 3785.41) 1 Gallon
-                @elseif($productId -> sku_size == 1000) 1 Liter
-                @elseif($productId -> sku_size == 900) 900g
-                @else 180g
+       <div class="mt-4">
+
+
+            <div class="flex flex-row gap-2">
+                <div>
+                    <img src="{{asset($productId -> image_path)}}" class="w-32">
+                </div>
+                <div class="mt-12 md:mt-4">
+                    <h2>Variant: {{$productId -> productVariants -> variant_name}}</h2>
+                    <h2>Size: @if($productId -> sku_size == 3785.41) 1 Gallon
+                        @elseif($productId -> sku_size == 1000) 1 Liter
+                        @elseif($productId -> sku_size == 900) 900g
+                        @else 180g
+                        @endif
+                    </h2>
+                    <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
+                    
+                        <input type="number" name="quantity" placeholder="Enter Qty" class="h-6 text-xs mb-1 w-24 mt-1 rounded-sm" required>
+                   
+                </div>
+          
+            </div>
+
+
+            <div class=" mt-4">
+
+                @if(auth('customers') -> check())
+                 <input type="number" name="phone_number" value="{{auth('customers') -> user() -> phone_number}}" class="h-8 text-xs mb-1 w-full rounded-sm" required>
+                {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
                 @endif
-            </h2>
-            <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
-            <input type="number" name="quantity" placeholder="quantity" required>
-            <input type="text" name="shipping address" placeholder="shipping" required>
-            @if(auth('customers') -> check())
-            <input type="number" name="phone_number" value="{{auth('customers') -> user() -> phone_number}}" required>
-            {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
-            @endif
-            <select name="payment_method">
-                <option disabled selected>Choose Payment method</option>
-                <option value="Cash On Delivery">Cash On Delivery</option>
-                <option value="Online Payment">Online Payment</option>
-                {{-- <option>Cash On Delivery</option>
-                <option>Cash On Delivery</option> --}}
-            </select>
-
-        <div class="bg-white mt-1 flex flex-row">
-
-         
-        </div>
+                <input type="text" name="shipping address" placeholder="Shipping Address" class="h-8 text-xs mb-1 w-full rounded-sm" required>
+                <select name="payment_method" class="h-8 text-xs w-full rounded-sm">
+                    <option disabled selected>Choose Payment method</option>
+                    <option value="Cash On Delivery">Cash On Delivery</option>
+                    <option value="Online Payment">Online Payment</option>
+                    {{-- <option>Cash On Delivery</option>
+                    <option>Cash On Delivery</option> --}}
+                </select>
+            </div>
 
     </div>
 
