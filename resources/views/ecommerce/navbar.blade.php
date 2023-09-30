@@ -59,7 +59,7 @@
 
 </head>
 
- <body class="bg-gray-100 flex flex-col min-h-screen">
+ <body class="bg-gray-100 flex flex-col min-h-screen justify-center">
 
   <header class="lg:px-16 px-6 bg-violet-700 flex flex-wrap items-center lg:py-0 py-2">
     <div class="flex-1 flex justify-between items-center my-4">

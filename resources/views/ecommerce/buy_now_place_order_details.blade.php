@@ -43,13 +43,15 @@
         </div>
 
         <hr class="my-2">
-      
+        @if(session('orderInfo.payment_method') === 'Cash On Delivery')
         <div class="flex justify-between mx-2 mt-4">
             <form method="POST" action="{{route('customerconfirmorder', ['productId' => $productId -> id])}}">
                 @csrf
                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 text-sm text-gray-100 rounded-sm"><i class="fa-regular fa-square-check fa-bounce mr-1"></i>Confirm Order</button>
             </form> 
         </div>
+        @else
+        @endif
         
         </div
    
