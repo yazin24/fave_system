@@ -26,7 +26,7 @@
             <input type="password" name="password_confirmation" placeholder="Confirm Password" class="rounded-sm p-2 w-72">
             <button type="submit" class="w-72 p-2 flex justify-center bg-stone-600 rounded-sm text-white cursor mt-2 hover:bg-amber-500">SIGN UP</button>
             <div class="flex flex-col mt-8 text-gray-100">
-            <p class="">Don't have an account?</p> 
+            <p class="">Already Sign up?</p> 
             <p class="underline cursor-pointer hover:text-amber-400"><a href="{{route('loginpage')}}">Log in</a></p>
             </div>   
         </form>    
