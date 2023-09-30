@@ -13,7 +13,7 @@
             <h2 class="mb-1">TRACKING NUMBER: {{$ecommerceOrder -> tracking_number}}</h2>
             <h2 class="mb-1">FULL NAME: <span class="capitalize">{{$ecommerceOrder -> ecomCustomers -> name}}</span></h2>
             <h2 class="mb-1">PHONE NUMBER: {{$ecommerceOrder -> ecomCustomers -> phone_number}}</h2>
-            {{-- <h2 class="mb-1">PAYMENT METHOD: {{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</h2> --}}
+            <h2 class="mb-1">PAYMENT METHOD: {{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</h2>
             <h2 class="mb-1">STATUS: 
                 @if($ecommerceOrder -> status == 8) Ongoing
                 @elseif($ecommerceOrder -> status == 3) Queued
@@ -60,9 +60,6 @@
     </div>
 
 </div>
-
-
-bonjinggg ako 1233333
 
 
 @endsection
