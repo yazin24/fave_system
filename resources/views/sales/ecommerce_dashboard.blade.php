@@ -26,29 +26,32 @@
     <table class="w-full shadow-md bg-gray-400">
         <thead>
             <tr class="bg-gray-800 text-gray-200 h-8 md:h-10 text-xs">
-                <th class="text-xs w-1/6 font-bold">ORDER ID</th>
+                <th class="text-xs w-1/6 font-bold">TRACKING NUMBER</th>
                 <th class="text-xs w-1/6 font-bold">CUSTOMERS NAME</th>
-                <th class="text-xs w-1/6 font-bold">PHONE NUMBER</th>
+                <th class="text-xs w-1/6 font-bold">PAYMENT METHOD</th>
                 <th class="text-xs w-1/6 font-bold">STATUS</th>
                 <th class="text-xs w-1/6 font-bold">TOTAL AMOUNT</th>
-                <th class="text-xs w-1/6 font-bold">ACTION</th>
+                <th class="text-xs w-1/6 font-bold">DETAILS</th>
                 
             </tr>
         </thead>    
 
         <tbody class="bg-gray-300">
-            
+            @foreach($ecommerceOrders as $ecommerceOrder)
             <tr class="h-10">   
-                <td class="text-xs text-center border-b-2 font-bold"></td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$ecommerceOrder -> tracking_number}}</td>
+                <td class="text-xs text-center border-b-2 font-bold capitalize">{{$ecommerceOrder -> ecomCustomers -> name}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">{{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</td>
                 <td class="text-xs text-center border-b-2 font-bold">
-                   
+                    @if($ecommerceOrder -> status == 8) Ongoing
+                    @elseif($ecoomerceOrder -> status == 3) Queued
+                    @else Completed
+                    @endif
                 </td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
-                <td class="text-xs text-center border-b-2 font-bold"></td>
+                <td class="text-xs text-center border-b-2 font-bold">₱{{number_format($ecommerceOrder -> ecomCustomerPaymentTransactions -> amount, 2)}}</td>
                 <td class="text-xs text-center border-b-2 font-bold"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></td>
             </tr>
-              
+              @endforeach
         </tbody>
     </table>
 </div>

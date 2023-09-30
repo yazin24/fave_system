@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agents;
 use App\Models\CustomersPurchaseOrders;
+use App\Models\EcomCustomerOrders;
 use App\Models\LazadaOrderProducts;
 use App\Models\LazadaOrders;
 use App\Models\LazadaSales;
@@ -89,7 +90,9 @@ class SalesController extends Controller
 
     public function ecommerce_dashboard()
     {
-        return view('sales.ecommerce_dashboard');
+        $ecommerceOrders = EcomCustomerOrders::paginate(10);
+
+        return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
     }
 
     public function shopee_lazada_sales()
