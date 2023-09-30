@@ -49,7 +49,7 @@
                     @endif
                 </td>
                 <td class="text-xs text-center border-b-2 font-bold">₱{{number_format($ecommerceOrder -> ecomCustomerPaymentTransactions -> amount, 2)}}</td>
-                <td class="text-xs text-center border-b-2 font-bold"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></td>
+                <td class="text-xs text-center border-b-2 font-bold"><a href="{{route('ecommerceorderview', ['ecommerceOrder' => $ecommerceOrder -> id])}}"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></a></td>
             </tr>
               @endforeach
         </tbody>
