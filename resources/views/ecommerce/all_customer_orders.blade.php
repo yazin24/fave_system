@@ -4,14 +4,12 @@
 
 <div class="flex justify-center mt-8 font-bold">
     <div class="bg-gray-100 w-3/4 md:w-1/2 rounded-sm shadow-md p-2 flex flex-col">
-        <h2 class="mb-2">Order Details</h2>
+        <h2 class="mb-2">Order List</h2>
         <hr>
        <div class="flex flex-col">
-
-        <div class="bg-white mt-1 flex flex-row">
-
             @foreach($customerOrders as $order)
             @foreach($order -> ecomCustomerOrderItems as $item)
+            <div class="bg-white mt-1 flex flex-col md:flex-row md:justify-between md:align-center md:item-center p-2 md:p-4">
 
             <div>
                 <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-32 mr-4">
@@ -28,6 +26,8 @@
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2> Total Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
+            </div>
+            <div>
                 <h2 class="mt-4">Status: 
                     @if($order -> status == 8) <span class="text-red-600">Ongoing</span>
                     @elseif($order -> status == 3) <span class="text-yellow-600">Queued</span>
@@ -35,11 +35,10 @@
                     @endif
                 </h2>
             </div>
+            </div>
             @endforeach
           @endforeach
         </div>
-
-    </div>
 
         <hr class="my-2">
         <div class="flex justify-end">
