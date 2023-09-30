@@ -131,6 +131,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::post('fave/order-success/{productId}=product_id', [EcommerceFunctionsController::class, 'customer_confirm_order']) -> name('customerconfirmorder');
 
+    Route::get('fave/merchant-unavailable', [EcommerceFunctionsController::class, 'merchant']) -> name('merchant');
+
 });
 
 

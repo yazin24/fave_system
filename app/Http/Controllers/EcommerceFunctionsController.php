@@ -307,10 +307,15 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.all_customer_orders', ['customerOrders' => $customerOrders]);
     }
 
-    public function online_payment_success()
-    {
+    // public function online_payment_success()
+    // {
         
         
 
+    // }
+
+    public function merchant()
+    {
+        return view('ecommerce.merchant_temporary_message');
     }
 }

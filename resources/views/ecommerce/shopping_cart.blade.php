@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="flex justify-center mx-8">
-<form method="POST" action="{{route('placeorder')}}">
+<form method="POST" action="{{route('placeorder')}}" class="flex justify-center">
   @csrf
-  <table class="bg-gray-200 shadow-lg w-full mt-8" style="table-layout: fixed;">
+  <div class="">
+  <table class="bg-gray-200 shadow-lg md:w-1/3 mt-8" style="table-layout: fixed;">
     
       <thead>
-          <tr class="bg-violet-700 w-full text-gray-200">
+          <tr class="bg-violet-700 w-full text-gray-200 h-12">
             <th class="text-sm text-center w-1/5">ACTION</th>
               <th class="text-sm text-center w-1/5">ITEM</th>
               <th class="text-sm text-center w-1/5">QUANTITY</th>
@@ -36,14 +37,15 @@
       </tbody>
   </table>
   <div class="mt-4">
-    <div class="">
+    <div class="flex flex-col md:w-1/3">
        
-        <input type="text" name="shipping_address" placeholder="shipping address">
-        <input type="text" name="billing_address" placeholder="billing address">
+        <input type="text" name="shipping_address" placeholder="shipping address" class="mb-1 rounded-sm h-8">
+        <input type="text" name="billing_address" placeholder="billing address" class="mb-1 rounded-sm h-8">
        
     </div>
   </div>
-  <button type="submit" class="bg-red-600 hover:bg-red-700 p-1 rounded-sm">Place Order</button>
+  <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 font-bold text-xs">Place Order</button>
+</div>
 </form>
 </div>
 

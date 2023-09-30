@@ -28,7 +28,12 @@
                 <div>
                 </div>
                 @else
-               <div>
+               <div class="">
+                <div class="flex flex-row gap-1">
+                    <a href="{{route('merchant')}}" class=""><img src="{{asset('images/gcashlogo.png')}}" class="rounded-md mb-2 hover:w-12 w-10"></a>
+                    <a href="{{route('merchant')}}"><img src="{{asset('images/mayalogo.png')}}" class="rounded-md mb-2 hover:w-12 hover:h-10 w-10 h-9"></a>
+                
+                </div>
                 <div id="paypal-button-container"></div>
                </div>
                @endif
