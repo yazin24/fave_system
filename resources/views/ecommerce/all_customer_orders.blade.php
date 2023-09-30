@@ -14,10 +14,10 @@
             @foreach($order -> ecomCustomerOrderItems as $item)
 
             <div>
-                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-24">
+                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-32 mr-4">
             </div>
 
-            <div>
+            <div class="text-xs">
                 <h2>Variant: {{$item -> productSku -> productVariants -> variant_name}}</h2>
                 <h2>Size: @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
                         @elseif($item -> productSku -> sku_size == 1000) 1 Liter
@@ -27,7 +27,13 @@
                 </h2>
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
-                <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
+                <h2> Total Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
+                <h2 class="mt-4">Status: 
+                    @if($order -> status == 8) <span class="text-red-600">Ongoing</span>
+                    @elseif($order -> status == 3) <span class="text-yellow-600">Queued</span>
+                    @else <span class="text-green-600">Completed</span>
+                    @endif
+                </h2>
             </div>
             @endforeach
           @endforeach
