@@ -21,6 +21,18 @@
                <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
                <h2>Shipping Address: {{session('orderInfo.shipping_address')}}</h2>
                <h2>Payment Method: {{session('orderInfo.payment_method')}}</h2>
+               <br>
+               <hr>
+               <br>
+               @if(session('orderInfo.payment_method') === 'Cash On Delivery')
+                <div>
+                </div>
+                @else
+               <div>
+                <div id="paypal-button-container"></div>
+               </div>
+               @endif
+               
             </div>
            
         </div>
@@ -37,6 +49,25 @@
         </div
    
 </div>
+
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '{{$productId -> retail_price * session('orderInfo.quantity')}}'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.capture().then(function(details) {
+                window.location.href = "{{route('ordersuccessmessage')}}"
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
 
 
 @endsection

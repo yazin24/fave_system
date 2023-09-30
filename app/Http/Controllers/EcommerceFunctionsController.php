@@ -285,4 +285,10 @@ class EcommerceFunctionsController extends Controller
 
        return redirect() -> route('ordersuccessmessage');
     }
+
+    public function online_payment_success() {
+        
+        
+
+    }
 }

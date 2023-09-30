@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
   <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AV7Up2sl4_s6_qV8Z_n3RwvDwMLT4Qit60rhAeT_cF3D_TTyD5PL8S9oU13MUixNwFoKPx3rqDnTj3_s&currency=PHP"></script>
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
