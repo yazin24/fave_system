@@ -286,7 +286,29 @@ class EcommerceFunctionsController extends Controller
        return redirect() -> route('ordersuccessmessage');
     }
 
-    public function online_payment_success() {
+    public function show_all_customer_order()
+    {
+        $customerId = auth('customers')->user()->id;
+
+        $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
+        // ->where('id', $orderId)
+        ->where('ecom_cs_id', $customerId)
+        ->get();
+
+        $totalAmountOrder = 0; // Initialize the total amount
+
+        foreach ($customerOrders as $order) {
+            foreach ($order->ecomCustomerOrderItems as $orderItem) {
+                // Calculate the total amount for each order item and add it to the total
+                $totalAmountOrder += $orderItem->quantity * $orderItem->price;
+            }
+        }
+
+        return view('ecommerce.all_customer_orders', ['customerOrders' => $customerOrders]);
+    }
+
+    public function online_payment_success()
+    {
         
         
 

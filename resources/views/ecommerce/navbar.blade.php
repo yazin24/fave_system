@@ -107,7 +107,10 @@
 
                         <x-dropdown-link :href="route('shoppingcart')">
                          {{ __('Shopping Cart') }}
-                     </x-dropdown-link>
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('showallcustomerorder')">
+                          {{ __('Your Orders') }}
+                         </x-dropdown-link>
     
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logoutcustomer') }}">

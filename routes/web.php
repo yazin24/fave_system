@@ -111,6 +111,8 @@ Route::middleware(['auth:customers']) -> group(function(){
 
     Route::get('fave/products/shopping-cart', [EcommerceFunctionsController::class, 'shopping_cart']) -> name('shoppingcart');
 
+    Route::get('fave/products/all-orders', [EcommerceFunctionsController::class, 'show_all_customer_order']) -> name('showallcustomerorder');
+
     Route::post('fave/products/add-to-cart/{product}', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
 
     Route::post('fave/products/shopping-cart/place-order', [EcommerceFunctionsController::class, 'place_order']) -> name('placeorder');
