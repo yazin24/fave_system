@@ -279,9 +279,20 @@ class EcommerceFunctionsController extends Controller
 
         ]);
 
+        $totalAmount = $orderInfo['quantity'] * $productId -> retail_price;
+
+        $order -> ecomCustomerPaymentTransactions() -> create([
+
+            'order_id' => $order -> id,
+            'payment_method' => $orderInfo['payment_method'],
+            'amount' => $totalAmount,
+            'ref_number' => '',
+
+        ]);
+
         $order -> save();
 
-       }
+       }//dugtong mo dito yung sa online payment na else statement
 
        return redirect() -> route('ordersuccessmessage');
     }
