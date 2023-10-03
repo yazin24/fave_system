@@ -82,58 +82,63 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 
 
-Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
+Route::domain('fave.com.ph') -> group(function(){
 
-Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
+    Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
-Route::get('/fave/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
-
-Route::get('/fave/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
-
-
-//for email appointment
-Route::post('fave/set-appointment', [SetAppointmentController::class, 'set_appointment']) -> name('setappointment');
-//-----------------------------------------------------------------------------------------------------------------
-
-Route::get('/fave/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
-
-Route::get('/fave/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
-
-Route::post('fave/register/new', [RegisteredCustomerController::class, 'register_customer']) -> name('registercustomer');
-
-Route::post('fave/login/now', [CustomerAuthentictedSessionController::class, 'login_customer']) -> name('logincustomer');
-
-Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logout_customer']) -> name('logoutcustomer');
-
-
-
-Route::middleware(['auth:customers']) -> group(function(){
-
-    Route::get('fave/products/shopping-cart', [EcommerceFunctionsController::class, 'shopping_cart']) -> name('shoppingcart');
-
-    Route::get('fave/products/all-orders', [EcommerceFunctionsController::class, 'show_all_customer_order']) -> name('showallcustomerorder');
-
-    Route::post('fave/products/add-to-cart/{product}', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
-
-    Route::post('fave/products/shopping-cart/place-order', [EcommerceFunctionsController::class, 'place_order']) -> name('placeorder');
-
-    Route::get('fave/order-details/{orderId}', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
-
-    Route::put('fave/order-details/{orderId}/confirm-order', [EcommerceFunctionsController::class, 'confirm_order']) -> name('confirmorder');
-
-    Route::delete('fave/order-details/{orderId}/cancel', [EcommerceFunctionsController::class, 'cancel_order']) -> name('cancelorder');
-
-    Route::get('fave/products/buy-now/{productId}', [EcommerceFunctionsController::class, 'buy_now_order_details']) -> name('buynoworderdetails');
-
-    Route::post('fave/producgts/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
-
-    Route::get('fave/order-success/message-success', [EcommerceFunctionsController::class, 'order_success_message']) -> name('ordersuccessmessage');
-
-    Route::post('fave/order-success/{productId}=product_id', [EcommerceFunctionsController::class, 'customer_confirm_order']) -> name('customerconfirmorder');
-
-    Route::get('fave/merchant-unavailable', [EcommerceFunctionsController::class, 'merchant']) -> name('merchant');
+    Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
+    
+    Route::get('/fave/services', [EcommerceController::class, 'service_page']) -> name('servicepage');
+    
+    Route::get('/fave/about-us', [EcommerceController::class, 'about_us_page']) -> name('aboutuspage');
+    
+    
+    //for email appointment
+    Route::post('fave/set-appointment', [SetAppointmentController::class, 'set_appointment']) -> name('setappointment');
+    //-----------------------------------------------------------------------------------------------------------------
+    
+    Route::get('/fave/login', [EcommerceController::class, 'login_page']) -> name('loginpage');
+    
+    Route::get('/fave/register', [EcommerceController::class, 'register_page']) -> name('registerpage');
+    
+    Route::post('fave/register/new', [RegisteredCustomerController::class, 'register_customer']) -> name('registercustomer');
+    
+    Route::post('fave/login/now', [CustomerAuthentictedSessionController::class, 'login_customer']) -> name('logincustomer');
+    
+    Route::post('fave/logout', [CustomerAuthentictedSessionController::class, 'logout_customer']) -> name('logoutcustomer');
+    
+    
+    
+    Route::middleware(['auth:customers']) -> group(function(){
+    
+        Route::get('fave/products/shopping-cart', [EcommerceFunctionsController::class, 'shopping_cart']) -> name('shoppingcart');
+    
+        Route::get('fave/products/all-orders', [EcommerceFunctionsController::class, 'show_all_customer_order']) -> name('showallcustomerorder');
+    
+        Route::post('fave/products/add-to-cart/{product}', [EcommerceFunctionsController::class, 'add_to_cart']) -> name('addtocart');
+    
+        Route::post('fave/products/shopping-cart/place-order', [EcommerceFunctionsController::class, 'place_order']) -> name('placeorder');
+    
+        Route::get('fave/order-details/{orderId}', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
+    
+        Route::put('fave/order-details/{orderId}/confirm-order', [EcommerceFunctionsController::class, 'confirm_order']) -> name('confirmorder');
+    
+        Route::delete('fave/order-details/{orderId}/cancel', [EcommerceFunctionsController::class, 'cancel_order']) -> name('cancelorder');
+    
+        Route::get('fave/products/buy-now/{productId}', [EcommerceFunctionsController::class, 'buy_now_order_details']) -> name('buynoworderdetails');
+    
+        Route::post('fave/producgts/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
+    
+        Route::get('fave/order-success/message-success', [EcommerceFunctionsController::class, 'order_success_message']) -> name('ordersuccessmessage');
+    
+        Route::post('fave/order-success/{productId}=product_id', [EcommerceFunctionsController::class, 'customer_confirm_order']) -> name('customerconfirmorder');
+    
+        Route::get('fave/merchant-unavailable', [EcommerceFunctionsController::class, 'merchant']) -> name('merchant');
+    
+    });
 
 });
+
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
