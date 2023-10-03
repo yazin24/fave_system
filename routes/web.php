@@ -81,9 +81,9 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 
-    Route::group(['domain' => 'fave.com.ph'], function(){
+    // Route::group(['domain' => 'fave.com.ph'], function(){
 
-        Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
+    Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
     Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
     
@@ -137,7 +137,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
     });
 
 
-    });
+    // });
 
 
 
