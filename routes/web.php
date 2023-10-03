@@ -83,7 +83,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
     Route::domain('fave.com.ph') -> group(function(){
 
-    Route::get('/', [EcommerceController::class, 'home_page']) -> name('homepage');
+    Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
     Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
     
@@ -143,6 +143,8 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
+
+Route::domain('favesoap.com') -> group(function(){
 
 
 Route::middleware(['auth', 'purchasing']) -> group(function(){
@@ -550,6 +552,8 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
     Route::get('super-admin/manufacturing-storage-monitoring/view/{storageSku}/update-form', [SuperAdminFunctionsController::class, 'storage_sku_update_form']) -> name('storageskuupdateform');
 
     Route::put('super-admin/manufacturing-storage-monitoring/view/{storageSku}/update-form/update-now', [SuperAdminFunctionsController::class, 'storage_sku_update_store']) -> name('storageskuupdatestore');
+
+});
 
 });
 
