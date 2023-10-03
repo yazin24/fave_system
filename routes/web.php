@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/system', function () {
     return view('auth.login');
 });
 
