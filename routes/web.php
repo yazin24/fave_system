@@ -83,7 +83,11 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 
     Route::domain('fave.com.ph') -> group(function(){
 
-    Route::get('/fave.com.ph', [EcommerceController::class, 'home_page']) -> name('homepage');
+    Route::get('/', function(){
+        return redirect() -> route('homepage');
+    });
+
+    Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
 
     Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
     
