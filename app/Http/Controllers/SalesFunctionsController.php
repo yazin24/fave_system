@@ -1086,7 +1086,38 @@ class SalesFunctionsController extends Controller
 
     public function ecommerce_order_complete(EcomCustomerOrders $ecommerceOrder)
     {
+        $theOrder = EcomCustomerOrders::findOrFail($ecommerceOrder -> id);
 
+        $totalAmount = 0;
+
+        foreach($theOrder -> ecomCustomerOrderItems as $orderItems){
+
+            $price = $orderItems -> price;
+
+            $quantity = $orderItems -> quantity;
+
+            $total = $price * $quantity;
+
+            $totalAmount += $total;
+
+            $sku = ProductSku::findOrFail($orderItems -> sku_id);
+
+            $sku -> sku_quantity -= $orderItems ->  quantity;
+
+            $sku -> save();
+
+        }
+              
+        $theOrder -> update([
+            'status' => 4,
+        ]);
+
+        $theOrder -> ecomOrderSales() -> create([
+            'order_id' => $theOrder -> id,
+            'total_amount' => $totalAmount,
+        ]);
+
+        $theOrder -> save();
 
         return redirect() -> back();
     }
