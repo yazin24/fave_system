@@ -1084,5 +1084,12 @@ class SalesFunctionsController extends Controller
 
     }
 
+    public function ecommerce_order_complete(EcomCustomerOrders $ecommerceOrder)
+    {
+
+
+        return redirect() -> back();
+    }
+
     
 }

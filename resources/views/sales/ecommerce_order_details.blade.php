@@ -55,7 +55,17 @@
             </table>
         </div>
 
-        
+        <div class="flex flex-col gap-1 my-2 w-full">
+            <form method="POST" action="">
+                @csrf
+                <button class="text-xs font-bold text-gray-100 bg-teal-500 hover:bg-teal-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Complete?')"><i class="fa-solid fa-circle-check mr-1"></i>Complete</button>
+            </form>
+           <form method="POST" action="">
+            @csrf
+            <button class="text-xs font-bold text-gray-100 bg-red-500 hover:bg-red-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Cancel?')"><i class="fa-solid fa-circle-xmark mr-1"></i>Cancel</button>
+           </form>
+           
+        </div>
 
     </div>
 
