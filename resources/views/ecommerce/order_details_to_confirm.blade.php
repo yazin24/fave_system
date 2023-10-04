@@ -8,16 +8,17 @@
         <hr>
        <div class="flex flex-col">
 
-        <div class="bg-white mt-1 flex flex-row">
+        <div class="bg-white mt-1 flex flex-col">
 
             @foreach($customerOrders as $order)
             @foreach($order -> ecomCustomerOrderItems as $item)
+            <div class="flex flex-row">
 
             <div>
-                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-24">
+                <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-32">
             </div>
 
-            <div>
+            <div class="text-xs">
                 <h2>Variant: {{$item -> productSku -> productVariants -> variant_name}}</h2>
                 <h2>Size: @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
                         @elseif($item -> productSku -> sku_size == 1000) 1 Liter
@@ -28,7 +29,13 @@
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
+                <div class="text-center text-xs">Delete</div>
             </div>
+           
+            </div>
+            <br>
+            <hr>
+            <br>
             @endforeach
           @endforeach
         </div>
@@ -36,7 +43,8 @@
     </div>
 
         <hr class="my-2">
-        <div class="flex justify-end">
+        <div class="flex flex-col justify-end text-xs">
+            <h2 class="">Shipping Address:{{number_format($totalAmountOrder, 2)}}</h2>
             <h2 class="text-red-500">Total Amount: ₱{{number_format($totalAmountOrder, 2)}}</h2>
         </div>
 

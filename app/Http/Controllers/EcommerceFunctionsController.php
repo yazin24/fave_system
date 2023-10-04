@@ -84,7 +84,7 @@ class EcommerceFunctionsController extends Controller
 
         $customerOrderShippingAddress = $request -> input('shipping_address');
 
-        $customerOrderBillingAddress = $request -> input('billing_address');
+        $customerOrderBillingAddress = $request -> input('payment_method');
 
         $generateNumber = function() {
 
@@ -180,6 +180,11 @@ class EcommerceFunctionsController extends Controller
 
             'status' => 9,
 
+        ]);
+
+        $toConfirmCustomerOrder -> ecomCustomerPaymentTransactions() -> create([
+            'order_id' => $toConfirmCustomerOrder -> id,
+            'total'
         ]);
 
         $toConfirmCustomerOrder -> save();

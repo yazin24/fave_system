@@ -39,8 +39,19 @@
   <div class="mt-4">
     <div class="flex flex-col md:w-1/3">
        
-        <input type="text" name="shipping_address" placeholder="shipping address" class="mb-1 rounded-sm h-8">
-        <input type="text" name="billing_address" placeholder="billing address" class="mb-1 rounded-sm h-8">
+      @if(auth('customers') -> check())
+      <input type="number" name="phone_number" value="{{auth('customers') -> user() -> phone_number}}" class="h-8 text-xs mb-1 w-full rounded-sm" required>
+     {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
+     @endif
+     <input type="text" name="shipping address" placeholder="Shipping Address" class="h-8 text-xs mb-1 w-full rounded-sm" required>
+     <select name="payment_method" class="h-8 text-xs w-full rounded-sm">
+         <option disabled selected>Choose Payment method</option>
+         <option value="Cash On Delivery">Cash On Delivery</option>
+         <option value="Online Payment">Online Payment</option>
+         {{-- <option>Cash On Delivery</option>
+         <option>Cash On Delivery</option> --}}
+     </select>
+
        
     </div>
   </div>
