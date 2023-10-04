@@ -18,7 +18,7 @@
                 <img src="{{asset($item -> productSku -> image_path)}}" alt="Image" class="w-32">
             </div>
 
-            <div class="text-xs">
+            <div class="text-xs ml-2">
                 <h2>Variant: {{$item -> productSku -> productVariants -> variant_name}}</h2>
                 <h2>Size: @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
                         @elseif($item -> productSku -> sku_size == 1000) 1 Liter
@@ -29,7 +29,7 @@
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
-                <div class="text-center text-xs">Delete</div>
+                <button class="text-red-600 hover:underline mt-2">Delete</button>
             </div>
            
             </div>
@@ -44,7 +44,8 @@
 
         <hr class="my-2">
         <div class="flex flex-col justify-end text-xs">
-            <h2 class="">Shipping Address:{{number_format($totalAmountOrder, 2)}}</h2>
+            <h2 class="">Shipping Address: {{$order -> billing_address}}</h2>
+            <h2 class="">Payment Method: {{$order -> shipping_address}}</h2>
             <h2 class="text-red-500">Total Amount: ₱{{number_format($totalAmountOrder, 2)}}</h2>
         </div>
 
