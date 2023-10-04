@@ -1124,7 +1124,7 @@ class SalesFunctionsController extends Controller
 
     public function ecommerce_order_cancel(EcomCustomerOrders $ecommerceOrder)
     {
-        $theOrder = EcomCustomerOrders::finOrFail($ecommerceOrder -> id);
+        $theOrder = EcomCustomerOrders::findOrFail($ecommerceOrder -> id);
 
         $theOrder -> update([
             'status' => 8,

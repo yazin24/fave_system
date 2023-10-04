@@ -16,8 +16,9 @@
             <h2 class="mb-1">PAYMENT METHOD: {{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</h2>
             <h2 class="mb-1">STATUS: 
                 @if($ecommerceOrder -> status == 9) Ongoing
+                @elseif($ecommerceOrder -> status == 8) <span class="text-red-600">Cancelled</span>
                 @elseif($ecommerceOrder -> status == 3) Queued
-                @else Completed
+                @elseif($ecommerceOrder -> status == 4) <span class="text-teal-600">Completed</span>
                 @endif
             </h2>
         </div>
