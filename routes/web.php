@@ -311,6 +311,8 @@ Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [SalesFun
 
 Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [SalesFunctionsController::class, 'ecommerce_order_complete']) -> name('ecommerceordercomplete');
 
+Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [SalesFunctionsController::class, 'ecommerce_order_cancel']) -> name('ecommerceordercancel');
+
 Route::get('sales/ecommerce-dashboard/customers-list/{customer}', [SalesFunctionsController::class, 'ecommerce_customers_details']) -> name('ecommercecustomersdetails');
 
 Route::get('sales/ecommerce-dashboard/products', [SalesFunctionsController::class, 'ecommerce_products']) -> name('ecommerceproducts');

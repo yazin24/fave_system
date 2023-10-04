@@ -1122,9 +1122,17 @@ class SalesFunctionsController extends Controller
         return redirect() -> back();
     }
 
-    public function ecommerce_order_cancel()
+    public function ecommerce_order_cancel(EcomCustomerOrders $ecommerceOrder)
     {
-        
+        $theOrder = EcomCustomerOrders::finOrFail($ecommerceOrder -> id);
+
+        $theOrder -> update([
+            'status' => 8,
+        ]);
+
+        $theOrder -> save();
+
+        return redirect() -> back();
     }
     
 }
