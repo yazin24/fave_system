@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class EcomOrderSales extends Model
 {
-    use HasFactory;
+    protected $table = 'ecom_order_sales';
+
+    public function ecomCustomerOrders()
+    {
+        return $this -> belongsTo(EcomCustomerOrders::class, 'order_id');
+    }
+
+    protected $fillable = [
+
+        'order_id',
+        'total_amount'
+
+    ];
 }

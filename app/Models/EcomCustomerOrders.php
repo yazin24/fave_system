@@ -24,6 +24,11 @@ class EcomCustomerOrders extends Model
         return $this -> hasOne(EcomCustomerPaymentTransactions::class, 'order_id');
     }
 
+    public function ecomOrderSales()
+    {
+        return $this -> hasOne(EcomOrderSales::class, 'order_id');
+    }
+
     protected $fillable = [
 
         'ecom_cs_id',
