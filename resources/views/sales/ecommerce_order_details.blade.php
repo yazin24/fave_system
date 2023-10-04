@@ -6,7 +6,7 @@
   
     <div class="bg-gray-200 rounded-sm shadow-sm md:w-1/3 p-2">
         <div>
-            <h2 class="font-bold md:text-xl text-gray-900 mt-2">Order Details</h2>
+            <h2 class="font-bold text-gray-900 mt-2">Order Details</h2>
             <hr class="border border-b-1 border-gray-300 my-2">
         </div>
         <div>
@@ -59,11 +59,12 @@
         <div class="flex flex-col gap-1 my-2 w-full">
             <form method="POST" action="{{route('ecommerceordercomplete', ['ecommerceOrder' => $ecommerceOrder -> id])}}">
                 @csrf
-                <button class="text-xs font-bold text-gray-100 bg-teal-500 hover:bg-teal-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Complete?')"><i class="fa-solid fa-circle-check mr-1"></i>Complete</button>
+                @method('PUT')
+                <button type="submit" class="text-xs font-bold text-gray-100 bg-teal-500 hover:bg-teal-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Complete?')"><i class="fa-solid fa-circle-check mr-1"></i>Complete</button>
             </form>
            <form method="POST" action="">
             @csrf
-            <button class="text-xs font-bold text-gray-100 bg-red-500 hover:bg-red-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Cancel?')"><i class="fa-solid fa-circle-xmark mr-1"></i>Cancel</button>
+            <button type="submit" class="text-xs font-bold text-gray-100 bg-red-500 hover:bg-red-600 p-1 rounded-sm w-full" onclick="return confirm('Update as Cancel?')"><i class="fa-solid fa-circle-xmark mr-1"></i>Cancel</button>
            </form>
         </div>
         @elseif($ecommerceOrder -> status == 4)
@@ -73,7 +74,7 @@
             </div>
         @elseif($ecommerceOrder -> status == 8)
         <div class="flex flex-col gap-1 my-2 w-full">
-        <button class="text-xs font-bold text-gray-100 bg-teal-500 hover:bg-teal-600 p-1 rounded-sm w-full"><i class="fa-solid fa-circle-check mr-1"></i>Completed</button>
+        <button class="text-xs font-bold text-gray-100 bg-gray-200 p-1 rounded-sm w-full"><i class="fa-solid fa-circle-check mr-1"></i>Completed</button>
             <button class="text-xs font-bold text-gray-100 bg-red-500 hover:bg-red-600 p-1 rounded-sm w-full"><i class="fa-solid fa-circle-xmark mr-1"></i>Cancelled</button>
           
         </div>

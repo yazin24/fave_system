@@ -263,7 +263,7 @@ class EcommerceFunctionsController extends Controller
         $order = EcomCustomerOrders::create([
 
             'ecom_cs_id' => $customerId,
-            'status' => 8,
+            'status' => 9,
             'shipping_address' => $orderInfo['shipping_address'],
             'billing_address' => '',
             'tracking_number' => $trackingNumber,

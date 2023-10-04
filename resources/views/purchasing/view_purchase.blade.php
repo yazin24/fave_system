@@ -63,7 +63,7 @@
 
                     <div class="ml-auto mt-4 font-bold mr-4">
                         <th><span class="text-xs">Total Amount</span>:</th>
-                        <td><span class="text-xs text-red-600">₱{{$totalAmount}}.00</span></td>
+                        <td><span class="text-xs text-red-600">₱{{$totalAmount}}</span></td>
                     </div>
                  </div>
          </div>

@@ -43,7 +43,7 @@
                 <td class="text-xs text-center border-b-2 font-bold capitalize">{{$ecommerceOrder -> ecomCustomers -> name}}</td>
                 <td class="text-xs text-center border-b-2 font-bold">{{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</td>
                 <td class="text-xs text-center border-b-2 font-bold">
-                    @if($ecommerceOrder -> status == 8) Ongoing
+                    @if($ecommerceOrder -> status == 9) Ongoing
                     @elseif($ecommerceOrder -> status == 3) Queued
                     @else Completed
                     @endif

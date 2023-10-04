@@ -1122,5 +1122,9 @@ class SalesFunctionsController extends Controller
         return redirect() -> back();
     }
 
+    public function ecommerce_order_cancel()
+    {
+        
+    }
     
 }
