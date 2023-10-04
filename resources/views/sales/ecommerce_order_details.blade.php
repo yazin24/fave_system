@@ -4,7 +4,7 @@
 
 <div class="mt-2">
   
-    <div class="bg-gray-200 rounded-sm shadow-sm md:w-1/3 p-2">
+    <div class="bg-gray-200 rounded-sm shadow-sm md:w-1/2 p-2">
         <div>
             <h2 class="font-bold text-gray-900 mt-2">Order Details</h2>
             <hr class="border border-b-1 border-gray-300 my-2">

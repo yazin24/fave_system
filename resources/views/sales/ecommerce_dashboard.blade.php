@@ -45,7 +45,8 @@
                 <td class="text-xs text-center border-b-2 font-bold">
                     @if($ecommerceOrder -> status == 9) Ongoing
                     @elseif($ecommerceOrder -> status == 3) Queued
-                    @else Completed
+                    @elseif($ecommerceOrder -> status == 8) Cancelled
+                    @elseif($ecommerceOrder -> status == 4) Completed
                     @endif
                 </td>
                 <td class="text-xs text-center border-b-2 font-bold">₱{{number_format($ecommerceOrder -> ecomCustomerPaymentTransactions -> amount, 2)}}</td>
