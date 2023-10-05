@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         $ecommerceOrders = EcomCustomerOrders::orderBy('created_at', 'desc') -> paginate(10);
 
-        return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
+        return view('admin.admin_ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
     }
 
     public function admin_sales_monitoring()

@@ -81,7 +81,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 
-    // Route::domain('fave.com.ph') -> group(function(){
+    Route::domain('fave.com.ph') -> group(function(){
 
     Route::get('/', function(){
         return redirect() -> route('homepage');
@@ -141,14 +141,14 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
     });
 
 
-    // });
+    });
 
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 
-// Route::domain('favesoap.com') -> group(function(){
+Route::domain('favesoap.com') -> group(function(){
 
 
 Route::middleware(['auth', 'purchasing']) -> group(function(){
@@ -450,11 +450,17 @@ Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_st
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
 
-Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
+Route::get('admin/ecommerce-dashboard/search-field', [AdminFunctionsController::class, 'search_field']) -> name('searchfield');
 
-Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');
+Route::get('/admin/ecommerce-dashboard/customer-list', [AdminFunctionsController::class, 'admin_ecommerce_customers']) -> name('adminecommercecustomers');
 
-Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [AdminFunctionsController::class, 'admin_ecommerce_order_cancel']) -> name('adminecommerceordercancel');
+Route::get('admin/ecommerce-dashoard/customer-list/{customer}', [AdminFunctionsController::class, 'admin_ecommerce_customers_details']) -> name('adminecommercecustomerdetails');
+
+Route::get('admin/ecommerce-dashboard/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
+
+Route::put('admin/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');
+
+Route::put('admin/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [AdminFunctionsController::class, 'admin_ecommerce_order_cancel']) -> name('adminecommerceordercancel');
 
 Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch');
 
@@ -573,7 +579,7 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
 });
 
-// });
+});
 
 
 

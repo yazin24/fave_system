@@ -14,11 +14,11 @@
     </div ">
    
     <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('adminecommercecustomers')}}">Customers</a></button>
     </div>
-    <div class="mr-2">
+    {{-- <div class="mr-2">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommerceproducts')}}">Products</a></button>
-    </div>
+    </div> --}}
     <div class="">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold">Sales</button>
     </div>
@@ -51,7 +51,7 @@
                     @endif
                 </td>
                 <td class="text-xs text-center border-b-2 font-bold">₱{{number_format($ecommerceOrder -> ecomCustomerPaymentTransactions -> amount, 2)}}</td>
-                <td class="text-xs text-center border-b-2 font-bold"><a href="{{route('ecommerceorderview', ['ecommerceOrder' => $ecommerceOrder -> id])}}"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></a></td>
+                <td class="text-xs text-center border-b-2 font-bold"><a href="{{route('adminecommerceorderview', ['ecommerceOrder' => $ecommerceOrder -> id])}}"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></a></td>
             </tr>
               @endforeach
         </tbody>
