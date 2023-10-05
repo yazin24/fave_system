@@ -86,7 +86,15 @@ class EcommerceFunctionsController extends Controller
 
         $customerOrderShippingAddress = $request -> input('shipping_address');
 
-        $customerOrderBillingAddress = $request -> input('payment_method');
+        $paymentMethod = $request -> input('payment_method');
+
+        $orderInfo = [
+
+            'payment' => $paymentMethod,
+
+        ];
+
+        session(['orderInfo' => $orderInfo]);
 
         $generateNumber = function() {
 
@@ -114,7 +122,7 @@ class EcommerceFunctionsController extends Controller
             'ecom_cs_id' => $customerId,
             'status' => 3,
             'shipping_address' => $customerOrderShippingAddress,
-            'billing_address' => $customerOrderBillingAddress,
+            'billing_address' => '',
             'tracking_number' => $trackingNumber,
 
         ]);

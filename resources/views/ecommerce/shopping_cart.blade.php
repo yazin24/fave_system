@@ -60,7 +60,7 @@
        
     </div>
   </div>
-  <button type="submit" class="bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 font-bold text-xs">Place Order</button>
+  <button type="submit" class="bg-teal-500 mt-1 hover:bg-teal-600 p-1 rounded-sm text-gray-200 font-bold text-xs">Place Order</button>
 </div>
 </form>
 </div>
