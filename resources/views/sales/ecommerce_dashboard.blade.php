@@ -6,7 +6,7 @@
 
 <div class="flex flex-row justify-end">
     <div class="mr-2">
-        <input type="text" class="rounded-sm text-xs h-7 font-semibold">
+        <input type="text" class="rounded-sm text-xs h-7 font-semibold" name="search">
         <button class="bg-gray-800 text-gray-200 py-1 px-2 rounded-sm text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div ">
    

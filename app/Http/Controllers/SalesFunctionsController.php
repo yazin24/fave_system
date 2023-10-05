@@ -23,6 +23,26 @@ use PhpOffice\PhpWord\TemplateProcessor;
 
 class SalesFunctionsController extends Controller
 {
+    public function search_field(Request $request)
+    {
+        $search = $request -> input('search');
+
+        $ecommerceOrders = EcomCustomerOrders::where(function($query) use ($search) {
+            $query->where('tracking_number', 'LIKE', '%' . $search . '%')
+                  ->orWhere('status', 'LIKE', '%' . $search . '%')
+                  ->orWhereHas('ecomCustomers', function($customerQuery) use ($search) {
+                      $customerQuery->where('name', 'LIKE', '%' . $search . '%');
+                  })
+                  ->orWhereHas('ecomCustomerPaymentTransactions', function($transactionQuery) use ($search) {
+                      $transactionQuery->where('payment_method', 'LIKE', '%' . $search . '%');
+                      $transactionQuery->orWhere('amount', 'LIKE', '%' . $search . '%');
+                  });
+        })->paginate(10);
+
+        return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
+        
+    }
+
     public function ecommerce_customers()
     {
         $allEcomCustomers = EcomCustomers::paginate(10);
