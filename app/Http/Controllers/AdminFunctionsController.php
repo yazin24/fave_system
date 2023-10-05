@@ -25,7 +25,7 @@ class AdminFunctionsController extends Controller
 {
     public function admin_ecommerce_order_view(EcomCustomerOrders $ecommerceOrder)
     {
-        return view('sales.ecommerce_order_details', ['ecommerceOrder' => $ecommerceOrder]);
+        return view('admin.admin_ecommerce_order_details', ['ecommerceOrder' => $ecommerceOrder]);
     }
 
     public function admin_ecommerce_order_complete(EcomCustomerOrders $ecommerceOrder)
