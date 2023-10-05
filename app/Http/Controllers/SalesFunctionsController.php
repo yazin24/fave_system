@@ -665,14 +665,14 @@ class SalesFunctionsController extends Controller
             'order_id' => 'required',
             'full_name' => 'required',
             'customers_address' => 'required',
-            'phone_number' => 'required',
+            // 'phone_number' => 'required',
             'charges_and_fees' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
             'voucher' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
         ], [
             'order_id.required' => 'Order ID is required',
             'full_name.required' => 'Customer Name is required',
             'customers_address.required' => 'Customer Address is required',
-            'phone_number.required' => 'Phone Number is required',
+            // 'phone_number.required' => 'Phone Number is required',
             'charges_and_fees.required' => 'Please input the charges and fees total amount',
             'voucher.required' => "Please input voucher amount or put 0 if there's none",
         ]);
@@ -680,7 +680,7 @@ class SalesFunctionsController extends Controller
         $shopeeOrderId = $request->input('order_id');
         $shopeeCustomerName = $request->input('full_name');
         $shopeeCustomerAddress = $request->input('customers_address');
-        $shopeeCustomerNumber = $request->input('phone_number');
+        // $shopeeCustomerNumber = $request->input('phone_number');
         $shopeeChargesAndFees = $request->input('charges_and_fees');
         $shopeeVouchers = $request->input('voucher');
         $shopeeCustomerStatus = $request->input('status');
@@ -711,7 +711,7 @@ class SalesFunctionsController extends Controller
         $newShopeeCustomerOrders = ShopeeOrders::create([
             'customers_name' => $shopeeCustomerName,
             'customers_address' => $shopeeCustomerAddress,
-            'phone_number' => $shopeeCustomerNumber,
+            'phone_number' => '',
             'charges_and_fees' => $shopeeChargesAndFees,
             'voucher' => $shopeeVouchers,
             'order_id' => $shopeeOrderId,
