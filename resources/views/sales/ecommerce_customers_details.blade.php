@@ -21,44 +21,25 @@
              <h2 class="text-gray-800 mb-2 font-bold text-xs">Email: <span class="text-blue-600 font-bold">{{$customer -> email}}</span></h2>
 
              <h2 class="text-gray-800 mt-2 font-bold">Customer Orders:</h2>
-             <ul>
+            
                 @foreach ($customer->ecomCustomerOrders as $order)
-                    <li>
-                        Order ID: {{ $order->id }}
-                        Status: {{ $order->status }}
-                        Shipping Address: {{ $order->shipping_address }}
-                        Billing Address: {{ $order->billing_address }}
-                        Tracking Number: {{ $order->tracking_number }}
-                        
-                        <!-- Display order items for this order -->
-                        <ul>
-                            @foreach ($order->ecomCustomerOrderItems as $item)
-                                <li>
-                                    Item: {{ $item->item_name }}
-                                    Quantity: {{ $item->quantity }}
-                                    Price: {{ $item->price }}
-                                </li>
-                            @endforeach
-                        </ul>
-                        
-                        <!-- Display payment transactions for this order -->
-                        <h3>Payment Transactions:</h3>
-                        @foreach ($order->ecomCustomerPaymentTransactions as $transaction)
-                            {{-- <p>Transaction ID: {{ $transaction->id }}</p> --}}
-                            {{-- <p>Amount: {{ $transaction->amount }}</p> --}}
-                            <!-- Add more details about the payment transaction as needed -->
+                    <h2>{{$order -> tracking_number}}</h2>
+                    <h2>{{$order -> shipping_address}}</h2>
+                    <h2>@if($order -> status == 9)Ongoing
+
+                        @elseif($order -> status == 4)Complete
+
+                        @elseif($order -> status == 8) Cancelled
+
+                        @else Queued
+
+                        @endif</h2>
+                        @foreach($order -> ecomCustomerOrderItems as $item)
+                        <h2>{{$item -> productSku -> productVariants -> variant_name}}</h2>
                         @endforeach
-                        
-                        <!-- Display sales for this order -->
-                        @if ($order->ecomOrderSales)
-                            <h3>Sales:</h3>
-                            <p>Sale ID: {{ $order->ecomOrderSales->id }}</p>
-                            <p>Sale Amount: {{ $order->ecomOrderSales->amount }}</p>
-                            <!-- Add more details about the sale as needed -->
-                        @endif
-                    </li>
+                    <hr class="bg-gray-900 h-2">
                 @endforeach
-             </ul>
+             
                
          </div>
 
