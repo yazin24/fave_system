@@ -24,6 +24,30 @@ use PhpOffice\PhpWord\TemplateProcessor;
 
 class AdminFunctionsController extends Controller
 {
+
+    public function search_field(Request $request)
+    {
+        //the orWhereHas indicates that it is in another table that is associated to the original table
+        //using orWhereHas is a way to get or find the data that is in another table
+
+        $search = $request -> input('search');
+
+        $ecommerceOrders = EcomCustomerOrders::where(function($query) use ($search) {
+            $query->where('tracking_number', 'LIKE', '%' . $search . '%')
+                  ->orWhere('status', 'LIKE', '%' . $search . '%')
+                  ->orWhereHas('ecomCustomers', function($customerQuery) use ($search) {
+                      $customerQuery->where('name', 'LIKE', '%' . $search . '%');
+                  })
+                  ->orWhereHas('ecomCustomerPaymentTransactions', function($transactionQuery) use ($search) {
+                      $transactionQuery->where('payment_method', 'LIKE', '%' . $search . '%');
+                      $transactionQuery->orWhere('amount', 'LIKE', '%' . $search . '%');
+                  });
+        }) -> orderBy('created_at', 'desc') ->paginate(10);
+
+        return view('admin.admin_ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
+        
+    }
+
     public function admin_ecommerce_order_view(EcomCustomerOrders $ecommerceOrder)
     {
         return view('admin.admin_ecommerce_order_details', ['ecommerceOrder' => $ecommerceOrder]);
@@ -85,6 +109,11 @@ class AdminFunctionsController extends Controller
         $allEcomCustomers = EcomCustomers::paginate(10);
 
         return view('admin.admin_ecommerce_customer_list', ['allEcomCustomers' => $allEcomCustomers]);
+    }
+
+    public function admin_ecommerce_customers_details(EcomCustomers $customer)
+    {
+        return view('admin.admin_ecommerce_customers_details', ['customer' => $customer]);
     }
     
 
