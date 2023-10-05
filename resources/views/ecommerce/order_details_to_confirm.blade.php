@@ -45,7 +45,7 @@
         <hr class="my-2">
         <div class="flex flex-col justify-end text-xs">
             <h2 class="">Shipping Address: {{$order -> shipping_address}}</h2>
-            <h2 class="">Payment Method: {{$order -> billing_address}}</h2>
+            <h2 class="">Payment Method: {{session('orderInfo.payment')}}</h2>
             <h2 class="text-red-500">Total Amount: ₱{{number_format($totalAmountOrder, 2)}}</h2>
         </div>
 

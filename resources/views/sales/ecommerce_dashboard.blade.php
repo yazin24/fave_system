@@ -32,10 +32,9 @@
                 <th class="text-xs w-1/6 font-bold">STATUS</th>
                 <th class="text-xs w-1/6 font-bold">TOTAL AMOUNT</th>
                 <th class="text-xs w-1/6 font-bold">DETAILS</th>
-                
             </tr>
         </thead>    
-
+       
         <tbody class="bg-gray-300">
             @foreach($ecommerceOrders as $ecommerceOrder)
             <tr class="h-10">   

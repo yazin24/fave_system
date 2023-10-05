@@ -193,6 +193,14 @@ class EcommerceFunctionsController extends Controller
     {
         $toConfirmCustomerOrder = EcomCustomerOrders::findOrFail($orderId);
 
+        $orderInfo = session('orderInfo');
+
+        $totalAmount = 0;
+
+        foreach ($toConfirmCustomerOrder->ecomCustomerOrderItems as $orderItem) {
+            $totalAmount += $orderItem->quantity * $orderItem->price;
+        }
+
         $toConfirmCustomerOrder -> update([
 
             'status' => 9,
@@ -200,8 +208,12 @@ class EcommerceFunctionsController extends Controller
         ]);
 
         $toConfirmCustomerOrder -> ecomCustomerPaymentTransactions() -> create([
+            
             'order_id' => $toConfirmCustomerOrder -> id,
-            'total'
+            'payment_method' => $orderInfo['payment'],
+            'amount' => $totalAmount,
+            'ref_number' => '',
+            
         ]);
 
         $toConfirmCustomerOrder -> save();

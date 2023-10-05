@@ -29,7 +29,7 @@
             </div>
             <div>
                 <h2 class="mt-4">Status: 
-                    @if($order -> status == 8) <span class="text-red-600">Ongoing</span>
+                    @if($order -> status == 9) <span class="text-red-600">Ongoing</span>
                     @elseif($order -> status == 3) <span class="text-yellow-600">Queued</span>
                     @else <span class="text-green-600">Completed</span>
                     @endif
