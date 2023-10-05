@@ -29,7 +29,7 @@
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
-                <button class="text-red-600 hover:underline mt-2">Delete</button>
+                <button class="text-red-600 hover:underline mt-2 delete-item-button" data-order-id="{{$order -> id}}">Delete</button>
             </div>
            
             </div>
@@ -66,5 +66,6 @@
         
     </div
 </div>
+
 
 @endsection

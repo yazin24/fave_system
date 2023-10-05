@@ -8,6 +8,8 @@ use App\Models\EcomCustomerOrders;
 use App\Models\EcomCustomers;
 use App\Models\ProductSku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class EcommerceFunctionsController extends Controller
 {
@@ -101,6 +103,12 @@ class EcommerceFunctionsController extends Controller
 
         $trackingNumber = $generateNumber();
 
+        if(empty($productOrders)){
+            
+            return redirect() -> back() -> with('error', 'Please check atleast one item to proceed.');
+            
+        }
+
         $newCustomerOrder = EcomCustomerOrders::create([
 
             'ecom_cs_id' => $customerId,
@@ -158,6 +166,7 @@ class EcommerceFunctionsController extends Controller
         $customerOrders = EcomCustomerOrders::with('ecomCustomerOrderItems.productSku')
         // ->where('id', $orderId)
         ->where('ecom_cs_id', $customerId)
+        ->where('status', 3)
         ->get();
 
         $totalAmountOrder = 0; // Initialize the total amount
@@ -190,6 +199,21 @@ class EcommerceFunctionsController extends Controller
         $toConfirmCustomerOrder -> save();
 
         return redirect() -> route('homepage');
+    }
+
+    public function delete_item_order($orderId)
+    {
+        $deleteItemOrder = EcomCustomerOrders::findOrFail($orderId);
+
+        if($deleteItemOrder){
+            $deleteItemOrder -> ecomCustomerOrderitems() -> delete();
+
+            $deleteItemOrder -> delete();
+
+            return Response::json(['success' => true]);
+        } else {
+            return Response::json(['success', false]);
+        }
     }
 
     public function cancel_order($orderId)

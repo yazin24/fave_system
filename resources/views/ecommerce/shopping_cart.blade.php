@@ -36,6 +36,11 @@
               <hr>
       </tbody>
   </table>
+  @if(session('error'))
+    <div class="alert alert-danger text-red-600 text-xs font-bold">
+        {{ session('error') }}
+    </div>
+@endif
   <div class="mt-4">
     <div class="flex flex-col md:w-1/3">
        
