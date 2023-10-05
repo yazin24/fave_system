@@ -426,6 +426,8 @@ Route::middleware(['auth', 'admin']) -> group(function(){
 
 Route::get('/admin/sales-monitoring', [AdminController::class, 'admin_sales_monitoring']) -> name('adminsalesmonitoring');
 
+Route::get('admin/ecommerce-dashboard', [AdminController::class, 'admin_ecommerce_dashboard']) -> name('adminecommercedashboard');
+
 Route::get('/admin/purchasing-monitoring', [AdminController::class, 'admin_purchasing_monitoring']) -> name('adminpurchasingmonitoring');
 
 Route::get('admin/purchase-approval', [AdminController::class, 'admin_purchase_approval']) -> name('adminpurchaseapproval');
@@ -447,6 +449,12 @@ Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_st
 //Route::get('/')
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
+
+Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
+
+Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');
+
+Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [AdminFunctionsController::class, 'admin_ecommerce_order_cancel']) -> name('adminecommerceordercancel');
 
 Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch');
 

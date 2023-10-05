@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
+use App\Models\EcomCustomerOrders;
 use App\Models\LazadaOrderProducts;
 use App\Models\LazadaSales;
 use App\Models\ManualPurchaseOrderProducts;
@@ -19,6 +20,13 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+
+    public function admin_ecommerce_dashboard()
+    {
+        $ecommerceOrders = EcomCustomerOrders::orderBy('created_at', 'desc') -> paginate(10);
+
+        return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
+    }
 
     public function admin_sales_monitoring()
     {
