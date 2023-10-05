@@ -8,7 +8,7 @@
     <div class="mr-2">
         <form method="GET" action="{{route('searchfield')}}">
             <input type="text" class="rounded-sm text-xs h-6 md:h-7 font-semibold" name="search">
-        <button type="submit" class="bg-gray-800 hover:bg-gray-200 hover:text-gray-900 hover:fon-bold text-gray-100 py-1 px-2 rounded-sm text-xs md:text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button type="submit" class="bg-gray-800 hover:bg-gray-200 hover:text-gray-900 hover:font-bold text-gray-100 py-1 px-2 rounded-sm text-xs md:text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         
     </div ">
