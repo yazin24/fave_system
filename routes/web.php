@@ -450,6 +450,8 @@ Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_st
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
 
+Route::get('/admin/ecommerce-dashboard/customer-list', [AdminFunctionsController::class, 'admin_ecommerce_customers']) -> name('adminecommercecustomers');
+
 Route::get('admin/ecommerce-dashboard/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
 
 Route::put('admin/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');

@@ -14,11 +14,11 @@
     </div ">
    
     <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('adminecommercecustomers')}}">Customers</a></button>
     </div>
-    <div class="mr-2">
+    {{-- <div class="mr-2">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommerceproducts')}}">Products</a></button>
-    </div>
+    </div> --}}
     <div class="">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold">Sales</button>
     </div>

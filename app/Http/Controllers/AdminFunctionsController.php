@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\AllItems;
 use App\Models\EcomCustomerOrders;
+use App\Models\EcomCustomers;
 use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
@@ -77,6 +78,13 @@ class AdminFunctionsController extends Controller
         $theOrder -> save();
 
         return redirect() -> back();
+    }
+
+    public function admin_ecommerce_customers()
+    {
+        $allEcomCustomers = EcomCustomers::paginate(10);
+
+        return view('admin.admin_ecommerce_customer_list', ['allEcomCustomers' => $allEcomCustomers]);
     }
     
 
