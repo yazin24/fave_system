@@ -450,11 +450,11 @@ Route::get('/admin/outgoing-stocks', [AdminController::class, 'admin_outgoing_st
 
 //Route::get('/admin/purchase-monitoring/edit', [AdminPurchasingMonitoringController::class, 'admin_purchase_order_edit']) -> name('adminpurchaseorderedit');
 
-Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
+Route::get('admin/ecommerce-dashboard/order-details/{ecommerceOrder}', [AdminFunctionsController::class, 'admin_ecommerce_order_view']) -> name('adminecommerceorderview');
 
-Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');
+Route::put('admin/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [AdminFunctionsController::class, 'admin_ecommerce_order_complete']) -> name('adminecommerceordercomplete');
 
-Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [AdminFunctionsController::class, 'admin_ecommerce_order_cancel']) -> name('adminecommerceordercancel');
+Route::put('admin/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [AdminFunctionsController::class, 'admin_ecommerce_order_cancel']) -> name('adminecommerceordercancel');
 
 Route::get('admin/purchasing-monitoring/search', [AdminFunctionsController::class, 'admin_search']) -> name('adminsearch');
 
