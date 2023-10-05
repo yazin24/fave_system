@@ -64,6 +64,7 @@
                                     <option value="" disabled selected>Unit Measurement</option>
                                     <option value="kg">kg</option>
                                     <option value="liters">liters</option>
+                                    <option value="sets">set(s)</option>
                                     <option value="pcs">pcs</option>
                                     <option value="g">g</option>
                                     <option value="ml">ml</option>
