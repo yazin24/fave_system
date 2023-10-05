@@ -307,6 +307,8 @@ Route::get('sales/agent-monitoring', [SalesController::class, 'agent_monitoring'
 
 Route::get('sales/ecommerce-dashboard/customers-list', [SalesFunctionsController::class, 'ecommerce_customers']) -> name('ecommercecustomers');
 
+Route::get('sales/ecommerce-dashboard/search-field', [SalesFunctionsController::class, 'search_field']) -> name('searchfield');
+
 Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [SalesFunctionsController::class, 'ecommerce_order_view']) -> name('ecommerceorderview');
 
 Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [SalesFunctionsController::class, 'ecommerce_order_complete']) -> name('ecommerceordercomplete');

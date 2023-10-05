@@ -25,6 +25,9 @@ class SalesFunctionsController extends Controller
 {
     public function search_field(Request $request)
     {
+        //the orWhereHas indicates that it is in another table that is associated to the original table
+        //using orWhereHas is a way to get or find the data that is in another table
+
         $search = $request -> input('search');
 
         $ecommerceOrders = EcomCustomerOrders::where(function($query) use ($search) {
@@ -37,7 +40,7 @@ class SalesFunctionsController extends Controller
                       $transactionQuery->where('payment_method', 'LIKE', '%' . $search . '%');
                       $transactionQuery->orWhere('amount', 'LIKE', '%' . $search . '%');
                   });
-        })->paginate(10);
+        }) -> orderBy('created_at', 'desc') ->paginate(10);
 
         return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
         

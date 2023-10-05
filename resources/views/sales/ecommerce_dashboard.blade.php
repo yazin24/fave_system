@@ -4,20 +4,23 @@
 
 <h2 class="font-bold md:text-xl mt-2">Ecommerce Dashboard</h2>
 
-<div class="flex flex-row justify-end">
+<div class="flex flex-row justify-end mt-2">
     <div class="mr-2">
-        <input type="text" class="rounded-sm text-xs h-7 font-semibold" name="search">
-        <button class="bg-gray-800 text-gray-200 py-1 px-2 rounded-sm text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <form method="GET" action="{{route('searchfield')}}">
+            <input type="text" class="rounded-sm text-xs h-6 md:h-7 font-semibold" name="search">
+        <button type="submit" class="bg-gray-800 text-gray-200 py-1 px-2 rounded-sm text-xs md:text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        
     </div ">
    
     <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
     </div>
     <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold"><a href="{{route('ecommerceproducts')}}">Products</a></button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold"><a href="{{route('ecommerceproducts')}}">Products</a></button>
     </div>
     <div class="">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Sales</button>
+        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-xs md:text-sm font-bold">Sales</button>
     </div>
     
 </div>
