@@ -90,7 +90,7 @@ class SalesController extends Controller
 
     public function ecommerce_dashboard()
     {
-        $ecommerceOrders = EcomCustomerOrders::paginate(10);
+        $ecommerceOrders = EcomCustomerOrders::orderBy('created_at', 'desc') -> paginate(10);
 
         return view('sales.ecommerce_dashboard', ['ecommerceOrders' => $ecommerceOrders]);
     }

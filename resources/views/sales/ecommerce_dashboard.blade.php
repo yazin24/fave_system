@@ -6,16 +6,15 @@
 
 <div class="flex flex-row justify-end">
     <div class="mr-2">
+        <input type="text" class="rounded-sm text-xs h-7 font-semibold">
+        <button class="bg-gray-800 text-gray-200 py-1 px-2 rounded-sm text-sm font-bold"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div ">
+   
+    <div class="mr-2">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold"><a href="{{route('ecommercecustomers')}}">Customers</a></button>
     </div>
     <div class="mr-2">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold"><a href="{{route('ecommerceproducts')}}">Products</a></button>
-    </div>
-    <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Ongoing</button>
-    </div ">
-    <div class="mr-2">
-        <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Delivered</button>
     </div>
     <div class="">
         <button class="bg-gray-800 text-gray-200 p-1 rounded-sm text-sm font-bold">Sales</button>
@@ -54,6 +53,9 @@
               @endforeach
         </tbody>
     </table>
+</div>
+<div class="mt-1 ml-2">
+    <x-shopee-pagination :paginator="$ecommerceOrders" />
 </div>
 
 

@@ -218,7 +218,7 @@ class EcommerceFunctionsController extends Controller
 
         $toConfirmCustomerOrder -> save();
 
-        return redirect() -> route('homepage');
+        return redirect() -> route('ordersuccessmessage');
     }
 
     public function delete_item_order($orderId)
