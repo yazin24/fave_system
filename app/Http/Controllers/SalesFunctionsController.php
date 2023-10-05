@@ -55,6 +55,14 @@ class SalesFunctionsController extends Controller
 
     public function ecommerce_customers_details(EcomCustomers $customer)
     {
+        $customer -> load([
+
+            'ecomCustomerOrders.ecomCustomerOrderItems',
+            'ecomCustomerOrders.ecomCustomerPaymentTransactions',
+            'ecomCustomerOrders.ecomOrderSales',
+
+        ]);
+
         return view('sales.ecommerce_customers_details', ['customer' => $customer]);
     }
 
