@@ -201,6 +201,8 @@ class PurchasingFunctionsController extends Controller
 
         $templateReceipt -> setvalue('SUPPLIER_ADDRESS', $purchase -> purchaseOrderSupplier -> supplier -> supplier_address);
 
+        $templateReceipt -> setvalue('TIN_NUMBER', $purchase -> purchaseOrderSupplier -> supplier -> tin_number);
+
         $templateReceipt -> setvalue('SUPPLIER_NUMBER', $purchase -> purchaseOrderSupplier -> supplier -> contact_number);
 
         $templateReceipt -> setvalue('SUPPLIER_PERSON', $purchase -> purchaseOrderSupplier -> supplier -> contact_person);
@@ -357,6 +359,7 @@ class PurchasingFunctionsController extends Controller
             'supplier_address' => $request -> supplier_address,
             'contact_number' => $request -> contact_number,
             'tel_number' => $request -> tel_number,
+            'tin_number' => $request -> tin_number,
             'contact_person' => $request -> contact_person,
             'viber_account' => $request -> viber_account,
             'supplier_email' => $request -> supplier_email,

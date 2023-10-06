@@ -47,6 +47,11 @@
                                  <input type="text" name="supplier_email" placeholder="Email" class="w-full text-xs h-6" required>
                               </div>
                               <div class="md:w-1/2">
+                                 <input type="text" name="tin_number" placeholder="Tin Number" class="w-full text-xs h-6" required>
+                              </div>
+                           </div>
+                           <div class="flex flex-col md:flex-row">
+                              <div class="md:w-1/2">
                                  <input type="text" name="supplier_credit_limit" placeholder="Credit Limit" class="w-full text-xs h-6" required>
                               </div>
                            </div>
