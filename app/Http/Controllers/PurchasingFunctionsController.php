@@ -211,7 +211,11 @@ class PurchasingFunctionsController extends Controller
 
         $templateReceipt -> setValue('APPROVED_BY', $purchase -> approved_by);
 
-        $templateReceipt -> setValue('TOTAL', $purchase -> purchaseOrderItems -> sum('amount'));
+        $templateReceipt -> setValue('PO_AMOUNT', $purchase -> purchaseOrderItems -> sum('amount'));
+
+        $templateReceipt -> setValue('DEL_CHARGE', $purchase -> del_charge);
+
+        $templateReceipt -> setValue('TOTAL', $purchase -> total_amount);
 
         $items = $purchase -> purchaseOrderItems;
         $itemRows = 16;
