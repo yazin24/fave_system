@@ -12,63 +12,63 @@
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsalesmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-coins text-xl"></i>
-              <div class="text-sm">Sales Monitoring</div>
+              <div class="text-xs">Sales Monitoring</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminecommercedashboard')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-store text-xl"></i>
-              <div class="text-sm">Ecommerce Monitoring</div>
+              <div class="text-xs">Ecommerce Monitoring</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8 '><a href='{{ route('adminpurchasingmonitoring')}}'>
             <div class='flex flex-row items-center gap-1'>
               <div><i class="fa-solid fa-rectangle-list text-xl"></i></div>
-              <div class="text-sm">Purchasing Monitoring</div>
+              <div class="text-xs">Purchasing Monitoring</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminpurchaseapproval')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-clipboard-question text-xl"></i>
-              <div class="text-sm">Purchase Approval</div>
+              <div class="text-xs">Purchase Approval</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminsupplierlist')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-address-book 2xl"></i>
-              <div class="text-sm">Supplier List</div>
+              <div class="text-xs">Supplier List</div>
             </div>
             </a>
           </li>
           {{-- <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminunpurchase')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-link-slash text-xl"></i>
-              <div class="text-sm">Unpurchase Order</div>
+              <div class="text-xs">Unpurchase Order</div>
             </div>
             </a>
           </li> --}}
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminallproducts')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-cubes-stacked text-xl"></i>
-              <div class="text-sm">Products</div>
+              <div class="text-xs">Products</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminstockmonitoring')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-layer-group text-xl"></i>
-              <div class="text-sm">Raw Materials</div>
+              <div class="text-xs">Raw Materials</div>
             </div>
             </a>
           </li>
           <li class='h-8 w-60 hover:bg-teal-600 hover:font-bold p-8'><a href='{{route('adminoutgoingstocks')}}'>
             <div class='flex items-center gap-1'>
               <i class="fa-solid fa-outdent text-xl"></i>
-              <div class="text-sm">Outgoing Stocks</div>
+              <div class="text-xs">Outgoing Stocks</div>
             </div>
             </a>
           </li>

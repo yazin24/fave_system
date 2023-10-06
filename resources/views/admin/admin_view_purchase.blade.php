@@ -4,7 +4,7 @@
 
 <h2 class="font-bold text-xl">Purchase Order Details</h2>
 
-<div class="mt-4 text-xs">
+<div class="mt-4 text-xs font-bold">
    
     <div class="bg-gray-900 rounded-md p-2 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
@@ -55,6 +55,11 @@
                     <div class="ml-auto mt-4 font-bold mr-4 text-xs">
                        <h2>Purchase Amount: ₱{{number_format($totalAmount, 2)}}</h2>
                        <h2>Delivery Charge: ₱{{number_format($allPurchaseOrder -> del_charge, 2)}}</h2> 
+                       @if($allPurchaseOrder -> systemStatus -> status === 'queued')
+                       <h2>Delivery Charge: ₱{{number_format($allPurchaseOrder -> total_amount, 2)}}</h2> 
+                      @else
+                      <h2 class="text-red-600">Total Amount: ₱{{number_format($allPurchaseOrder -> total_amount, 2)}}</h2> 
+                      @endif
                     </div>
                  </div>
          </div>
