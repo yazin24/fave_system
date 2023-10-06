@@ -102,6 +102,7 @@ class PurchasingFunctionsController extends Controller
             'del_status' => $defaultDelStatus,
             'requested_by' => $request -> requested_by,
             'prepared_by' => $userName,
+            'del_charge' => $request -> del_charge,
         ]);
 
         $newPurchaseOrder -> purchaseOrderSupplier() -> create([

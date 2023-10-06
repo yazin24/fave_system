@@ -184,6 +184,14 @@ class AdminFunctionsController extends Controller
             $purchaseOrder-> status = 1;
 
             $purchaseOrder -> approved_by = $userName;
+
+            $itemTotalAmount = $purchaseOrder -> total_amount = $purchaseOrder -> purchaseOrderItems -> sum('amount');
+
+            $delCharge = $purchaseOrder -> del_charge;
+
+            $totalAmount = $itemTotalAmount + $delCharge;
+
+            $purchaseOrder -> total_amount = $totalAmount;
             
             $purchaseOrder -> save();
 
@@ -257,7 +265,15 @@ class AdminFunctionsController extends Controller
 
         $templateReceipt -> setValue('APPROVED_BY', $allPurchaseOrder -> approved_by);
 
-        $templateReceipt -> setValue('TOTAL', $allPurchaseOrder -> purchaseOrderItems -> sum('amount'));
+        $templateReceipt -> setValue('DEL_CHARGE', $allPurchaseOrder -> del_charge);
+
+        $delCharge = $allPurchaseOrder -> del_charge;
+
+        $itemAmount = $allPurchaseOrder -> purchaseOrderItems -> sum('amount');
+
+        $totalAmount = $delCharge + $itemAmount;
+
+        $templateReceipt -> setValue('TOTAL', $totalAmount);
 
         $items = $allPurchaseOrder -> purchaseOrderItems;
 

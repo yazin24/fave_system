@@ -60,9 +60,9 @@
                 {{-- <input type="text" id="prepared_by" name="prepared_by" placeholder="Prepared By" class="w-1/2 text-xs" required> --}}
             </div>
 
-            <div class="flex flex-row mb-1">
+            <div class="flex flex-row">
                 {{-- <input type="text" id="approved_by" name="approved_by" placeholder="Approved By" class="w-1/2 text-xs" required> --}}
-                <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs mb-1" required>
+                <select id="payment_term" name="payment_term" class="w-1/2 h-8 text-xs" required>
                 <option value="" disabled selected>Payment Term</option>
                 <option value=1>Cash On Delivery</option>
                 <option value=3>3 Days</option>
@@ -88,6 +88,11 @@
                     <option value="Security Bank Deposit">Security Bank Deposit</option>
                     <option value="China Bank Deposit">China Bank Deposit</option>
                 </select>
+                
+            </div>
+
+            <div class="flex flex-row mb-1">
+                <input type="number" id="del_charge" name="del_charge" placeholder="Delivery Charge" class="h-8 w-1/2 text-xs" required>
                 
             </div>
 
