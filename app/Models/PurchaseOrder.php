@@ -56,6 +56,8 @@ class PurchaseOrder extends Model
         'prepared_by',
         'requested_by',
         'approved_by',
+        'del_charge',
+        'total_amount',
         'amount_paid',
     ];
 

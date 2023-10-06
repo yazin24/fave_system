@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
             
-            $table -> decimal('del_charge', 8, 2) -> nullable() -> after('approve_by');
+            $table -> decimal('del_charge', 8, 2) -> nullable() -> after('approved_by');
 
             $table -> decimal('total_amount', 8, 2) -> nullable() -> after('del_charge');
 
