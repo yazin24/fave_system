@@ -2,7 +2,7 @@
 
 @section('purchasing-body')
 
-<div class="w-full lg:w-1/2">
+<div class="w-full lg:w-3/4">
     
         <h2 class="font-bold md:text-xl">Add Supplier</h2>
         
@@ -93,6 +93,7 @@
                                                   <label class="text-gray-200">{{ $item -> item_name }}</label>
                                               </div>
                                               @endforeach
+                                              
                                            </div>
 
                                                 <div>
