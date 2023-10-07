@@ -38,6 +38,28 @@
 
     </div>   
 
+    {{-- <script>
+      // Function to show the loader
+      function showLoader() {
+        var loaderContainer = document.querySelector('.loader-container');
+        loaderContainer.style.display = 'block';
+      }
+  
+      // Function to hide the loader
+      function hideLoader() {
+        var loaderContainer = document.querySelector('.loader-container');
+        loaderContainer.style.display = 'none';
+      }
+  
+      // Show the loader when the page starts loading
+      showLoader();
+  
+      // Simulate a delay and hide the loader after a certain time
+      setTimeout(function () {
+        hideLoader();
+      }, 10000); // Adjust the delay time as needed
+    </script> --}}
+
 @endsection
 
 {{-- TO PROVIDE HIGH QUALITY PRODUCTS AND UNCONDITIONAL CUSTOMER
