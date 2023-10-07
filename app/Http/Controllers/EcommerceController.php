@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class EcommerceController extends Controller
 {
+    public function loading_animations()
+    {
+        return view('ecommerce.loading_animation');
+    }
+
     public function home_page()
     {
         return view('ecommerce.home_page');

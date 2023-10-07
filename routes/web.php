@@ -87,7 +87,11 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
         return redirect() -> route('homepage');
     });
 
+   
+
     Route::get('/fave/home', [EcommerceController::class, 'home_page']) -> name('homepage');
+
+    Route::get('fave/wait', [EcommerceController::class, 'loading_animations']) -> name('loadinganimations');
 
     Route::get('/fave/products', [EcommerceController::class, 'product_page']) -> name('productpage');
     
