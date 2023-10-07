@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
   <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AV7Up2sl4_s6_qV8Z_n3RwvDwMLT4Qit60rhAeT_cF3D_TTyD5PL8S9oU13MUixNwFoKPx3rqDnTj3_s&currency=PHP"></script>
   
   <!-- Fonts -->
@@ -87,7 +88,7 @@
         <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="{{route('shoppingcart')}}"><i class="fa-solid fa-cart-shopping text-xl"></i>
        
         {{-- @if($cartAllQuantity > 0) --}}
-        <span>{{ session('cartAllQuantity',0) }}</span>
+        <span class="text-amber-500" id="cart-quantity">+{{ session('cartAllQuantity',0) }}</span>
         {{-- @endif --}}
         </a></li>
         <li class='mx-4 my-6 md:my-0'>
@@ -194,6 +195,30 @@
       </div>
         
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Function to fetch and update cart quantity
+          function updateCartQuantity() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "{{ route('shoppingcart') }}"); // Replace with your route for fetching cart quantity
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Update the cart quantity in the navbar
+            var cartQuantity = JSON.parse(xhr.responseText);
+            document.getElementById("cart-quantity").textContent = cartQuantity;
+        }
+    };
+    xhr.send();
+}
+
+updateCartQuantity();
+
+// Set an interval to periodically update the cart quantity (e.g., every 30 seconds)
+setInterval(updateCartQuantity, 30000); // Update every 30 seconds, adjust as needed
+        
+      });
+  </script>
 
      </body>
 
