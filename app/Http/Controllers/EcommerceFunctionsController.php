@@ -19,12 +19,14 @@ class EcommerceFunctionsController extends Controller
 
             $ecomCsutomerId = auth('customers') -> user() -> id;
 
-            $allItemCart = EcomCustomerCart::where('ecom_cs_id', $ecomCsutomerId)
+            $allItemCart = EcomCustomerCart::where('ecom_cs_id', $ecomCsutomerId) -> get();
 
-                        ->get();
+            $cartAllQuantity = $allItemCart -> sum('quantity');
+
+            session(['cartAllQuantity' => $cartAllQuantity]);
         }
 
-        return view('ecommerce.shopping_cart', ['allItemCart' => $allItemCart]);
+        return view('ecommerce.shopping_cart', ['allItemCart' => $allItemCart, 'cartAllQuantity' => $cartAllQuantity]);
     
     }
 

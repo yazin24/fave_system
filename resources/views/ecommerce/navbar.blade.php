@@ -84,9 +84,15 @@
             <a href="{{ route('loginpage') }}" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200">LOGIN</a>
         </li>
         @else
+        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="{{route('shoppingcart')}}"><i class="fa-solid fa-cart-shopping text-xl"></i>
+       
+        {{-- @if($cartAllQuantity > 0) --}}
+        <span>{{ session('cartAllQuantity',0) }}</span>
+        {{-- @endif --}}
+        </a></li>
         <li class='mx-4 my-6 md:my-0'>
-        
-            <div class="sm:flex sm:items-center sm:ml-6">
+          
+            <div class="sm:flex sm:items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -105,9 +111,9 @@
                             {{ __('Profile') }}
                         </x-dropdown-link> --}}
 
-                        <x-dropdown-link :href="route('shoppingcart')">
+                        {{-- <x-dropdown-link :href="route('shoppingcart')">
                          {{ __('Shopping Cart') }}
-                        </x-dropdown-link>
+                        </x-dropdown-link> --}}
                         <x-dropdown-link :href="route('showallcustomerorder')">
                           {{ __('Your Orders') }}
                          </x-dropdown-link>

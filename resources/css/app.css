@@ -210,7 +210,7 @@ div .dot {
 
 .loading_dot{
     width:200px;
-    height:60vh;
+    height:60px;
     position: absolute;
     left:50%;
     top:40%;
