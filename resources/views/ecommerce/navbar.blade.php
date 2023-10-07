@@ -23,6 +23,13 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <style>
+      .modal {
+      transition: opacity 0.25s ease;
+    }
+    body.modal-active {
+      overflow-x: hidden;
+      overflow-y: visible !important;
+    }
       .wrapper {
         
           height: 60rem;
