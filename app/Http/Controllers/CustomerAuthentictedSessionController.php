@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\EcomCustomerCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,11 @@ class CustomerAuthentictedSessionController extends Controller
        $credentials = $request -> only('email', 'password');
 
        if(Auth::guard('customers') -> attempt($credentials)){
+
+        $authenticatedUser = Auth::guard('customers')->user();
+
+        $cartQuantity = EcomCustomerCart::where('ecom_cs_id', $authenticatedUser->id)->sum('quantity');
+        session(['cartAllQuantity' => $cartQuantity]);
 
         return redirect() -> route('homepage');
         
@@ -26,6 +32,8 @@ class CustomerAuthentictedSessionController extends Controller
 
     public function logout_customer()
     {
+        session() -> forget('cartAllQuantity');
+
         Auth::guard('customers') -> logout();
 
         return redirect() -> route('homepage');
