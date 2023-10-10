@@ -10,6 +10,7 @@ use App\Models\ProductSku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class EcommerceFunctionsController extends Controller
 {
@@ -392,5 +393,22 @@ class EcommerceFunctionsController extends Controller
     public function merchant()
     {
         return view('ecommerce.merchant_temporary_message');
+    }
+
+    public function generate_qr_code()
+    {
+        $gcashAccount = '09352703145';
+        $amount = 300;
+
+        $gcashPayment = [
+
+            'account' => $gcashAccount,
+            'amount' => $amount,
+
+        ];
+
+        $qrCode = QrCode::size(300) -> generate(json_encode($gcashPayment));
+
+        return view('ecommerce.generated_qr_code', ['qrCode' => $qrCode]);
     }
 }

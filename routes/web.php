@@ -134,13 +134,15 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
     
         Route::get('fave/products/buy-now/{productId}', [EcommerceFunctionsController::class, 'buy_now_order_details']) -> name('buynoworderdetails');
     
-        Route::post('fave/producgts/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
+        Route::post('fave/products/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
     
         Route::get('fave/order-success/message-success', [EcommerceFunctionsController::class, 'order_success_message']) -> name('ordersuccessmessage');
     
         Route::post('fave/order-success/{productId}=product_id', [EcommerceFunctionsController::class, 'customer_confirm_order']) -> name('customerconfirmorder');
     
         Route::get('fave/merchant-unavailable', [EcommerceFunctionsController::class, 'merchant']) -> name('merchant');
+
+        Route::get('fave/generated-qrcode', [EcommerceFunctionsController::class, 'generate_qr_code']) -> name('generateqrcode');
     
     });
 
