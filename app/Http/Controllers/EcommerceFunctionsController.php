@@ -63,6 +63,13 @@ class EcommerceFunctionsController extends Controller
                 ]);
 
             }
+
+            $cartQuantity = EcomCustomerCart::where('ecom_cs_id', $ecomCustomers)->sum('quantity');
+
+            // Store the cart quantity in the session
+            session(['cartAllQuantity' => $cartQuantity]);
+
+            
                     
         }else {
 

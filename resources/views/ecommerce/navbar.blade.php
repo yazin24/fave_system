@@ -95,7 +95,7 @@
         <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-500 lg:mb-0 mb-2 text-gray-200" href="{{route('shoppingcart')}}"><i class="fa-solid fa-cart-shopping text-xl"></i>
        
         {{-- @if($cartAllQuantity > 0) --}}
-        <span class="text-amber-500" id="cart-quantity">+{{ session('cartAllQuantity',0) }}</span>
+        <span class="text-amber-500">+{{ session('cartAllQuantity',0) }}</span>
         {{-- @endif --}}
         </a></li>
         <li class='mx-4 my-6 md:my-0'>
@@ -203,7 +203,7 @@
         
     </footer>
 
-    <script>
+    {{-- <script>
       document.addEventListener("DOMContentLoaded", function () {
           // Function to fetch and update cart quantity
           function updateCartQuantity() {
@@ -225,7 +225,7 @@ updateCartQuantity();
 setInterval(updateCartQuantity, 30000); // Update every 30 seconds, adjust as needed
         
       });
-  </script>
+  </script> --}}
 
      </body>
 
