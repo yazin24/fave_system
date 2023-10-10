@@ -23,11 +23,11 @@ class EcommerceFunctionsController extends Controller
 
             $cartAllQuantity = $allItemCart -> sum('quantity');
 
-            if (request()->wantsJson()) {
-                return response()->json(['cartAllQuantity' => $cartAllQuantity]);
-            }
+            // if (request()->wantsJson()) {
+            //     return response()->json(['cartAllQuantity' => $cartAllQuantity]);
+            // }
 
-            session(['cartAllQuantity' => $cartAllQuantity]);
+            // session(['cartAllQuantity' => $cartAllQuantity]);
         }
 
         return view('ecommerce.shopping_cart', ['allItemCart' => $allItemCart]);
