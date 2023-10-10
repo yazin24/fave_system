@@ -400,14 +400,9 @@ class EcommerceFunctionsController extends Controller
         $gcashAccount = '09352703145';
         $amount = 300;
 
-        $gcashPayment = [
+        $paymentUrl = "https://www.gcash.com/pay?to=$gcashAccount&amount=$amount";
 
-            'account' => $gcashAccount,
-            'amount' => $amount,
-
-        ];
-
-        $qrCode = QrCode::size(300) -> generate(json_encode($gcashPayment));
+        $qrCode = QrCode::size(200)->generate($paymentUrl);
 
         return view('ecommerce.generated_qr_code', ['qrCode' => $qrCode]);
     }
