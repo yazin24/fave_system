@@ -77,6 +77,8 @@ class EcommerceFunctionsController extends Controller
 
         }
 
+        sleep(1.5);
+
         return redirect() -> back();
     }
 
