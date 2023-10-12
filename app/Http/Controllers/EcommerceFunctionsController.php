@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+
 class EcommerceFunctionsController extends Controller
 {
     public function shopping_cart()
@@ -397,13 +398,12 @@ class EcommerceFunctionsController extends Controller
 
     public function generate_qr_code()
     {
-        $gcashAccount = '09352703145';
-        $amount = 300;
+        $gcashData = "Recipient: 1234567890\nAmount: 100.00";
 
-        $paymentUrl = "https://www.gcash.com/pay?to=$gcashAccount&amount=$amount";
-
-        $qrCode = QrCode::size(200)->generate($paymentUrl);
-
+        // Generate the QR code
+        $qrCode = QrCode::size(200)->generate($gcashData);
+        
+        
         return view('ecommerce.generated_qr_code', ['qrCode' => $qrCode]);
     }
 }
