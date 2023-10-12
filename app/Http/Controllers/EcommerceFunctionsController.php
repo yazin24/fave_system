@@ -296,7 +296,9 @@ class EcommerceFunctionsController extends Controller
 
     public function buy_now_generate_qrcode(ProductSku $productId)
     {
-        return view('ecommerce.generated_qr_code', ['productId' => $productId]);
+        $product = ProductSku::find($productId -> id);
+
+        return view('ecommerce.generated_qr_code', ['productId' => $product]);
     }
 
     public function order_success_message()
