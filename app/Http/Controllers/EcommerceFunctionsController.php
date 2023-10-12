@@ -294,6 +294,11 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.buy_now_place_order_details', ['productId' => $productId, 'orderInfo' => $orderInfo]);
     }
 
+    public function buy_now_generate_qrcode(ProductSku $productId)
+    {
+        return view('ecommerce.generated_qr_code', ['productId' => $productId]);
+    }
+
     public function order_success_message()
     {
         return view('ecommerce.order_success_message');
