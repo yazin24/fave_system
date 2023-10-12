@@ -2,12 +2,13 @@
 
 @section('content')
 
-<div class="overflow-x-hidden overflow-y-hidden bg-gradient-to-bl from-blue-100 via-blue-300 to-blue-600">
+<div class="overflow-x-hidden overflow-y-hidden">
+  
   <div class="wrapper flex justify-start items-start">
-    <span class="">
-    <span class="flex justify-center md:justify-start w-full">
+    
+    <span class="flex flex-col flex-col-reverse justify-center lg:justify-between lg:flex-row w-full">
 
-      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-1/3 mt-8 sm:mt-20 sm:mx-12 md:mt-24 md:ml-20 lg:mt-40 lg:ml-30">
+      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-1/3 sm:mt-20 sm:mx-12 lg:mt-24 lg:ml-20 lg:mt-40 lg:ml-30">
         <h2 class="text-sm lg:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
           DISCOVER THE POWER OF PROFESSIONAL-GRADE CLEANING AT YOUR HOME
         </h2>
@@ -27,7 +28,10 @@
         </a>
       </section>
 
-    </span>
+      <section class="w-full md:w-1/2">
+        <img src="{{asset('images/hero_image.png')}}" alt="">
+      </section>
+
   </span>
 
     <div class="bubble">

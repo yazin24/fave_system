@@ -40,7 +40,7 @@
         
           height: 43rem;
           width: 100%;
-          background-image: url('{{ asset('images/hero_image.png') }}');
+          background:linear-gradient(to left bottom, rgb(219, 234, 254), rgb(147, 197, 253), rgb(37, 99, 235));
           background-size: contain;
           background-repeat: no-repeat;
           background-position: right;
@@ -50,22 +50,25 @@
       @media (max-width: 1050px) {
       .wrapper {
      
-          height: 30rem;
+          height: 40rem;
           width: 100%;
           /* Allow the height to adjust based on content */
           background-size: contain; /* Use contain for smaller screens */
       }
     }
+
       @media (max-width: 768px) {
       .wrapper {
        
-          height: 25rem;
+          height: 45rem;
           width: 100%;
           /* Allow the height to adjust based on content */
           background-size: contain; /* Use contain for smaller screens */
       }
 
   }
+
+ 
 
   #menu-toggle:checked + #menu {
         display: block;
