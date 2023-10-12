@@ -2,9 +2,14 @@
 
 @section('content')
 
-    <div>
-        <div class="ml-24 mt-24">
-           {{ $qrCode }}
+    <div class="my-24 flex justify-center">
+        <div class="">
+          <img src="{{asset('images/qrcode_gcash.jpg')}}">
+          <h2 class="text-red-600 font-bold">Instructions: Please input the amount in gcash <br>and complete the transaction.</h2>
+          <div>
+            <h2>Details:</h2>
+            <h2>Total Amount:</h2>
+          </div>
         </div>
     </div>
 
