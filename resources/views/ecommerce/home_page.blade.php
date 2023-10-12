@@ -153,7 +153,7 @@
   <div class="flex flex-col mt-16 w-full mb-8">
     <div class="flex flex-col md:flex-row justify-center w-full mb-4">
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="fade-right"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -178,7 +178,7 @@
 
 
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="zoom-in"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -204,7 +204,7 @@
       </div>
 
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="fade-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -232,7 +232,7 @@
 
     <div class="flex flex-col md:flex-row justify-center w-full mb-4">
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="fade-right"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -258,7 +258,7 @@
       </div>
 
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="zoom-in"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -284,7 +284,7 @@
       </div>
 
       <div
-        class="p-8 w-full md:w-1/3"
+        class="p-12 w-full md:w-1/3"
         data-aos="fade-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
