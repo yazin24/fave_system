@@ -34,7 +34,7 @@
         
           height: 60rem;
           width: 100%;
-          background-image: url('{{ asset('images/photofavehero.jpg') }}');
+          background-image: url('{{ asset('images/hero_image.png') }}');
           background-size: contain;
           background-repeat: no-repeat;
       }
