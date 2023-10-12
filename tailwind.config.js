@@ -12,7 +12,7 @@ export default {
         extend: {
 
             backgroundImage: {
-                developer1: 'url("https://i.ibb.co/s5nsj8z/parallax-image.png")',
+                developer1: 'url("https://i.ibb.co/NZYp8cn/favebanner.png")',
                
             },
 
