@@ -8,7 +8,7 @@
     @endif
 </div>
 
-<div class="mt-32 flex justify-center font-bold">
+<div class="mt-32 mb-32 flex justify-center font-bold">
 
     <div class="flex flex-col justify-center bg-violet-700 p-10 shadow-md rounded-sm">
         <div class="flex justify-center mb-8">

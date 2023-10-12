@@ -14,6 +14,26 @@ body {
     height: 100%;
 }
 
+.custom-shape-divider-bottom-1697078119 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1697078119 svg {
+    position: relative;
+    display: block;
+    width: calc(142% + 1.3px);
+    height: 184px;
+}
+
+.custom-shape-divider-bottom-1697078119 .shape-fill {
+    fill: violet;
+}
+
 .bg-developer1 {
     background-image: url('https://i.ibb.co/NZYp8cn/favebanner.png');
     background-size: cover;

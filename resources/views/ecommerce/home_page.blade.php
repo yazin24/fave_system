@@ -2,9 +2,10 @@
 
 @section('content')
 
-<div class="overflow-x-hidden overflow-y-hidden">
+<div class="overflow-x-hidden overflow-y-hidden bg-gradient-to-bl from-blue-100 via-blue-300 to-blue-600">
   <div class="wrapper flex justify-start items-start">
-    <span class="flex justify-center md:justify-start w-fulld">
+    <span class="">
+    <span class="flex justify-center md:justify-start w-full">
 
       <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-1/3 mt-8 sm:mt-20 sm:mx-12 md:mt-24 md:ml-20 lg:mt-40 lg:ml-30">
         <h2 class="text-sm lg:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
@@ -27,6 +28,7 @@
       </section>
 
     </span>
+  </span>
 
     <div class="bubble">
       <span class="dot"></span>
