@@ -127,6 +127,10 @@
       ></video>
     </div>
 
+    {{-- <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-instakit_parallax">
+        
+    </div> --}}
+
   <div
     class="flex justify-center items-center mx-4 md:mx-44 lg:mx-96 mt-4"
     data-aos="fade-down"
@@ -171,6 +175,7 @@
           </span>
         </div>
       </div>
+
 
       <div
         class="p-4 w-full md:w-1/3"
@@ -306,19 +311,16 @@
     </div>
   </div>
 
-  <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-instakit_parallax">
-        
-  </div>
 
   <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-developer1">
         
   </div>
 
-  <div class= "h-full my-24"> 
+  <div class= "h-full my-32"> 
     <h2 class="text-3xl font-bold text-center">Testimonials</h2>
     <p class="text-center mt-6">Customer satisfaction is one of our mission. Take a look at our customer reviews to us for your references.</p>
   
-      <div class="flex justify-center h-96 mt-32">
+      <div class="flex justify-center h-96 mt-12">
             <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
               centered-slides="true" autoplay-delay="4500" autoplay-disable-on-interaction="false">
               <swiper-slide class="flex flex-col space-y-3  bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md">
@@ -546,12 +548,11 @@
       </div>
 </div>
   
-
+<br>
   <div
     data-aos="fade-right"
     data-aos-easing="ease-out-cubic"
-    data-aos-duration="4000"
-  >
+    data-aos-duration="4000">
     <h2 class="md:mx-8 mx-8 mt-14 underline text-xl cursor-pointer animate-bounce">
       Want a Business? Lets talk!
     </h2>
