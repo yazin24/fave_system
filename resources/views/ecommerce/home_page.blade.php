@@ -129,7 +129,7 @@
   >
 
 
-    <div class="flex-col bg-violet-700 p-4 md:p-8 rounded-md mt-10 md:mt-36 shadow-md animate__animated animate__bounceInUp wow animate__animated animate__fadeInUp "data-wow-duration="1s" data-wow-delay="1s">
+    <div class="flex-col bg-violet-700 p-4 md:p-8 rounded-md mt-10 md:mt-36 shadow-md animate__animated animate__bounceInUp wow animate__animated animate__fadeInUp "data-wow-duration="1s">
       <h2 class="text-gray-200 text-2xl font-bold text-center">
         Why Choose Us?
       </h2>
@@ -149,7 +149,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
               <FaCheckCircle class="text-2xl text-gray-100 mr-1" />
@@ -173,7 +173,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
               <FaExchangeAlt class="text-2xl text-gray-100 mr-1" />
@@ -199,7 +199,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
               <FaMagic class="text-2xl text-gray-100 mr-1" />
@@ -227,7 +227,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
               <FaHandsWash class="text-2xl text-gray-100 mr-1" />
@@ -253,7 +253,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
               <GiFragrance class="text-2xl text-gray-100 mr-1" />
@@ -279,7 +279,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" data-wow-delay="1s">
+        <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaTree class="text-2xl text-gray-100 mr-1" />
@@ -305,7 +305,7 @@
         
   </div>
 
-  <div class= "h-full"> 
+  <div class= "h-full my-24"> 
     <h2 class="text-3xl font-bold text-center">Testimonials</h2>
     <p class="text-center mt-6">Customer satisfaction is one of our mission. Take a look at our customer reviews to us for your references.</p>
   

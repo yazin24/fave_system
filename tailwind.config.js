@@ -11,10 +11,10 @@ export default {
     theme: {
         extend: {
 
-            backgroundImage: {
-                developer1: 'url("https://i.ibb.co/NZYp8cn/favebanner.png")',
+            // backgroundImage: {
+            //     developer1: 'url("https://i.ibb.co/NZYp8cn/favebanner.png")',
                
-            },
+            // },
 
 
             fontFamily: {
