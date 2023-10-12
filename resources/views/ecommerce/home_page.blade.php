@@ -153,7 +153,7 @@
   <div class="flex flex-col mt-16 w-full mb-8">
     <div class="flex flex-col md:flex-row justify-center w-full mb-4">
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="fade-right"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -161,7 +161,7 @@
         <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
-              <FaCheckCircle class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-solid fa-user-shield text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">Safety</span>
           </span>
@@ -178,7 +178,7 @@
 
 
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="zoom-in"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -186,7 +186,7 @@
         <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
-              <FaExchangeAlt class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-solid fa-hands text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">
               Versatility
@@ -204,7 +204,7 @@
       </div>
 
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="fade-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -212,7 +212,7 @@
         <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
-              <FaMagic class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-solid fa-thumbs-up text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">
               Effectiveness
@@ -232,7 +232,7 @@
 
     <div class="flex flex-col md:flex-row justify-center w-full mb-4">
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="fade-right"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -240,7 +240,7 @@
         <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
-              <FaHandsWash class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-solid fa-hand-holding-hand text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">
               Ease Of Use
@@ -258,7 +258,7 @@
       </div>
 
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="zoom-in"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -266,7 +266,7 @@
         <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" >
           <span class="flex flex-row items-center">
             <span>
-              <GiFragrance class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-solid fa-spray-can-sparkles text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">
               Fragrance And Residue
@@ -284,7 +284,7 @@
       </div>
 
       <div
-        class="p-4 w-full md:w-1/3"
+        class="p-8 w-full md:w-1/3"
         data-aos="fade-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
@@ -292,7 +292,7 @@
         <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s">
           <span class="flex flex-row items-center">
             <span>
-              <FaTree class="text-2xl text-gray-100 mr-1" />
+              <i class="fa-brands fa-pagelines text-gray-200 mr-1 text-2xl"></i>
             </span>
             <span class=" text-lg text-gray-200 font-bold">
               Environment Friendly
@@ -554,7 +554,7 @@
     data-aos-easing="ease-out-cubic"
     data-aos-duration="4000">
     <h2 class="md:mx-8 mx-8 mt-14 underline text-xl cursor-pointer animate-bounce">
-      Want a Business? Lets talk!
+      <i class="fa-solid fa-phone-volume text-2xl mr-1"></i>Want a Business? Lets talk!
     </h2>
   </div>
 
@@ -564,12 +564,12 @@
     data-aos-easing="ease-out-cubic"
     data-aos-duration="4000"
   >
-    <div class="w-full md:w-1/4">
+    <div class="w-full md:w-1/4 p-4">
       <span class="flex flex-row md:flex-row">
         <FaRegArrowAltCircleRight class="text-2xl text-violet-700 cursor-pointer" />
         <h3 class="text-lg ml-2">Setup a Schedule</h3>
       </span>
-      <p class="mt-2 md: mt-4">
+      <p class="mt-2 md:mt-4">
         Fill up the form below and wait for our cleaning experts to call or
         contact you
       </p>
@@ -577,36 +577,36 @@
       <hr />
       <br />
     </div>
-    <div class="w-full md:w-1/4">
+    <div class="w-full md:w-1/4 p-4">
       <span class="flex flex-row md:flex-row">
         <FaRegArrowAltCircleRight class="text-2xl text-violet-700 cursor-pointer" />
         <h3 class="text-lg ml-2">Talk with us</h3>
       </span>
-      <p class="mt-2 md: mt-4">
+      <p class="mt-2 md:mt-4">
         Our cleaning experts or agents will talk to you about you starting a business with us
       </p>
       <br />
       <hr />
       <br />
     </div>
-    <div class="w-full md:w-1/4">
+    <div class="w-full md:w-1/4 p-4">
       <span class="flex flex-row md:flex-row">
         <FaRegArrowAltCircleRight class="text-2xl text-violet-700 cursor-pointer" />
         <h3 class="text-lg ml-2">Visit our office</h3>
       </span>
-      <p class="mt-2 md: mt-4">
+      <p class="mt-2 md:mt-4">
         Visit our office for more information about the business opportunity
       </p>
       <br />
       <hr />
       <br />
     </div>
-    <div class="w-full md:w-1/4">
+    <div class="w-full md:w-1/4 p-4">
       <span class="flex flex-row md:flex-row">
         <FaRegArrowAltCircleRight class="text-2xl text-violet-700 cursor-pointer" />
         <h3 class="text-lg ml-2">Run your business</h3>
       </span>
-      <p class="mt-2 md: mt-4">
+      <p class="mt-2 md:mt-4">
         Congrats on your business. Run wild and make money
       </p>
       <br />
