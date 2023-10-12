@@ -218,7 +218,7 @@
               </swiper-slide>
             
                <swiper-slide class="flex flex-col space-y-3  bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md">
-                <img src="../images/111.jpg" alt="" class="rounded-full h-24">
+                <img src="../images/review1.jpg" alt="" class="rounded-full h-24">
                 <p>jadeanroe</p>
                 <p class="px-8 text-sm">"Sobrang bango nang diswashing at mabula kaya nakakatipid ka. Safe na safe yung product kasi nakabubble wrap talaga. Napakaapproachable nang seller. I recommend it to other buyers. "</p>
                  <ul class="mb-8 flex items-center justify-center">
