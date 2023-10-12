@@ -18,9 +18,15 @@ body {
     background-image: url('https://i.ibb.co/NZYp8cn/favebanner.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* If needed */
+    background-attachment: fixed;
     background-position: center center;
   }
+
+  @media (max-width: 768px) {
+    .bg-developer1 {
+      background-size: contain; /* Adjust background size for smaller screens */
+    }
+    }
 
 body {
     background: #eee;

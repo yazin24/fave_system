@@ -301,7 +301,7 @@
     </div>
   </div>
 
-  <div class="min-h-screen flex justify-center items-center bg-developer1 bg-no-repeat bg-fixed bg-cover bg-center md:bg-auto">
+  <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-developer1">
         
   </div>
 
