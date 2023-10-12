@@ -81,7 +81,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 //----------------------------------------------------------ECOMMERCE-----------------------------------------------------------------
 
-    // Route::domain('fave.com.ph') -> group(function(){
+    Route::domain('fave.com.ph') -> group(function(){
 
     Route::get('/', function(){
         return redirect() -> route('homepage');
@@ -147,14 +147,14 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
     });
 
 
-    // });
+    });
 
 
 
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 //----------------------------------------------------------PURCHASING-----------------------------------------------------------------
 
-// Route::domain('favesoap.com') -> group(function(){
+Route::domain('favesoap.com') -> group(function(){
 
 
 Route::middleware(['auth', 'purchasing']) -> group(function(){
@@ -585,7 +585,7 @@ Route::middleware(['auth', 'superadmin']) -> group(function(){
 
 });
 
-// });
+});
 
 
 
