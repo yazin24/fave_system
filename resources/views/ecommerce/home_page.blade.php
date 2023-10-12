@@ -6,9 +6,9 @@
   
   <div class="wrapper flex justify-start items-start">
     
-    <span class="flex flex-col flex-col-reverse justify-center lg:justify-between lg:flex-row w-full">
+    <span class="flex flex-col flex-col-reverse justify-center items-center lg:flex-row w-full lg:gap-6">
 
-      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-1/3 sm:mt-20 sm:mx-12 lg:mt-24 lg:ml-20 lg:mt-40 lg:ml-30">
+      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-3/4 lg:w-2/5 lg:ml-24">
         <h2 class="text-sm lg:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
           DISCOVER THE POWER OF PROFESSIONAL-GRADE CLEANING AT YOUR HOME
         </h2>
@@ -28,7 +28,7 @@
         </a>
       </section>
 
-      <section class="w-full md:w-1/2">
+      <section class="w-full md:w-2/3 lg:w-3/4">
         <img src="{{asset('images/hero_image.png')}}" alt="">
       </section>
 
@@ -131,8 +131,7 @@
     class="flex justify-center items-center mx-4 md:mx-44 lg:mx-96 mt-4"
     data-aos="fade-down"
     data-aos-easing="ease-out-cubic"
-    data-aos-duration="4000"
-  >
+    data-aos-duration="4000">
 
 
     <div class="flex-col bg-violet-700 p-4 md:p-8 rounded-md mt-10 md:mt-36 shadow-md animate__animated animate__bounceInUp wow animate__animated animate__fadeInUp "data-wow-duration="1s">
@@ -305,6 +304,10 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-instakit_parallax">
+        
   </div>
 
   <div class="h-56 min-h-full md:min-h-screen flex justify-center items-center bg-developer1">

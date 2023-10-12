@@ -38,7 +38,7 @@
     }
       .wrapper {
         
-          height: 43rem;
+          height: 48rem;
           width: 100%;
           background:linear-gradient(to left bottom, rgb(219, 234, 254), rgb(147, 197, 253), rgb(37, 99, 235));
           background-size: contain;
@@ -50,7 +50,7 @@
       @media (max-width: 1050px) {
       .wrapper {
      
-          height: 40rem;
+          height: 43rem;
           width: 100%;
           /* Allow the height to adjust based on content */
           background-size: contain; /* Use contain for smaller screens */

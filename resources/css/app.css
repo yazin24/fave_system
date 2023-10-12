@@ -48,6 +48,21 @@ body {
     }
     }
 
+    .bg-instakit_parallax {
+        background-image: url('https://i.ibb.co/zhNm0Cs/instakit-parallax.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+      }
+    
+      @media (max-width: 768px) {
+        .bg-instakit_parallax {
+          background-size: contain; /* Adjust background size for smaller screens */
+        }
+        }
+    
+
 body {
     background: #eee;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
