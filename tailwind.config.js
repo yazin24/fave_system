@@ -10,6 +10,13 @@ export default {
       ],
     theme: {
         extend: {
+
+            backgroundImage: {
+                developer1: 'url("https://i.ibb.co/s5nsj8z/parallax-image.png")',
+               
+            },
+
+
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

@@ -12,6 +12,12 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AV7Up2sl4_s6_qV8Z_n3RwvDwMLT4Qit60rhAeT_cF3D_TTyD5PL8S9oU13MUixNwFoKPx3rqDnTj3_s&currency=PHP"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="animate.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="path/to/tailwind.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
@@ -32,11 +38,12 @@
     }
       .wrapper {
         
-          height: 60rem;
+          height: 43rem;
           width: 100%;
           background-image: url('{{ asset('images/hero_image.png') }}');
           background-size: contain;
           background-repeat: no-repeat;
+          background-position: right;
       }
 
       @media (max-width: 1050px) {
@@ -226,6 +233,21 @@ setInterval(updateCartQuantity, 30000); // Update every 30 seconds, adjust as ne
         
       });
   </script> --}}
+
+  <script>
+    wow = new WOW(
+                      {
+                      boxClass:     'wow',      // default
+                      animateClass: 'animated', // default
+                      offset:       100,          // default
+                      mobile:       true,       // default
+                      live:         true        // default
+                      
+                    }
+                    )
+                    wow.init();
+</script>
+              
 
      </body>
 

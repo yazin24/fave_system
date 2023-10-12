@@ -6,7 +6,7 @@
   <div class="wrapper flex justify-start items-start">
     <span class="flex justify-center md:justify-start w-fulld">
 
-      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 rounded-lg md:w-1/3 mt-8 sm:mt-20 sm:mx-12 md:mt-24 md:ml-20 lg:mt-40 lg:ml-32">
+      <section class="animate__animated animate__backInUp flex flex-col items-center justify-center bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md p-6 m-4 rounded-lg md:w-1/3 mt-8 sm:mt-20 sm:mx-12 md:mt-24 md:ml-20 lg:mt-40 lg:ml-30">
         <h2 class="text-sm lg:text-2xl text-center font-bold mb-4 text-amber-500 front-text">
           DISCOVER THE POWER OF PROFESSIONAL-GRADE CLEANING AT YOUR HOME
         </h2>
@@ -106,10 +106,10 @@
   </div>
 
     <div class="px-2 bg-violet-700 p-8">
-      <h2 class=" flex justify-center text-center text-md md:text-2xl font-bold text-amber-500 md:mt-8">
+      <h2 class=" flex justify-center text-center text-md md:text-2xl font-bold text-amber-500 md:mt-8  wow animate__animated animate__fadeInUp "data-wow-duration="1s" data-wow-delay="1s">
         Introducing Our Dishwashing Liquid
       </h2>
-      <p class="text-amber-600 flex justify-center text-center mb-8 font-bold">
+      <p class="text-amber-600 flex justify-center text-center mb-8 font-bold wow animate__animated animate__fadeInUp "data-wow-duration="1s" data-wow-delay="1s">
         Experience the cleaning power like never before!
       </p>
 
@@ -127,7 +127,257 @@
     data-aos-easing="ease-out-cubic"
     data-aos-duration="4000"
   >
-    <div class="flex-col bg-violet-700 p-4 md:p-8 rounded-md mt-10 md:mt-36 shadow-md animate__animated animate__bounceInUp">
+
+  <div class="min-h-screen flex justify-center items-center bg-developer1 bg-no-repeat bg-fixed bg-cover bg-center md:bg-auto">
+        
+  </div>
+
+  <div class= "h-full"> 
+    <h2 class="text-3xl font-bold text-center">Testimonials</h2>
+    <p class="text-center mt-6">Customer satisfaction is one of our mission. Take a look at our customer reviews to us for your references.</p>
+  
+      <div class="flex justify-center h-96 mt-32">
+            <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
+              centered-slides="true" autoplay-delay="4500" autoplay-disable-on-interaction="false">
+              <swiper-slide class="flex flex-col space-y-3  bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md">
+                <img src="../images/13.jpg" alt="" class="rounded-full h-24">
+                <p>Joy P.</p>
+                <p class="px-8 text-sm">"Late review kc nagtry muna aq kung ok. And yes suoer ok ang product di aq nadismaya. Kc legit na mabilis makatanggal ng oil sa mga hinuhugasan. Safe and secure din ang pagkakabalot nila sa product. Salamat kay seller at kay kuya rider na nagdeliver ng product. .! "</p>
+                 <ul class="mb-8 flex items-center justify-center">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+            </ul>
+              </swiper-slide>
+            
+               <swiper-slide class="flex flex-col space-y-3  bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md">
+                <img src="../images/111.jpg" alt="" class="rounded-full h-24">
+                <p>jadeanroe</p>
+                <p class="px-8 text-sm">"Sobrang bango nang diswashing at mabula kaya nakakatipid ka. Safe na safe yung product kasi nakabubble wrap talaga. Napakaapproachable nang seller. I recommend it to other buyers. "</p>
+                 <ul class="mb-8 flex items-center justify-center">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+            </ul>
+              </swiper-slide>
+
+               <swiper-slide class="flex flex-col space-y-3  bg-blue-300/10 backdrop-blur-sm drop-shadow-lg shadow-md">
+                <img src="../images/12.jpg" alt="" class="rounded-full h-24">
+                <p>carolyntrugillotivodocdor</p>
+                <p class="px-8 text-sm">Late review kc nagtry muna aq kung ok. And yes super ok ang product di aq nadismaya. Kc legit na mabilis makatanggal ng oil sa mga hinuhugasan. Safe and secure din ang pagkakabalot nila sa product. Salamat kay seller at kay kuya rider na nagdeliver ng product.</p>
+                 <ul class="mb-8 flex items-center justify-center">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-5 w-5 text-yellow-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+            </ul>
+              </swiper-slide>
+
+            </swiper-container>
+      </div>
+</div>
+
+    <div class="flex-col bg-violet-700 p-4 md:p-8 rounded-md mt-10 md:mt-36 shadow-md animate__animated animate__bounceInUp wow animate__animated animate__fadeInUp "data-wow-duration="1s" data-wow-delay="1s">
       <h2 class="text-gray-200 text-2xl font-bold text-center">
         Why Choose Us?
       </h2>
@@ -147,7 +397,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaCheckCircle class="text-2xl text-gray-100 mr-1" />
@@ -171,7 +421,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaExchangeAlt class="text-2xl text-gray-100 mr-1" />
@@ -197,7 +447,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInRight">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaMagic class="text-2xl text-gray-100 mr-1" />
@@ -225,7 +475,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInLeft wow animate__animated animate__zoomInLeft "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaHandsWash class="text-2xl text-gray-100 mr-1" />
@@ -251,7 +501,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp">
+        <div class="bg-violet-700 p-4 rounded-md shadow-md my-4 animate__animated animate__bounceInUp wow animate__animated animate__zoomInUp "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <GiFragrance class="text-2xl text-gray-100 mr-1" />
@@ -277,7 +527,7 @@
         data-aos-easing="ease-out-cubic"
         data-aos-duration="4000"
       >
-        <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4 animate__animated animate__bounceInRight">
+        <div class="bg-violet-700 p-4 flex flex-col rounded-md shadow-md my-4 animate__animated animate__bounceInRight wow animate__animated animate__zoomInRight "data-wow-duration="1s" data-wow-delay="1s">
           <span class="flex flex-row items-center">
             <span>
               <FaTree class="text-2xl text-gray-100 mr-1" />
