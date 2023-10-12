@@ -612,7 +612,7 @@
 
   
       <div class="h-screen items-center grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:px-32">
-        <div class="animate__animated animate__fadeInLeft">
+        <div class="wow animate__animated animate__fadeInLeft">
           <div class="mx-10 mt-8">
             <p class="text-sm md:text-lg">
               After setting your appointment, please wait for our cleaning
@@ -625,7 +625,7 @@
         </div>
         
         
-        <div class="rounded-md bg-white md:w-full mt-2 lg:h-4/6 md:mx-10 border-2 mx-4 mt-2 animate__animated animate__fadeInRight">
+        <div class="rounded-md bg-white md:w-full mt-2 lg:h-4/6 md:mx-10 border-2 mx-4 mt-2 wow animate__animated animate__fadeInRight">
           {{-- <form method="POST" action="{{route('setappointment')}}">
             @csrf --}}
             <div class="px-4 md:px-10 py-10 md:py-20">
