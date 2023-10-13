@@ -253,7 +253,7 @@ class EcommerceFunctionsController extends Controller
 
     }
 
-    public function delete_item_in_shopping_cart($item)
+    public function delete_item_in_shopping_cart(EcomCustomerCart $item)
     {
         $shoppingItem = EcomCustomerCart::findOrFail($item -> id);
 
@@ -263,6 +263,11 @@ class EcommerceFunctionsController extends Controller
         }
 
         $shoppingItem -> delete();
+
+        // $cartQuantity = EcomCustomerCart::where('ecom_cs_id', $shoppingItem)->sum('quantity');
+
+        // // Store the cart quantity in the session
+        // session(['cartAllQuantity' => $cartQuantity]);
 
         return redirect() -> route('shoppingcart');
     }

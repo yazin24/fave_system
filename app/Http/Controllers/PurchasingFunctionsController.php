@@ -272,8 +272,12 @@ class PurchasingFunctionsController extends Controller
         //     $purchase -> daysDiff = $daysDiff;
         // };
 
-        $totalAmount = $purchase -> purchaseOrderItems -> sum('amount');
+        $del_charge = $purchase -> del_charge;
 
+        $poItemAmount = $purchase -> purchaseOrderItems -> sum('amount');
+
+        $totalAmount = $del_charge + $poItemAmount;
+        
         return view('purchasing.purchase_settle_payment', ['purchase' => $purchase, 'totalAmount' => $totalAmount]);
     }
 
