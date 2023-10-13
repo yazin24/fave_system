@@ -321,6 +321,8 @@ Route::get('sales/ecommerce-dashboard/order-details/{ecommerceOrder}', [SalesFun
 
 Route::get('sales/sales/ecommerce-dashboard/order-details/{ecommerceOrder}/update', [SalesFunctionsController::class, 'update_order_details']) -> name('updateorderdetails');
 
+Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/update-order-details/now', [SalesFunctionsController::class, 'order_details_update']) -> name('orderdetailsupdate');
+
 Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [SalesFunctionsController::class, 'ecommerce_order_complete']) -> name('ecommerceordercomplete');
 
 Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/cancelled', [SalesFunctionsController::class, 'ecommerce_order_cancel']) -> name('ecommerceordercancel');

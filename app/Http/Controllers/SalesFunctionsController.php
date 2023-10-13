@@ -1166,9 +1166,34 @@ class SalesFunctionsController extends Controller
         return redirect() -> back();
     }
     
-    public function update_order_details()
+    public function update_order_details(EcomCustomerOrders $ecommerceOrder)
     {
-        return view('sales.ecommerce_update_order_details');
+        // $updatedOrder = EcomCustomerOrders::findOrFail($ecommerceOrder -> id);
+       return view('sales.ecommerce_update_order_details', ['ecommerceOrder' => $ecommerceOrder]);
+    }
+
+    public function order_details_update(Request $request, EcomCustomerOrders $ecommerceOrder)
+    {
+        $updateOrder = EcomCustomerOrders::findOrFail($ecommerceOrder -> id);
+
+        $refNumber = $request -> input('ref_number');
+
+        $updateOrder -> update([
+
+            'status' => 9,
+
+        ]);
+
+        $updateOrder -> ecomCustomerPaymentTransactions() -> update([
+
+            'ref_number' => $refNumber,
+
+        ]);
+
+        $updateOrder -> save();
+
+
+        return redirect() -> route('ecommerceorderview', ['ecommerceOrder' => $ecommerceOrder]);
     }
 
 }

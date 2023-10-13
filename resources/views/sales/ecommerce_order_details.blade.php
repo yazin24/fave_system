@@ -71,8 +71,8 @@
         </div>
         @elseif($ecommerceOrder -> status == 3)
         <div class="flex flex-col gap-1 my-2 w-full">
-           
-                <button type="submit" class="text-xs font-bold text-gray-100 bg-amber-500 hover:bg-amber-600 p-1 rounded-sm w-full"><a href=""><i class="fa-solid fa-pen-to-square mr-1"></i>Update</a></button>
+                <button type="submit" class="text-xs font-bold text-gray-100 bg-amber-500 hover:bg-amber-600 p-1 rounded-sm w-full"><a href="{{route('updateorderdetails', ['ecommerceOrder' => $ecommerceOrder -> id])}}"><i class="fa-solid fa-receipt mr-1"></i>Fully Paid</a></button>
+                
            <form method="POST" action="{{route('ecommerceordercancel', ['ecommerceOrder' => $ecommerceOrder -> id])}}">
             @csrf
             @method('PUT')
