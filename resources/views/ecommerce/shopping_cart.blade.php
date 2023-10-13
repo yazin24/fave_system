@@ -33,7 +33,7 @@
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/6">₱{{$item -> price * $item -> quantity}}.00</td>
 
                    <td class="border-b-2 border-gray-100 text-md text-center w-1/6">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('deleteiteminshoppingcart', ['allItemCart' => $allItemCart -> id])}}">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="mr-2 bg-red-500 hover:bg-red-600 text-gray-200 p-1.5 rounded-sm" onclick="return confirm('Do you really want to delete this item?')"><i class="fa-solid fa-trash"></i></button>
