@@ -18,7 +18,7 @@
                     <th class="text-xs text-center w-1/5">ORDER ID</th>
                     <th class="text-xs text-center w-1/5">FULL NAME</th>
                     <th class="text-xs text-center w-1/5">ADDRESS</th>
-                    <th class="text-xs text-center w-1/5">NUMBER</th>
+                    <th class="text-xs text-center w-1/5">DATE</th>
                     <th class="text-xs text-center w-1/5">ACTION</th>
                     
                     
@@ -32,7 +32,7 @@
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> order_id}}</td>
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> customers_name}}</td>
                     <td class="border-b-2 text-xs text-center text-[9px]">{{$shopeeSale -> customers_address}}</td>
-                    <td class="border-b-2 text-xs text-center">{{$shopeeSale -> phone_number}}</td>
+                    <td class="border-b-2 text-xs text-center">{{date('m-d-y', strtotime($shopeeSale -> created_at))}}</td>
                     <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('shopeeorderdetails', ['shopeeSale' => $shopeeSale -> id])}}">View</a></td>
                 </tr>
                @endforeach  
@@ -59,7 +59,7 @@
                         <th class="text-xs text-center w-1/5">ORDER NUMBER</th>
                         <th class="text-xs text-center w-1/5">FULL NAME</th>
                         <th class="text-xs text-center w-1/5">ADDRESS</th>
-                        <th class="text-xs text-center w-1/5">NUMBER</th>
+                        <th class="text-xs text-center w-1/5">DATE</th>
                         <th class="text-xs text-center w-1/5">ACTION</th>
                         
                 </tr>
@@ -70,7 +70,7 @@
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> order_number}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
                         <td class="border-b-2 text-xs text-center text-[9px]">{{$lazadaSale -> customers_address}}</td>
-                        <td class="border-b-2 text-xs text-center">{{$lazadaSale -> phone_number}}</td>
+                        <td class="border-b-2 text-xs text-center">{{date('m-d-y', strtotime($lazadaSale -> created_at))}}</td>
                         <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('lazadaorderdetails', ['lazadaSale' => $lazadaSale])}}">View</a></td>
                 </tr>
                @endforeach  
