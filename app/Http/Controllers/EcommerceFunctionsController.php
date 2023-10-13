@@ -243,14 +243,14 @@ class EcommerceFunctionsController extends Controller
         $deleteItemOrder = EcomCustomerOrders::findOrFail($orderId);
 
         if($deleteItemOrder){
+
             $deleteItemOrder -> ecomCustomerOrderitems() -> delete();
 
             $deleteItemOrder -> delete();
 
-            return Response::json(['success' => true]);
-        } else {
-            return Response::json(['success', false]);
-        }
+        return redirect() -> route('orderdetailstoconfirm', ['orderId' => $orderId]);
+    }
+
     }
 
     public function cancel_order($orderId)

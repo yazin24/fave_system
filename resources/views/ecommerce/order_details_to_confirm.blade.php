@@ -29,7 +29,12 @@
                 <h2>Quantity: {{$item -> quantity}}</h2>
                 <h2>Price: ₱{{$item -> price}}</h2>
                 <h2>Amount: ₱{{number_format($item -> price * $item -> quantity, 2)}}</h2>
-                <button class="text-red-600 hover:underline mt-2 delete-item-button" data-order-id="{{$order -> id}}">Delete</button>
+                <form method="POST" action="{{route('deleteitemorder', ['orderId' => $order -> id])}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-600 hover:underline mt-2">Delete</button>
+                </form>
+                
             </div>
            
             </div>

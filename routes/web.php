@@ -129,6 +129,8 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
         Route::get('fave/order-details/{orderId}', [EcommerceFunctionsController::class, 'order_details_to_confirm']) -> name('orderdetailstoconfirm');
     
         Route::put('fave/order-details/{orderId}/confirm-order', [EcommerceFunctionsController::class, 'confirm_order']) -> name('confirmorder');
+
+        Route::delete('fave/order-details/{orderId}/delete', [EcommerceFunctionsController::class, 'delete_item_order']) -> name('deleteitemorder');
     
         Route::delete('fave/order-details/{orderId}/cancel', [EcommerceFunctionsController::class, 'cancel_order']) -> name('cancelorder');
     
