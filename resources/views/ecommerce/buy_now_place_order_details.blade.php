@@ -27,7 +27,7 @@
                @if(session('orderInfo.payment_method') === 'Cash On Delivery')
                 <div>
                 </div>
-                @else
+                @elseif(session('orderInfo.payment_method') === 'Gcash')
                <div class="">
                 <div class="flex flex-row gap-1">
                     <a href="{{route('generateqrcode', ['productId' => $productId -> id])}}" class=""><img src="{{asset('images/gcashlogo.png')}}" class="rounded-md mb-2 hover:w-12 w-10"></a>

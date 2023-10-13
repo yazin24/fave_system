@@ -43,10 +43,13 @@
                 <select name="payment_method" class="h-8 text-xs w-full rounded-sm">
                     <option disabled selected>Choose Payment method</option>
                     <option value="Cash On Delivery">Cash On Delivery</option>
-                    <option value="Online Payment">Online Payment</option>
+                    <option value="Gcash">Gcash</option>
+                    <option value="Maya">Maya</option>
+                    <option value="Paypal">Paypal</option>
                     {{-- <option>Cash On Delivery</option>
                     <option>Cash On Delivery</option> --}}
                 </select>
+                
             </div>
 
     </div>
