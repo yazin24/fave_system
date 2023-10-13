@@ -294,12 +294,12 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.buy_now_place_order_details', ['productId' => $productId, 'orderInfo' => $orderInfo]);
     }
 
-    public function buy_now_generate_qrcode(ProductSku $productId)
-    {
-        $product = ProductSku::find($productId -> id);
+    // public function buy_now_generate_qrcode(ProductSku $productId)
+    // {
+    //     $product = ProductSku::find($productId -> id);
 
-        return view('ecommerce.generated_qr_code', ['productId' => $product]);
-    }
+    //     return view('ecommerce.generated_qr_code', ['productId' => $product]);
+    // }
 
     public function order_success_message()
     {
@@ -333,10 +333,16 @@ class EcommerceFunctionsController extends Controller
 
         $customerId = auth('customers') -> user() -> id;
 
+        if($paymentMethod === 'Cash On Delivery'){
+            $status = 9;
+        }elseif($paymentMethod === 'Gcash' || $paymentMethod === 'Maya'){
+            $status = 3;
+        }
+
         $order = EcomCustomerOrders::create([
 
             'ecom_cs_id' => $customerId,
-            'status' => 9,
+            'status' => $status,
             'shipping_address' => $orderInfo['shipping_address'],
             'billing_address' => '',
             'tracking_number' => $trackingNumber,
