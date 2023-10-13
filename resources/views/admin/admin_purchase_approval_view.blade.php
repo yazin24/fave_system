@@ -6,6 +6,12 @@
 
 <div class="mt-4">
 
+    @if(session('success'))
+    <div class="alert alert-danger text-red-600 text-xs font-bold">
+        {{ session('success') }}
+    </div>
+@endif
+
     <div class="bg-gray-900 rounded-md p-2 max-w-screen-sm mt-4">
         <div class="bg-gray-200 px-4 py-4"> 
 

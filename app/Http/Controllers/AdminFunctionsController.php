@@ -195,9 +195,7 @@ class AdminFunctionsController extends Controller
             
             $purchaseOrder -> save();
 
-            Session::flash('success', 'Purchase Order has been successfully approved!');
-
-            return view('admin.admin_home');
+            return redirect() -> route('adminpurchaseapproval') -> with('success', 'Purchase Order has been approved!');
         
     }
 
