@@ -20,20 +20,22 @@
                 <h2>Price: ₱{{number_format($productId -> retail_price,2)}}</h2>
                <h2>Quantity: {{ session('orderInfo.quantity') }}</h2>
                <h2>Shipping Address: {{session('orderInfo.shipping_address')}}</h2>
-               <h2>Payment Method: {{session('orderInfo.payment_method')}}</h2>
+               <h2 class="flex flex-row text-center">Payment Method:<span class="flex flex-row ml-1">
+                @if(session('orderInfo.payment_method') === 'Gcash')<img src="{{asset('images/gcashlogo.png')}}" class="rounded-sm w-6">
+                @elseif(session('orderInfo.payment_method') === 'Maya')<img src="{{asset('images/gcashlogo.png')}}" class="rounded-sm w-6">
+                @elseif(session('orderInfo.payment_method') === 'Cash On Delivery')
+                 Cash On Delivery
+
+                @endif
+                </span>
+                </h2>
                <br>
                <hr>
                <br>
                @if(session('orderInfo.payment_method') === 'Cash On Delivery')
-                <div>
-                </div>
-                @elseif(session('orderInfo.payment_method') === 'Gcash')
-               <div class="">
-                <div class="flex flex-row gap-1">
-                    <a href="{{route('generateqrcode', ['productId' => $productId -> id])}}" class=""><img src="{{asset('images/gcashlogo.png')}}" class="rounded-md mb-2 hover:w-12 w-10"></a>
-                    <a href="{{route('merchant')}}"><img src="{{asset('images/mayalogo.png')}}" class="rounded-md mb-2 hover:w-12 hover:h-10 w-10 h-9"></a>
                 
-                </div>
+               @elseif(session('orderInfo.payment_method') === 'Paypal')
+               <div class="">
                 <div id="paypal-button-container"></div>
                </div>
                @endif
@@ -43,7 +45,7 @@
         </div>
 
         <hr class="my-2">
-        @if(session('orderInfo.payment_method') === 'Cash On Delivery')
+        @if(session('orderInfo.payment_method') === 'Cash On Delivery' || 'Gcash' || 'Maya')
         <div class="flex justify-between mx-2 mt-4">
             <form method="POST" action="{{route('customerconfirmorder', ['productId' => $productId -> id])}}">
                 @csrf
