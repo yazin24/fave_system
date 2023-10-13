@@ -10,7 +10,7 @@
             <h2 class="font-semibold mb-2">Status: Queued -> Ongoing</h2>
             <label>Ref Number:</label>
             <input type="string" class="rounded-sm" name="ref_number"><br>
-            <button type="submit" class="mt-4 bg-teal-500 text-gray-200 hover:bg-teal-600 p-1 rounded-sm text-xs">Submit</button>
+            <button type="submit" class="mt-4 bg-teal-500 text-gray-200 hover:bg-teal-600 p-1 rounded-sm text-xs" onclick="return confirm('Update to fully paid now?')">Submit</button>
         </form>
    
     </div>
