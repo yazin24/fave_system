@@ -136,7 +136,7 @@ Route::get('inventory-history', [InventoryController::class, 'inventory_history'
     
         Route::post('fave/products/buy-now/{productId}/confirm-order-details', [EcommerceFunctionsController::class, 'buy_now_place_order_details']) -> name('buynowplaceorderdetails');
 
-        Route::get('fave/generated-qrcode/{productId}', [EcommerceFunctionsController::class, 'generate_qr_code']) -> name('generateqrcode');
+        Route::get('fave/generated-qrcode/{order}', [EcommerceFunctionsController::class, 'generate_qr_code']) -> name('generateqrcode');
     
         Route::get('fave/order-success/message-success', [EcommerceFunctionsController::class, 'order_success_message']) -> name('ordersuccessmessage');
     

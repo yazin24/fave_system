@@ -329,7 +329,7 @@ class EcommerceFunctionsController extends Controller
 
     $trackingNumber = $generateNumber();
 
-       if($paymentMethod === 'Cash On Delivery'){
+       if($paymentMethod === 'Cash On Delivery' || 'Gcash' || 'Maya'){
 
         $customerId = auth('customers') -> user() -> id;
 
@@ -367,7 +367,7 @@ class EcommerceFunctionsController extends Controller
 
        }//dugtong mo dito yung sa online payment na else statement
 
-       return redirect() -> route('ordersuccessmessage');
+       return view('ecommerce.generated_qr_code', ['order' => $order]);
     }
 
     public function show_all_customer_order()
