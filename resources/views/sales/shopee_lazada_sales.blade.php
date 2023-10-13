@@ -31,7 +31,7 @@
                     
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> order_id}}</td>
                     <td class="border-b-2 text-xs text-center">{{$shopeeSale -> customers_name}}</td>
-                    <td class="border-b-2 text-xs text-center text-[9px]">{{$shopeeSale -> customers_address}}</td>
+                    <td class="border-b-2 text-xs text-center text-[8px]">{{$shopeeSale -> customers_address}}</td>
                     <td class="border-b-2 text-xs text-center">{{date('m-d-y', strtotime($shopeeSale -> created_at))}}</td>
                     <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('shopeeorderdetails', ['shopeeSale' => $shopeeSale -> id])}}">View</a></td>
                 </tr>
@@ -69,7 +69,7 @@
                 <tr class="h-6">
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> order_number}}</td>
                         <td class="border-b-2 text-xs text-center">{{$lazadaSale -> customers_name}}</td>
-                        <td class="border-b-2 text-xs text-center text-[9px]">{{$lazadaSale -> customers_address}}</td>
+                        <td class="border-b-2 text-xs text-center text-[8px]">{{$lazadaSale -> customers_address}}</td>
                         <td class="border-b-2 text-xs text-center">{{date('m-d-y', strtotime($lazadaSale -> created_at))}}</td>
                         <td class="border-b-2 text-xs text-center hover:underline text-red-600 hover:font-bold"><a href="{{route('lazadaorderdetails', ['lazadaSale' => $lazadaSale])}}">View</a></td>
                 </tr>
