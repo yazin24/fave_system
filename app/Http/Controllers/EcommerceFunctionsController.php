@@ -218,11 +218,11 @@ class EcommerceFunctionsController extends Controller
             $totalAmount += $orderItem->quantity * $orderItem->price;
         }
 
-        $toConfirmCustomerOrder -> update([
+        // $toConfirmCustomerOrder -> update([
 
-            'status' => 9,
+        //     'status' => 3,
 
-        ]);
+        // ]);
 
         $toConfirmCustomerOrder -> ecomCustomerPaymentTransactions() -> create([
             
