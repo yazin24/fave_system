@@ -44,7 +44,7 @@
                     <option disabled selected>Choose Payment method</option>
                     <option value="Cash On Delivery">Cash On Delivery</option>
                     <option value="Gcash">Gcash</option>
-                    <option value="Maya">Maya</option>
+                    <option value="Maya" disabled selected>Maya</option>
                     <option value="Paypal">Paypal</option>
                     {{-- <option>Cash On Delivery</option>
                     <option>Cash On Delivery</option> --}}

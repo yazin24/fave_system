@@ -50,9 +50,11 @@
      @endif
      <input type="text" name="shipping address" placeholder="Shipping Address" class="h-8 text-xs mb-1 w-full rounded-sm" required>
      <select name="payment_method" class="h-8 text-xs w-full rounded-sm">
-         <option disabled selected>Choose Payment method</option>
-         <option value="Cash On Delivery">Cash On Delivery</option>
-         <option value="Online Payment">Online Payment</option>
+      <option disabled selected>Choose Payment method</option>
+      <option value="Cash On Delivery">Cash On Delivery</option>
+      <option value="Gcash">Gcash</option>
+      <option disabled selected>Maya</option>
+      <option value="Paypal">Paypal</option>
          {{-- <option>Cash On Delivery</option>
          <option>Cash On Delivery</option> --}}
      </select>

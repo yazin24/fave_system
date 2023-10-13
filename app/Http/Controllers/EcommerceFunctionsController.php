@@ -235,7 +235,7 @@ class EcommerceFunctionsController extends Controller
 
         $toConfirmCustomerOrder -> save();
 
-        return redirect() -> route('ordersuccessmessage');
+        return redirect() -> route('generateqrcode', ['order' => $toConfirmCustomerOrder]);
     }
 
     public function delete_item_order($orderId)
@@ -329,7 +329,7 @@ class EcommerceFunctionsController extends Controller
 
     $trackingNumber = $generateNumber();
 
-       if($paymentMethod === 'Cash On Delivery' || 'Gcash' || 'Maya'){
+       if($paymentMethod === 'Cash On Delivery' || $paymentMethod === 'Gcash' || $paymentMethod === 'Maya'){
 
         $customerId = auth('customers') -> user() -> id;
 
@@ -367,7 +367,7 @@ class EcommerceFunctionsController extends Controller
 
        }//dugtong mo dito yung sa online payment na else statement
 
-       return view('ecommerce.generated_qr_code', ['order' => $order]);
+       return redirect() -> route('generateqrcode', ['order' => $order]);
     }
 
     public function show_all_customer_order()
@@ -403,14 +403,14 @@ class EcommerceFunctionsController extends Controller
         return view('ecommerce.merchant_temporary_message');
     }
 
-    public function generate_qr_code()
+    public function generate_qr_code(EcomCustomerOrders $order)
     {
-        $gcashData = "Recipient: 1234567890\nAmount: 100.00";
+        // $gcashData = "Recipient: 1234567890\nAmount: 100.00";
 
-        // Generate the QR code
-        $qrCode = QrCode::size(200)->generate($gcashData);
+        // // Generate the QR code
+        // $qrCode = QrCode::size(200)->generate($gcashData);
         
         
-        return view('ecommerce.generated_qr_code', ['qrCode' => $qrCode]);
+        return view('ecommerce.generated_qr_code', ['order' => $order]);
     }
 }
