@@ -317,7 +317,9 @@ Route::get('sales/ecommerce-dashboard/customers-list', [SalesFunctionsController
 
 Route::get('sales/ecommerce-dashboard/search-field', [SalesFunctionsController::class, 'search_field']) -> name('searchfield');
 
-Route::get('sales/ecommerce-dashbaord/order-details/{ecommerceOrder}', [SalesFunctionsController::class, 'ecommerce_order_view']) -> name('ecommerceorderview');
+Route::get('sales/ecommerce-dashboard/order-details/{ecommerceOrder}', [SalesFunctionsController::class, 'ecommerce_order_view']) -> name('ecommerceorderview');
+
+Route::get('sales/sales/ecommerce-dashboard/order-details/{ecommerceOrder}/update', [SalesFunctionsController::class, 'update_order_details']) -> name('updateorderdetails');
 
 Route::put('sales/ecommerce-dashboard/order-details/{ecommerceOrder}/completed', [SalesFunctionsController::class, 'ecommerce_order_complete']) -> name('ecommerceordercomplete');
 

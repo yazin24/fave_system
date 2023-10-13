@@ -1166,4 +1166,9 @@ class SalesFunctionsController extends Controller
         return redirect() -> back();
     }
     
+    public function update_order_details()
+    {
+        return view('sales.ecommerce_update_order_details');
+    }
+
 }
