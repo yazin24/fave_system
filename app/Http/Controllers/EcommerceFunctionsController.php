@@ -253,8 +253,17 @@ class EcommerceFunctionsController extends Controller
 
     }
 
-    public function delete_item_in_shopping_cart()
+    public function delete_item_in_shopping_cart($item)
     {
+        $shoppingItem = EcomCustomerCart::findOrFail($item -> id);
+
+        if(!$shoppingItem){
+
+            return redirect() -> route('shoppingcart');
+        }
+
+        $shoppingItem -> delete();
+
         return redirect() -> route('shoppingcart');
     }
 
