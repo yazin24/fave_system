@@ -27,7 +27,7 @@
 
                   <td class="border-b-2 border-gray-100 text-xs text-center w-1/5"><input type="number" class="h-6 w-14" name="product_quantity[{{$item -> sku_id}}]" value="{{$item -> quantity}}" class=" text-center w-24"></td>
 
-                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5"><input type="number" class="h-6 w-20 px-0 text-center" name="product_price[{{$item -> sku_id}}]" value="{{$item -> price}}"></td>
+                  <td class="border-b-2 border-gray-100 text-md text-center w-1/5"><input type="number" class="h-6 w-20 px-0 text-center" name="product_price[{{$item -> sku_id}}]" value="{{$item -> price}}" readonly></td>
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/5">₱{{$item -> price * $item -> quantity}}.00</td>
                   

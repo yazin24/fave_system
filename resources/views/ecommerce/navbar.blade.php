@@ -83,7 +83,7 @@
   <header class="lg:px-16 px-6 bg-violet-700 flex flex-wrap items-center lg:py-0 py-2">
     <div class="flex-1 flex justify-between items-center my-4">
       <a href="#">
-        <img class='h-14 inline ml-10' src="../images/newlogo.png" alt=""/>
+        <img class='h-14 inline ml-10' src="{{ asset('images/newfavelogo.png') }}" alt=""/>
     </a>
   </div>
 
@@ -170,7 +170,7 @@
             <div class="mb-4 md:mb-0">
               <a href="/">
                 <img
-                  src="../images/newlogo.png"
+                  src="{{ asset('images/newfavelogo.png') }}"
                   alt=""
                   class="h-24 w-22 cursor-pointer"
                 />
