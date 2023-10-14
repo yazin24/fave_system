@@ -6,7 +6,7 @@
         <div>
             <h2 class="font-bold md:text-lg mb-1 ml-1">Sales Graph Monitoring 
                 <button class="text-xs bg-violet-600 hover:bg-violet-700 text-gray-200 p-0.5 mr-1 rounded-sm">Ecommerce</button>
-                <button class="text-xs bg-orange-600 hover:bg-orange-700 text-gray-200 p-0.5 mr-1 rounded-sm">Shopee</button>
+                <button class="text-xs bg-orange-600 hover:bg-orange-700 text-gray-200 p-0.5 mr-1 rounded-sm"><a href="{{route('shopeesalesviewreport')}}">Shopee</a></button>
                 <button class="text-xs bg-teal-600 hover:bg-teal-700 text-gray-200 p-0.5 mr-1 rounded-sm">Manual Sales</button>
             </h2>
         </div>

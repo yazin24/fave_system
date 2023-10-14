@@ -508,6 +508,8 @@ Route::get('/admin/stock-monitoring/view/log/history/{stock}', [AdminFunctionsCo
 
 Route::get('admin/outgoing-stocks/pull-out-items/details/{pullOutItem}', [AdminFunctionsController::class, 'admin_pull_out_items']) -> name('adminpulloutitems');
 
+Route::get('admin/sales-monitoring/shopee/sales/report', [AdminFunctionsController::class, 'shopee_sales_view_report']) -> name('shopeesalesviewreport');
+
 });
 
 

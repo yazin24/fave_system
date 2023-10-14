@@ -485,4 +485,9 @@ class AdminFunctionsController extends Controller
 
         return view('admin.admin_pull_out_items', ['pullOutItem' => $pullOutItem]);
     }
+    
+    public function shopee_sales_view_report()
+    {
+        return view('admin.admin_shopee_sales_view_report');
+    }
 }
