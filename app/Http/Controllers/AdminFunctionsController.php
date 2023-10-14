@@ -491,7 +491,6 @@ class AdminFunctionsController extends Controller
     public function shopee_sales_view_report()
     {
       
-
         return view('admin.admin_shopee_sales_view_report');
     }
 

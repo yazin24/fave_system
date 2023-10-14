@@ -3,13 +3,14 @@
 @section('admin-body')
 
 
-<form>
+<form method="POST" action="{{route('generateshopeesalesreport')}}">
+    @csrf
     <div class="flex flex-row items-center gap-1">
        
         <select class="text-xs rounded-sm" name="date_interval">
             <option disabled selected>----------------------</option>
             <option value="daily">Daily</option>
-            <optiion value="weekly">Weekly</optiion>
+            <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
             <option value="quarterly">Quarterly</option>
             <option value="yearly">Yearly</option>
@@ -20,8 +21,8 @@
 
 @if(isset($allShopeeOrders))
 <div class="mt-4 w-full">
-    <div class="flex justify-end">
-        <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-0.5 rounded-sm text-gray-200 mb-1">Download</button>
+    <div class="flex justify-end font-semibold">
+        <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 mb-1 text-center"><i class="fa-solid fa-file-arrow-down mr-1 mt-1"></i> Download</button>
     </div>
     
     <table class="w-full">
@@ -38,8 +39,8 @@
         <tbody class="text-center bg-gray-200 shadow-sm h-6">
             @foreach ($allShopeeOrders as $shopeeOrder)
             <tr>
-                <td>{{$shopeeOrder -> id}}</td>
-                <td>{{$shopeeorder -> shopeeOrders -> customers_name}}</td>
+                <td>{{$shopeeOrder -> total_amount}}</td>
+                <td>{{$shopeeOrder -> shopeeOrders -> customers_name}}</td>
                 <td>s</td>
                 <td>s</td>
                 <td>s</td>
