@@ -20,7 +20,7 @@
         <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 mb-1 text-center text-xs"><i class="fa-solid fa-file-arrow-down mr-1 mt-0.5"></i> Download</button>
     </div>
     
-    <table class="w-full">
+    <table class="w-full mb-24">
         <thead class="bg-orange-600 h-8 text-gray-200">
             <tr class="">
                 <th class="w-1/6">ID</th>
@@ -63,8 +63,8 @@
 </div>
 @endif
 
-<div class="mt-1 ml-2">
-    <x-shopee-pagination :paginator="$allShopeeOrders" />
-</div>
+{{-- <div class="mt-1 ml-2">
+    {{ $allShopeeOrders->onEachSide(1)->appends(['method' => 'POST'])->links() }}
+</div> --}}
 
 @endsection

@@ -503,7 +503,7 @@ class AdminFunctionsController extends Controller
         $allShopeeOrders = ShopeeSales::whereDate('created_at', '>=', $dateStart)
             ->whereDate('created_at', '<=', $dateEnd)
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(100);
     
         return view('admin.admin_shopee_sales_view_report', ['allShopeeOrders' => $allShopeeOrders]);
     }
