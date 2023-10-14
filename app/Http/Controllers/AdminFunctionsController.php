@@ -496,16 +496,15 @@ class AdminFunctionsController extends Controller
 
     public function generate_shopee_sales_report(Request $request)
     {
-        $dateStart = $request -> input('start_date');
-        $dateEnd = $request -> input('end_date');
-
-        $allShopeeOrders = ShopeeSales::whereBetween('created_at', [$dateStart, $dateEnd])
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
-
-      
-
-     return view('admin.admin_shopee_sales_view_report', ['allShopeeOrders' => $allShopeeOrders]);
-
+        $dateStart = $request->input('start_date');
+        $dateEnd = $request->input('end_date');
+    
+        // Query for records within or on the edge of the date range
+        $allShopeeOrders = ShopeeSales::whereDate('created_at', '>=', $dateStart)
+            ->whereDate('created_at', '<=', $dateEnd)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    
+        return view('admin.admin_shopee_sales_view_report', ['allShopeeOrders' => $allShopeeOrders]);
     }
 }

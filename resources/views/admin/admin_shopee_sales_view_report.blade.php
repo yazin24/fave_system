@@ -5,18 +5,19 @@
 
 <form method="POST" action="{{route('generateshopeesalesreport')}}">
     @csrf
-    <div class="flex flex-col items-start gap-1">
-       
-       <input type="date" name="start_date">
-       <input type="date" name="end_date">
-        <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1.5 text-gray-200 rounded-md"><i class="fa-solid fa-right-to-bracket"></i> Generate</button>
+    <div class="flex flex-row items-start gap-1">
+       <label>From:</label>
+       <input type="date" name="start_date" class="text-xs">
+       <label>To:</label>
+       <input type="date" name="end_date" class="text-xs">
+        <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1.5 text-gray-200 rounded-md text-xs mt-1"><i class="fa-solid fa-right-to-bracket"></i> Generate</button>
     </div>
 </form>
 
 @if(isset($allShopeeOrders))
 <div class="mt-4 w-full">
     <div class="flex justify-end font-semibold">
-        <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 mb-1 text-center"><i class="fa-solid fa-file-arrow-down mr-1 mt-1"></i> Download</button>
+        <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-1 rounded-sm text-gray-200 mb-1 text-center text-xs"><i class="fa-solid fa-file-arrow-down mr-1 mt-0.5"></i> Download</button>
     </div>
     
     <table class="w-full">
@@ -61,5 +62,9 @@
     </table>
 </div>
 @endif
+
+<div class="mt-1 ml-2">
+    <x-shopee-pagination :paginator="$allShopeeOrders" />
+</div>
 
 @endsection
