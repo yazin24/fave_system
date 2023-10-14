@@ -6,7 +6,7 @@
 <form>
     <div class="flex flex-row items-center gap-1">
        
-        <select class="text-xs rounded-sm">
+        <select class="text-xs rounded-sm" name="date_interval">
             <option disabled selected>----------------------</option>
             <option value="daily">Daily</option>
             <optiion value="weekly">Weekly</optiion>
@@ -18,7 +18,7 @@
     </div>
 </form>
 
-{{-- @if(isset()) --}}
+@if(isset($allShopeeOrders))
 <div class="mt-4 w-full">
     <div class="flex justify-end">
         <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-0.5 rounded-sm text-gray-200 mb-1">Download</button>
@@ -36,17 +36,20 @@
             </tr>
         </thead>
         <tbody class="text-center bg-gray-200 shadow-sm h-6">
+            @foreach ($allShopeeOrders as $shopeeOrder)
             <tr>
-                <td>s</td>
-                <td>s</td>
+                <td>{{$shopeeOrder -> id}}</td>
+                <td>{{$shopeeorder -> shopeeOrders -> customers_name}}</td>
                 <td>s</td>
                 <td>s</td>
                 <td>s</td>
                 <td>s</td>
             </tr>
+            @endforeach
+           
         </tbody>
     </table>
 </div>
-{{-- @endif --}}
+@endif
 
 @endsection

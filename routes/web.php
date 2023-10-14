@@ -510,6 +510,8 @@ Route::get('admin/outgoing-stocks/pull-out-items/details/{pullOutItem}', [AdminF
 
 Route::get('admin/sales-monitoring/shopee/sales/report', [AdminFunctionsController::class, 'shopee_sales_view_report']) -> name('shopeesalesviewreport');
 
+Route::post('admin/sales-monitoring/shopee/sales/report/view', [AdminFunctionsController::class, 'generate_shopee_sales_report']) -> name('generateshopeesalesreport');
+
 });
 
 

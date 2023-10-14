@@ -11,6 +11,7 @@ use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
 use App\Models\ShopeeOrders;
+use App\Models\ShopeeSales;
 // use App\Models\ReceivedPurchaseOrder;
 // use App\Models\ReceivedPurchaseOrderDetails;
 use App\Models\SupplierCreditLimit;
@@ -489,8 +490,35 @@ class AdminFunctionsController extends Controller
     
     public function shopee_sales_view_report()
     {
-        $allShopeeOrders = ShopeeOrders::paginate(10);
+      
 
         return view('admin.admin_shopee_sales_view_report');
+    }
+
+    public function generate_shopee_sales_report(Request $request)
+    {
+        $dateInterval = $request -> input('date_interval');
+
+        $allShopeeOrders = [];
+ 
+        if($dateInterval === 'daily'){
+ 
+         $allShopeeOrders = ShopeeSales::whereDate('created_at', now() -> toDateString()) -> orderBy('created_at', 'desc') -> paginate(10);
+ 
+        }elseif($dateInterval === 'weekly'){
+ 
+         $allShopeeOrders = ShopeeSales::whereBetween('created_at', [now() -> startOfWeek(), now() -> endOfWeek()]) -> orderBy('created_at', 'desc') -> paginate(10);
+        }
+ 
+     //    }elseif($dateInterval === 'monthly'){
+         
+     //    }elseif($dateInterval === 'quarterly'){
+         
+     //    }elseif($dateInterval === 'yearly'){
+ 
+     //    }
+
+     return view('admin.admin_shopee_sales_view_report', ['allShopeeOrders' => $allShopeeOrders]);
+
     }
 }
