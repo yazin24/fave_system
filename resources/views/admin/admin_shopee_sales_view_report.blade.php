@@ -7,18 +7,18 @@
     <div class="flex flex-row items-center gap-1">
        
         <select class="text-xs rounded-sm">
-            <option>----------------------</option>
-            <option>Daily</option>
-            <optiion>Weekly</optiion>
-            <option>Monthly</option>
-            <option>Quarterly</option>
-            <option>Yearly</option>
+            <option disabled selected>----------------------</option>
+            <option value="daily">Daily</option>
+            <optiion value="weekly">Weekly</optiion>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
         </select>
         <button type="submit" class="bg-teal-500 hover:bg-teal-600 font-bold p-1.5 text-gray-200 rounded-md"><i class="fa-solid fa-right-to-bracket"></i> Generate</button>
     </div>
 </form>
 
-@if(isset())
+{{-- @if(isset()) --}}
 <div class="mt-4 w-full">
     <div class="flex justify-end">
         <button class="flex justify-end bg-teal-500 hover:bg-teal-600 p-0.5 rounded-sm text-gray-200 mb-1">Download</button>
@@ -47,6 +47,6 @@
         </tbody>
     </table>
 </div>
-@endif
+{{-- @endif --}}
 
 @endsection
