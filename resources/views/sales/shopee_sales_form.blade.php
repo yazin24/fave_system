@@ -28,9 +28,9 @@
             <div>
                 <input type="text" name="customers_address" placeholder="Full Address" class="h-6 w-full mb-0.5 text-xs">
             </div>
-            <div>
+            {{-- <div>
                 <input type="text" name="phone_number" placeholder="Phone Number" class="h-6 w-full mb-1 text-xs">
-            </div>
+            </div> --}}
             <div class="flex flex-row mb-1">
                 <input type="number" step="0.01" name="charges_and_fees" placeholder="Charges & Fees" class="h-6 w-full mb-0.5 text-xs">
                 <input type="number" step="0.01" name="voucher" placeholder="Voucher" class="h-6 w-full mb-0.5 text-xs">
@@ -61,7 +61,7 @@
                     </div>
     
                     <div class="w-full">
-                        <input type="text" class="w-full h-6 text-xs mb-0.5" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 900) 900g @elseif($allProduct -> sku_size == 180) 180g @endif " readonly>
+                        <input type="text" class="w-full h-6 text-xs mb-0.5" value="@if($allProduct -> sku_size == 3785.41) 1Gal @elseif($allProduct -> sku_size == 1000) 1Liter @elseif($allProduct -> sku_size == 900) 900g @elseif($allProduct -> sku_size == 200) 200ml @endif " readonly>
                         
                     </div>
     

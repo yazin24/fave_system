@@ -7,7 +7,7 @@
     @csrf
     <div class="flex flex-row items-center gap-1">
        
-        <select class="text-xs rounded-sm" name="date_interval">
+        <select class="text-xs rounded-sm" name="date_interval" id="date_interval">
             <option disabled selected>----------------------</option>
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
@@ -32,7 +32,7 @@
                 <th class="w-1/6">NAME</th>
                 <th class="w-1/6">STATUS</th>
                 <th class="w-1/6">DATE</th>
-                <th class="w-1/6">TOTAL AMOUNT</th>
+                <th class="w-1/6">AMOUNT</th>
                 <th class="w-1/6">ITEMS</th>
             </tr>
         </thead>
