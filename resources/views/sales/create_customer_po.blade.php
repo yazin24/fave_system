@@ -115,67 +115,141 @@
 </div>
 
 <script>
-    const purchaseTypeDropDown = document.getElementById('purchase_type');
-    
-    purchaseTypeDropDown.addEventListener('change', function () {
+ const purchaseTypeDropDown = document.getElementById('purchase_type');
+
+purchaseTypeDropDown.addEventListener('change', function () {
+    updatePrices();
+});
+
+// Add event listeners to all product size dropdowns
+document.querySelectorAll('[name^="product_size["]').forEach(function (productSizeDropdown) {
+    productSizeDropdown.addEventListener('change', function () {
         updatePrices();
     });
-    
-    // Add event listeners to all product size dropdowns
-    document.querySelectorAll('[name^="product_size["]').forEach(function (productSizeDropdown) {
-        productSizeDropdown.addEventListener('change', function () {
-            updatePrices();
-        });
+});
+
+function updatePrices() {
+    const selectedPurchaseType = purchaseTypeDropDown.value;
+
+    // Loop through each product row
+    document.querySelectorAll('[name^="price["]').forEach(function (priceInput) {
+        const productRow = priceInput.closest('.flex-row');
+        const productId = productRow.querySelector('[name^="selected_product["]').value;
+        const productSizeDropdown = productRow.querySelector('[name^="product_size["]');
+        const selectedSize = productSizeDropdown.value;
+
+        let pricePerBox = 0;
+
+        if (productId in productSizes) {
+            pricePerBox = productSizes[productId].pricePerBox;
+        }
+
+        let price = 0;
+
+        if (selectedPurchaseType === 'Retail') {
+            price = (selectedSize === '1') ? pricePerBox : productSizes[productId].retailPrice;
+        } else if (selectedPurchaseType === 'Wholesale') {
+            price = (selectedSize === '1') ? pricePerBox : productSizes[productId].wholesalePrice;
+        }
+
+        // Update the price input
+        priceInput.value = price;
     });
-    
-    function updatePrices() {
-        const selectedPurchaseType = purchaseTypeDropDown.value;
-    
-        // Loop through each product row
-        document.querySelectorAll('[name^="price["]').forEach(function (priceInput) {
-            const productRow = priceInput.closest('.flex-row');
-            const productId = productRow.querySelector('[name^="selected_product["]').value;
-            const productSizeDropdown = productRow.querySelector('[name^="product_size["]');
-            const selectedSize = productSizeDropdown.value;
-    
-            let pricePerBox = 0;
-            
-            if (productId in productSizes) {
-                pricePerBox = productSizes[productId];
-            }
-    
-            let price = 0;
-    
-            if (selectedPurchaseType === 'Retail') {
-                price = (pricePerBox === 3785.41) ? 35 : 129 : 
-            } else if (selectedPurchaseType === 'Wholesale') {
-                price = (pricePerBox === 3785.41) ? 29 : 115;
-            }
-    
-            // Update the price input
-            priceInput.value = price;
-    
-            // If a specific size is selected, update the price accordingly
-            if (selectedSize === '1') {
-                priceInput.value = (pricePerBox === 3785.41) ? 305 : 280;
-            }
-        });
-    }
-    
+}
+
     const productSizes = {
-        1: 200.00,
-        2: 1000.00,
-        3: 1000.00,
-        4: 3785.41,
-        5: 200.00,
-        6: 1000.00,
-        7: 1000.00,
-        8: 3785.41,
-        9: 200.00,
-        10: 1000.00,
-        11: 1000.00
-        12: 3785.41,
-    };
+    1: {
+        size: 200, 
+        retailPrice: 25,
+        wholesalePrice: 18,
+        pricePerBox: 864,
+    },
+    2: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    3: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    4: {
+        size: 3785.41, 
+        retailPrice: 135,
+        wholesalePrice: 129,
+        pricePerBox: 516,
+    },
+    5: {
+        size: 200, 
+        retailPrice: 25,
+        wholesalePrice: 18,
+        pricePerBox: 864,
+    },
+    6: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    7: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    8: {
+        size: 3785.41, 
+        retailPrice: 135,
+        wholesalePrice: 129,
+        pricePerBox: 516,
+    },
+    9: {
+        size: 200, 
+        retailPrice: 25,
+        wholesalePrice: 18,
+        pricePerBox: 864,
+    },
+    10: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    11: {
+        size: 1000, 
+        retailPrice: 99,
+        wholesalePrice: 85,
+        pricePerBox: 850,
+    },
+    12: {
+        size: 3785.41, 
+        retailPrice: 135,
+        wholesalePrice: 129,
+        pricePerBox: 516,
+    },
+    
+   
+
+    // Add entries for other products with their respective sizes and prices
+};
+    
+    // const productSizes = {
+    //     1: 200.00,
+    //     2: 1000.00,
+    //     3: 1000.00,
+    //     4: 3785.41,
+    //     5: 200.00,
+    //     6: 1000.00,
+    //     7: 1000.00,
+    //     8: 3785.41,
+    //     9: 200.00,
+    //     10: 1000.00,
+    //     11: 1000.00
+    //     12: 3785.41,
+    // };
     </script>
 
 @endsection
