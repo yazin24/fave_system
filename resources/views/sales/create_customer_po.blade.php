@@ -76,9 +76,9 @@
 
                         @elseif($allProduct -> sku_size == 1000) 1Liter 
 
-                        @elseif($allProduct -> sku_size == 900) 900g 
+                        {{-- @elseif($allProduct -> sku_size == 900) 900g  --}}
 
-                        @elseif($allProduct -> sku_size == 180) 180g
+                        @elseif($allProduct -> sku_size == 200) 200ml
 
                         @endif
                     </option>
@@ -87,9 +87,9 @@
 
                             @elseif($allProduct -> sku_size == 1000) 1Liter(Box) 
 
-                            @elseif($allProduct -> sku_size == 900) 900g(Box) 
+                            {{-- @elseif($allProduct -> sku_size == 900) 900g(Box)  --}}
 
-                            @elseif($allProduct -> sku_size == 180) 180g(Box)
+                            @elseif($allProduct -> sku_size == 200) 200ml(Box)
                             @endif
                         </option>
                     </select>
@@ -147,9 +147,9 @@
             let price = 0;
     
             if (selectedPurchaseType === 'Retail') {
-                price = (pricePerBox === 3785.41) ? 35 : 129;
+                price = (pricePerBox === 3785.41) ? 35 : ((pricePerBox === 200.00) ? 18 : 129); 
             } else if (selectedPurchaseType === 'Wholesale') {
-                price = (pricePerBox === 3785.41) ? 29 : 115;
+                price = (pricePerBox === 3785.41) ? 29 : ((pricePerBox === 200) ? 1.5 : 115);
             }
     
             // Update the price input
@@ -163,12 +163,18 @@
     }
     
     const productSizes = {
-        1: 3785.41,
+        1: 200,
         2: 1000,
-        3: 3785.41,
-        4: 1000,
-        5: 3785.41,
+        3: 1000,
+        4: 3785.41,
+        5: 200,
         6: 1000,
+        7: 1000,
+        8: 3785.41,
+        9: 200,
+        10: 1000,
+        11: 1000,
+        12: 3785.41,
     };
     </script>
 

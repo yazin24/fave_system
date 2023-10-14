@@ -64,6 +64,7 @@
                                 <td class="text-xs text-center border-b-2 font-bold">
                                     @if($item -> productSku -> sku_size == 3785.41) 1 Gallon
                                     @elseif($item -> productSku -> sku_size == 1000) 1 Liter
+                                    @elseif($item -> productSku -> sku_size == 200) 200ml
                                     @else 500 ml
                                     @endif
                                 </td>
