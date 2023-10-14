@@ -10,6 +10,7 @@ use App\Models\ProductSku;
 use App\Models\ProductVariants;
 use App\Models\PullOutItemsCredentials;
 use App\Models\PurchaseOrder;
+use App\Models\ShopeeOrders;
 // use App\Models\ReceivedPurchaseOrder;
 // use App\Models\ReceivedPurchaseOrderDetails;
 use App\Models\SupplierCreditLimit;
@@ -488,6 +489,8 @@ class AdminFunctionsController extends Controller
     
     public function shopee_sales_view_report()
     {
+        $allShopeeOrders = ShopeeOrders::paginate(10);
+
         return view('admin.admin_shopee_sales_view_report');
     }
 }
