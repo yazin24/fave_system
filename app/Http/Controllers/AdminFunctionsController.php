@@ -496,32 +496,14 @@ class AdminFunctionsController extends Controller
 
     public function generate_shopee_sales_report(Request $request)
     {
-        $dateInterval = $request -> input('date_interval');
+        $dateStart = $request -> input('start_date');
+        $dateEnd = $request -> input('end_date');
 
-        $allShopeeOrders = ShopeeSales::whereDate('created_at', $dateInterval)
+        $allShopeeOrders = ShopeeSales::whereBetween('created_at', [$dateStart, $dateEnd])
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-        // $allShopeeOrders = [];
- 
-        // if($dateInterval === 'daily'){
- 
-        //  $allShopeeOrders = ShopeeSales::whereDate('created_at', now() -> toDateString()) -> orderBy('created_at', 'desc') -> paginate(10);
- 
-        // }elseif($dateInterval === 'weekly'){
- 
-        //  $allShopeeOrders = ShopeeSales::whereBetween('created_at', [now() -> startOfWeek(), now() -> endOfWeek()]) -> orderBy('created_at', 'desc') -> paginate(10);
-        // }
-
-        // dd($allShopeeOrders);
- 
-     //    }elseif($dateInterval === 'monthly'){
-         
-     //    }elseif($dateInterval === 'quarterly'){
-         
-     //    }elseif($dateInterval === 'yearly'){
- 
-     //    }
+      
 
      return view('admin.admin_shopee_sales_view_report', ['allShopeeOrders' => $allShopeeOrders]);
 
