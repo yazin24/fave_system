@@ -32,12 +32,21 @@
         <tbody class="text-center bg-gray-200 shadow-sm h-6">
             @foreach ($allShopeeOrders as $shopeeOrder)
             <tr class="border border-b-600 border-gray-300 h-8">
-                <td>{{$shopeeOrder -> total_amount}}</td>
+                <td>{{$shopeeOrder -> shopeeOrders -> order_id}}</td>
                 <td>{{$shopeeOrder -> shopeeOrders -> customers_name}}</td>
-                <td>s</td>
-                <td>s</td>
-                <td>s</td>
-                <td>s</td>
+                <td>
+                    @if($shopeeOrder -> shopeeOrders -> status == 4) Complete
+                    @elseif($shopeeOrder -> shopeeOrders -> status == 8) Cancelled
+                    @elseif($shopeeOrder -> shopeeOrders -> status == 9) Ongoing
+                    @elseif($shopeeOrder -> shopeeOrders -> status == 3) Queued
+                    @elseif($shopeeOrder -> shopeeOrders -> status == 7) Undelivered
+                    @endif
+                </td>
+                <td>{{date('d-m-y', strtotime($shopeeOrder -> created_at))}}</td>
+                <td>₱{{number_format($shopeeOrder -> total_amount, 2)}}</td>
+
+               <td>items here</td>
+                
             </tr>
             @endforeach
            
