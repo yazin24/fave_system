@@ -498,16 +498,22 @@ class AdminFunctionsController extends Controller
     {
         $dateInterval = $request -> input('date_interval');
 
-        $allShopeeOrders = [];
+        $allShopeeOrders = ShopeeSales::whereDate('created_at', $dateInterval)
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+
+        // $allShopeeOrders = [];
  
-        if($dateInterval === 'daily'){
+        // if($dateInterval === 'daily'){
  
-         $allShopeeOrders = ShopeeSales::whereDate('created_at', now() -> toDateString()) -> orderBy('created_at', 'desc') -> paginate(10);
+        //  $allShopeeOrders = ShopeeSales::whereDate('created_at', now() -> toDateString()) -> orderBy('created_at', 'desc') -> paginate(10);
  
-        }elseif($dateInterval === 'weekly'){
+        // }elseif($dateInterval === 'weekly'){
  
-         $allShopeeOrders = ShopeeSales::whereBetween('created_at', [now() -> startOfWeek(), now() -> endOfWeek()]) -> orderBy('created_at', 'desc') -> paginate(10);
-        }
+        //  $allShopeeOrders = ShopeeSales::whereBetween('created_at', [now() -> startOfWeek(), now() -> endOfWeek()]) -> orderBy('created_at', 'desc') -> paginate(10);
+        // }
+
+        // dd($allShopeeOrders);
  
      //    }elseif($dateInterval === 'monthly'){
          
