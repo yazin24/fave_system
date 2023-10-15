@@ -40,8 +40,7 @@
                     {{-- </form> --}}
                    
                   </td>
-                  
-                  
+                    
               </tr>
               @endforeach
               <hr>
@@ -60,7 +59,7 @@
      {{-- <input type="text" name="billing address" placeholder="billing" required> --}}
      @endif
      <input type="text" name="shipping address" placeholder="Shipping Address" class="h-8 text-xs mb-1 w-full rounded-sm" required>
-     <select name="payment_method" class="h-8 text-xs w-full rounded-sm">
+     <select name="payment_method" class="h-8 text-xs w-full rounded-sm" required>
       <option disabled selected>Choose Payment method</option>
       <option value="Cash On Delivery">Cash On Delivery</option>
       <option value="Gcash">Gcash</option>
