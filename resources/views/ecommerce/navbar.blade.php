@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="path/to/tailwind.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
