@@ -92,7 +92,7 @@
             </div>
 
             <div class="flex flex-row mb-1">
-                <input type="number" id="del_charge" name="del_charge" placeholder="Delivery Charge" class="h-8 w-1/2 text-xs" required>
+                <input type="number" step="0.01" id="del_charge" name="del_charge" placeholder="Delivery Charge" class="h-8 w-1/2 text-xs" required>
                 
             </div>
 

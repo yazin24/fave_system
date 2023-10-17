@@ -56,7 +56,7 @@
                        <h2>Purchase Amount: ₱{{number_format($totalAmount, 2)}}</h2>
                        <h2>Delivery Charge: ₱{{number_format($allPurchaseOrder -> del_charge, 2)}}</h2> 
                        @if($allPurchaseOrder -> systemStatus -> status === 'queued')
-                       <h2>Delivery Charge: ₱{{number_format($allPurchaseOrder -> total_amount, 2)}}</h2> 
+                       <h2>Total Amount: ₱{{number_format($allPurchaseOrder -> total_amount, 2)}}</h2> 
                       @else
                       <h2 class="text-red-600">Total Amount: ₱{{number_format($allPurchaseOrder -> total_amount, 2)}}</h2> 
                       @endif
