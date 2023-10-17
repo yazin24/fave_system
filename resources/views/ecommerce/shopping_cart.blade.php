@@ -32,13 +32,10 @@
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/6">₱{{$item -> price * $item -> quantity}}.00</td>
 
-                   <td class="border-b-2 border-gray-100 text-md text-center w-1/6">
-                    
-                    <button type="button" class="delete-item-button bg-red-500 hover-bg-red-600 text-gray-200 p-1.5 rounded-sm" onclick="return confirm('Do you really want to delete this item?')">
-                      <a href="{{route('deleteiteminshoppingcart', ['item' => $item->id])}}"><i class="fa-solid fa-trash"></i></a>
-                    </button>
-                   
-                  </td>
+                  <td class="border-b-2 border-gray-100 text-md text-center w-1/6">
+                    <button type="button" class="mr-2 bg-red-500 hover:bg-red-600 text-gray-200 p-1.5 rounded-sm delete-button"
+                        data-item-id="{{ $item->id }}" onclick="deleteItem(this)">Delete</button>
+                </td>
                     
               </tr>
               @endforeach
@@ -75,13 +72,27 @@
 </div>
 </form>
 
-{{-- <form method="POST" action="{{route('deleteiteminshoppingcart', ['item' => $item -> id])}}">
-  @csrf
-  @method('DELETE')
-  <button type="submit" class="mr-2 bg-red-500 hover:bg-red-600 text-gray-200 p-1.5 rounded-sm" onclick="return confirm('Do you really want to delete this item?')"> --}}
-    {{-- <a class="modal-open" href="{{route('deleteiteminshoppingcart', ['item' => $item -> id])}}"><i class="fa-solid fa-trash"></i></a> --}}
-    {{-- </button>
-</form> --}}
+<script>
+  function deleteItem(button) {
+      if (confirm('Do you really want to delete this item?')) {
+          // Get the item ID from the button's data attribute
+          var itemId = button.getAttribute('data-item-id');
 
+          // Create a form and add an input for the item ID
+          var form = document.createElement('form');
+          form.method = 'POST';
+          form.action = "{{ route('deleteiteminshoppingcart', ['item' => $item -> id]) }}";
+          form.innerHTML = `
+              @csrf
+              @method('DELETE')
+              <input type="hidden" name="item" value="${itemId}">
+          `;
+
+          // Append the form to the body and submit it
+          document.body.appendChild(form);
+          form.submit();
+      }
+  }
+</script>
 
 @endsection
