@@ -269,7 +269,7 @@ class EcommerceFunctionsController extends Controller
         // // Store the cart quantity in the session
         // session(['cartAllQuantity' => $cartQuantity]);
 
-        return redirect() -> route('shoppingcart');
+        return back();
     }
 
     public function cancel_order($orderId)
