@@ -42,7 +42,13 @@
             <tr class="h-10">   
                 <td class="text-xs text-center border-b-2 font-bold">{{$ecommerceOrder -> tracking_number}}</td>
                 <td class="text-xs text-center border-b-2 font-bold capitalize">{{$ecommerceOrder -> ecomCustomers -> name}}</td>
-                <td class="text-xs text-center border-b-2 font-bold">{{$ecommerceOrder -> ecomCustomerPaymentTransactions -> payment_method}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">
+                    @if($ecommerceOrder->ecomCustomerPaymentTransactions)
+                        {{ $ecommerceOrder->ecomCustomerPaymentTransactions->payment_method }}
+                    @else
+                        N/A
+                    @endif
+                </td>
                 <td class="text-xs text-center border-b-2 font-bold">
                     @if($ecommerceOrder -> status == 9) Ongoing
                     @elseif($ecommerceOrder -> status == 3) Queued
@@ -50,16 +56,22 @@
                     @elseif($ecommerceOrder -> status == 4) Completed
                     @endif
                 </td>
-                <td class="text-xs text-center border-b-2 font-bold">₱{{number_format($ecommerceOrder -> ecomCustomerPaymentTransactions -> amount, 2)}}</td>
+                <td class="text-xs text-center border-b-2 font-bold">
+                    @if($ecommerceOrder->ecomCustomerPaymentTransactions)
+                        ₱{{ number_format($ecommerceOrder->ecomCustomerPaymentTransactions->amount, 2) }}
+                    @else
+                        N/A
+                    @endif
+                </td>
                 <td class="text-xs text-center border-b-2 font-bold"><a href="{{route('ecommerceorderview', ['ecommerceOrder' => $ecommerceOrder -> id])}}"><i class="fa-solid fa-eye text-lg text-yellow-500 hover:text-yellow-600"></i></a></td>
             </tr>
               @endforeach
         </tbody>
     </table>
 </div>
-<div class="mt-1 ml-2">
+{{-- <div class="mt-1 ml-2">
     <x-shopee-pagination :paginator="$ecommerceOrders" />
-</div>
+</div> --}}
 
 
 @endsection
