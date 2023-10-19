@@ -26,11 +26,11 @@
 
                   <td class="border-b-2 border-gray-100 text-xs text-center w-1/6"><img src="{{asset($item -> productSku -> image_path)}}" class="w-24 text-center"><input type="hidden" name="product_id[{{$item -> sku_id}}]" value="{{$item -> sku_id}}"></td>
 
-                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/6"><input type="number" class="h-6 w-14" name="product_quantity[{{$item -> sku_id}}]" value="{{$item -> quantity}}" class=" text-center w-24"></td>
+                  <td class="border-b-2 border-gray-100 text-xs text-center w-1/6"><input type="number" class="h-6 w-14" name="product_quantity[{{$item -> sku_id}}]" value="{{$item -> quantity}}" class=" text-center w-24" min="0"></td>
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/6"><input type="number" class="h-6 w-20 px-0 text-center" name="product_price[{{$item -> sku_id}}]" value="{{$item -> price}}" readonly></td>
 
-                  <td class="border-b-2 border-gray-100 text-md text-center w-1/6">₱{{$item -> price * $item -> quantity}}.00</td>
+                  <td class="border-b-2 border-gray-100 text-md text-center w-1/6" id="amount-cell">₱{{$item -> price * $item -> quantity}}.00</td>
 
                   <td class="border-b-2 border-gray-100 text-md text-center w-1/6">
                     <button type="button" class="mr-2 bg-red-500 hover:bg-red-600 text-gray-200 p-1.5 rounded-sm delete-button"
@@ -73,6 +73,8 @@
 </form>
 
 <script>
+
+
   function deleteItem(button) {
       if (confirm('Do you really want to delete this item?')) {
           // Get the item ID from the button's data attribute
